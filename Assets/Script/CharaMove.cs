@@ -6,7 +6,6 @@ public class CharaMove : MonoBehaviour
 {
     public float moveSpeed = 5f;
     public float rotateSpeed = 0.5f;
-    public Rigidbody _rb;
 
     void Update()
     {
