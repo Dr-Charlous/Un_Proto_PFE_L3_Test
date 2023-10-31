@@ -619,7 +619,8 @@ GameObject:
   - component: {fileID: 8580328042160406967}
   - component: {fileID: 7542301673095763722}
   - component: {fileID: 7694702384472277774}
-  - component: {fileID: 5672800857894675519}
+  - component: {fileID: 5825147571404174658}
+  - component: {fileID: 8481239922699927}
   m_Layer: 0
   m_Name: Diplocaulus_V3
   m_TagString: Untagged
@@ -659,6 +660,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   moveSpeed: 1
   rotateSpeed: 100
+  IsInWater: 0
+  Body: {fileID: 8377304467858795562}
+  _rb: {fileID: 5825147571404174658}
+  gravity: {fileID: 8481239922699927}
+  layerMask:
+    serializedVersion: 2
+    m_Bits: 16
 --- !u!65 &7694702384472277774
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -680,7 +688,7 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.35, y: 0.1, z: 0.5}
   m_Center: {x: 0, y: 0.07, z: -0.17}
---- !u!54 &5672800857894675519
+--- !u!54 &5825147571404174658
 Rigidbody:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -707,6 +715,19 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &8481239922699927
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5162017050247191346}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cb698bda5ccaec843a4319163c07a778, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gravityScale: 1
 --- !u!1 &6429106771450857576
 GameObject:
   m_ObjectHideFlags: 0
