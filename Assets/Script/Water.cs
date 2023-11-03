@@ -9,6 +9,7 @@ public class Water : MonoBehaviour
         if (other.GetComponent<CharaMove>() != null)
         {
             other.GetComponent<CharaMove>().IsInWater = true;
+            other.GetComponent<CharaMove>().water = transform;
         }
     }
 
@@ -17,6 +18,7 @@ public class Water : MonoBehaviour
         if (other.GetComponent<CharaMove>() != null)
         {
             other.GetComponent<CharaMove>().IsInWater = false;
+            other.GetComponent<CharaMove>().water = null;
         }
     }
 }
