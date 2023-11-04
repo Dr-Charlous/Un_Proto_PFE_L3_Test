@@ -1071,6 +1071,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 930cdc7c44817c542bd5fc3ef892094c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  collider: {fileID: 0}
 --- !u!1 &1872724818 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 1ac94ba2f2ff91f4dbb7d9367d7ad87e, type: 3}
@@ -2680,7 +2681,6 @@ GameObject:
   - component: {fileID: 2789000109735339798}
   - component: {fileID: 4110754427729785262}
   - component: {fileID: 4110754427729785261}
-  - component: {fileID: 4110754427729785260}
   - component: {fileID: 4110754427729785259}
   m_Layer: 0
   m_Name: Diplocaulus_V3
@@ -3403,6 +3403,7 @@ GameObject:
   - component: {fileID: 3323711514686192305}
   - component: {fileID: 1869241394}
   - component: {fileID: 1869241398}
+  - component: {fileID: 6661654105915764224}
   m_Layer: 4
   m_Name: Water
   m_TagString: Untagged
@@ -4648,22 +4649,8 @@ MonoBehaviour:
   layerMaskWater:
     serializedVersion: 2
     m_Bits: 16
-  Body: {fileID: 0}
-  _rb: {fileID: 0}
-  gravity: {fileID: 0}
---- !u!114 &4110754427729785260
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1586636090708196755}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cb698bda5ccaec843a4319163c07a778, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  gravityScale: 1
+  Body: {fileID: 2789000109735339798}
+  _rb: {fileID: 4110754427729785261}
 --- !u!54 &4110754427729785261
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -6797,6 +6784,27 @@ Transform:
   m_Father: {fileID: 6297392178397954734}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &6661654105915764224
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2321219416669222198}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 10, y: 0.5, z: 10}
+  m_Center: {x: 0, y: -0.28, z: 0}
 --- !u!1 &6696034190781815695
 GameObject:
   m_ObjectHideFlags: 0

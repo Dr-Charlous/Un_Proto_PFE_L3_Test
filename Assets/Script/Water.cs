@@ -4,6 +4,13 @@ using UnityEngine;
 
 public class Water : MonoBehaviour
 {
+    public BoxCollider collider;
+
+    private void Start()
+    {
+        collider = GetComponent<BoxCollider>();
+    }
+
     private void OnTriggerEnter(Collider other)
     {
         if (other.GetComponent<CharaMove>() != null)
