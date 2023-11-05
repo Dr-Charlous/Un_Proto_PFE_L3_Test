@@ -10,8 +10,8 @@ using static UnityEditor.PlayerSettings;
 public class CharaMove1 : MonoBehaviour
 {
     [Header("Values :")]
-    public float moveSpeed = 5f;
-    public float rotateSpeed = 0.5f;
+    public float moveSpeed = 1f;
+    public float rotateSpeed = 100f;
     public float gravityScaleGround = 1f;
     public float gravityScaleWater = 0f;
 

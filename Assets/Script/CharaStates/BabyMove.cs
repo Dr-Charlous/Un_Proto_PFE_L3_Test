@@ -1,7 +1,10 @@
+using System.Collections.Generic;
+using System.Linq;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.AI;
 
-public class CharaMove : MonoBehaviour
+public class BabyMove : MonoBehaviour
 {
     [Header("Values :")]
     public float moveSpeed = 1f;
@@ -15,43 +18,41 @@ public class CharaMove : MonoBehaviour
     [Header("Components :")]
     public Transform Body;
     public Rigidbody _rb;
+    public NavMeshAgent agent;
+    public LineRenderer line;
+    public List<Vector3> point;
+
+    [Header("Parent follow :")]
+    public Transform Parent;
+    public Vector3 target;
+    public float distance = 5;
 
     void Start()
     {
         Body = GetComponent<Transform>();
         _rb = GetComponent<Rigidbody>();
+        agent = GetComponent<NavMeshAgent>();
+        target = transform.position;
     }
 
     void Update()
     {
-        Move(KeyCode.UpArrow, Vector3.back, moveSpeed);
-        Move(KeyCode.DownArrow, Vector3.forward, moveSpeed);
-        Rotate(KeyCode.LeftArrow, Vector3.down, rotateSpeed);
-        Rotate(KeyCode.RightArrow, Vector3.up, rotateSpeed);
-
-        if (Input.GetKeyDown(KeyCode.Space))
+        if (Vector3.Distance(Parent.position, target) > distance)
         {
-            SwitchSwim();
+            target = Parent.position;
+            agent.SetDestination(target);
         }
+
+
+        DrawPath();
+
+        //if (Input.GetKeyDown(KeyCode.Space))
+        //{
+        //    SwitchSwim();
+        //}
 
         FallingRotate();
         UpWater();
-    }
-
-    void Move(KeyCode key, Vector3 transformMove, float moveSpeed)
-    {
-        if (Input.GetKey(key))
-        {
-            transform.Translate(transformMove * moveSpeed * Time.deltaTime);
-        }
-    }
-
-    void Rotate(KeyCode key, Vector3 transformMove, float rotateSpeed)
-    {
-        if (Input.GetKey(key))
-        {
-            transform.Rotate(transformMove * rotateSpeed * Time.deltaTime);
-        }
     }
 
     void FallingRotate()
@@ -99,5 +100,23 @@ public class CharaMove : MonoBehaviour
 
         if (_rb == null)
             _rb = transform.AddComponent<Rigidbody>();
+    }
+
+    void DrawPath()
+    {
+        if (agent.path.corners.Length < 2) return;
+
+        int i = 1;
+        while (i < agent.path.corners.Length)
+        {
+            line.positionCount = agent.path.corners.Length;
+            point = agent.path.corners.ToList();
+            for (int j = 0; j < point.Count; j++)
+            {
+                line.SetPosition(j, point[j]);
+            }
+
+            i++;
+        }
     }
 }
