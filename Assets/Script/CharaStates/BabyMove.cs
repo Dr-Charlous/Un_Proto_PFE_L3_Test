@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using System.Linq;
+using Unity.AI.Navigation;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.AI;
@@ -19,6 +20,7 @@ public class BabyMove : MonoBehaviour
     public Transform Body;
     public Rigidbody _rb;
     public NavMeshAgent agent;
+    public NavMeshSurface surface;
     public LineRenderer line;
     public List<Vector3> point;
 
@@ -26,6 +28,8 @@ public class BabyMove : MonoBehaviour
     public Transform Parent;
     public Vector3 target;
     public float distance = 5;
+    public bool follow = true;
+    public bool showPath = true;
 
     void Start()
     {
@@ -37,19 +41,21 @@ public class BabyMove : MonoBehaviour
 
     void Update()
     {
-        if (Vector3.Distance(Parent.position, target) > distance)
+        if (Vector3.Distance(Parent.position, target) > distance && follow)
         {
             target = Parent.position;
             agent.SetDestination(target);
         }
 
+        if (showPath)
+        {
+            DrawPath();
+        }
 
-        DrawPath();
-
-        //if (Input.GetKeyDown(KeyCode.Space))
-        //{
-        //    SwitchSwim();
-        //}
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            SwitchSwim();
+        }
 
         FallingRotate();
         UpWater();
