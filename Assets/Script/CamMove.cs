@@ -5,7 +5,6 @@ using UnityEngine;
 public class CamMove : MonoBehaviour
 {
     public GameObject objectToRotate;
-    public bool rotatePlayer = false;
     public float distance = 5;
     public float speed = 5;
 
@@ -16,22 +15,12 @@ public class CamMove : MonoBehaviour
 
     private void Update()
     {
-        if (rotatePlayer == false)
-        {
-            if (currentAngle >= 360)
-                currentAngle = 0;
-            currentAngle += 1 * speed * Time.deltaTime;
-            Quaternion rotation = Quaternion.Euler(currentXAngle, currentAngle, 0);
-            Vector3 position = objectToRotate.transform.position - (rotation * Vector3.forward * distance);
-            transform.position = position;
-            transform.rotation = rotation;
-        }
-        else
-        {
-            Quaternion rotation = Quaternion.Euler(currentXAngle, currentAngle, objectToRotate.transform.rotation.z);
-            Vector3 position = objectToRotate.transform.position - (rotation * Vector3.forward * distance);
-            transform.position = position;
-            transform.localEulerAngles = new Vector3(currentXAngle, 180 + objectToRotate.transform.rotation.y * 100, 0);
-        }
+        if (currentAngle >= 360)
+            currentAngle = 0;
+        currentAngle += 1 * speed * Time.deltaTime;
+        Quaternion rotation = Quaternion.Euler(currentXAngle, currentAngle, 0);
+        Vector3 position = objectToRotate.transform.position - (rotation * Vector3.forward * distance);
+        transform.position = position;
+        transform.rotation = rotation;
     }
 }
