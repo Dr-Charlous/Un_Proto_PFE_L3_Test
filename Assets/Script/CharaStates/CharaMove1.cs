@@ -45,8 +45,8 @@ public class CharaMove1 : MonoBehaviour
 
         if (IsInWater)
         {
-            //Move(KeyCode.Space, Vector3.up, moveSpeed);
-            //Move(KeyCode.LeftControl, Vector3.down, moveSpeed);
+            //Move(KeyCode.Space, Vector3.up, MoveSpeed);
+            //Move(KeyCode.LeftControl, Vector3.down, MoveSpeed);
 
             gravity.gravityScale = gravityScaleWater;
         }
