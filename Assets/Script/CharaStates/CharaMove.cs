@@ -7,28 +7,36 @@ using UnityEngine.InputSystem;
 
 public class CharaMove : MonoBehaviour
 {
-    [Header("Values :")]
+    [Header("Input System :")]
+    Controls _controls;
+    Vector3 _position;
+    Vector3 _rotation;
+
+    [Header("Components/Values :")]
     public float MoveSpeed = 1f;
     public float RotateSpeed = 100f;
     public bool Swimming = false;
+    public bool Crouch = false;
+    public Transform Body;
+    public Rigidbody _rb;
+
+    [Header("UI :")]
+    public GameObject[] FishUI;
 
     [Header("Dash")]
     public bool IsDashing = false;
     public float DashForce = 5f;
     public float DashCooldown = 1f;
 
+    [Header("Fishing :")]
+    [Range(0f, 5f)]
+    public int Fish = 0;
+    public bool Fishinning = false;
+
+
     [Header("Water :")]
     public bool IsInWater = false;
     public Transform water = null;
-
-    [Header("Components :")]
-    public Transform Body;
-    public Rigidbody _rb;
-
-    [Header("Input System :")]
-    Controls _controls;
-    Vector3 _position;
-    Vector3 _rotation;
 
     #region Inputs
     private void OnEnable()
@@ -36,12 +44,21 @@ public class CharaMove : MonoBehaviour
         _controls.Diplocaulus.Enable();
         _controls.Diplocaulus.Move.performed += GetMoveInputs;
         _controls.Diplocaulus.Dash.started += GetDashInput;
+        _controls.Diplocaulus.UI.started += GetUIInput;
+        _controls.Diplocaulus.UI.canceled += GetUIInputCanceled;
+        _controls.Diplocaulus.Fishing.started += GetFishingInput;
+        _controls.Diplocaulus.Fishing.canceled += GetFishingInputCanceled;
     }
 
     private void OnDisable()
     {
         _controls.Diplocaulus.Disable();
         _controls.Diplocaulus.Move.performed -= GetMoveInputs;
+        _controls.Diplocaulus.Dash.started -= GetDashInput;
+        _controls.Diplocaulus.UI.started -= GetUIInput;
+        _controls.Diplocaulus.UI.canceled -= GetUIInputCanceled;
+        _controls.Diplocaulus.Fishing.started -= GetFishingInput;
+        _controls.Diplocaulus.Fishing.canceled -= GetFishingInputCanceled;
     }
 
     void GetMoveInputs(InputAction.CallbackContext move)
@@ -56,6 +73,26 @@ public class CharaMove : MonoBehaviour
         {
             StartCoroutine(Dash());
         }
+    }
+
+    void GetUIInput(InputAction.CallbackContext ui)
+    {
+        ShowUI();
+    }
+
+    void GetUIInputCanceled(InputAction.CallbackContext obj)
+    {
+        HideUI();
+    }
+
+    void GetFishingInput(InputAction.CallbackContext fish)
+    {
+        Fishinning = true;
+    }
+    
+    void GetFishingInputCanceled(InputAction.CallbackContext fish)
+    {
+        Fishinning = false;
     }
 
     private void Awake()
@@ -73,7 +110,10 @@ public class CharaMove : MonoBehaviour
 
     void Update()
     {
-        MoveNRotate(_position, MoveSpeed, _rotation, RotateSpeed);
+        if (Crouch == false)
+        {
+            MoveNRotate(_position, MoveSpeed, _rotation, RotateSpeed);
+        }
 
         if (Input.GetKeyDown(KeyCode.Space))
         {
@@ -82,6 +122,7 @@ public class CharaMove : MonoBehaviour
 
         FallingRotate();
         UpWater();
+        Fishing();
     }
 
     #region MoveNRotate
@@ -103,6 +144,31 @@ public class CharaMove : MonoBehaviour
             rot.x = 0;
             rot.z = 0;
             transform.eulerAngles = rot;
+        }
+    }
+    #endregion
+
+    #region UI
+    void ShowUI()
+    {
+        for (int i = 0; i < FishUI.Length; i++)
+        {
+            if (i < Fish)
+            {
+                FishUI[i].SetActive(true);
+            }
+            else
+            {
+                FishUI[i].SetActive(false);
+            }
+        }
+    }
+
+    void HideUI()
+    {
+        for (int i = 0; i < FishUI.Length; i++)
+        {
+            FishUI[i].SetActive(false);
         }
     }
     #endregion
@@ -145,6 +211,20 @@ public class CharaMove : MonoBehaviour
     }
     #endregion
 
+    #region abilities
+    void Fishing()
+    {
+        if (Fish < 5 && Fishinning == true)
+        {
+            int randomNumber = Random.Range(0, 1000);
+
+            if (randomNumber == 5)
+            {
+                Fish++;
+            }
+        }
+    }
+
     IEnumerator Dash()
     {
         IsDashing = true;
@@ -153,4 +233,5 @@ public class CharaMove : MonoBehaviour
         yield return new WaitForSeconds(DashCooldown);
         IsDashing = false;
     }
+    #endregion
 }

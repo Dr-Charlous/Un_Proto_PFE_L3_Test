@@ -44,6 +44,24 @@ public partial class @Controls: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""UI"",
+                    ""type"": ""Button"",
+                    ""id"": ""56bdda60-9dd3-4822-8ae5-204aa3db0226"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Fishing"",
+                    ""type"": ""Button"",
+                    ""id"": ""ae53e0f4-bfe3-444a-b761-9a3627e2d4b1"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -167,6 +185,28 @@ public partial class @Controls: IInputActionCollection2, IDisposable
                     ""action"": ""Dash"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""5f3b1944-d4b4-48eb-8126-2ddb9d37e9cc"",
+                    ""path"": ""<Mouse>/rightButton"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""UI"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""1a0238be-1fa6-4d46-94c3-b106d850c204"",
+                    ""path"": ""<Keyboard>/leftCtrl"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Fishing"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -177,6 +217,8 @@ public partial class @Controls: IInputActionCollection2, IDisposable
         m_Diplocaulus = asset.FindActionMap("Diplocaulus", throwIfNotFound: true);
         m_Diplocaulus_Move = m_Diplocaulus.FindAction("Move", throwIfNotFound: true);
         m_Diplocaulus_Dash = m_Diplocaulus.FindAction("Dash", throwIfNotFound: true);
+        m_Diplocaulus_UI = m_Diplocaulus.FindAction("UI", throwIfNotFound: true);
+        m_Diplocaulus_Fishing = m_Diplocaulus.FindAction("Fishing", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -240,12 +282,16 @@ public partial class @Controls: IInputActionCollection2, IDisposable
     private List<IDiplocaulusActions> m_DiplocaulusActionsCallbackInterfaces = new List<IDiplocaulusActions>();
     private readonly InputAction m_Diplocaulus_Move;
     private readonly InputAction m_Diplocaulus_Dash;
+    private readonly InputAction m_Diplocaulus_UI;
+    private readonly InputAction m_Diplocaulus_Fishing;
     public struct DiplocaulusActions
     {
         private @Controls m_Wrapper;
         public DiplocaulusActions(@Controls wrapper) { m_Wrapper = wrapper; }
         public InputAction @Move => m_Wrapper.m_Diplocaulus_Move;
         public InputAction @Dash => m_Wrapper.m_Diplocaulus_Dash;
+        public InputAction @UI => m_Wrapper.m_Diplocaulus_UI;
+        public InputAction @Fishing => m_Wrapper.m_Diplocaulus_Fishing;
         public InputActionMap Get() { return m_Wrapper.m_Diplocaulus; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -261,6 +307,12 @@ public partial class @Controls: IInputActionCollection2, IDisposable
             @Dash.started += instance.OnDash;
             @Dash.performed += instance.OnDash;
             @Dash.canceled += instance.OnDash;
+            @UI.started += instance.OnUI;
+            @UI.performed += instance.OnUI;
+            @UI.canceled += instance.OnUI;
+            @Fishing.started += instance.OnFishing;
+            @Fishing.performed += instance.OnFishing;
+            @Fishing.canceled += instance.OnFishing;
         }
 
         private void UnregisterCallbacks(IDiplocaulusActions instance)
@@ -271,6 +323,12 @@ public partial class @Controls: IInputActionCollection2, IDisposable
             @Dash.started -= instance.OnDash;
             @Dash.performed -= instance.OnDash;
             @Dash.canceled -= instance.OnDash;
+            @UI.started -= instance.OnUI;
+            @UI.performed -= instance.OnUI;
+            @UI.canceled -= instance.OnUI;
+            @Fishing.started -= instance.OnFishing;
+            @Fishing.performed -= instance.OnFishing;
+            @Fishing.canceled -= instance.OnFishing;
         }
 
         public void RemoveCallbacks(IDiplocaulusActions instance)
@@ -292,5 +350,7 @@ public partial class @Controls: IInputActionCollection2, IDisposable
     {
         void OnMove(InputAction.CallbackContext context);
         void OnDash(InputAction.CallbackContext context);
+        void OnUI(InputAction.CallbackContext context);
+        void OnFishing(InputAction.CallbackContext context);
     }
 }
