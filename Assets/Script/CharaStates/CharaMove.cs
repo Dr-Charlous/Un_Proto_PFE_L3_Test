@@ -16,7 +16,6 @@ public class CharaMove : MonoBehaviour
     public float MoveSpeed = 1f;
     public float RotateSpeed = 100f;
     public bool Swimming = false;
-    public bool Crouch = false;
     public Transform Body;
     public Rigidbody _rb;
 
@@ -35,7 +34,6 @@ public class CharaMove : MonoBehaviour
 
 
     [Header("Water :")]
-    public bool IsInWater = false;
     public Transform water = null;
 
     #region Inputs
@@ -110,7 +108,7 @@ public class CharaMove : MonoBehaviour
 
     void Update()
     {
-        if (Crouch == false)
+        if (Fishinning == false)
         {
             MoveNRotate(_position, MoveSpeed, _rotation, RotateSpeed);
         }
@@ -122,7 +120,6 @@ public class CharaMove : MonoBehaviour
 
         FallingRotate();
         UpWater();
-        Fishing();
     }
 
     #region MoveNRotate
@@ -183,7 +180,7 @@ public class CharaMove : MonoBehaviour
     {
         if (water != null)
         {
-            if (IsInWater && Swimming && water.GetComponent<Water>().collider.enabled == false)
+            if (Swimming && water.GetComponent<Water>().collider.enabled == false)
             {
                 var rot = transform.eulerAngles;
                 rot.x = 0;
@@ -212,18 +209,7 @@ public class CharaMove : MonoBehaviour
     #endregion
 
     #region abilities
-    void Fishing()
-    {
-        if (Fish < 5 && Fishinning == true)
-        {
-            int randomNumber = Random.Range(0, 1000);
-
-            if (randomNumber == 5)
-            {
-                Fish++;
-            }
-        }
-    }
+    
 
     IEnumerator Dash()
     {
