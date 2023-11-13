@@ -5,6 +5,8 @@ using UnityEditor.ShaderGraph;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
+[RequireComponent(typeof(InputSystem))]
+[RequireComponent(typeof(UI))]
 public class CharaMove : MonoBehaviour
 {
     [Header("Input System :")]
@@ -20,11 +22,7 @@ public class CharaMove : MonoBehaviour
     public bool Swimming = false;
     public Transform Body;
     public Rigidbody _rb;
-
-    [Header("UI :")]
-    public GameObject UI;
-    public GameObject[] FishUI;
-    public GameObject[] LifeUI;
+    private UI _UIObject;
 
     [Header("Dash")]
     public bool IsDashing = false;
@@ -79,12 +77,12 @@ public class CharaMove : MonoBehaviour
 
     void GetUIInput(InputAction.CallbackContext ui)
     {
-        ShowUI();
+        _UIObject.ShowUI();
     }
 
     void GetUIInputCanceled(InputAction.CallbackContext obj)
     {
-        HideUI();
+        _UIObject.HideUI();
     }
 
     void GetFishingInput(InputAction.CallbackContext fish)
@@ -108,6 +106,7 @@ public class CharaMove : MonoBehaviour
     {
         Body = GetComponent<Transform>();
         _rb = GetComponent<Rigidbody>();
+        _UIObject = GetComponent<UI>();
     }
 
     void Update()
@@ -146,52 +145,6 @@ public class CharaMove : MonoBehaviour
             rot.z = 0;
             transform.eulerAngles = rot;
         }
-    }
-    #endregion
-
-    #region UI
-    void ShowUI()
-    {
-        UI.SetActive(true);
-
-        for (int i = 0; i < FishUI.Length; i++)
-        {
-            if (i < Fish)
-            {
-                FishUI[i].SetActive(true);
-            }
-            else
-            {
-                FishUI[i].SetActive(false);
-            }
-        }
-
-        for (int i = 0; i < LifeUI.Length; i++)
-        {
-            if (i < Life)
-            {
-                LifeUI[i].SetActive(true);
-            }
-            else
-            {
-                LifeUI[i].SetActive(false);
-            }
-        }
-    }
-
-    void HideUI()
-    {
-        for (int i = 0; i < FishUI.Length; i++)
-        {
-            FishUI[i].SetActive(false);
-        }
-
-        for (int i = 0; i < FishUI.Length; i++)
-        {
-            LifeUI[i].SetActive(false);
-        }
-
-        UI.SetActive (false);
     }
     #endregion
 

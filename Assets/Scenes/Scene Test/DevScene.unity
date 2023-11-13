@@ -3908,19 +3908,6 @@ MonoBehaviour:
   Swimming: 0
   Body: {fileID: 1237436349181856687}
   _rb: {fileID: 2782812589929109954}
-  UI: {fileID: 389338448}
-  FishUI:
-  - {fileID: 1561180906}
-  - {fileID: 1385589115}
-  - {fileID: 1664728601}
-  - {fileID: 1643794636}
-  - {fileID: 1257811358}
-  LifeUI:
-  - {fileID: 1626160708}
-  - {fileID: 1026203163}
-  - {fileID: 1811783947}
-  - {fileID: 395112969}
-  - {fileID: 1496352071}
   IsDashing: 0
   DashForce: 5
   DashCooldown: 1
@@ -5485,6 +5472,7 @@ GameObject:
   - component: {fileID: 2782812589929109954}
   - component: {fileID: 4994958584204776944}
   - component: {fileID: 1487910179650203768}
+  - component: {fileID: 4994958584204776945}
   m_Layer: 0
   m_Name: Diplocaulus_Parent
   m_TagString: Untagged
@@ -6236,6 +6224,31 @@ MonoBehaviour:
   m_DefaultActionMap: Diplocaulus
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 0}
+--- !u!114 &4994958584204776945
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3972272182069301554}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 901c4248d15e0374ba2559d4a7229e49, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  UIObject: {fileID: 389338448}
+  FishUI:
+  - {fileID: 1561180906}
+  - {fileID: 1385589115}
+  - {fileID: 1664728601}
+  - {fileID: 1643794636}
+  - {fileID: 1257811358}
+  LifeUI:
+  - {fileID: 1626160708}
+  - {fileID: 1026203163}
+  - {fileID: 1811783947}
+  - {fileID: 395112969}
+  - {fileID: 1496352071}
 --- !u!64 &5050775280564417949
 MeshCollider:
   m_ObjectHideFlags: 0
