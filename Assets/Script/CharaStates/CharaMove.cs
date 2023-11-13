@@ -15,12 +15,16 @@ public class CharaMove : MonoBehaviour
     [Header("Components/Values :")]
     public float MoveSpeed = 1f;
     public float RotateSpeed = 100f;
+    [Range(0, 5)]
+    public int Life = 5;
     public bool Swimming = false;
     public Transform Body;
     public Rigidbody _rb;
 
     [Header("UI :")]
+    public GameObject UI;
     public GameObject[] FishUI;
+    public GameObject[] LifeUI;
 
     [Header("Dash")]
     public bool IsDashing = false;
@@ -148,6 +152,8 @@ public class CharaMove : MonoBehaviour
     #region UI
     void ShowUI()
     {
+        UI.SetActive(true);
+
         for (int i = 0; i < FishUI.Length; i++)
         {
             if (i < Fish)
@@ -159,6 +165,18 @@ public class CharaMove : MonoBehaviour
                 FishUI[i].SetActive(false);
             }
         }
+
+        for (int i = 0; i < LifeUI.Length; i++)
+        {
+            if (i < Life)
+            {
+                LifeUI[i].SetActive(true);
+            }
+            else
+            {
+                LifeUI[i].SetActive(false);
+            }
+        }
     }
 
     void HideUI()
@@ -167,6 +185,13 @@ public class CharaMove : MonoBehaviour
         {
             FishUI[i].SetActive(false);
         }
+
+        for (int i = 0; i < FishUI.Length; i++)
+        {
+            LifeUI[i].SetActive(false);
+        }
+
+        UI.SetActive (false);
     }
     #endregion
 
@@ -209,8 +234,6 @@ public class CharaMove : MonoBehaviour
     #endregion
 
     #region abilities
-    
-
     IEnumerator Dash()
     {
         IsDashing = true;
