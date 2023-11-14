@@ -62,6 +62,15 @@ public partial class @Controls: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Collecting"",
+                    ""type"": ""Button"",
+                    ""id"": ""a2bd6d4b-2d2f-48f6-a8ba-7db594def1a2"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -207,6 +216,17 @@ public partial class @Controls: IInputActionCollection2, IDisposable
                     ""action"": ""Fishing"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""309bd9c8-196e-4deb-8878-a68b841faf8c"",
+                    ""path"": ""<Keyboard>/e"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Collecting"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -219,6 +239,7 @@ public partial class @Controls: IInputActionCollection2, IDisposable
         m_Diplocaulus_Dash = m_Diplocaulus.FindAction("Dash", throwIfNotFound: true);
         m_Diplocaulus_UI = m_Diplocaulus.FindAction("UI", throwIfNotFound: true);
         m_Diplocaulus_Fishing = m_Diplocaulus.FindAction("Fishing", throwIfNotFound: true);
+        m_Diplocaulus_Collecting = m_Diplocaulus.FindAction("Collecting", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -284,6 +305,7 @@ public partial class @Controls: IInputActionCollection2, IDisposable
     private readonly InputAction m_Diplocaulus_Dash;
     private readonly InputAction m_Diplocaulus_UI;
     private readonly InputAction m_Diplocaulus_Fishing;
+    private readonly InputAction m_Diplocaulus_Collecting;
     public struct DiplocaulusActions
     {
         private @Controls m_Wrapper;
@@ -292,6 +314,7 @@ public partial class @Controls: IInputActionCollection2, IDisposable
         public InputAction @Dash => m_Wrapper.m_Diplocaulus_Dash;
         public InputAction @UI => m_Wrapper.m_Diplocaulus_UI;
         public InputAction @Fishing => m_Wrapper.m_Diplocaulus_Fishing;
+        public InputAction @Collecting => m_Wrapper.m_Diplocaulus_Collecting;
         public InputActionMap Get() { return m_Wrapper.m_Diplocaulus; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -313,6 +336,9 @@ public partial class @Controls: IInputActionCollection2, IDisposable
             @Fishing.started += instance.OnFishing;
             @Fishing.performed += instance.OnFishing;
             @Fishing.canceled += instance.OnFishing;
+            @Collecting.started += instance.OnCollecting;
+            @Collecting.performed += instance.OnCollecting;
+            @Collecting.canceled += instance.OnCollecting;
         }
 
         private void UnregisterCallbacks(IDiplocaulusActions instance)
@@ -329,6 +355,9 @@ public partial class @Controls: IInputActionCollection2, IDisposable
             @Fishing.started -= instance.OnFishing;
             @Fishing.performed -= instance.OnFishing;
             @Fishing.canceled -= instance.OnFishing;
+            @Collecting.started -= instance.OnCollecting;
+            @Collecting.performed -= instance.OnCollecting;
+            @Collecting.canceled -= instance.OnCollecting;
         }
 
         public void RemoveCallbacks(IDiplocaulusActions instance)
@@ -352,5 +381,6 @@ public partial class @Controls: IInputActionCollection2, IDisposable
         void OnDash(InputAction.CallbackContext context);
         void OnUI(InputAction.CallbackContext context);
         void OnFishing(InputAction.CallbackContext context);
+        void OnCollecting(InputAction.CallbackContext context);
     }
 }

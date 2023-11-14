@@ -1,20 +1,26 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using Unity.Collections.LowLevel.Unsafe;
 using UnityEngine;
 
 [RequireComponent(typeof(CharaMove))]
+[RequireComponent(typeof(Inventory))]
 public class UI : MonoBehaviour
 {
     [Header("UI :")]
     public GameObject UIObject;
     public GameObject[] FishUI;
     public GameObject[] LifeUI;
-    private CharaMove chara;
+    public TextMeshProUGUI[] TextUI;
+    private CharaMove _chara;
+    private Inventory _inv;
 
     private void Start()
     {
-        chara = GetComponent<CharaMove>();
+        _chara = GetComponent<CharaMove>();
+        _inv = GetComponent<Inventory>();
+
         UIObject.SetActive(false);
     }
 
@@ -25,7 +31,7 @@ public class UI : MonoBehaviour
 
         for (int i = 0; i < FishUI.Length; i++)
         {
-            if (i < chara.Fish)
+            if (i < _chara.Fish)
             {
                 FishUI[i].SetActive(true);
             }
@@ -37,7 +43,7 @@ public class UI : MonoBehaviour
 
         for (int i = 0; i < LifeUI.Length; i++)
         {
-            if (i < chara.Life)
+            if (i < _chara.Life)
             {
                 LifeUI[i].SetActive(true);
             }
@@ -45,6 +51,11 @@ public class UI : MonoBehaviour
             {
                 LifeUI[i].SetActive(false);
             }
+        }
+
+        for (int i = 0; i < _inv.ressourcesData.Count; i++)
+        {
+            TextUI[i].text = @$"{_inv.ressourcesData[i]} : {_inv.RessourcesDictionary[_inv.ressourcesData[i]]}";
         }
     }
 

@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Water : MonoBehaviour
 {
-    public BoxCollider collider;
+    public new BoxCollider collider;
     public float depthBeforeSubmerged = 1f;
     public float displaycementAmount = 3f;
     public bool Floating = false;

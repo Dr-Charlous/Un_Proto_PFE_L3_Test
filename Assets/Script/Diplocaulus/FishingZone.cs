@@ -9,7 +9,7 @@ public class FishingZone : MonoBehaviour
     public int Fishies = 3;
     public int rate = 1000;
     public bool IsTouching = false;
-    public BoxCollider collider;
+    private new BoxCollider collider;
 
     private void Start()
     {

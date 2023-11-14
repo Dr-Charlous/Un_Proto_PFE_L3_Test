@@ -5,7 +5,7 @@ using UnityEditor.ShaderGraph;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-[RequireComponent(typeof(InputSystem))]
+[RequireComponent(typeof(PlayerInput))]
 [RequireComponent(typeof(UI))]
 public class CharaMove : MonoBehaviour
 {
@@ -34,6 +34,8 @@ public class CharaMove : MonoBehaviour
     public int Fish = 0;
     public bool Fishinning = false;
 
+    [Header("Collecting :")]
+    public bool Collecting = false;
 
     [Header("Water :")]
     public Transform water = null;
@@ -44,10 +46,13 @@ public class CharaMove : MonoBehaviour
         _controls.Diplocaulus.Enable();
         _controls.Diplocaulus.Move.performed += GetMoveInputs;
         _controls.Diplocaulus.Dash.started += GetDashInput;
+
         _controls.Diplocaulus.UI.started += GetUIInput;
         _controls.Diplocaulus.UI.canceled += GetUIInputCanceled;
         _controls.Diplocaulus.Fishing.started += GetFishingInput;
         _controls.Diplocaulus.Fishing.canceled += GetFishingInputCanceled;
+        _controls.Diplocaulus.Collecting.started += GetCollectingInput;
+        _controls.Diplocaulus.Collecting.canceled += GetCollectingInputCanceled;
     }
 
     private void OnDisable()
@@ -55,6 +60,7 @@ public class CharaMove : MonoBehaviour
         _controls.Diplocaulus.Disable();
         _controls.Diplocaulus.Move.performed -= GetMoveInputs;
         _controls.Diplocaulus.Dash.started -= GetDashInput;
+
         _controls.Diplocaulus.UI.started -= GetUIInput;
         _controls.Diplocaulus.UI.canceled -= GetUIInputCanceled;
         _controls.Diplocaulus.Fishing.started -= GetFishingInput;
@@ -93,6 +99,16 @@ public class CharaMove : MonoBehaviour
     void GetFishingInputCanceled(InputAction.CallbackContext fish)
     {
         Fishinning = false;
+    }
+
+    void GetCollectingInput(InputAction.CallbackContext fish)
+    {
+        Collecting = true;
+    }
+
+    void GetCollectingInputCanceled(InputAction.CallbackContext fish)
+    {
+        Collecting = false;
     }
 
     private void Awake()
