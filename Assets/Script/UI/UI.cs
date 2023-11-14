@@ -13,8 +13,8 @@ public class UI : MonoBehaviour
     public GameObject[] FishUI;
     public GameObject[] LifeUI;
     public TextMeshProUGUI[] TextUI;
-    private CharaMove _chara;
-    private Inventory _inv;
+    [SerializeField] private CharaMove _chara;
+    [SerializeField] private Inventory _inv;
 
     private void Start()
     {

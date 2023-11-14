@@ -11,8 +11,8 @@ public class Inventory : MonoBehaviour
     public bool InRessourcesSource = false;
     public bool CollectingR = false;
     public List<string> ressourcesData = new List<string>();
-    private Ressources _ressources;
-    private CharaMove _chara;
+    [SerializeField] private Ressources _ressources;
+    [SerializeField] private CharaMove _chara;
 
     private void Start()
     {
@@ -56,6 +56,11 @@ public class Inventory : MonoBehaviour
 
             yield return new WaitForSeconds(1);
             CollectingR = false;
+
+            if (ress.Quantity <= 0)
+            {
+                Destroy(ress.gameObject);
+            }
         }
     }
 }

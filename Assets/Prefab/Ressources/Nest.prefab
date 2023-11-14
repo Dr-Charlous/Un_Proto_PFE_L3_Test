@@ -25,16 +25,16 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7186832027559375590}
-  m_LocalRotation: {x: 0.09970967, y: 0.87806153, z: -0.12686409, w: 0.45052359}
-  m_LocalPosition: {x: -4.695, y: -0.348, z: 6.228}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 6938522378604859380}
   - {fileID: 7441682120851953821}
   m_Father: {fileID: 0}
-  m_RootOrder: 5
-  m_LocalEulerAnglesHint: {x: 18.218, y: 126.265, z: 3.669}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!65 &7891485019999758950
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -76,6 +76,9 @@ MonoBehaviour:
   - name: Plant
     value: 6
   Crafted: 0
+  Material1: {fileID: 2100000, guid: 208e2f6d5978d4946afbc58cbd12f3bc, type: 2}
+  Material2: {fileID: 2100000, guid: 89339b4337853e944950db21ddc4ddbb, type: 2}
+  Sphere: {fileID: 8717744838761925873}
 --- !u!1 &8598059983421590684
 GameObject:
   m_ObjectHideFlags: 0
@@ -221,7 +224,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 89339b4337853e944950db21ddc4ddbb, type: 2}
+  - {fileID: 2100000, guid: 208e2f6d5978d4946afbc58cbd12f3bc, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

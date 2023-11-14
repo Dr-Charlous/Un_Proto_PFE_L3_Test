@@ -23,7 +23,7 @@ public class CharaMove : MonoBehaviour
     public bool UiIsActive = false;
     public Transform Body;
     public Rigidbody _rb;
-    private UI _UIObject;
+    [SerializeField] private UI _UIObject;
 
     [Header("Dash")]
     public bool IsDashing = false;

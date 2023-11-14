@@ -14,6 +14,14 @@ public class Nest : MonoBehaviour
 {
     public Materials[] MaterialsC;
     public bool Crafted = false;
+    public Material Material1;
+    public Material Material2;
+    public GameObject Sphere;
+
+    private void Start()
+    {
+        Sphere.GetComponent<Renderer>().material = Material1;
+    }
 
     private void OnTriggerStay(Collider other)
     {
@@ -43,6 +51,7 @@ public class Nest : MonoBehaviour
         if (result == MaterialsC.Length)
         {
             Crafted = true;
+            Sphere.GetComponent<Renderer>().material = Material2;
             return inv.RessourcesDictionary;
         }
         else
