@@ -20,6 +20,7 @@ public class CharaMove : MonoBehaviour
     [Range(0, 5)]
     public int Life = 5;
     public bool Swimming = false;
+    public bool UiIsActive = false;
     public Transform Body;
     public Rigidbody _rb;
     private UI _UIObject;
@@ -83,11 +84,12 @@ public class CharaMove : MonoBehaviour
 
     void GetUIInput(InputAction.CallbackContext ui)
     {
-        _UIObject.ShowUI();
+        UiIsActive = true;
     }
 
     void GetUIInputCanceled(InputAction.CallbackContext obj)
     {
+        UiIsActive = false;
         _UIObject.HideUI();
     }
 
@@ -135,6 +137,11 @@ public class CharaMove : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Space))
         {
             SwitchSwim();
+        }
+
+        if (UiIsActive == true)
+        {
+            _UIObject.ShowUI();
         }
 
         FallingRotate();
