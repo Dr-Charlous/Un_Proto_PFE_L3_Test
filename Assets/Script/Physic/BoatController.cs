@@ -37,7 +37,7 @@ public class BoatController : MonoBehaviour
         var steer = 0f;
 
         //steer direction
-        steer = chara.Rotation.y;
+        steer = chara.Rotation;
 
         //force rotation
         rb.AddForceAtPosition(steer * transform.right * SteerPower / 100f, Motor.position);
@@ -47,11 +47,11 @@ public class BoatController : MonoBehaviour
 
         //devant et derriere
         var goalV = new Vector3();
-        if (chara.Position.z > 0)
+        if (chara.Position > 0)
         {
             goalV = forward * MaxSpeed * Power * Time.deltaTime;
         }
-        else if (chara.Position.z < 0)
+        else if (chara.Position < 0)
         {
             goalV = forward * -MaxSpeed * Power * Time.deltaTime;
         }

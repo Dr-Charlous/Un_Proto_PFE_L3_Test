@@ -71,6 +71,15 @@ public partial class @Controls: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Switch Water"",
+                    ""type"": ""Button"",
+                    ""id"": ""00cc8041-28c1-404e-bc97-313e229dbdbd"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -185,9 +194,75 @@ public partial class @Controls: IInputActionCollection2, IDisposable
                     ""isPartOfComposite"": true
                 },
                 {
+                    ""name"": ""Gamepad"",
+                    ""id"": ""bdeaa727-3bf8-415b-8d26-087773f80999"",
+                    ""path"": ""2DVector"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Move"",
+                    ""isComposite"": true,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""up"",
+                    ""id"": ""db57630f-b384-48e1-a629-7a4b1709ab4f"",
+                    ""path"": ""<Gamepad>/leftStick/up"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Move"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""down"",
+                    ""id"": ""b1bd3ff9-eb4e-4859-9793-762fba0c26e5"",
+                    ""path"": ""<Gamepad>/leftStick/down"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Move"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""left"",
+                    ""id"": ""c5951e13-555b-4e13-ab7d-8c2eb70899e4"",
+                    ""path"": ""<Gamepad>/leftStick/left"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Move"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""right"",
+                    ""id"": ""1c2d2437-b9e7-4667-bb8c-e80cddb0df90"",
+                    ""path"": ""<Gamepad>/leftStick/right"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Move"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
                     ""name"": """",
                     ""id"": ""2b678473-e843-4695-9a58-7f47ab6edf64"",
                     ""path"": ""<Keyboard>/leftShift"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Dash"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""326789f6-8249-4bc8-b51e-12e5aa4818dd"",
+                    ""path"": ""<Gamepad>/rightTrigger"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
@@ -208,8 +283,30 @@ public partial class @Controls: IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": """",
+                    ""id"": ""45c97f55-cdee-43f2-908d-be275e6b7166"",
+                    ""path"": ""<Gamepad>/leftShoulder"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""UI"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
                     ""id"": ""1a0238be-1fa6-4d46-94c3-b106d850c204"",
                     ""path"": ""<Keyboard>/leftCtrl"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Fishing"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""00972667-a7ea-4e1e-92a3-9ebcbeaf92cd"",
+                    ""path"": ""<Gamepad>/leftTrigger"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
@@ -227,6 +324,39 @@ public partial class @Controls: IInputActionCollection2, IDisposable
                     ""action"": ""Collecting"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""e40c0f29-db84-46a0-939b-2e07065807fb"",
+                    ""path"": ""<Gamepad>/buttonWest"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Collecting"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""f3fec2d9-dbe4-4fa6-8429-5766c08be2aa"",
+                    ""path"": ""<Keyboard>/space"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Switch Water"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""61c0fb67-2773-4138-9a0c-515e9e3a8c7f"",
+                    ""path"": ""<Gamepad>/buttonSouth"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Switch Water"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -240,6 +370,7 @@ public partial class @Controls: IInputActionCollection2, IDisposable
         m_Diplocaulus_UI = m_Diplocaulus.FindAction("UI", throwIfNotFound: true);
         m_Diplocaulus_Fishing = m_Diplocaulus.FindAction("Fishing", throwIfNotFound: true);
         m_Diplocaulus_Collecting = m_Diplocaulus.FindAction("Collecting", throwIfNotFound: true);
+        m_Diplocaulus_SwitchWater = m_Diplocaulus.FindAction("Switch Water", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -306,6 +437,7 @@ public partial class @Controls: IInputActionCollection2, IDisposable
     private readonly InputAction m_Diplocaulus_UI;
     private readonly InputAction m_Diplocaulus_Fishing;
     private readonly InputAction m_Diplocaulus_Collecting;
+    private readonly InputAction m_Diplocaulus_SwitchWater;
     public struct DiplocaulusActions
     {
         private @Controls m_Wrapper;
@@ -315,6 +447,7 @@ public partial class @Controls: IInputActionCollection2, IDisposable
         public InputAction @UI => m_Wrapper.m_Diplocaulus_UI;
         public InputAction @Fishing => m_Wrapper.m_Diplocaulus_Fishing;
         public InputAction @Collecting => m_Wrapper.m_Diplocaulus_Collecting;
+        public InputAction @SwitchWater => m_Wrapper.m_Diplocaulus_SwitchWater;
         public InputActionMap Get() { return m_Wrapper.m_Diplocaulus; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -339,6 +472,9 @@ public partial class @Controls: IInputActionCollection2, IDisposable
             @Collecting.started += instance.OnCollecting;
             @Collecting.performed += instance.OnCollecting;
             @Collecting.canceled += instance.OnCollecting;
+            @SwitchWater.started += instance.OnSwitchWater;
+            @SwitchWater.performed += instance.OnSwitchWater;
+            @SwitchWater.canceled += instance.OnSwitchWater;
         }
 
         private void UnregisterCallbacks(IDiplocaulusActions instance)
@@ -358,6 +494,9 @@ public partial class @Controls: IInputActionCollection2, IDisposable
             @Collecting.started -= instance.OnCollecting;
             @Collecting.performed -= instance.OnCollecting;
             @Collecting.canceled -= instance.OnCollecting;
+            @SwitchWater.started -= instance.OnSwitchWater;
+            @SwitchWater.performed -= instance.OnSwitchWater;
+            @SwitchWater.canceled -= instance.OnSwitchWater;
         }
 
         public void RemoveCallbacks(IDiplocaulusActions instance)
@@ -382,5 +521,6 @@ public partial class @Controls: IInputActionCollection2, IDisposable
         void OnUI(InputAction.CallbackContext context);
         void OnFishing(InputAction.CallbackContext context);
         void OnCollecting(InputAction.CallbackContext context);
+        void OnSwitchWater(InputAction.CallbackContext context);
     }
 }

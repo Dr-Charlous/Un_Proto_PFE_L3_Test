@@ -958,7 +958,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1622981940}
-  m_LocalRotation: {x: 0.000000013064774, y: 0.8987892, z: -0.43838108, w: 0.000000026786006}
+  m_LocalRotation: {x: -1.5574426e-15, y: 0.8987892, z: -0.4383811, w: -3.1931408e-15}
   m_LocalPosition: {x: -3.63, y: 4.34, z: 8.91}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -1191,27 +1191,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 0268efb6d254e8d4588d33e70b6d35fc, type: 3}
   m_PrefabInstance: {fileID: 8169961384348859768}
   m_PrefabAsset: {fileID: 0}
---- !u!65 &1869241394
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2321219416669222198}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 0
-  serializedVersion: 3
-  m_Size: {x: 10, y: 0.5, z: 10}
-  m_Center: {x: 0, y: -0.28, z: 0}
 --- !u!1 &1872724818 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 1ac94ba2f2ff91f4dbb7d9367d7ad87e, type: 3}
@@ -2380,8 +2359,6 @@ GameObject:
   - component: {fileID: 6661654105915764223}
   - component: {fileID: 3040749756285508634}
   - component: {fileID: 3323711514686192305}
-  - component: {fileID: 1869241394}
-  - component: {fileID: 6661654105915764224}
   m_Layer: 4
   m_Name: Water
   m_TagString: Untagged
@@ -3020,7 +2997,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5130588712713490765, guid: e5ec8fd76bfd9934a9c16e50bc9b355e, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.319
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5130588712713490765, guid: e5ec8fd76bfd9934a9c16e50bc9b355e, type: 3}
       propertyPath: m_LocalPosition.z
@@ -4604,7 +4581,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2321219416669222198}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.013577163, y: -0.29, z: -0.10568684}
+  m_LocalPosition: {x: 0.013577163, y: 0, z: -0.10568684}
   m_LocalScale: {x: 3, y: 3, z: 3}
   m_ConstrainProportionsScale: 1
   m_Children:
@@ -4612,27 +4589,6 @@ Transform:
   m_Father: {fileID: 6297392178397954734}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!65 &6661654105915764224
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2321219416669222198}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 1
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 10, y: 0.5, z: 10}
-  m_Center: {x: 0, y: -0.28, z: 0}
 --- !u!137 &6783096276590210644
 SkinnedMeshRenderer:
   m_ObjectHideFlags: 0
@@ -4990,6 +4946,10 @@ PrefabInstance:
       propertyPath: waterDrag
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 1976127268262274321, guid: fa9729e406818e448bec2c61a9a0b0fd, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2140746911345890558, guid: fa9729e406818e448bec2c61a9a0b0fd, type: 3}
       propertyPath: m_RootOrder
       value: 3
@@ -5048,15 +5008,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3626532298474892044, guid: fa9729e406818e448bec2c61a9a0b0fd, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.000000026786006
+      value: -3.1931408e-15
       objectReference: {fileID: 0}
     - target: {fileID: 3626532298474892044, guid: fa9729e406818e448bec2c61a9a0b0fd, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0.000000013064774
+      value: -1.5574426e-15
       objectReference: {fileID: 0}
     - target: {fileID: 3626532298474892044, guid: fa9729e406818e448bec2c61a9a0b0fd, type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0.43838108
+      value: -0.4383811
       objectReference: {fileID: 0}
     - target: {fileID: 4178105595152385395, guid: fa9729e406818e448bec2c61a9a0b0fd, type: 3}
       propertyPath: waterDrag

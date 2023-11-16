@@ -12,19 +12,20 @@ public class CharaMove : MonoBehaviour
 {
     [Header("Input System :")]
     Controls _controls;
-    public Vector3 Position;
-    public Vector3 Rotation;
+    public float Position;
+    public float Rotation;
 
     [Header("Components/Values :")]
     [Range(0, 5)]
     public int Life = 5;
-    public bool Swimming = false;
+    public bool Swimming = true;
     public bool UiIsActive = false;
     public Transform Body;
     public GameObject Floaters;
     public Rigidbody _rb;
-    [SerializeField] private UI _UIObject;
-    [SerializeField] private BoatController _BoatController;
+
+    private UI _UIObject;
+    private BoatController _BoatController;
 
     [Header("Dash")]
     public bool IsDashing = false;
@@ -52,6 +53,7 @@ public class CharaMove : MonoBehaviour
         _controls.Diplocaulus.Fishing.canceled += GetFishingInputCanceled;
         _controls.Diplocaulus.Collecting.started += GetCollectingInput;
         _controls.Diplocaulus.Collecting.canceled += GetCollectingInputCanceled;
+        _controls.Diplocaulus.SwitchWater.started += GetSwitchInput;
     }
 
     private void OnDisable()
@@ -64,12 +66,15 @@ public class CharaMove : MonoBehaviour
         _controls.Diplocaulus.UI.canceled -= GetUIInputCanceled;
         _controls.Diplocaulus.Fishing.started -= GetFishingInput;
         _controls.Diplocaulus.Fishing.canceled -= GetFishingInputCanceled;
+        _controls.Diplocaulus.Collecting.started -= GetCollectingInput;
+        _controls.Diplocaulus.Collecting.canceled -= GetCollectingInputCanceled;
+        _controls.Diplocaulus.SwitchWater.started -= GetSwitchInput;
     }
 
     void GetMoveInputs(InputAction.CallbackContext move)
     {
-        Position = new Vector3(0, 0, -move.ReadValue<Vector2>().y);
-        Rotation = new Vector3(0, move.ReadValue<Vector2>().x, 0);
+        Position = -move.ReadValue<Vector2>().y;
+        Rotation = move.ReadValue<Vector2>().x;
     }
 
     void GetDashInput(InputAction.CallbackContext dash)
@@ -95,7 +100,7 @@ public class CharaMove : MonoBehaviour
     {
         Fishinning = true;
     }
-    
+
     void GetFishingInputCanceled(InputAction.CallbackContext fish)
     {
         Fishinning = false;
@@ -109,6 +114,11 @@ public class CharaMove : MonoBehaviour
     void GetCollectingInputCanceled(InputAction.CallbackContext fish)
     {
         Collecting = false;
+
+    }
+    void GetSwitchInput(InputAction.CallbackContext sw)
+    {
+        SwitchSwim();
     }
 
     private void Awake()
@@ -128,30 +138,25 @@ public class CharaMove : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            SwitchSwim();
-        }
-
         if (UiIsActive == true)
         {
             _UIObject.ShowUI();
         }
 
-        //FallingRotate();
+        FallingRotate();
         UpWater();
     }
 
-    //void FallingRotate()
-    //{
-    //    if (_rb != null && (_rb.velocity.y < -10 || _rb.velocity.y > 10))
-    //    {
-    //        var rot = transform.eulerAngles;
-    //        rot.x = 0;
-    //        rot.z = 0;
-    //        transform.eulerAngles = rot;
-    //    }
-    //}
+    void FallingRotate()
+    {
+        if (_rb != null && (_rb.velocity.y < -10 || _rb.velocity.y > 10))
+        {
+            var rot = transform.eulerAngles;
+            rot.x = 0;
+            rot.z = 0;
+            transform.eulerAngles = rot;
+        }
+    }
 
     #region water
     void SwitchSwim()
