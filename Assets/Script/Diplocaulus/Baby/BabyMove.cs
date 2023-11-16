@@ -5,16 +5,11 @@ using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.AI;
 
+[RequireComponent(typeof(BoatController))]
 public class BabyMove : MonoBehaviour
 {
     [Header("Values :")]
-    public float moveSpeed = 1f;
-    public float rotateSpeed = 100f;
     public bool Swimming = false;
-
-    [Header("Water :")]
-    public bool IsInWater = false;
-    public Transform water = null;
 
     [Header("Components :")]
     public Transform Body;
@@ -23,6 +18,7 @@ public class BabyMove : MonoBehaviour
     public NavMeshSurface surface;
     public LineRenderer line;
     public List<Vector3> point;
+    private BoatController _BoatController;
 
     [Header("Parent follow :")]
     public Transform Parent;
@@ -33,6 +29,7 @@ public class BabyMove : MonoBehaviour
 
     void Start()
     {
+        _BoatController = GetComponent<BoatController>();
         Body = GetComponent<Transform>();
         _rb = GetComponent<Rigidbody>();
         agent = GetComponent<NavMeshAgent>();
@@ -79,33 +76,16 @@ public class BabyMove : MonoBehaviour
 
     void UpWater()
     {
-        if (water != null)
+        if (Swimming)
         {
-            if (IsInWater && Swimming && water.GetComponent<Water>().collider.enabled == false)
-            {
-                var rot = transform.eulerAngles;
-                rot.x = 0;
-                rot.z = 0;
-                transform.eulerAngles = rot;
-
-                transform.position = new Vector3(transform.position.x, water.position.y - 0.1f, transform.position.z);
-
-                _rb.velocity = Vector3.zero;
-                Destroy(_rb);
-                _rb = null;
-
-                water.GetComponent<Water>().collider.enabled = true;
-
-                _rb = transform.AddComponent<Rigidbody>();
-            }
-            else if (Swimming == false)
-            {
-                water.GetComponent<Water>().collider.enabled = false;
-            }
+            _BoatController.enabled = true;
+            _rb.useGravity = false;
         }
-
-        if (_rb == null)
-            _rb = transform.AddComponent<Rigidbody>();
+        else
+        {
+            _BoatController.enabled = false;
+            _rb.useGravity = true;
+        }
     }
 
     void DrawPath()

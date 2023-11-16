@@ -1138,8 +1138,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6801840047957572728}
-  - component: {fileID: 1098121176668842924}
-  - component: {fileID: 430607885428120779}
   m_Layer: 0
   m_Name: Mesh
   m_TagString: Untagged
@@ -1164,43 +1162,6 @@ Transform:
   m_Father: {fileID: 2140746911345890558}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1098121176668842924
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3191538892212381090}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6f1a7cedbe3a3254999806fa8e331d19, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  key: 304
-  yOffSet: 0.1
-  distance: 1
-  touching: 0
---- !u!65 &430607885428120779
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3191538892212381090}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 1
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 0.1, y: 0.5, z: 0.5}
-  m_Center: {x: 0, y: 0.1, z: -0.5}
 --- !u!1 &3229702329584289163
 GameObject:
   m_ObjectHideFlags: 0
@@ -2929,6 +2890,37 @@ Transform:
   m_Father: {fileID: 2140746911345890558}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &7735877318323042571
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 561789950328062133}
+  m_Layer: 0
+  m_Name: Motor
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &561789950328062133
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7735877318323042571}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: -0.4}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 2140746911345890558}
+  m_RootOrder: -1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &7968867288354807768
 GameObject:
   m_ObjectHideFlags: 0
@@ -3229,6 +3221,7 @@ GameObject:
   - component: {fileID: 6699909869382925849}
   - component: {fileID: 1776000248023941396}
   - component: {fileID: 4213595715485634727}
+  - component: {fileID: 4494263771166995183}
   m_Layer: 0
   m_Name: Diplocaulus_Parent
   m_TagString: Untagged
@@ -3248,6 +3241,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 561789950328062133}
   - {fileID: 6801840047957572728}
   - {fileID: 1976127268262274321}
   - {fileID: 2567711465247765818}
@@ -3361,21 +3355,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 94fe25f091bbbad4bacbab2a367cacb3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MoveSpeed: 1
-  RotateSpeed: 50
+  Position: {x: 0, y: 0, z: 0}
+  Rotation: {x: 0, y: 0, z: 0}
   Life: 5
   Swimming: 0
   UiIsActive: 0
   Body: {fileID: 2140746911345890558}
+  Floaters: {fileID: 7353692492756425483}
   _rb: {fileID: 6626216848454042332}
-  _UIObject: {fileID: 0}
+  _UIObject: {fileID: 1776000248023941396}
+  _BoatController: {fileID: 4494263771166995183}
   IsDashing: 0
   DashForce: 5
   DashCooldown: 1
   Fish: 0
   Fishinning: 0
   Collecting: 0
-  water: {fileID: 0}
 --- !u!114 &1776000248023941396
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3424,6 +3419,22 @@ MonoBehaviour:
   ressourcesData: []
   _ressources: {fileID: 0}
   _chara: {fileID: 0}
+--- !u!114 &4494263771166995183
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8628009554936787675}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c2ef578a6f85c4c47bdb1e51bc2746f2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Motor: {fileID: 561789950328062133}
+  SteerPower: 20
+  Power: 10
+  MaxSpeed: 20
 --- !u!1 &8883696035002327006
 GameObject:
   m_ObjectHideFlags: 0

@@ -7,23 +7,24 @@ using UnityEngine.InputSystem;
 
 [RequireComponent(typeof(PlayerInput))]
 [RequireComponent(typeof(UI))]
+[RequireComponent(typeof(BoatController))]
 public class CharaMove : MonoBehaviour
 {
     [Header("Input System :")]
     Controls _controls;
-    Vector3 _position;
-    Vector3 _rotation;
+    public Vector3 Position;
+    public Vector3 Rotation;
 
     [Header("Components/Values :")]
-    public float MoveSpeed = 1f;
-    public float RotateSpeed = 100f;
     [Range(0, 5)]
     public int Life = 5;
     public bool Swimming = false;
     public bool UiIsActive = false;
     public Transform Body;
+    public GameObject Floaters;
     public Rigidbody _rb;
     [SerializeField] private UI _UIObject;
+    [SerializeField] private BoatController _BoatController;
 
     [Header("Dash")]
     public bool IsDashing = false;
@@ -37,9 +38,6 @@ public class CharaMove : MonoBehaviour
 
     [Header("Collecting :")]
     public bool Collecting = false;
-
-    [Header("Water :")]
-    public Transform water = null;
 
     #region Inputs
     private void OnEnable()
@@ -70,8 +68,8 @@ public class CharaMove : MonoBehaviour
 
     void GetMoveInputs(InputAction.CallbackContext move)
     {
-        _position = new Vector3(0, 0, -move.ReadValue<Vector2>().y);
-        _rotation = new Vector3(0, move.ReadValue<Vector2>().x, 0);
+        Position = new Vector3(0, 0, -move.ReadValue<Vector2>().y);
+        Rotation = new Vector3(0, move.ReadValue<Vector2>().x, 0);
     }
 
     void GetDashInput(InputAction.CallbackContext dash)
@@ -125,15 +123,11 @@ public class CharaMove : MonoBehaviour
         Body = GetComponent<Transform>();
         _rb = GetComponent<Rigidbody>();
         _UIObject = GetComponent<UI>();
+        _BoatController = GetComponent<BoatController>();
     }
 
     void Update()
     {
-        if (Fishinning == false)
-        {
-            MoveNRotate(_position, MoveSpeed, _rotation, RotateSpeed);
-        }
-
         if (Input.GetKeyDown(KeyCode.Space))
         {
             SwitchSwim();
@@ -144,32 +138,20 @@ public class CharaMove : MonoBehaviour
             _UIObject.ShowUI();
         }
 
-        FallingRotate();
+        //FallingRotate();
         UpWater();
     }
 
-    #region MoveNRotate
-    void MoveNRotate(Vector3 transformMove, float moveSpeed, Vector3 transformRot, float rotateSpeed)
-    {
-        transform.Translate(transformMove * moveSpeed * Time.deltaTime);
-
-        if (transformMove.z != 0)
-        {
-            transform.Rotate(transformRot * rotateSpeed * Time.deltaTime);
-        }
-    }
-
-    void FallingRotate()
-    {
-        if (_rb != null && (_rb.velocity.y < -10 || _rb.velocity.y > 10))
-        {
-            var rot = transform.eulerAngles;
-            rot.x = 0;
-            rot.z = 0;
-            transform.eulerAngles = rot;
-        }
-    }
-    #endregion
+    //void FallingRotate()
+    //{
+    //    if (_rb != null && (_rb.velocity.y < -10 || _rb.velocity.y > 10))
+    //    {
+    //        var rot = transform.eulerAngles;
+    //        rot.x = 0;
+    //        rot.z = 0;
+    //        transform.eulerAngles = rot;
+    //    }
+    //}
 
     #region water
     void SwitchSwim()
@@ -179,33 +161,16 @@ public class CharaMove : MonoBehaviour
 
     void UpWater()
     {
-        if (water != null)
+        if (Swimming)
         {
-            if (Swimming && water.GetComponent<Water>().collider.enabled == false)
-            {
-                var rot = transform.eulerAngles;
-                rot.x = 0;
-                rot.z = 0;
-                transform.eulerAngles = rot;
-
-                transform.position = new Vector3(transform.position.x, water.position.y - 0.1f, transform.position.z);
-
-                _rb.velocity = Vector3.zero;
-                Destroy(_rb);
-                _rb = null;
-
-                water.GetComponent<Water>().collider.enabled = true;
-
-                _rb = transform.AddComponent<Rigidbody>();
-            }
-            else if (Swimming == false)
-            {
-                water.GetComponent<Water>().collider.enabled = false;
-            }
+            Floaters.SetActive(true);
+            _rb.useGravity = false;
         }
-
-        if (_rb == null)
-            _rb = transform.AddComponent<Rigidbody>();
+        else
+        {
+            Floaters.SetActive(false);
+            _rb.useGravity = true;
+        }
     }
     #endregion
 
