@@ -21,7 +21,7 @@ Material:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: Color_Water
-  m_Shader: {fileID: -6465566751694194690, guid: dd97de70edf8a4141bee758a2efe7ff8, type: 3}
+  m_Shader: {fileID: 10753, guid: 0000000000000000f000000000000000, type: 0}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
   m_ValidKeywords: []
@@ -46,6 +46,10 @@ Material:
         m_Offset: {x: 0, y: 0}
     - Texture2D_786b67b3efe14204b2f06f9afb9d8cf1:
         m_Texture: {fileID: 2800000, guid: 11154d936b05e66498f68fa178c5cfbb, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _AlphaTex:
+        m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _BaseMap:
@@ -107,6 +111,7 @@ Material:
     m_Ints: []
     m_Floats:
     - Boolean_d3c978b0d14a4f66be175a9b89855be0: 1
+    - PixelSnap: 0
     - Vector1_55003dfa023448c3bffa42f3ca4a99a4: 1
     - Vector1_6269b1025b26473ca8bc61634f34b537: 1
     - Vector1_687f54e8c371429f86b9eaab0e7dfe3e: 1
@@ -127,6 +132,7 @@ Material:
     - _DetailNormalMapScale: 1
     - _DstBlend: 10
     - _DstBlendAlpha: 10
+    - _EnableExternalAlpha: 0
     - _EnvironmentReflections: 1
     - _GlossMapScale: 1
     - _Glossiness: 0.5
@@ -154,5 +160,7 @@ Material:
     - _BaseColor: {r: 0.3915094, g: 0.674491, b: 1, a: 0.3137255}
     - _Color: {r: 0.3915094, g: 0.674491, b: 1, a: 0.3137255}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
+    - _Flip: {r: 1, g: 1, b: 1, a: 1}
+    - _RendererColor: {r: 1, g: 1, b: 1, a: 1}
     - _SpecColor: {r: 0.2, g: 0.2, b: 0.2, a: 1}
   m_BuildTextureStacks: []
