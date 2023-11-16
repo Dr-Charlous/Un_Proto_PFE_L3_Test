@@ -39,6 +39,7 @@ public class CharaMove : MonoBehaviour
 
     [Header("Collecting :")]
     public bool Collecting = false;
+    Coroutine _Coroutine;
 
     #region Inputs
     private void OnEnable()
@@ -144,7 +145,6 @@ public class CharaMove : MonoBehaviour
         }
 
         FallingRotate();
-        UpWater();
     }
 
     void FallingRotate()
@@ -162,20 +162,45 @@ public class CharaMove : MonoBehaviour
     void SwitchSwim()
     {
         Swimming = !Swimming;
+
+        if (Swimming && _Coroutine != null)
+        {
+            _Coroutine = StartCoroutine(WaterUp());
+        }
+        else if (_Coroutine != null)
+        {
+            _Coroutine = StartCoroutine(WaterDown());
+        }
     }
 
-    void UpWater()
+    IEnumerator WaterUp()
     {
-        if (Swimming)
-        {
-            Floaters.SetActive(true);
-            _rb.useGravity = false;
-        }
-        else
-        {
-            Floaters.SetActive(false);
-            _rb.useGravity = true;
-        }
+        var rot = transform.eulerAngles;
+        rot.x = 0;
+        rot.z = 0;
+        transform.eulerAngles = rot;
+
+        yield return new WaitForSeconds(2);
+
+        Floaters.SetActive(false);
+        _rb.useGravity = true;
+
+        _Coroutine = null;
+    }
+
+    IEnumerator WaterDown()
+    {
+        Floaters.SetActive(false);
+        _rb.useGravity = true;
+
+        yield return new WaitForSeconds(2);
+
+        var rot = transform.eulerAngles;
+        rot.x = 0;
+        rot.z = 0;
+        transform.eulerAngles = rot;
+
+        _Coroutine = null;
     }
     #endregion
 
