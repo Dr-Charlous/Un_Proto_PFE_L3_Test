@@ -8,6 +8,7 @@ using UnityEngine.InputSystem;
 [RequireComponent(typeof(PlayerInput))]
 [RequireComponent(typeof(UI))]
 [RequireComponent(typeof(BoatController))]
+[RequireComponent(typeof(Gravity))]
 public class CharaMove : MonoBehaviour
 {
     [Header("Input System :")]
@@ -26,6 +27,7 @@ public class CharaMove : MonoBehaviour
 
     private UI _UIObject;
     private BoatController _BoatController;
+    private Gravity _Gravity;
 
     [Header("Dash")]
     public bool IsDashing = false;
@@ -135,6 +137,16 @@ public class CharaMove : MonoBehaviour
         _rb = GetComponent<Rigidbody>();
         _UIObject = GetComponent<UI>();
         _BoatController = GetComponent<BoatController>();
+        _Gravity = GetComponent<Gravity>();
+
+        if (Swimming)
+        {
+            _Coroutine = StartCoroutine(WaterUp());
+        }
+        else if (Swimming == false)
+        {
+            _Coroutine = StartCoroutine(WaterDown());
+        }
     }
 
     void Update()
@@ -163,11 +175,11 @@ public class CharaMove : MonoBehaviour
     {
         Swimming = !Swimming;
 
-        if (Swimming && _Coroutine != null)
+        if (Swimming)
         {
             _Coroutine = StartCoroutine(WaterUp());
         }
-        else if (_Coroutine != null)
+        else if (Swimming == false)
         {
             _Coroutine = StartCoroutine(WaterDown());
         }
@@ -175,15 +187,18 @@ public class CharaMove : MonoBehaviour
 
     IEnumerator WaterUp()
     {
+        _rb.AddForce(Vector3.up, ForceMode.Force);
+
+        yield return new WaitForSeconds(0.1f);
+
+        Floaters.SetActive(true);
+        _Gravity.gravityScale = 1f;
+        _rb.useGravity = true;
+
         var rot = transform.eulerAngles;
         rot.x = 0;
         rot.z = 0;
         transform.eulerAngles = rot;
-
-        yield return new WaitForSeconds(2);
-
-        Floaters.SetActive(false);
-        _rb.useGravity = true;
 
         _Coroutine = null;
     }
@@ -191,9 +206,12 @@ public class CharaMove : MonoBehaviour
     IEnumerator WaterDown()
     {
         Floaters.SetActive(false);
+        _Gravity.gravityScale = 0f;
         _rb.useGravity = true;
 
-        yield return new WaitForSeconds(2);
+        _rb.AddForce(Vector3.down * 2, ForceMode.Force);
+
+        yield return new WaitForSeconds(0.1f);
 
         var rot = transform.eulerAngles;
         rot.x = 0;
