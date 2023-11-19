@@ -1,9 +1,11 @@
 using DG.Tweening;
+using System;
 using System.Collections;
 using Unity.VisualScripting;
 using UnityEditor.ShaderGraph;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.UIElements;
 
 [RequireComponent(typeof(PlayerInput))]
 [RequireComponent(typeof(UI))]
@@ -23,6 +25,7 @@ public class CharaMove : MonoBehaviour
     public bool UiIsActive = false;
     public Transform Body;
     public GameObject Floaters;
+    public GameObject ParticuleSystem;
     public Rigidbody _rb;
 
     private UI _UIObject;
@@ -178,10 +181,12 @@ public class CharaMove : MonoBehaviour
         if (Swimming)
         {
             _Coroutine = StartCoroutine(WaterUp());
+            ParticuleSystem.SetActive(true);
         }
         else if (Swimming == false)
         {
             _Coroutine = StartCoroutine(WaterDown());
+            ParticuleSystem.SetActive(false);
         }
     }
 
@@ -206,7 +211,7 @@ public class CharaMove : MonoBehaviour
     IEnumerator WaterDown()
     {
         Floaters.SetActive(false);
-        _Gravity.gravityScale = 0f;
+        _Gravity.gravityScale = 0.2f;
         _rb.useGravity = true;
 
         _rb.AddForce(Vector3.down * 2, ForceMode.Force);
