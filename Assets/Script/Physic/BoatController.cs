@@ -52,7 +52,8 @@ public class BoatController : MonoBehaviour
         steer = chara.Rotation;
 
         //force rotation
-        rb.AddForceAtPosition(steer * transform.right * steering / 100f, Motor.position);
+        //rb.AddForceAtPosition(steer * transform.right * steering / 100f, Motor.position);
+        transform.rotation *= Quaternion.Euler(steer * transform.up * steering / 100f);
 
         //calcul verteurs
         var forward = Vector3.Scale(new Vector3(1, 0, 1), transform.forward);

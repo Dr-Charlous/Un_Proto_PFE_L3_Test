@@ -1,6 +1,7 @@
 using DG.Tweening;
 using System;
 using System.Collections;
+using System.Data;
 using Unity.VisualScripting;
 using UnityEditor.ShaderGraph;
 using UnityEngine;
@@ -164,7 +165,7 @@ public class CharaMove : MonoBehaviour
 
     void FallingRotate()
     {
-        if (_rb != null && (_rb.velocity.y < -10 || _rb.velocity.y > 10))
+        if (_rb != null && (_rb.velocity.y < -2 || _rb.velocity.y > 2))
         {
             var rot = transform.eulerAngles;
             rot.x = 0;
@@ -211,18 +212,18 @@ public class CharaMove : MonoBehaviour
     IEnumerator WaterDown()
     {
         Floaters.SetActive(false);
-        _Gravity.gravityScale = 0.2f;
+        _Gravity.gravityScale = 0.8f;
         _rb.useGravity = true;
+        _rb.constraints = RigidbodyConstraints.FreezeRotationX | RigidbodyConstraints.FreezeRotationZ;
 
-        _rb.AddForce(Vector3.down * 2, ForceMode.Force);
-
-        yield return new WaitForSeconds(0.1f);
+        yield return new WaitForSeconds(5f);
 
         var rot = transform.eulerAngles;
         rot.x = 0;
         rot.z = 0;
         transform.eulerAngles = rot;
 
+        _rb.constraints = RigidbodyConstraints.None;
         _Coroutine = null;
     }
     #endregion
