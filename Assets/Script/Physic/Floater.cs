@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Floater : MonoBehaviour
 {
+    public GameObject Water;
     public Rigidbody rigidBody;
     public float depthBeforeSubmerged = 1f;
     public float displaycementAmount = 3f;
@@ -15,9 +16,9 @@ public class Floater : MonoBehaviour
     {
         rigidBody.AddForceAtPosition(Physics.gravity / floaterCount, transform.position, ForceMode.Acceleration);
 
-        if (transform.position.y < 0)
+        if (transform.position.y < Water.transform.position.y)
         {
-            float displacementMultiplier = Mathf.Clamp01(-transform.position.y / depthBeforeSubmerged) * displaycementAmount;
+            float displacementMultiplier = Mathf.Clamp01(Water.transform.position.y - transform.position.y / depthBeforeSubmerged) * displaycementAmount;
 
             rigidBody.AddForceAtPosition(new Vector3(0f, Mathf.Abs(Physics.gravity.y) * displacementMultiplier, 0f), transform.position, ForceMode.Acceleration);
 
