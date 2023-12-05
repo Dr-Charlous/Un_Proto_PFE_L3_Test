@@ -35,6 +35,10 @@ Material:
         m_Texture: {fileID: 2800000, guid: 11154d936b05e66498f68fa178c5cfbb, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
+    - _RippleTex:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
     - _Texture2DAsset_a7c025c2aba147adbdae5627d7dffcc2_Out_0:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
@@ -63,9 +67,11 @@ Material:
     - Vector1_dada42ebfac44076897b6de67441ba32: 0.3
     - _QueueControl: 0
     - _QueueOffset: 0
+    - _RippleStrenght: 0.5
+    - _Surface_Speed: 100
     m_Colors:
-    - Color_36218622185947c6a5ae36366d8e21d8: {r: 0.18801177, g: 0.55574864, b: 0.6132076, a: 0.9607843}
-    - Color_93e06cd551a5449091bcde90b46765a0: {r: 0.1702118, g: 0.7075472, b: 0.6965743, a: 0.19607843}
+    - Color_36218622185947c6a5ae36366d8e21d8: {r: 0.18801177, g: 0.55574864, b: 0.6132076, a: 0}
+    - Color_93e06cd551a5449091bcde90b46765a0: {r: 0.1702118, g: 0.7075472, b: 0.6965743, a: 0}
     - Vector2_4351ac2be1d74054986ec5378db9d578: {r: 5, g: 5, b: 0, a: 0}
   m_BuildTextureStacks: []
 --- !u!114 &5731840924652322931
