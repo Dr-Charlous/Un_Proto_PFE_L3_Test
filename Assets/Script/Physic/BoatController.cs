@@ -51,9 +51,6 @@ public class BoatController : MonoBehaviour
         //steer direction
         steer = chara.Rotation;
 
-        //force rotation
-        //rb.AddForceAtPosition(steer * transform.right * steering / 100f, Motor.position);
-        transform.rotation *= Quaternion.Euler(steer * transform.up * steering / 100f);
 
         //calcul verteurs
         var forward = Vector3.Scale(new Vector3(1, 0, 1), transform.forward);
@@ -74,9 +71,15 @@ public class BoatController : MonoBehaviour
         if (swim)
         {
             rb.AddForce((goalV - rb.velocity) * rb.mass * Time.fixedDeltaTime);
+            
+            //force rotation
+            rb.AddForceAtPosition(-steer * transform.right * steering / 100f, Motor.position);
         }
         else
         {
+            transform.rotation *= Quaternion.Euler(steer * transform.up * steering / 100f);
+            
+            //force rotation
             rb.velocity = (goalV - rb.velocity) * rb.mass * Time.fixedDeltaTime;
         }
     }
