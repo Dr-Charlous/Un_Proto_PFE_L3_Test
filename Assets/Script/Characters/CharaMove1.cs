@@ -1,11 +1,4 @@
-using DG.Tweening;
-using System.Collections;
-using System.Collections.Generic;
-using Unity.Burst.CompilerServices;
-using UnityEditor.Overlays;
 using UnityEngine;
-using static UnityEditor.Experimental.GraphView.GraphView;
-using static UnityEditor.PlayerSettings;
 
 public class CharaMove1 : MonoBehaviour
 {

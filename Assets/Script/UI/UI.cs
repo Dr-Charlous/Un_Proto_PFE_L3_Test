@@ -1,7 +1,4 @@
-using System.Collections;
-using System.Collections.Generic;
 using TMPro;
-using Unity.Collections.LowLevel.Unsafe;
 using UnityEngine;
 
 [RequireComponent(typeof(CharaMove))]

@@ -1,12 +1,8 @@
 using DG.Tweening;
 using System;
 using System.Collections;
-using System.Data;
-using Unity.VisualScripting;
-using UnityEditor.ShaderGraph;
 using UnityEngine;
 using UnityEngine.InputSystem;
-using UnityEngine.UIElements;
 
 [RequireComponent(typeof(PlayerInput))]
 [RequireComponent(typeof(UI))]
