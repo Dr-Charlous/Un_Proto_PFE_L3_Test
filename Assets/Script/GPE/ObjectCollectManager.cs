@@ -5,6 +5,7 @@ using UnityEngine;
 public class ObjectCollectManager : MonoBehaviour
 {
     [SerializeField] bool grab;
+    [SerializeField] Vector3 objectGetDiffRot;
     [SerializeField] CharaMove chara;
     [SerializeField] GameObject objectGet;
 
@@ -18,13 +19,19 @@ public class ObjectCollectManager : MonoBehaviour
         if (objectGet != null)
         {
             objectGet.transform.position = transform.position;
+
+            objectGetDiffRot = objectGet.GetComponent<ObjectCollect>().RotateObjGrab(transform.rotation.eulerAngles);
+            objectGet.transform.rotation = Quaternion.Euler(transform.rotation.eulerAngles + objectGetDiffRot);
         }
     }
 
     private void OnTriggerStay(Collider collider)
     {
         if (collider.GetComponent<ObjectCollect>() == null)
+        {
+            chara.Collected = false;
             return;
+        }
 
         if (chara.Collected)
         {
@@ -33,7 +40,7 @@ public class ObjectCollectManager : MonoBehaviour
                 objectGet = null;
                 grab = false;
             }
-            else
+            else if (collider.gameObject != objectGet)
             {
                 objectGet = collider.gameObject;
                 grab = true;
