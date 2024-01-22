@@ -45,6 +45,8 @@ public class ObjectCollectManager : MonoBehaviour
                 objectGet = collider.gameObject;
                 grab = true;
             }
+
+            chara.Collected = false;
         }
     }
 }

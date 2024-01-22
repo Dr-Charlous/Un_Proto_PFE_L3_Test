@@ -1,6 +1,7 @@
 using DG.Tweening;
 using System;
 using System.Collections;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -52,7 +53,7 @@ public class CharaMove : MonoBehaviour
     
     void GetCollectInputs(InputAction.CallbackContext collect)
     {
-        Collected = !Collected;
+        Collected = true;
     }
 
     private void Awake()
