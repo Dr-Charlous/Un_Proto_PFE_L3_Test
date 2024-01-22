@@ -29,20 +29,10 @@ public class BoatController : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if (chara.Fishinning == false)
-        {
-            if (chara.Swimming)
-            {
-                MoveNRotate(SteerPower, Power, MaxSpeed, chara.Swimming);
-            }
-            else
-            {
-                MoveNRotate(SteerPowerWater, PowerWater, MaxSpeedWater, chara.Swimming);
-            }
-        }
+        MoveNRotate(SteerPower, Power, MaxSpeed);
     }
 
-    void MoveNRotate(float steering, float power, float speed, bool swim)
+    void MoveNRotate(float steering, float power, float speed)
     {
         //direction de base
         var forceDirection = transform.forward;
@@ -68,19 +58,11 @@ public class BoatController : MonoBehaviour
 
         Debug.DrawLine(transform.position, transform.position + goalV);
 
-        if (swim)
-        {
-            rb.AddForce((goalV - rb.velocity) * rb.mass * Time.fixedDeltaTime);
-            
-            //force rotation
-            rb.AddForceAtPosition(-steer * transform.right * steering / 100f, Motor.position);
-        }
-        else
-        {
-            transform.rotation *= Quaternion.Euler(steer * transform.up * steering / 100f);
-            
-            //force rotation
-            rb.velocity = (goalV - rb.velocity) * rb.mass * Time.fixedDeltaTime;
-        }
+
+        rb.AddForce((goalV - rb.velocity) * rb.mass * Time.fixedDeltaTime);
+
+        //force rotation
+        rb.AddForceAtPosition(-steer * transform.right * steering / 100f, Motor.position);
+
     }
 }
