@@ -27,10 +27,6 @@ public class CharaMove : MonoBehaviour
     private BoatController _BoatController;
     private Gravity _Gravity;
 
-    [Header("Collecting :")]
-    public bool Collecting = false;
-    Coroutine _Coroutine;
-
     #region Inputs
     private void OnEnable()
     {

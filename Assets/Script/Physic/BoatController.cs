@@ -11,11 +11,6 @@ public class BoatController : MonoBehaviour
     public float Power = 5f;
     public float MaxSpeed = 10f;
 
-    [Header("In Water (Dive)")]
-    public float SteerPowerWater = 500f;
-    public float PowerWater = 5f;
-    public float MaxSpeedWater = 10f;
-
     protected Rigidbody rb;
     protected Quaternion startRot;
     private CharaMove chara;
