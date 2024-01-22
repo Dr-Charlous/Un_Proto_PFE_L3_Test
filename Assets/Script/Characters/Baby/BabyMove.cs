@@ -5,17 +5,11 @@ using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.AI;
 
-[RequireComponent(typeof(BoatController))]
+//[RequireComponent(typeof(BoatController))]
 public class BabyMove : MonoBehaviour
 {
-    [Header("Values :")]
-    public bool Swimming = false;
-
     [Header("Components :")]
-    public Transform Body;
-    public Rigidbody _rb;
     public NavMeshAgent agent;
-    public NavMeshSurface surface;
     public LineRenderer line;
     public List<Vector3> point;
     private BoatController _BoatController;
@@ -29,9 +23,7 @@ public class BabyMove : MonoBehaviour
 
     void Start()
     {
-        _BoatController = GetComponent<BoatController>();
-        Body = GetComponent<Transform>();
-        _rb = GetComponent<Rigidbody>();
+        //_BoatController = GetComponent<BoatController>();
         agent = GetComponent<NavMeshAgent>();
         target = transform.position;
     }
@@ -54,7 +46,7 @@ public class BabyMove : MonoBehaviour
 
     void FallingRotate()
     {
-        if (_rb != null && (_rb.velocity.y < -10 || _rb.velocity.y > 10))
+        if (agent != null && (agent.velocity.y < -10 || agent.velocity.y > 10))
         {
             var rot = transform.eulerAngles;
             rot.x = 0;

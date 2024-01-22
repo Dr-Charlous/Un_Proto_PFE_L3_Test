@@ -18,8 +18,6 @@ public class EnnemiMove : MonoBehaviour
     {
         if (Character.velocity.magnitude < 1 && Vector3.Distance(new Vector3(transform.position.x, 0, transform.position.z), new Vector3(RoundPositions[_i].x, 0, RoundPositions[_i].z)) < 1)
         {
-            Debug.Log("Check");
-
             if (_i + 1 < RoundPositions.Length)
                 _i += 1;
             else
