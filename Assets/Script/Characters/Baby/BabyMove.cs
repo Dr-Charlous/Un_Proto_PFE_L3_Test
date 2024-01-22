@@ -49,13 +49,7 @@ public class BabyMove : MonoBehaviour
             DrawPath();
         }
 
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            SwitchSwim();
-        }
-
         FallingRotate();
-        UpWater();
     }
 
     void FallingRotate()
@@ -66,25 +60,6 @@ public class BabyMove : MonoBehaviour
             rot.x = 0;
             rot.z = 0;
             transform.eulerAngles = rot;
-        }
-    }
-
-    void SwitchSwim()
-    {
-        Swimming = !Swimming;
-    }
-
-    void UpWater()
-    {
-        if (Swimming)
-        {
-            _BoatController.enabled = true;
-            _rb.useGravity = false;
-        }
-        else
-        {
-            _BoatController.enabled = false;
-            _rb.useGravity = true;
         }
     }
 

@@ -18,12 +18,14 @@ public class CharaMove : MonoBehaviour
     [Header("Components/Values :")]
     [Range(0, 5)]
     public int Life = 5;
-    public Transform Body;
+    public bool Collected;
     public GameObject Floaters;
     public GameObject ParticuleSystem;
     public Rigidbody _rb;
 
+
     //private UI _UIObject;
+    private Transform Body;
     private BoatController _BoatController;
     private Gravity _Gravity;
 
@@ -32,18 +34,25 @@ public class CharaMove : MonoBehaviour
     {
         _controls.Diplocaulus.Enable();
         _controls.Diplocaulus.Move.performed += GetMoveInputs;
+        _controls.Diplocaulus.Collect.performed += GetCollectInputs;
     }
 
     private void OnDisable()
     {
         _controls.Diplocaulus.Disable();
         _controls.Diplocaulus.Move.performed -= GetMoveInputs;
+        _controls.Diplocaulus.Collect.performed -= GetCollectInputs;
     }
 
     void GetMoveInputs(InputAction.CallbackContext move)
     {
         Position = -move.ReadValue<Vector2>().y;
         Rotation = move.ReadValue<Vector2>().x;
+    }
+    
+    void GetCollectInputs(InputAction.CallbackContext collect)
+    {
+        Collected = !Collected;
     }
 
     private void Awake()
