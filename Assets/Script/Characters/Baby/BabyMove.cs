@@ -55,9 +55,13 @@ public class BabyMove : MonoBehaviour
     private void BodyFollow()
     {
         Vector3 Direction = agent.velocity;
-        Quaternion lookRotation = Quaternion.LookRotation(Direction);
-        Vector3 rotation = Quaternion.Lerp(ObjectBaby.transform.rotation, lookRotation, Time.deltaTime * 1).eulerAngles;
-        ObjectBaby.transform.rotation = Quaternion.Euler(0f, rotation.y, 0f);
+
+        if (Direction !=  Vector3.zero)
+        {
+            Quaternion lookRotation = Quaternion.LookRotation(Direction);
+            Vector3 rotation = Quaternion.Lerp(ObjectBaby.transform.rotation, lookRotation, Time.deltaTime * 1).eulerAngles;
+            ObjectBaby.transform.rotation = Quaternion.Euler(0f, rotation.y, 0f);
+        }
 
         ObjectBaby.transform.DOKill();
         ObjectBaby.transform.DOMove(transform.position, 1);
