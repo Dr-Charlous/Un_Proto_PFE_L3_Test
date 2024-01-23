@@ -10,7 +10,8 @@ GameObject:
   m_Component:
   - component: {fileID: 7329468574804808718}
   - component: {fileID: 4267283353903535872}
-  - component: {fileID: 6614391733765199132}
+  - component: {fileID: 7611158491068635801}
+  - component: {fileID: 3574390629781920614}
   m_Layer: 0
   m_Name: Plant
   m_TagString: Untagged
@@ -32,7 +33,7 @@ Transform:
   m_Children:
   - {fileID: 5036828486482606415}
   m_Father: {fileID: 0}
-  m_RootOrder: 11
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!65 &4267283353903535872
 BoxCollider:
@@ -55,7 +56,7 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.2, y: 0.85, z: 0.2}
   m_Center: {x: 0, y: 0.425, z: 0}
---- !u!114 &6614391733765199132
+--- !u!114 &7611158491068635801
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -64,11 +65,28 @@ MonoBehaviour:
   m_GameObject: {fileID: 4862748628249985669}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6e74bae9919b76a4f917d23c0a495e1a, type: 3}
+  m_Script: {fileID: 11500000, guid: 35e95dc5ff2b64380880dd7ac5922847, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Item: 2
-  Quantity: 2
+  m_Size: {x: 0.25, y: 0.85, z: 0.25}
+  m_Center: {x: 0, y: 0.4, z: 0}
+  m_Area: 0
+  m_AffectedAgents: ffffffff
+--- !u!114 &3574390629781920614
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4862748628249985669}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 85de443a2c5bfda4993723352e180c18, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ObjRot: {x: 0, y: 0, z: 0}
+  PlayerRot: {x: 0, y: 0, z: 0}
+  DiffRot: {x: 0, y: 0, z: 0}
 --- !u!1 &7024592000064614384
 GameObject:
   m_ObjectHideFlags: 0

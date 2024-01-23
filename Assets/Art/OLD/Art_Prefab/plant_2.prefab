@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 3097131679916137956}
   - component: {fileID: 5753689883921251334}
   - component: {fileID: 2393252335486420240}
+  - component: {fileID: 8135279125760786246}
   m_Layer: 0
   m_Name: plant_2
   m_TagString: Untagged
@@ -34,7 +35,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: -89.98, y: 0, z: 71.641}
 --- !u!33 &6811782205080570217
 MeshFilter:
@@ -173,3 +174,19 @@ HingeJoint:
   m_EnablePreprocessing: 1
   m_MassScale: 1
   m_ConnectedMassScale: 1
+--- !u!114 &8135279125760786246
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7092119288799616118}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 35e95dc5ff2b64380880dd7ac5922847, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Size: {x: 0.25, y: 0.25, z: 0.85}
+  m_Center: {x: 0, y: 0, z: 0.4}
+  m_Area: 0
+  m_AffectedAgents: ffffffff
