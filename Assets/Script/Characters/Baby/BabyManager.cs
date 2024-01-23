@@ -3,16 +3,9 @@ using UnityEngine;
 
 public class BabyManager : MonoBehaviour
 {
-    Vector3 pos;
     public KeyCode key = KeyCode.LeftShift;
-    public float yOffSet = 0.1f;
-    public float distance = 1;
     public bool touching = false;
-
-    private void Update()
-    {
-        SetPos();
-    }
+    public bool touch = false;
 
     void OnTriggerStay(Collider other)
     {
@@ -20,9 +13,10 @@ public class BabyManager : MonoBehaviour
         {
             touching = true;
 
-            if (Input.GetKeyDown(key))
+            if (Input.GetKeyDown(key) && touch == false)
             {
                 other.GetComponent<BabyMove>().follow = !other.GetComponent<BabyMove>().follow;
+                touch = true;
             }
         }
     }
@@ -30,13 +24,6 @@ public class BabyManager : MonoBehaviour
     void OnTriggerExit(Collider other)
     {
         touching = false;
-    }
-
-    void SetPos()
-    {
-        if (pos != new Vector3(transform.position.x, transform.position.y, transform.position.z))
-        {
-            pos = new Vector3(transform.position.x, transform.position.y + yOffSet, transform.position.z);
-        }
+        touch = false;
     }
 }
