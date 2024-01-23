@@ -6039,8 +6039,8 @@ GameObject:
   - component: {fileID: 5724808921936430591}
   - component: {fileID: 6699909869382925849}
   - component: {fileID: 4494263771166995183}
-  - component: {fileID: 5015772605977868268}
   - component: {fileID: 2397897305387199981}
+  - component: {fileID: 5015772605977868268}
   m_Layer: 0
   m_Name: Diplocaulus_Parent
   m_TagString: Untagged
@@ -6214,21 +6214,6 @@ MonoBehaviour:
   SteerPower: 5
   Power: 10
   MaxSpeed: 1000
---- !u!114 &5015772605977868268
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8628009554936787675}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6f1a7cedbe3a3254999806fa8e331d19, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  key: 32
-  touching: 0
-  touch: 0
 --- !u!136 &2397897305387199981
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -6248,10 +6233,28 @@ CapsuleCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.75
+  m_Radius: 2
   m_Height: 1
   m_Direction: 1
   m_Center: {x: 0, y: 0, z: -0.1}
+--- !u!114 &5015772605977868268
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8628009554936787675}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6f1a7cedbe3a3254999806fa8e331d19, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Stay: 256
+  Follow: 257
+  Action: 258
+  Ride: 259
+  touching: 0
+  touch: 0
 --- !u!1 &8883696035002327006
 GameObject:
   m_ObjectHideFlags: 0

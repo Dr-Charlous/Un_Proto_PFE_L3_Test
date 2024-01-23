@@ -11,12 +11,20 @@ using UnityEngine.InputSystem;
 //[RequireComponent(typeof(BoatController))]
 public class BabyMove : MonoBehaviour
 {
+    public enum state
+    {
+        Stay,
+        Follow,
+        Action,
+        Ride
+    }
+
+    public state State = state.Stay;
+
     [Header("Components :")]
     public NavMeshAgent agent;
     public LineRenderer line;
     public List<Vector3> point;
-
-    private BoatController _BoatController;
 
     public GameObject ObjectBaby;
 
@@ -24,22 +32,25 @@ public class BabyMove : MonoBehaviour
     public Transform Parent;
     public Vector3 target;
     public float distance = 5;
-    public bool follow = true;
     public bool showPath = true;
 
     void Start()
     {
-        //_BoatController = GetComponent<BoatController>();
         agent = GetComponent<NavMeshAgent>();
         target = transform.position;
     }
 
     void Update()
     {
-        if (Vector3.Distance(Parent.position, target) > distance && follow)
+        if (State == state.Follow && Vector3.Distance(Parent.position, target) > distance)
         {
             target = Parent.position;
             agent.SetDestination(target);
+        }
+
+        if (State == state.Ride)
+        {
+            
         }
 
         if (showPath)
