@@ -44,6 +44,15 @@ public partial class @Controls: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Dash"",
+                    ""type"": ""Button"",
+                    ""id"": ""e7b899ed-e7e5-4c49-aefd-100c97b5ff9a"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -233,6 +242,17 @@ public partial class @Controls: IInputActionCollection2, IDisposable
                     ""action"": ""Collect"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""b3fa4e34-047b-4458-80cc-274f07e6c453"",
+                    ""path"": ""<Keyboard>/shift"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Dash"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -243,6 +263,7 @@ public partial class @Controls: IInputActionCollection2, IDisposable
         m_Diplocaulus = asset.FindActionMap("Diplocaulus", throwIfNotFound: true);
         m_Diplocaulus_Move = m_Diplocaulus.FindAction("Move", throwIfNotFound: true);
         m_Diplocaulus_Collect = m_Diplocaulus.FindAction("Collect", throwIfNotFound: true);
+        m_Diplocaulus_Dash = m_Diplocaulus.FindAction("Dash", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -306,12 +327,14 @@ public partial class @Controls: IInputActionCollection2, IDisposable
     private List<IDiplocaulusActions> m_DiplocaulusActionsCallbackInterfaces = new List<IDiplocaulusActions>();
     private readonly InputAction m_Diplocaulus_Move;
     private readonly InputAction m_Diplocaulus_Collect;
+    private readonly InputAction m_Diplocaulus_Dash;
     public struct DiplocaulusActions
     {
         private @Controls m_Wrapper;
         public DiplocaulusActions(@Controls wrapper) { m_Wrapper = wrapper; }
         public InputAction @Move => m_Wrapper.m_Diplocaulus_Move;
         public InputAction @Collect => m_Wrapper.m_Diplocaulus_Collect;
+        public InputAction @Dash => m_Wrapper.m_Diplocaulus_Dash;
         public InputActionMap Get() { return m_Wrapper.m_Diplocaulus; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -327,6 +350,9 @@ public partial class @Controls: IInputActionCollection2, IDisposable
             @Collect.started += instance.OnCollect;
             @Collect.performed += instance.OnCollect;
             @Collect.canceled += instance.OnCollect;
+            @Dash.started += instance.OnDash;
+            @Dash.performed += instance.OnDash;
+            @Dash.canceled += instance.OnDash;
         }
 
         private void UnregisterCallbacks(IDiplocaulusActions instance)
@@ -337,6 +363,9 @@ public partial class @Controls: IInputActionCollection2, IDisposable
             @Collect.started -= instance.OnCollect;
             @Collect.performed -= instance.OnCollect;
             @Collect.canceled -= instance.OnCollect;
+            @Dash.started -= instance.OnDash;
+            @Dash.performed -= instance.OnDash;
+            @Dash.canceled -= instance.OnDash;
         }
 
         public void RemoveCallbacks(IDiplocaulusActions instance)
@@ -358,5 +387,6 @@ public partial class @Controls: IInputActionCollection2, IDisposable
     {
         void OnMove(InputAction.CallbackContext context);
         void OnCollect(InputAction.CallbackContext context);
+        void OnDash(InputAction.CallbackContext context);
     }
 }
