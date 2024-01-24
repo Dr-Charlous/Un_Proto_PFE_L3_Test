@@ -1,7 +1,5 @@
-using DG.Tweening;
 using System;
 using System.Collections;
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -33,6 +31,7 @@ public class CharaMove : MonoBehaviour
     private Transform Body;
     private BoatController _BoatController;
     private Gravity _Gravity;
+    private BabyManager _BabyManager;
 
     #region Inputs
     private void OnEnable()
@@ -41,6 +40,10 @@ public class CharaMove : MonoBehaviour
         _controls.Diplocaulus.Move.performed += GetMoveInputs;
         _controls.Diplocaulus.Collect.started += GetCollectInputs;
         _controls.Diplocaulus.Dash.started += GetDashInput;
+        _controls.Diplocaulus.BabyStay.started += GetBabyStayInput;
+        _controls.Diplocaulus.BabyFollow.started += GetBabyFollowInput;
+        _controls.Diplocaulus.BabyAction.started += GetBabyActionInput;
+        _controls.Diplocaulus.BabyGet.started += GetBabyGetInput;
     }
 
     private void OnDisable()
@@ -49,6 +52,10 @@ public class CharaMove : MonoBehaviour
         _controls.Diplocaulus.Move.performed -= GetMoveInputs;
         _controls.Diplocaulus.Collect.started -= GetCollectInputs;
         _controls.Diplocaulus.Dash.started -= GetDashInput;
+        _controls.Diplocaulus.BabyStay.started -= GetBabyStayInput;
+        _controls.Diplocaulus.BabyFollow.started -= GetBabyFollowInput;
+        _controls.Diplocaulus.BabyAction.started -= GetBabyActionInput;
+        _controls.Diplocaulus.BabyGet.started -= GetBabyGetInput;
     }
 
     void GetMoveInputs(InputAction.CallbackContext move)
@@ -70,6 +77,27 @@ public class CharaMove : MonoBehaviour
         }
     }
 
+    void GetBabyStayInput(InputAction.CallbackContext baby)
+    {
+        _BabyManager.BabyStay();
+    }
+
+    void GetBabyFollowInput(InputAction.CallbackContext baby)
+    {
+        _BabyManager.BabyFollow();
+    }
+
+    void GetBabyActionInput(InputAction.CallbackContext baby)
+    {
+        _BabyManager.BabyAction();
+    }
+
+    void GetBabyGetInput(InputAction.CallbackContext baby)
+    {
+        _BabyManager.GetBaby();
+    }
+
+
     private void Awake()
     {
         _controls = new Controls();
@@ -83,6 +111,7 @@ public class CharaMove : MonoBehaviour
         _rb = GetComponent<Rigidbody>();
         _BoatController = GetComponent<BoatController>();
         _Gravity = GetComponent<Gravity>();
+        _BabyManager = GetComponent<BabyManager>();
     }
 
     void Update()

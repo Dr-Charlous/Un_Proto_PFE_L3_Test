@@ -53,6 +53,42 @@ public partial class @Controls: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""BabyStay"",
+                    ""type"": ""Button"",
+                    ""id"": ""81b4447d-b388-4d6b-bb41-7a63c461505f"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""BabyFollow"",
+                    ""type"": ""Button"",
+                    ""id"": ""9dffdc90-7497-4137-9971-85d40ad148f6"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""BabyAction"",
+                    ""type"": ""Button"",
+                    ""id"": ""d991b565-7440-4f94-ae92-031e173a67c6"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""BabyGet"",
+                    ""type"": ""Button"",
+                    ""id"": ""9ebad2a4-aac2-4113-9273-abdba6228523"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -253,6 +289,50 @@ public partial class @Controls: IInputActionCollection2, IDisposable
                     ""action"": ""Dash"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""a103ad76-6189-4367-8561-0d56810ced7a"",
+                    ""path"": ""<Keyboard>/numpad0"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""BabyStay"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""576d7317-89f6-4106-b176-963f05a84c41"",
+                    ""path"": ""<Keyboard>/numpad1"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""BabyFollow"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""19b03893-6319-4a33-a9c6-a87c3684cab7"",
+                    ""path"": ""<Keyboard>/numpad2"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""BabyAction"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""ad3b2bc2-8c7e-47d5-aaf5-5627a9a85612"",
+                    ""path"": ""<Keyboard>/numpad3"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""BabyGet"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -264,6 +344,10 @@ public partial class @Controls: IInputActionCollection2, IDisposable
         m_Diplocaulus_Move = m_Diplocaulus.FindAction("Move", throwIfNotFound: true);
         m_Diplocaulus_Collect = m_Diplocaulus.FindAction("Collect", throwIfNotFound: true);
         m_Diplocaulus_Dash = m_Diplocaulus.FindAction("Dash", throwIfNotFound: true);
+        m_Diplocaulus_BabyStay = m_Diplocaulus.FindAction("BabyStay", throwIfNotFound: true);
+        m_Diplocaulus_BabyFollow = m_Diplocaulus.FindAction("BabyFollow", throwIfNotFound: true);
+        m_Diplocaulus_BabyAction = m_Diplocaulus.FindAction("BabyAction", throwIfNotFound: true);
+        m_Diplocaulus_BabyGet = m_Diplocaulus.FindAction("BabyGet", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -328,6 +412,10 @@ public partial class @Controls: IInputActionCollection2, IDisposable
     private readonly InputAction m_Diplocaulus_Move;
     private readonly InputAction m_Diplocaulus_Collect;
     private readonly InputAction m_Diplocaulus_Dash;
+    private readonly InputAction m_Diplocaulus_BabyStay;
+    private readonly InputAction m_Diplocaulus_BabyFollow;
+    private readonly InputAction m_Diplocaulus_BabyAction;
+    private readonly InputAction m_Diplocaulus_BabyGet;
     public struct DiplocaulusActions
     {
         private @Controls m_Wrapper;
@@ -335,6 +423,10 @@ public partial class @Controls: IInputActionCollection2, IDisposable
         public InputAction @Move => m_Wrapper.m_Diplocaulus_Move;
         public InputAction @Collect => m_Wrapper.m_Diplocaulus_Collect;
         public InputAction @Dash => m_Wrapper.m_Diplocaulus_Dash;
+        public InputAction @BabyStay => m_Wrapper.m_Diplocaulus_BabyStay;
+        public InputAction @BabyFollow => m_Wrapper.m_Diplocaulus_BabyFollow;
+        public InputAction @BabyAction => m_Wrapper.m_Diplocaulus_BabyAction;
+        public InputAction @BabyGet => m_Wrapper.m_Diplocaulus_BabyGet;
         public InputActionMap Get() { return m_Wrapper.m_Diplocaulus; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -353,6 +445,18 @@ public partial class @Controls: IInputActionCollection2, IDisposable
             @Dash.started += instance.OnDash;
             @Dash.performed += instance.OnDash;
             @Dash.canceled += instance.OnDash;
+            @BabyStay.started += instance.OnBabyStay;
+            @BabyStay.performed += instance.OnBabyStay;
+            @BabyStay.canceled += instance.OnBabyStay;
+            @BabyFollow.started += instance.OnBabyFollow;
+            @BabyFollow.performed += instance.OnBabyFollow;
+            @BabyFollow.canceled += instance.OnBabyFollow;
+            @BabyAction.started += instance.OnBabyAction;
+            @BabyAction.performed += instance.OnBabyAction;
+            @BabyAction.canceled += instance.OnBabyAction;
+            @BabyGet.started += instance.OnBabyGet;
+            @BabyGet.performed += instance.OnBabyGet;
+            @BabyGet.canceled += instance.OnBabyGet;
         }
 
         private void UnregisterCallbacks(IDiplocaulusActions instance)
@@ -366,6 +470,18 @@ public partial class @Controls: IInputActionCollection2, IDisposable
             @Dash.started -= instance.OnDash;
             @Dash.performed -= instance.OnDash;
             @Dash.canceled -= instance.OnDash;
+            @BabyStay.started -= instance.OnBabyStay;
+            @BabyStay.performed -= instance.OnBabyStay;
+            @BabyStay.canceled -= instance.OnBabyStay;
+            @BabyFollow.started -= instance.OnBabyFollow;
+            @BabyFollow.performed -= instance.OnBabyFollow;
+            @BabyFollow.canceled -= instance.OnBabyFollow;
+            @BabyAction.started -= instance.OnBabyAction;
+            @BabyAction.performed -= instance.OnBabyAction;
+            @BabyAction.canceled -= instance.OnBabyAction;
+            @BabyGet.started -= instance.OnBabyGet;
+            @BabyGet.performed -= instance.OnBabyGet;
+            @BabyGet.canceled -= instance.OnBabyGet;
         }
 
         public void RemoveCallbacks(IDiplocaulusActions instance)
@@ -388,5 +504,9 @@ public partial class @Controls: IInputActionCollection2, IDisposable
         void OnMove(InputAction.CallbackContext context);
         void OnCollect(InputAction.CallbackContext context);
         void OnDash(InputAction.CallbackContext context);
+        void OnBabyStay(InputAction.CallbackContext context);
+        void OnBabyFollow(InputAction.CallbackContext context);
+        void OnBabyAction(InputAction.CallbackContext context);
+        void OnBabyGet(InputAction.CallbackContext context);
     }
 }
