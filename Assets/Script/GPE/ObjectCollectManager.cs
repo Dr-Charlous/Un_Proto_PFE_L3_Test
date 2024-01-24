@@ -5,8 +5,9 @@ using UnityEngine;
 public class ObjectCollectManager : MonoBehaviour
 {
     [SerializeField] bool grab;
-    [SerializeField] Vector3 objectGetDiffRot;
     [SerializeField] CharaMove chara;
+    [SerializeField] Collider collider;
+    [SerializeField] GameObject objectGetModel;
     [SerializeField] GameObject objectGet;
 
     private void Start()
@@ -16,37 +17,44 @@ public class ObjectCollectManager : MonoBehaviour
 
     private void Update()
     {
-        if (objectGet != null)
+        if (chara.Collected)
         {
-            objectGet.transform.position = transform.position;
+            if (collider != null)
+            {
+                Grab(collider);
+            }
 
-            objectGetDiffRot = objectGet.GetComponent<ObjectCollect>().RotateObjGrab(transform.rotation.eulerAngles);
-            objectGet.transform.rotation = Quaternion.Euler(transform.rotation.eulerAngles + objectGetDiffRot);
+            chara.Collected = false;
         }
     }
 
     private void OnTriggerStay(Collider collider)
     {
-        if (collider.GetComponent<ObjectCollect>() == null)
+        this.collider = collider;
+    }
+
+    void Grab(Collider collider)
+    {
+        if (!grab && collider.gameObject != objectGet && collider.GetComponent<ObjectCollect>() != null)
         {
-            chara.Collected = false;
-            return;
+            objectGetModel = collider.gameObject;
+            objectGetModel.SetActive(false);
+
+            objectGet = Instantiate(objectGetModel);
+            objectGet.transform.SetParent(chara.transform);
+            objectGet.SetActive(true);
+            grab = true;
         }
-
-        if (chara.Collected)
+        else if (chara.Collected && grab)
         {
-            if (grab)
-            {
-                objectGet = null;
-                grab = false;
-            }
-            else if (collider.gameObject != objectGet)
-            {
-                objectGet = collider.gameObject;
-                grab = true;
-            }
+            objectGetModel.transform.position = objectGet.transform.position;
+            objectGetModel.transform.rotation = objectGet.transform.rotation;
 
-            chara.Collected = false;
+            objectGetModel.SetActive(true);
+            objectGetModel = null;
+
+            Destroy(objectGet);
+            grab = false;
         }
     }
 }

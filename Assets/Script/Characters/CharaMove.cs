@@ -24,6 +24,10 @@ public class CharaMove : MonoBehaviour
     public GameObject ParticuleSystem;
     public Rigidbody _rb;
 
+    [Header("Dash")]
+    public bool IsDashing = false;
+    public float DashForce = 5f;
+    public float DashCooldown = 1f;
 
     //private UI _UIObject;
     private Transform Body;
@@ -35,14 +39,16 @@ public class CharaMove : MonoBehaviour
     {
         _controls.Diplocaulus.Enable();
         _controls.Diplocaulus.Move.performed += GetMoveInputs;
-        _controls.Diplocaulus.Collect.performed += GetCollectInputs;
+        _controls.Diplocaulus.Collect.started += GetCollectInputs;
+        _controls.Diplocaulus.Dash.started += GetDashInput;
     }
 
     private void OnDisable()
     {
         _controls.Diplocaulus.Disable();
         _controls.Diplocaulus.Move.performed -= GetMoveInputs;
-        _controls.Diplocaulus.Collect.performed -= GetCollectInputs;
+        _controls.Diplocaulus.Collect.started -= GetCollectInputs;
+        _controls.Diplocaulus.Dash.started -= GetDashInput;
     }
 
     void GetMoveInputs(InputAction.CallbackContext move)
@@ -53,7 +59,15 @@ public class CharaMove : MonoBehaviour
     
     void GetCollectInputs(InputAction.CallbackContext collect)
     {
-        Collected = true;
+        Collected = !Collected;
+    }
+
+    void GetDashInput(InputAction.CallbackContext dash)
+    {
+        if (IsDashing == false)
+        {
+            StartCoroutine(Dash());
+        }
     }
 
     private void Awake()
@@ -85,5 +99,14 @@ public class CharaMove : MonoBehaviour
             rot.z = 0;
             transform.eulerAngles = rot;
         }
+    }
+
+    IEnumerator Dash()
+    {
+        IsDashing = true;
+        var direction = transform.forward.normalized;
+        _rb.AddForce(-direction * DashForce, ForceMode.Impulse);
+        yield return new WaitForSeconds(DashCooldown);
+        IsDashing = false;
     }
 }

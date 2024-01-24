@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3193025709099889649}
   - component: {fileID: 7891485019999758950}
-  - component: {fileID: 8031757336249312468}
+  - component: {fileID: 6918232110633548579}
   m_Layer: 0
   m_Name: Nest
   m_TagString: Untagged
@@ -56,7 +56,7 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0.25, z: 0}
---- !u!114 &8031757336249312468
+--- !u!114 &6918232110633548579
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -65,20 +65,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 7186832027559375590}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 22fe7b4e5096b3d45897e5188dcd1e4e, type: 3}
+  m_Script: {fileID: 11500000, guid: 35e95dc5ff2b64380880dd7ac5922847, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MaterialsC:
-  - name: Stick
-    value: 4
-  - name: Rock
-    value: 2
-  - name: Plant
-    value: 6
-  Crafted: 0
-  Material1: {fileID: 2100000, guid: 208e2f6d5978d4946afbc58cbd12f3bc, type: 2}
-  Material2: {fileID: 2100000, guid: 89339b4337853e944950db21ddc4ddbb, type: 2}
-  Sphere: {fileID: 8717744838761925873}
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0.25, z: 0}
+  m_Area: 0
+  m_AffectedAgents: ffffffff
 --- !u!1 &8598059983421590684
 GameObject:
   m_ObjectHideFlags: 0

@@ -1,39 +1,56 @@
+using DG.Tweening;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using Unity.AI.Navigation;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.AI;
+using UnityEngine.InputSystem;
 
 //[RequireComponent(typeof(BoatController))]
 public class BabyMove : MonoBehaviour
 {
+    public enum state
+    {
+        Stay,
+        Follow,
+        Action,
+        Ride
+    }
+
+    public state State = state.Stay;
+
     [Header("Components :")]
     public NavMeshAgent agent;
     public LineRenderer line;
     public List<Vector3> point;
-    private BoatController _BoatController;
+
+    public GameObject ObjectBaby;
 
     [Header("Parent follow :")]
     public Transform Parent;
     public Vector3 target;
     public float distance = 5;
-    public bool follow = true;
     public bool showPath = true;
 
     void Start()
     {
-        //_BoatController = GetComponent<BoatController>();
         agent = GetComponent<NavMeshAgent>();
         target = transform.position;
     }
 
     void Update()
     {
-        if (Vector3.Distance(Parent.position, target) > distance && follow)
+        if (State == state.Follow && Vector3.Distance(Parent.position, target) > distance)
         {
             target = Parent.position;
             agent.SetDestination(target);
+        }
+
+        if (State == state.Ride)
+        {
+            
         }
 
         if (showPath)
@@ -41,7 +58,24 @@ public class BabyMove : MonoBehaviour
             DrawPath();
         }
 
+        BodyFollow();
+
         FallingRotate();
+    }
+
+    private void BodyFollow()
+    {
+        Vector3 Direction = agent.velocity;
+
+        if (Direction !=  Vector3.zero)
+        {
+            Quaternion lookRotation = Quaternion.LookRotation(Direction);
+            Vector3 rotation = Quaternion.Lerp(ObjectBaby.transform.rotation, lookRotation, Time.deltaTime * 1).eulerAngles;
+            ObjectBaby.transform.rotation = Quaternion.Euler(0f, rotation.y, 0f);
+        }
+
+        ObjectBaby.transform.DOKill();
+        ObjectBaby.transform.DOMove(transform.position, 1);
     }
 
     void FallingRotate()
