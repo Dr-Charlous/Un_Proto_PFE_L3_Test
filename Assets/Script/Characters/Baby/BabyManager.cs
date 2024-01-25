@@ -1,3 +1,4 @@
+using DG.Tweening;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
@@ -37,8 +38,14 @@ public class BabyManager : MonoBehaviour
             Baby = null;
         } else if (BabiesRef.Count > 0 && Baby == null)
         {
+            Baby.State = BabyMove.state.Stay;
+
             BabiesRef[0].SetActive(true);
             BabiesRef[0].GetComponentInChildren<NavMeshAgent>().destination = RespawnPoint.position;
+
+            BabiesRef[0].GetComponentInChildren<NavMeshAgent>().transform.localPosition = Vector3.zero;
+            BabiesRef[0].GetComponentInChildren<Gravity>().transform.localPosition = Vector3.zero;
+
             BabiesRef[0].transform.position = RespawnPoint.position;
             BabiesRef.RemoveAt(0);
         }
