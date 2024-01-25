@@ -100,7 +100,7 @@ public class CharaMove : MonoBehaviour
     private void Awake()
     {
         _controls = new Controls();
-
+        
         _rb = GetComponent<Rigidbody>();
         _BoatController = GetComponent<BoatController>();
         _Gravity = GetComponent<Gravity>();

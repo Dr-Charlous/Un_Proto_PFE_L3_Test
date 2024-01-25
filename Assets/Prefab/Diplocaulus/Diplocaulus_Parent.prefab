@@ -6199,7 +6199,6 @@ MonoBehaviour:
   IsDashing: 0
   DashForce: 1
   DashCooldown: 1
-  _BabyManager: {fileID: 5015772605977868268}
 --- !u!114 &4494263771166995183
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6235,10 +6234,10 @@ CapsuleCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 2
+  m_Radius: 0.3
   m_Height: 1
   m_Direction: 1
-  m_Center: {x: 0, y: 0, z: -0.1}
+  m_Center: {x: 0, y: 0, z: -0.85}
 --- !u!114 &5015772605977868268
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6251,7 +6250,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6f1a7cedbe3a3254999806fa8e331d19, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  touching: 0
   BabiesRef: []
   RespawnPoint: {fileID: 8167787379187678340}
   Baby: {fileID: 0}

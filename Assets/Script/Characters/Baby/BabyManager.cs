@@ -18,6 +18,14 @@ public class BabyManager : MonoBehaviour
         }
     }
 
+    private void OnTriggerExit(Collider other)
+    {
+        if (Baby != null)
+        {
+            Baby = null;
+        }
+    }
+
     public void GetBaby()
     {
         if (Baby != null)

@@ -28,7 +28,11 @@ public class ObjectCollectManager : MonoBehaviour
 
     private void OnTriggerStay(Collider collider)
     {
-        this.collider = collider;
+        if (collider.GetComponent<ObjectCollect>() != null)
+        {
+            this.collider = collider;
+        }
+
     }
 
     void Grab(Collider collider)
