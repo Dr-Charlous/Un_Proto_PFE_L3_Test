@@ -38,7 +38,7 @@ public class BabyManager : MonoBehaviour
             Baby = null;
         } else if (BabiesRef.Count > 0 && Baby == null)
         {
-            Baby.State = BabyMove.state.Stay;
+            BabiesRef[0].GetComponent<BabyMove>().State = BabyMove.state.Stay;
 
             BabiesRef[0].SetActive(true);
             BabiesRef[0].GetComponentInChildren<NavMeshAgent>().destination = RespawnPoint.position;
