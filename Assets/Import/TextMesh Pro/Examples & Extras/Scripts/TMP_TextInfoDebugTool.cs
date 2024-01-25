@@ -55,7 +55,7 @@ namespace TMPro.Examples
             m_ScaleMultiplier = m_TextComponent.GetType() == typeof(TextMeshPro) ? 1 : 0.1f;
             m_HandleSize = HandleUtility.GetHandleSize(m_Transform.position) * m_ScaleMultiplier;
 
-            // Draw line metrics
+            // Draw Line metrics
             #region Draw Lines
             if (ShowLines)
                 DrawLineBounds();
@@ -144,14 +144,14 @@ namespace TMPro.Examples
                 float baseline = characterInfo.baseLine;
                 float descentline = characterInfo.descender;
 
-                //Draw Ascent line
+                //Draw Ascent Line
                 Vector3 ascentlineStart = m_Transform.TransformPoint(new Vector3(origin, ascentline, 0));
                 Vector3 ascentlineEnd = m_Transform.TransformPoint(new Vector3(advance, ascentline, 0));
 
                 Handles.color = Color.cyan;
                 Handles.DrawDottedLine(ascentlineStart, ascentlineEnd, dottedLineSize);
 
-                // Draw Cap Height & Mean line
+                // Draw Cap Height & Mean Line
                 float capline = characterInfo.fontAsset == null ? 0 : baseline + characterInfo.fontAsset.faceInfo.capLine * characterInfo.scale;
                 Vector3 capHeightStart = new Vector3(topLeft.x, m_Transform.TransformPoint(new Vector3(0, capline, 0)).y, 0);
                 Vector3 capHeightEnd = new Vector3(topRight.x, m_Transform.TransformPoint(new Vector3(0, capline, 0)).y, 0);
@@ -162,23 +162,23 @@ namespace TMPro.Examples
 
                 if (characterInfo.isVisible)
                 {
-                    // Cap line
+                    // Cap Line
                     Handles.color = Color.cyan;
                     Handles.DrawDottedLine(capHeightStart, capHeightEnd, dottedLineSize);
 
-                    // Mean line
+                    // Mean Line
                     Handles.color = Color.cyan;
                     Handles.DrawDottedLine(meanlineStart, meanlineEnd, dottedLineSize);
                 }
 
-                //Draw Base line
+                //Draw Base Line
                 Vector3 baselineStart = m_Transform.TransformPoint(new Vector3(origin, baseline, 0));
                 Vector3 baselineEnd = m_Transform.TransformPoint(new Vector3(advance, baseline, 0));
 
                 Handles.color = Color.cyan;
                 Handles.DrawDottedLine(baselineStart, baselineEnd, dottedLineSize);
 
-                //Draw Descent line
+                //Draw Descent Line
                 Vector3 descentlineStart = m_Transform.TransformPoint(new Vector3(origin, descentline, 0));
                 Vector3 descentlineEnd = m_Transform.TransformPoint(new Vector3(advance, descentline, 0));
 
@@ -223,7 +223,7 @@ namespace TMPro.Examples
                    Handles.Label(labelPosition, "Base Line", style);
                    //Handles.Label(labelPosition, "Base Line (" + baselineMetrics.ToString("f3") + ")" , style);
 
-                   // Descent line
+                   // Descent Line
                    labelPosition = m_Transform.TransformPoint(new Vector3(center, descentline, 0));
                    Handles.Label(labelPosition, "Descent Line", style);
                    //Handles.Label(labelPosition, "Descent Line (" + descentlineMetrics.ToString("f3") + ")" , style);
@@ -335,7 +335,7 @@ namespace TMPro.Examples
 
                         //Debug.Log("End Word Region at [" + currentCharInfo.character + "]");
                     }
-                    // If Word is split on more than one line.
+                    // If Word is split on more than one Line.
                     else if (isBeginRegion && currentLine != m_TextInfo.characterInfo[characterIndex + 1].lineNumber)
                     {
                         isBeginRegion = false;
@@ -441,7 +441,7 @@ namespace TMPro.Examples
 
                         //Debug.Log("End Word Region at [" + currentCharInfo.character + "]");
                     }
-                    // If Link is split on more than one line.
+                    // If Link is split on more than one Line.
                     else if (isBeginRegion && currentLine != textInfo.characterInfo[characterIndex + 1].lineNumber)
                     {
                         isBeginRegion = false;
@@ -494,24 +494,24 @@ namespace TMPro.Examples
 
                 float dottedLineSize = 12;
 
-                // Draw line extents
+                // Draw Line extents
                 DrawDottedRectangle(m_Transform.TransformPoint(lineInfo.lineExtents.min), m_Transform.TransformPoint(lineInfo.lineExtents.max), Color.green, 4);
 
-                // Draw Ascent line
+                // Draw Ascent Line
                 Vector3 ascentlineStart = m_Transform.TransformPoint(new Vector3(lineBottomLeft, ascentline, 0));
                 Vector3 ascentlineEnd = m_Transform.TransformPoint(new Vector3(lineTopRight, ascentline, 0));
 
                 Handles.color = Color.yellow;
                 Handles.DrawDottedLine(ascentlineStart, ascentlineEnd, dottedLineSize);
 
-                // Draw Base line
+                // Draw Base Line
                 Vector3 baseLineStart = m_Transform.TransformPoint(new Vector3(lineBottomLeft, baseline, 0));
                 Vector3 baseLineEnd = m_Transform.TransformPoint(new Vector3(lineTopRight, baseline, 0));
 
                 Handles.color = Color.yellow;
                 Handles.DrawDottedLine(baseLineStart, baseLineEnd, dottedLineSize);
 
-                // Draw Descent line
+                // Draw Descent Line
                 Vector3 descentLineStart = m_Transform.TransformPoint(new Vector3(lineBottomLeft, descentline, 0));
                 Vector3 descentLineEnd = m_Transform.TransformPoint(new Vector3(lineTopRight, descentline, 0));
 
@@ -538,7 +538,7 @@ namespace TMPro.Examples
                     labelPosition = m_Transform.TransformPoint(new Vector3(lineBottomLeft, baseline, 0));
                     Handles.Label(labelPosition, "Base Line", style);
 
-                    // Descent line
+                    // Descent Line
                     labelPosition = m_Transform.TransformPoint(new Vector3(lineBottomLeft, descentline, 0));
                     Handles.Label(labelPosition, "Descent Line", style);
                 }

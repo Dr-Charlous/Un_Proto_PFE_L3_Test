@@ -99,11 +99,11 @@ namespace TMPro.Examples
 
                     vertices = textInfo.meshInfo[materialIndex].vertices;
 
-                    // Compute the baseline mid point for each character
+                    // Compute the baseline mid Point for each character
                     Vector3 offsetToMidBaseline = new Vector2((vertices[vertexIndex + 0].x + vertices[vertexIndex + 2].x) / 2, textInfo.characterInfo[i].baseLine);
                     //float offsetY = VertexCurve.Evaluate((float)i / characterCount + loopCount / 50f); // Random.Range(-0.25f, 0.25f);
 
-                    // Apply offset to adjust our pivot point.
+                    // Apply offset to adjust our pivot Point.
                     vertices[vertexIndex + 0] += -offsetToMidBaseline;
                     vertices[vertexIndex + 1] += -offsetToMidBaseline;
                     vertices[vertexIndex + 2] += -offsetToMidBaseline;

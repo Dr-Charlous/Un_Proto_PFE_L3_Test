@@ -28,10 +28,10 @@ public class CharaMove : MonoBehaviour
     public float DashCooldown = 1f;
 
     //private UI _UIObject;
-    private Transform Body;
-    private BoatController _BoatController;
-    private Gravity _Gravity;
-    private BabyManager _BabyManager;
+    Transform _body;
+    BoatController _BoatController;
+    Gravity _Gravity;
+    BabyManager _BabyManager;
 
     #region Inputs
     private void OnEnable()
@@ -98,21 +98,7 @@ public class CharaMove : MonoBehaviour
     }
 
 
-    private void Awake()
-    {
-        _controls = new Controls();
-    }
     #endregion
-
-
-    void Start()
-    {
-        Body = GetComponent<Transform>();
-        _rb = GetComponent<Rigidbody>();
-        _BoatController = GetComponent<BoatController>();
-        _Gravity = GetComponent<Gravity>();
-        _BabyManager = GetComponent<BabyManager>();
-    }
 
     void Update()
     {

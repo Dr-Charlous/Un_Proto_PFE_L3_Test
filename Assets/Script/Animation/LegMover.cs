@@ -71,7 +71,7 @@ namespace DitzelGames.FastIK
                 Root = Root.parent;
             }
 
-            //init target
+            //init Target
             if (Target == null)
             {
                 Target = new GameObject(gameObject.name + " Target").transform;
@@ -156,9 +156,9 @@ namespace DitzelGames.FastIK
                     for (int i = Positions.Length - 1; i > 0; i--)
                     {
                         if (i == Positions.Length - 1)
-                            Positions[i] = targetPosition; //set it to target
+                            Positions[i] = targetPosition; //set it to Target
                         else
-                            Positions[i] = Positions[i + 1] + (Positions[i] - Positions[i + 1]).normalized * BonesLength[i]; //set in line on distance
+                            Positions[i] = Positions[i + 1] + (Positions[i] - Positions[i + 1]).normalized * BonesLength[i]; //set in Line on Distance
                     }
 
                     //forward

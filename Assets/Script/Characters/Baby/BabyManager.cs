@@ -8,13 +8,14 @@ public class BabyManager : MonoBehaviour
     [SerializeField] List<GameObject> BabiesRef;
     [SerializeField] Transform RespawnPoint;
     [SerializeField] BabyMove Baby;
-    [SerializeField] int Babies = 0;
 
     void OnTriggerStay(Collider other)
     {
-        if (other.GetComponent<BabyMove>())
+        var otherBaby = other.GetComponent<BabyMove>();
+
+        if ( otherBaby != null)
         {
-            Baby = other.GetComponent<BabyMove>();
+            Baby = otherBaby;
             touching = true;
         }
     }
@@ -26,49 +27,52 @@ public class BabyManager : MonoBehaviour
 
     public void GetBaby()
     {
-        Baby.State = BabyMove.state.Ride;
+        if (Baby != null)
+        {
+            Baby.State = BabyMove.state.Ride;
 
-        BabiesRef.Add(Baby.transform.parent.gameObject);
-        Baby.transform.parent.gameObject.SetActive(false);
-        Babies++;
+            BabiesRef.Add(Baby.transform.parent.gameObject);
+            Baby.transform.parent.gameObject.SetActive(false);
+            Baby = null;
+        }
     }
 
     public void BabyStay()
     {
-        if (Babies > 0 && Baby.State == BabyMove.state.Ride)
+        if (BabiesRef.Count > 0 && Baby.State == BabyMove.state.Ride)
         {
-            Babies--;
             BabiesRef[0].SetActive(true);
             BabiesRef[0].transform.position = RespawnPoint.position;
             BabiesRef.RemoveAt(0);
         }
 
-        Baby.State = BabyMove.state.Stay;
+        if (Baby != null)
+            Baby.State = BabyMove.state.Stay;
     }
 
     public void BabyFollow()
     {
-        if (Babies > 0 && Baby.State == BabyMove.state.Ride)
+        if (BabiesRef.Count > 0 && Baby.State == BabyMove.state.Ride)
         {
-            Babies--;
             BabiesRef[0].SetActive(true);
             BabiesRef[0].transform.position = RespawnPoint.position;
             BabiesRef.RemoveAt(0);
         }
 
-        Baby.State = BabyMove.state.Follow;
+        if (Baby != null)
+            Baby.State = BabyMove.state.Follow;
     }
 
     public void BabyAction()
     {
-        if (Babies > 0 && Baby.State == BabyMove.state.Ride)
+        if (BabiesRef.Count > 0 && Baby.State == BabyMove.state.Ride)
         {
-            Babies--;
             BabiesRef[0].SetActive(true);
             BabiesRef[0].transform.position = RespawnPoint.position;
             BabiesRef.RemoveAt(0);
         }
 
-        Baby.State = BabyMove.state.Action;
+        if (Baby != null)
+            Baby.State = BabyMove.state.Action;
     }
 }

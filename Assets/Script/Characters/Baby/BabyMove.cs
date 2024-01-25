@@ -18,30 +18,29 @@ public class BabyMove : MonoBehaviour
     public state State = state.Stay;
 
     [Header("Components :")]
-    public NavMeshAgent agent;
-    public LineRenderer line;
-    public List<Vector3> point;
+    public NavMeshAgent Agent;
+    public LineRenderer Line;
+    public List<Vector3> Point;
 
     public GameObject ObjectBaby;
 
     [Header("Parent follow :")]
     public Transform Parent;
-    public Vector3 target;
-    public float distance = 5;
-    public bool showPath = true;
+    public Vector3 Target;
+    public float Distance = 5;
+    public bool ShowPath = true;
 
     void Start()
     {
-        agent = GetComponent<NavMeshAgent>();
-        target = transform.position;
+        Target = transform.position;
     }
 
     void Update()
     {
-        if (State == state.Follow && Vector3.Distance(Parent.position, target) > distance)
+        if (State == state.Follow && Vector3.Distance(Parent.position, Target) > Distance)
         {
-            target = Parent.position;
-            agent.SetDestination(target);
+            Target = Parent.position;
+            Agent.SetDestination(Target);
         }
 
         if (State == state.Ride)
@@ -49,7 +48,7 @@ public class BabyMove : MonoBehaviour
             
         }
 
-        if (showPath)
+        if (ShowPath)
         {
             DrawPath();
         }
@@ -61,7 +60,7 @@ public class BabyMove : MonoBehaviour
 
     private void BodyFollow()
     {
-        Vector3 Direction = agent.velocity;
+        Vector3 Direction = Agent.velocity;
 
         if (Direction !=  Vector3.zero)
         {
@@ -76,7 +75,7 @@ public class BabyMove : MonoBehaviour
 
     void FallingRotate()
     {
-        if (agent != null && (agent.velocity.y < -10 || agent.velocity.y > 10))
+        if (Agent != null && (Agent.velocity.y < -10 || Agent.velocity.y > 10))
         {
             var rot = transform.eulerAngles;
             rot.x = 0;
@@ -87,16 +86,16 @@ public class BabyMove : MonoBehaviour
 
     void DrawPath()
     {
-        if (agent.path.corners.Length < 2) return;
+        if (Agent.path.corners.Length < 2) return;
 
         int i = 1;
-        while (i < agent.path.corners.Length)
+        while (i < Agent.path.corners.Length)
         {
-            line.positionCount = agent.path.corners.Length;
-            point = agent.path.corners.ToList();
-            for (int j = 0; j < point.Count; j++)
+            Line.positionCount = Agent.path.corners.Length;
+            Point = Agent.path.corners.ToList();
+            for (int j = 0; j < Point.Count; j++)
             {
-                line.SetPosition(j, point[j]);
+                Line.SetPosition(j, Point[j]);
             }
 
             i++;

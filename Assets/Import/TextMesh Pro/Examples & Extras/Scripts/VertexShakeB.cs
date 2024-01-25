@@ -91,18 +91,18 @@ namespace TMPro.Examples
 
                 int lineCount = textInfo.lineCount;
 
-                // Iterate through each line of the text.
+                // Iterate through each Line of the text.
                 for (int i = 0; i < lineCount; i++)
                 {
 
                     int first = textInfo.lineInfo[i].firstCharacterIndex;
                     int last = textInfo.lineInfo[i].lastCharacterIndex;
 
-                    // Determine the center of each line
+                    // Determine the center of each Line
                     Vector3 centerOfLine = (textInfo.characterInfo[first].bottomLeft + textInfo.characterInfo[last].topRight) / 2;
                     Quaternion rotation = Quaternion.Euler(0, 0, Random.Range(-0.25f, 0.25f));
 
-                    // Iterate through each character of the line.
+                    // Iterate through each character of the Line.
                     for (int j = first; j <= last; j++)
                     {
                         // Skip characters that are not visible and thus have no geometry to manipulate.
@@ -118,7 +118,7 @@ namespace TMPro.Examples
                         // Get the vertices of the mesh used by this text element (character or sprite).
                         Vector3[] sourceVertices = textInfo.meshInfo[materialIndex].vertices;
 
-                        // Determine the center point of each character at the baseline.
+                        // Determine the center Point of each character at the baseline.
                         Vector3 charCenter = (sourceVertices[vertexIndex + 0] + sourceVertices[vertexIndex + 2]) / 2;
 
                         // Need to translate all 4 vertices of each quad to aligned with center of character.
@@ -146,8 +146,8 @@ namespace TMPro.Examples
                         copyOfVertices[materialIndex][vertexIndex + 2] += charCenter;
                         copyOfVertices[materialIndex][vertexIndex + 3] += charCenter;
 
-                        // Need to translate all 4 vertices of each quad to aligned with the center of the line.
-                        // This is needed so the matrix TRS is applied from the center of the line.
+                        // Need to translate all 4 vertices of each quad to aligned with the center of the Line.
+                        // This is needed so the matrix TRS is applied from the center of the Line.
                         copyOfVertices[materialIndex][vertexIndex + 0] -= centerOfLine;
                         copyOfVertices[materialIndex][vertexIndex + 1] -= centerOfLine;
                         copyOfVertices[materialIndex][vertexIndex + 2] -= centerOfLine;
@@ -156,7 +156,7 @@ namespace TMPro.Examples
                         // Setup the matrix rotation.
                         matrix = Matrix4x4.TRS(Vector3.one, rotation, Vector3.one);
 
-                        // Apply the matrix TRS to the individual characters relative to the center of the current line.
+                        // Apply the matrix TRS to the individual characters relative to the center of the current Line.
                         copyOfVertices[materialIndex][vertexIndex + 0] = matrix.MultiplyPoint3x4(copyOfVertices[materialIndex][vertexIndex + 0]);
                         copyOfVertices[materialIndex][vertexIndex + 1] = matrix.MultiplyPoint3x4(copyOfVertices[materialIndex][vertexIndex + 1]);
                         copyOfVertices[materialIndex][vertexIndex + 2] = matrix.MultiplyPoint3x4(copyOfVertices[materialIndex][vertexIndex + 2]);

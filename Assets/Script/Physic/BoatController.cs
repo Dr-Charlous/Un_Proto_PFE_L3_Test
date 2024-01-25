@@ -9,15 +9,15 @@ public class BoatController : MonoBehaviour
     public float Power = 5f;
     public float MaxSpeed = 10f;
 
-    protected Rigidbody rb;
-    protected Quaternion startRot;
-    private CharaMove chara;
+    protected Rigidbody _rb;
+    protected Quaternion _startRot;
+    CharaMove _chara;
 
     private void Start()
     {
-        chara = GetComponent<CharaMove>();
-        startRot = Motor.localRotation;
-        rb = chara._rb;
+        _chara = GetComponent<CharaMove>();
+        _startRot = Motor.localRotation;
+        _rb = _chara._rb;
     }
 
     private void FixedUpdate()
@@ -32,7 +32,7 @@ public class BoatController : MonoBehaviour
         var steer = 0f;
 
         //steer direction
-        steer = chara.Rotation;
+        steer = _chara.Rotation;
 
 
         //calcul verteurs
@@ -40,11 +40,11 @@ public class BoatController : MonoBehaviour
 
         //devant et derriere
         var goalV = new Vector3();
-        if (chara.Position > 0)
+        if (_chara.Position > 0)
         {
             goalV = forward * speed * power * Time.deltaTime;
         }
-        else if (chara.Position < 0)
+        else if (_chara.Position < 0)
         {
             goalV = forward * -speed * power * Time.deltaTime;
         }
@@ -52,10 +52,10 @@ public class BoatController : MonoBehaviour
         Debug.DrawLine(transform.position, transform.position + goalV);
 
 
-        rb.AddForce((goalV - rb.velocity) * rb.mass * Time.fixedDeltaTime);
+        _rb.AddForce((goalV - _rb.velocity) * _rb.mass * Time.fixedDeltaTime);
 
         //force rotation
-        rb.AddForceAtPosition(-steer * transform.right * steering / 100f, Motor.position);
+        _rb.AddForceAtPosition(-steer * transform.right * steering / 100f, Motor.position);
 
     }
 }
