@@ -97,7 +97,15 @@ public class CharaMove : MonoBehaviour
         _BabyManager.GetBaby();
     }
 
+    private void Awake()
+    {
+        _controls = new Controls();
 
+        _rb = GetComponent<Rigidbody>();
+        _BoatController = GetComponent<BoatController>();
+        _Gravity = GetComponent<Gravity>();
+        _BabyManager = GetComponent<BabyManager>();
+    }
     #endregion
 
     void Update()
