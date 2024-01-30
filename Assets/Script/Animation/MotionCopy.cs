@@ -15,9 +15,19 @@ public class MotionCopy : MonoBehaviour
 
     private void Update()
     {
-        if (isZInvert)
-            joint.targetRotation = Quaternion.Euler(new Vector3(targetLimb.localRotation.eulerAngles.x, targetLimb.localRotation.eulerAngles.y, targetLimb.localRotation.eulerAngles.z + 180));
+        if (joint == null)
+        {
+            if (isZInvert)
+                transform.localRotation = Quaternion.Euler(new Vector3(targetLimb.localRotation.eulerAngles.x, targetLimb.localRotation.eulerAngles.y, targetLimb.localRotation.eulerAngles.z + 180));
+            else
+                transform.localRotation = Quaternion.Euler(new Vector3(targetLimb.localRotation.eulerAngles.x, targetLimb.localRotation.eulerAngles.y, targetLimb.localRotation.eulerAngles.z));
+        }
         else
-            joint.targetRotation = Quaternion.Euler(new Vector3(targetLimb.localRotation.eulerAngles.x, targetLimb.localRotation.eulerAngles.y, targetLimb.localRotation.eulerAngles.z));
+        {
+            if (isZInvert)
+                joint.targetRotation = Quaternion.Euler(new Vector3(targetLimb.localRotation.eulerAngles.x, targetLimb.localRotation.eulerAngles.y, targetLimb.localRotation.eulerAngles.z + 180));
+            else
+                joint.targetRotation = Quaternion.Euler(new Vector3(targetLimb.localRotation.eulerAngles.x, targetLimb.localRotation.eulerAngles.y, targetLimb.localRotation.eulerAngles.z));
+        }
     }
 }
