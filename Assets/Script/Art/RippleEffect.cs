@@ -7,6 +7,8 @@ public class RippleEffect : MonoBehaviour
 {
     public int TextureSize = 512;
     public float Speed = 1f;
+    public float Min = 0f;
+    public float Max = 1f;
     public RenderTexture ObjectsRT;
     private RenderTexture CurrRT, PrevRT, TempRT;
     public Shader RippleShader, AddShader;
@@ -37,6 +39,8 @@ public class RippleEffect : MonoBehaviour
         RippleMat.SetTexture("_PrevRT", PrevRT);
         RippleMat.SetTexture("_CurrentRT", CurrRT);
         RippleMat.SetFloat("_Speed", Speed);
+        RippleMat.SetFloat("_Min", Min);
+        RippleMat.SetFloat("_Max", Max);
         Graphics.Blit(null, TempRT, RippleMat);
         Graphics.Blit(TempRT, PrevRT);
 

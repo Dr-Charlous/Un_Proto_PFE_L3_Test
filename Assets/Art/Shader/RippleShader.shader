@@ -33,6 +33,8 @@ Shader "Unlit/RippleShader"
             sampler2D _CurrentRT;
             float4 _CurrentRT_TexelSize;
             float _Speed;
+            float _Min;
+            float _Max;
 
             v2f vert (appdata v)
             {
@@ -55,7 +57,8 @@ Shader "Unlit/RippleShader"
 
                 float p11 = tex2D(_PrevRT, uv).x;
 
-                float d = (p10 + p01 + p21 + p12)/2 - p11;
+                //float p = smoothstep(_Min, _Max,;
+                float d = (p10 + p01 + p21 + p12) / 2 - p11;
                 d *= 0.99f;
                 return d;
             }
