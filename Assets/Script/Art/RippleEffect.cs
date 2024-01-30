@@ -6,6 +6,7 @@ using UnityEngine.Rendering;
 public class RippleEffect : MonoBehaviour
 {
     public int TextureSize = 512;
+    public float Speed = 1f;
     public RenderTexture ObjectsRT;
     private RenderTexture CurrRT, PrevRT, TempRT;
     public Shader RippleShader, AddShader;
@@ -35,6 +36,7 @@ public class RippleEffect : MonoBehaviour
 
         RippleMat.SetTexture("_PrevRT", PrevRT);
         RippleMat.SetTexture("_CurrentRT", CurrRT);
+        RippleMat.SetFloat("_Speed", Speed);
         Graphics.Blit(null, TempRT, RippleMat);
         Graphics.Blit(TempRT, PrevRT);
 
