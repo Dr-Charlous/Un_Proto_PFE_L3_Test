@@ -5,7 +5,8 @@ using UnityEngine;
 public class MotionCopy : MonoBehaviour
 {
     public Transform targetLimb;
-    ConfigurableJoint joint;
+    public ConfigurableJoint joint;
+    [SerializeField] bool isZInvert = false;
 
     private void Start()
     {
@@ -14,6 +15,9 @@ public class MotionCopy : MonoBehaviour
 
     private void Update()
     {
-        joint.targetRotation = targetLimb.rotation;
+        if (isZInvert)
+            joint.targetRotation = Quaternion.Euler(new Vector3(targetLimb.localRotation.eulerAngles.x, targetLimb.localRotation.eulerAngles.y, targetLimb.localRotation.eulerAngles.z + 180));
+        else
+            joint.targetRotation = Quaternion.Euler(new Vector3(targetLimb.localRotation.eulerAngles.x, targetLimb.localRotation.eulerAngles.y, targetLimb.localRotation.eulerAngles.z));
     }
 }
