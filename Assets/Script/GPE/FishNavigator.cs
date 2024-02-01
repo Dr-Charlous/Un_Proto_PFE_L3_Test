@@ -5,6 +5,8 @@ using UnityEngine;
 public class FishNavigator : MonoBehaviour
 {
     [SerializeField] Vector3 Direction;
+    [SerializeField] Rigidbody Rigid;
+    [SerializeField] float Speed;
 
     private void OnTriggerStay(Collider other)
     {
@@ -13,7 +15,8 @@ public class FishNavigator : MonoBehaviour
             Direction = other.gameObject.transform.position - transform.position;
             Direction = new Vector3(Direction.x, 0, Direction.z);
 
-            transform.Translate(-Direction * Time.deltaTime);
+            Rigid.rotation = Quaternion.LookRotation(-Direction);
+            Rigid.AddForce(transform.forward * Speed * Time.deltaTime, ForceMode.Force);
         }
     }
 }
