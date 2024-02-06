@@ -1,21 +1,19 @@
 using DG.Tweening;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.AI;
 
-//[RequireComponent(typeof(BoatController))]
-public class BabyMove : MonoBehaviour
+public class StateBabyController : MonoBehaviour
 {
-    public enum state
-    {
-        Stay,
-        Follow,
-        Action,
-        Ride
-    }
-
-    public state State = state.Stay;
+    IState currentState;
+    public StateBabyStay StateStay = new StateBabyStay();
+    public StateBabyFollow StateFollow = new StateBabyFollow();
+    public StateBabyRide StateRide = new StateBabyRide();
+    public StateBabyAction StateAction = new StateBabyAction();
+    public StateBabySelect StateSelect = new StateBabySelect();
 
     [Header("Components :")]
     public NavMeshAgent Agent;
@@ -31,37 +29,17 @@ public class BabyMove : MonoBehaviour
     public float Distance = 5;
     public bool ShowPath = true;
 
-    void Start()
+    private void Start()
     {
+        ChangeState(StateFollow);
         Target = transform.position;
     }
 
-    void Update()
+    private void Update()
     {
-        if (Nest.isCreated && Nest.isFeed)
+        if (currentState != null)
         {
-            if (State == state.Follow && Vector3.Distance(Parent.position, Target) > Distance)
-            {
-                Target = Parent.position;
-                Agent.SetDestination(Target);
-            }
-        }
-        else
-        {
-            if (State != state.Follow)
-                State = state.Follow;
-
-            if (State == state.Follow && Vector3.Distance(Parent.position, Target) > Distance)
-            {
-                Target = Nest.transform.position;
-                Agent.SetDestination(Target);
-            }
-        }
-
-
-        if (State == state.Ride)
-        {
-
+            currentState.UpdateState(this);
         }
 
         if (ShowPath)
@@ -72,6 +50,16 @@ public class BabyMove : MonoBehaviour
         BodyFollow();
 
         FallingRotate();
+    }
+
+    public void ChangeState(IState newState)
+    {
+        if (currentState != null)
+        {
+            currentState.OnExit(this);
+        }
+        currentState = newState;
+        currentState.OnEnter(this);
     }
 
     private void BodyFollow()
@@ -117,4 +105,11 @@ public class BabyMove : MonoBehaviour
             i++;
         }
     }
+}
+
+public interface IState
+{
+    public void OnEnter(StateBabyController controller);
+    public void UpdateState(StateBabyController controller);
+    public void OnExit(StateBabyController controller);
 }

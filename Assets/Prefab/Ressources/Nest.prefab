@@ -87,13 +87,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _material: {fileID: 2100000, guid: 208e2f6d5978d4946afbc58cbd12f3bc, type: 2}
-  _colorInitial: {r: 0, g: 0, b: 0, a: 1}
-  _colorValid: {r: 1, g: 1, b: 1, a: 1}
+  _colorInitial: {r: 1, g: 0.58513975, b: 0, a: 1}
+  _colorValid: {r: 0.087417364, g: 1, b: 0, a: 1}
   Items:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
   ItemsVerification: 000000
+  isCreated: 0
+  isFeed: 0
+  Fish: {fileID: 0}
 --- !u!54 &8962664812280116586
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -182,7 +185,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 6e4c3ff7fd642e346a6fd9d73f4dc68a, type: 2}
+  - {fileID: 2100000, guid: a7b6f2b1e90cdef459fae74b909c6f5c, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

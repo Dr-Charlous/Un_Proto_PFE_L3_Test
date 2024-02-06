@@ -9,6 +9,9 @@ public class NestCreation : MonoBehaviour
     [SerializeField] Color _colorValid;
     public GameObject[] Items;
     public bool[] ItemsVerification;
+    public bool isCreated = false;
+    public bool isFeed = false;
+    public GameObject Fish;
 
     private void Start()
     {
@@ -19,6 +22,12 @@ public class NestCreation : MonoBehaviour
     {
         VerificationItem(other, true);
         VerificationArray();
+
+        if (other.gameObject == Fish && isCreated == true)
+        {
+            isFeed = true;
+            Fish.SetActive(false);
+        }
     }
 
     private void OnTriggerExit(Collider other)
@@ -58,6 +67,8 @@ public class NestCreation : MonoBehaviour
             {
                 Items[i].SetActive(false);
             }
+
+            isCreated = true;
         }
     }
 }
