@@ -9,11 +9,11 @@ public class BabyManager : MonoBehaviour
     [SerializeField] List<GameObject> BabiesView;
     [SerializeField] GameObject BabyPrefab;
     [SerializeField] Transform RespawnPoint;
-    [SerializeField] BabyMove Baby;
+    [SerializeField] StateBabyController Baby;
 
     void OnTriggerStay(Collider other)
     {
-        var otherBaby = other.GetComponent<BabyMove>();
+        var otherBaby = other.GetComponent<StateBabyController>();
 
         if ( otherBaby != null)
         {
@@ -33,7 +33,7 @@ public class BabyManager : MonoBehaviour
     {
         if (Baby != null)
         {
-            Baby.State = BabyMove.state.Ride;
+            Baby.ChangeState(Baby.StateRide);
 
             BabiesRef.Add(Baby.transform.parent.gameObject);
             Baby.transform.parent.gameObject.SetActive(false);
@@ -75,18 +75,18 @@ public class BabyManager : MonoBehaviour
     public void BabyStay()
     {
         if (Baby != null)
-            Baby.State = BabyMove.state.Stay;
+            Baby.ChangeState(Baby.StateStay);
     }
 
     public void BabyFollow()
     {
         if (Baby != null)
-            Baby.State = BabyMove.state.Follow;
+            Baby.ChangeState(Baby.StateFollow);
     }
 
     public void BabyAction()
     {
         if (Baby != null)
-            Baby.State = BabyMove.state.Action;
+            Baby.ChangeState(Baby.StateAction);
     }
 }
