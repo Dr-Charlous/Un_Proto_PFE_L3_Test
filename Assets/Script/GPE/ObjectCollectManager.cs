@@ -7,6 +7,7 @@ public class ObjectCollectManager : MonoBehaviour
     [SerializeField] Collider collider;
     [SerializeField] GameObject objectGetModel;
     [SerializeField] GameObject objectGet;
+    [SerializeField] bool isValid = false;
 
     private void Start()
     {
@@ -19,7 +20,10 @@ public class ObjectCollectManager : MonoBehaviour
         {
             if (collider != null)
             {
-                Grab(collider);
+                if (!grab)
+                    Grab(collider);
+                else if (grab)
+                    Release();
             }
 
             chara.Collected = false;
@@ -31,13 +35,29 @@ public class ObjectCollectManager : MonoBehaviour
         if (collider.GetComponent<ObjectCollect>() != null)
         {
             this.collider = collider;
+            isValid = true;
         }
+        
+        if (isValid == false)
+        {
+            Release();
+            this.collider = null;
+        }
+    }
 
+    private void OnTriggerExit(Collider collider)
+    {
+        if (collider.GetComponent<ObjectCollect>() != null)
+        {
+            Release();
+            this.collider = null;
+            isValid = false;
+        }
     }
 
     void Grab(Collider collider)
     {
-        if (!grab && collider.gameObject != objectGet && collider.GetComponent<ObjectCollect>() != null)
+        if (collider.gameObject != objectGet && collider.GetComponent<ObjectCollect>() != null)
         {
             objectGetModel = collider.gameObject;
             objectGetModel.SetActive(false);
@@ -47,7 +67,11 @@ public class ObjectCollectManager : MonoBehaviour
             objectGet.SetActive(true);
             grab = true;
         }
-        else if (chara.Collected && grab)
+    }
+
+    void Release()
+    {
+        if (chara.Collected)
         {
             objectGetModel.transform.position = objectGet.transform.position;
             objectGetModel.transform.rotation = objectGet.transform.rotation;
