@@ -57,13 +57,16 @@ public class BabyManager : MonoBehaviour
             BabiesRef[0].GetComponentInChildren<NavMeshAgent>().destination = RespawnPoint.position;
 
             BabiesRef[0].GetComponentInChildren<NavMeshAgent>().transform.localPosition = Vector3.zero;
+            
             BabiesRef[0].GetComponentInChildren<Gravity>().transform.localPosition = Vector3.zero;
+            BabiesRef[0].GetComponentInChildren<StateBabyController>().ChangeState(BabiesRef[0].GetComponentInChildren<StateBabyController>().StateAction);
 
             BabiesRef[0].transform.position = RespawnPoint.position;
             BabiesRef.RemoveAt(0);
 
             Destroy(BabiesView[0]);
             BabiesView.RemoveAt(0);
+
 
             for (int i = 0; i < BabiesView.Count; i++)
             {
