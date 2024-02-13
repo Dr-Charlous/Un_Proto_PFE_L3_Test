@@ -8,7 +8,7 @@ using UnityEngine.AI;
 
 public class StateBabyController : MonoBehaviour
 {
-    IState currentState;
+    public IState currentState;
     public StateBabyStay StateStay = new StateBabyStay();
     public StateBabyFollow StateFollow = new StateBabyFollow();
     public StateBabyRide StateRide = new StateBabyRide();

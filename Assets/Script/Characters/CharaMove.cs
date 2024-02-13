@@ -21,6 +21,9 @@ public class CharaMove : MonoBehaviour
     public GameObject Floaters;
     public GameObject ParticuleSystem;
     public Rigidbody _rb;
+    public int Babies = 0;
+    [Range(0, 4)]
+    public int BabiesMax = 4;
 
     [Header("Dash")]
     public bool IsDashing = false;
@@ -40,7 +43,8 @@ public class CharaMove : MonoBehaviour
         _controls.Diplocaulus.Move.performed += GetMoveInputs;
         _controls.Diplocaulus.Collect.started += GetCollectInputs;
         _controls.Diplocaulus.Dash.started += GetDashInput;
-        _controls.Diplocaulus.BabyStay.started += GetBabyStayInput;
+        _controls.Diplocaulus.KidsGamePad.performed += GetKidsInputGamePad;
+        _controls.Diplocaulus.KidsKeyBoard.started += GetKidsInputMouse;
         _controls.Diplocaulus.BabyFollow.started += GetBabyFollowInput;
         _controls.Diplocaulus.BabyAction.started += GetBabyActionInput;
         _controls.Diplocaulus.BabyGet.started += GetBabyGetInput;
@@ -52,7 +56,8 @@ public class CharaMove : MonoBehaviour
         _controls.Diplocaulus.Move.performed -= GetMoveInputs;
         _controls.Diplocaulus.Collect.started -= GetCollectInputs;
         _controls.Diplocaulus.Dash.started -= GetDashInput;
-        _controls.Diplocaulus.BabyStay.started -= GetBabyStayInput;
+        _controls.Diplocaulus.KidsGamePad.performed -= GetKidsInputGamePad;
+        _controls.Diplocaulus.KidsKeyBoard.started -= GetKidsInputMouse;
         _controls.Diplocaulus.BabyFollow.started -= GetBabyFollowInput;
         _controls.Diplocaulus.BabyAction.started -= GetBabyActionInput;
         _controls.Diplocaulus.BabyGet.started -= GetBabyGetInput;
@@ -77,9 +82,36 @@ public class CharaMove : MonoBehaviour
         }
     }
 
-    void GetBabyStayInput(InputAction.CallbackContext baby)
+    private void GetKidsInputMouse(InputAction.CallbackContext input)
     {
-        _BabyManager.BabyStay();
+        if (int.Parse(input.action.ReadValueAsObject().ToString()) > 0 && Babies < BabiesMax)
+        {
+            Babies++;
+        }
+        else if (int.Parse(input.action.ReadValueAsObject().ToString()) < 0 && Babies > 1)
+        {
+            Babies--;
+        }
+    }
+
+    private void GetKidsInputGamePad(InputAction.CallbackContext input)
+    {
+        if (input.action.ReadValue<Vector2>().x == 1)
+        {
+            Babies = 2;
+        }
+        else if (input.action.ReadValue<Vector2>().x == -1)
+        {
+            Babies = 4;
+        }
+        else if(input.action.ReadValue<Vector2>().y == 1)
+        {
+            Babies = 3;
+        }
+        else if (input.action.ReadValue<Vector2>().y == -1)
+        {
+            Babies = 1;
+        }
     }
 
     void GetBabyFollowInput(InputAction.CallbackContext baby)
@@ -94,7 +126,7 @@ public class CharaMove : MonoBehaviour
 
     void GetBabyGetInput(InputAction.CallbackContext baby)
     {
-        _BabyManager.GetBaby();
+        _BabyManager.GetBaby(1);
     }
 
     private void Awake()

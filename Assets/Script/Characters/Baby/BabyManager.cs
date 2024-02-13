@@ -15,7 +15,7 @@ public class BabyManager : MonoBehaviour
     {
         var otherBaby = other.GetComponent<StateBabyController>();
 
-        if ( otherBaby != null)
+        if (otherBaby != null)
         {
             Baby = otherBaby;
         }
@@ -29,9 +29,9 @@ public class BabyManager : MonoBehaviour
         }
     }
 
-    public void GetBaby()
+    public void GetBaby(int babyLimit)
     {
-        if (Baby != null)
+        if (Baby != null && BabiesRef.Count < babyLimit)
         {
             Baby.ChangeState(Baby.StateRide);
 
@@ -48,16 +48,16 @@ public class BabyManager : MonoBehaviour
 
             for (int i = 0; i < BabiesView.Count; i++)
             {
-                BabiesView[i].transform.localPosition = Vector3.up * (i/10f - transform.position.y);
+                BabiesView[i].transform.localPosition = Vector3.up * (i / 10f - transform.position.y);
             }
-        } 
+        }
         else if (BabiesRef.Count > 0 && Baby == null)
         {
             BabiesRef[0].SetActive(true);
             BabiesRef[0].GetComponentInChildren<NavMeshAgent>().destination = RespawnPoint.position;
 
             BabiesRef[0].GetComponentInChildren<NavMeshAgent>().transform.localPosition = Vector3.zero;
-            
+
             BabiesRef[0].GetComponentInChildren<Gravity>().transform.localPosition = Vector3.zero;
             BabiesRef[0].GetComponentInChildren<StateBabyController>().ChangeState(BabiesRef[0].GetComponentInChildren<StateBabyController>().StateAction);
 
@@ -75,16 +75,15 @@ public class BabyManager : MonoBehaviour
         }
     }
 
-    public void BabyStay()
-    {
-        if (Baby != null)
-            Baby.ChangeState(Baby.StateStay);
-    }
-
     public void BabyFollow()
     {
         if (Baby != null)
-            Baby.ChangeState(Baby.StateFollow);
+        {
+            if (Baby.currentState == Baby.StateFollow)
+                Baby.ChangeState(Baby.StateStay);
+            else
+                Baby.ChangeState(Baby.StateFollow);
+        }
     }
 
     public void BabyAction()
