@@ -21,6 +21,7 @@ public class CharaMove : MonoBehaviour
     public GameObject Floaters;
     public GameObject ParticuleSystem;
     public Rigidbody _rb;
+    public GameObject UI;
 
 
     [Header("Babies :")]
@@ -51,6 +52,7 @@ public class CharaMove : MonoBehaviour
         _controls.Diplocaulus.BabyFollow.started += GetBabyFollowInput;
         _controls.Diplocaulus.BabyAction.started += GetBabyActionInput;
         _controls.Diplocaulus.BabyGet.started += GetBabyGetInput;
+        _controls.Diplocaulus.Quest.started += GetUIInput;
     }
 
     private void OnDisable()
@@ -64,6 +66,7 @@ public class CharaMove : MonoBehaviour
         _controls.Diplocaulus.BabyFollow.started -= GetBabyFollowInput;
         _controls.Diplocaulus.BabyAction.started -= GetBabyActionInput;
         _controls.Diplocaulus.BabyGet.started -= GetBabyGetInput;
+        _controls.Diplocaulus.Quest.started -= GetUIInput;
     }
 
     void GetMoveInputs(InputAction.CallbackContext move)
@@ -132,6 +135,14 @@ public class CharaMove : MonoBehaviour
         _BabyManager.GetBaby(BabieNumberOnBack);
     }
 
+    private void GetUIInput(InputAction.CallbackContext ui)
+    {
+        if (UI.activeInHierarchy)
+            UI.SetActive(false);
+        else 
+            UI.SetActive(true);
+    }
+
     private void Awake()
     {
         _controls = new Controls();
@@ -140,6 +151,8 @@ public class CharaMove : MonoBehaviour
         _BoatController = GetComponent<BoatController>();
         _Gravity = GetComponent<Gravity>();
         _BabyManager = GetComponent<BabyManager>();
+
+        UI.SetActive(false);
     }
     #endregion
 
