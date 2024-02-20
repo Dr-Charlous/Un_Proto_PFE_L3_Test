@@ -12,6 +12,7 @@ public class StateBabyStay : IState
     public void UpdateState(StateBabyController controller)
     {
         Debug.Log("Stay");
+        controller.Agent.SetDestination(controller.transform.position);
     }
 
     public void OnExit(StateBabyController controller)

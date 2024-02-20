@@ -21,9 +21,12 @@ public class CharaMove : MonoBehaviour
     public GameObject Floaters;
     public GameObject ParticuleSystem;
     public Rigidbody _rb;
-    public int Babies = 0;
-    [Range(0, 4)]
-    public int BabiesMax = 4;
+
+
+    [Header("Babies :")]
+    public int BabieNumber = 0;
+    public int BabieNumberOnBack = 1;
+    public GameObject[] Babies;
 
     [Header("Dash")]
     public bool IsDashing = false;
@@ -84,33 +87,33 @@ public class CharaMove : MonoBehaviour
 
     private void GetKidsInputMouse(InputAction.CallbackContext input)
     {
-        if (int.Parse(input.action.ReadValueAsObject().ToString()) > 0 && Babies < BabiesMax)
+        if (int.Parse(input.action.ReadValueAsObject().ToString()) > 0 && BabieNumber < Babies.Length)
         {
-            Babies++;
+            BabieNumber++;
         }
-        else if (int.Parse(input.action.ReadValueAsObject().ToString()) < 0 && Babies > 1)
+        else if (int.Parse(input.action.ReadValueAsObject().ToString()) < 0 && BabieNumber > 1)
         {
-            Babies--;
+            BabieNumber--;
         }
     }
 
     private void GetKidsInputGamePad(InputAction.CallbackContext input)
     {
-        if (input.action.ReadValue<Vector2>().x == 1)
+        if (input.action.ReadValue<Vector2>().x == 1 && Babies.Length > 1)
         {
-            Babies = 2;
+            BabieNumber = 1;
         }
-        else if (input.action.ReadValue<Vector2>().x == -1)
+        else if (input.action.ReadValue<Vector2>().x == -1 && Babies.Length > 3)
         {
-            Babies = 4;
+            BabieNumber = 3;
         }
-        else if(input.action.ReadValue<Vector2>().y == 1)
+        else if(input.action.ReadValue<Vector2>().y == 1 && Babies.Length > 2)
         {
-            Babies = 3;
+            BabieNumber = 2;
         }
         else if (input.action.ReadValue<Vector2>().y == -1)
         {
-            Babies = 1;
+            BabieNumber = 0;
         }
     }
 
@@ -126,7 +129,7 @@ public class CharaMove : MonoBehaviour
 
     void GetBabyGetInput(InputAction.CallbackContext baby)
     {
-        _BabyManager.GetBaby(1);
+        _BabyManager.GetBaby(BabieNumberOnBack);
     }
 
     private void Awake()

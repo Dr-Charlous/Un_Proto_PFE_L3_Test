@@ -9,11 +9,6 @@ public class ObjectCollectManager : MonoBehaviour
     [SerializeField] GameObject objectGet;
     [SerializeField] bool isValid = false;
 
-    private void Start()
-    {
-        chara = GetComponentInParent<CharaMove>();
-    }
-
     private void Update()
     {
         if (chara.Collected)

@@ -5,79 +5,64 @@ using UnityEngine.AI;
 
 public class BabyManager : MonoBehaviour
 {
-    [SerializeField] List<GameObject> BabiesRef;
-    [SerializeField] List<GameObject> BabiesView;
-    [SerializeField] GameObject BabyPrefab;
-    [SerializeField] Transform RespawnPoint;
-    [SerializeField] StateBabyController Baby;
-
-    void OnTriggerStay(Collider other)
-    {
-        var otherBaby = other.GetComponent<StateBabyController>();
-
-        if (otherBaby != null)
-        {
-            Baby = otherBaby;
-        }
-    }
-
-    private void OnTriggerExit(Collider other)
-    {
-        if (Baby != null)
-        {
-            Baby = null;
-        }
-    }
+    [SerializeField] List<GameObject> babiesRef;
+    [SerializeField] List<GameObject> babiesView;
+    [SerializeField] GameObject babyPrefab;
+    [SerializeField] Transform respawnPoint;
+    public float DistanceFromBaby = 1.5f;
+    public CharaMove Chara;
 
     public void GetBaby(int babyLimit)
     {
-        if (Baby != null && BabiesRef.Count < babyLimit)
+        var Baby = Chara.Babies[Chara.BabieNumber].GetComponentInChildren<StateBabyController>();
+
+        if (Baby.currentState != Baby.StateRide && babiesRef.Count < babyLimit && Vector3.Distance(Baby.transform.position, transform.position) <= DistanceFromBaby)
         {
             Baby.ChangeState(Baby.StateRide);
 
-            BabiesRef.Add(Baby.transform.parent.gameObject);
+            babiesRef.Add(Baby.transform.parent.gameObject);
             Baby.transform.parent.gameObject.SetActive(false);
 
-            var baby = Instantiate(BabyPrefab, transform);
-            BabiesView.Add(baby);
+            var baby = Instantiate(babyPrefab, transform);
+            babiesView.Add(baby);
 
             baby.transform.rotation = Baby.transform.rotation;
             baby.transform.localScale = new Vector3(0.5f, 0.5f, 0.5f);
 
-            Baby = null;
-
-            for (int i = 0; i < BabiesView.Count; i++)
+            for (int i = 0; i < babiesView.Count; i++)
             {
-                BabiesView[i].transform.localPosition = Vector3.up * (i / 10f - transform.position.y);
+                babiesView[i].transform.localPosition = Vector3.up * (i / 10f - transform.position.y);
             }
         }
-        else if (BabiesRef.Count > 0 && Baby == null)
+        else if (babiesRef.Count > 0 && Baby.currentState == Baby.StateRide)
         {
-            BabiesRef[0].SetActive(true);
-            BabiesRef[0].GetComponentInChildren<NavMeshAgent>().destination = RespawnPoint.position;
+            babiesRef[0].SetActive(true);
+            babiesRef[0].GetComponentInChildren<NavMeshAgent>().destination = respawnPoint.position;
 
-            BabiesRef[0].GetComponentInChildren<NavMeshAgent>().transform.localPosition = Vector3.zero;
+            babiesRef[0].GetComponentInChildren<NavMeshAgent>().transform.localPosition = Vector3.zero;
 
-            BabiesRef[0].GetComponentInChildren<Gravity>().transform.localPosition = Vector3.zero;
-            BabiesRef[0].GetComponentInChildren<StateBabyController>().ChangeState(BabiesRef[0].GetComponentInChildren<StateBabyController>().StateAction);
+            babiesRef[0].GetComponentInChildren<Gravity>().transform.localPosition = Vector3.zero;
+            babiesRef[0].GetComponentInChildren<StateBabyController>().ChangeState(babiesRef[0].GetComponentInChildren<StateBabyController>().StateAction);
 
-            BabiesRef[0].transform.position = RespawnPoint.position;
-            BabiesRef.RemoveAt(0);
+            babiesRef[0].transform.position = respawnPoint.position;
+            babiesRef.RemoveAt(0);
 
-            Destroy(BabiesView[0]);
-            BabiesView.RemoveAt(0);
+            Destroy(babiesView[0]);
+            babiesView.RemoveAt(0);
 
 
-            for (int i = 0; i < BabiesView.Count; i++)
+            for (int i = 0; i < babiesView.Count; i++)
             {
-                BabiesView[i].transform.localPosition = Vector3.up * (i / 10f - transform.position.y);
+                babiesView[i].transform.localPosition = Vector3.up * (i / 10f - transform.position.y);
             }
         }
     }
 
     public void BabyFollow()
     {
-        if (Baby != null)
+        var Baby = Chara.Babies[Chara.BabieNumber].GetComponentInChildren<StateBabyController>();
+
+        if (Baby.currentState != Baby.StateRide)
         {
             if (Baby.currentState == Baby.StateFollow)
                 Baby.ChangeState(Baby.StateStay);
@@ -88,7 +73,9 @@ public class BabyManager : MonoBehaviour
 
     public void BabyAction()
     {
-        if (Baby != null)
+        var Baby = Chara.Babies[Chara.BabieNumber].GetComponentInChildren<StateBabyController>();
+
+        if (Baby.currentState != Baby.StateRide)
             Baby.ChangeState(Baby.StateAction);
     }
 }

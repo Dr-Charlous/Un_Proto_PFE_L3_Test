@@ -6229,8 +6229,12 @@ MonoBehaviour:
   Floaters: {fileID: 7353692492756425483}
   ParticuleSystem: {fileID: 2068147541598324142}
   _rb: {fileID: 6626216848454042332}
-  Babies: 3
-  BabiesMax: 4
+  BabieNumber: 0
+  BabieNumberOnBack: 1
+  Babies:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
   IsDashing: 0
   DashForce: 1
   DashCooldown: 1
@@ -6285,11 +6289,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6f1a7cedbe3a3254999806fa8e331d19, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  BabiesRef: []
-  BabiesView: []
-  BabyPrefab: {fileID: 919132149155446097, guid: 3c0dd108335361645a9cf44efdb9403a, type: 3}
-  RespawnPoint: {fileID: 2760491969323922473}
-  Baby: {fileID: 0}
+  babiesRef: []
+  babiesView: []
+  babyPrefab: {fileID: 919132149155446097, guid: afcc0728fdfa1bf45abfa8eeae951905, type: 3}
+  respawnPoint: {fileID: 2760491969323922473}
+  DistanceFromBaby: 1.5
+  Chara: {fileID: 6699909869382925849}
 --- !u!1 &8883696035002327006
 GameObject:
   m_ObjectHideFlags: 0
