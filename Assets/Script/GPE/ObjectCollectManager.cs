@@ -36,7 +36,6 @@ public class ObjectCollectManager : MonoBehaviour
         if (isValid == false)
         {
             Release();
-            this.collider = null;
         }
     }
 
@@ -45,8 +44,6 @@ public class ObjectCollectManager : MonoBehaviour
         if (collider.GetComponent<ObjectCollect>() != null)
         {
             Release();
-            this.collider = null;
-            isValid = false;
         }
     }
 
@@ -64,7 +61,7 @@ public class ObjectCollectManager : MonoBehaviour
         }
     }
 
-    void Release()
+    public void Release()
     {
         if (chara.Collected)
         {
@@ -76,6 +73,8 @@ public class ObjectCollectManager : MonoBehaviour
 
             Destroy(objectGet);
             grab = false;
+            collider = null;
+            isValid = false;
         }
     }
 }

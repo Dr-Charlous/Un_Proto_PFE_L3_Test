@@ -7374,7 +7374,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7735877318323042571}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -0.217}
+  m_LocalPosition: {x: 0, y: 0, z: 0.3}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -7522,7 +7522,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2140746911345890558}
-  - component: {fileID: 6064672585018898978}
+  - component: {fileID: 4265605625403080065}
   - component: {fileID: 6626216848454042332}
   - component: {fileID: 291853611338480430}
   - component: {fileID: 5724808921936430591}
@@ -7560,8 +7560,8 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!65 &6064672585018898978
-BoxCollider:
+--- !u!136 &4265605625403080065
+CapsuleCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -7578,9 +7578,11 @@ BoxCollider:
   m_IsTrigger: 0
   m_ProvidesContacts: 0
   m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 0.35, y: 0.18, z: 0.85}
-  m_Center: {x: 0, y: 0.025, z: 0}
+  serializedVersion: 2
+  m_Radius: 0.2
+  m_Height: 1.2
+  m_Direction: 2
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!54 &6626216848454042332
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -7709,7 +7711,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Motor: {fileID: 561789950328062133}
-  SteerPower: 5
+  SteerPower: -5
   Power: 10
   MaxSpeed: 1000
 --- !u!136 &2397897305387199981
