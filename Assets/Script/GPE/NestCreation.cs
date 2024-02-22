@@ -12,6 +12,7 @@ public class NestCreation : MonoBehaviour
     public bool isCreated = false;
     public bool isFeed = false;
     public GameObject Fish;
+    public ObjectCollectManager Collect;
 
     private void Start()
     {
@@ -68,6 +69,7 @@ public class NestCreation : MonoBehaviour
                 Items[i].SetActive(false);
             }
 
+            Collect.Collider = null;
             isCreated = true;
         }
     }

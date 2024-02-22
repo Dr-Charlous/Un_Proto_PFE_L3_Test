@@ -4,7 +4,7 @@ public class ObjectCollectManager : MonoBehaviour
 {
     [SerializeField] bool grab;
     [SerializeField] CharaMove chara;
-    [SerializeField] Collider collider;
+    public Collider Collider;
     [SerializeField] GameObject objectGetModel;
     [SerializeField] GameObject objectGet;
     [SerializeField] bool isValid = false;
@@ -13,10 +13,10 @@ public class ObjectCollectManager : MonoBehaviour
     {
         if (chara.Collected)
         {
-            if (collider != null)
+            if (Collider != null)
             {
                 if (!grab)
-                    Grab(collider);
+                    Grab(Collider);
                 else if (grab)
                     Release();
             }
@@ -29,13 +29,8 @@ public class ObjectCollectManager : MonoBehaviour
     {
         if (collider.GetComponent<ObjectCollect>() != null)
         {
-            this.collider = collider;
+            this.Collider = collider;
             isValid = true;
-        }
-        
-        if (isValid == false)
-        {
-            Release();
         }
     }
 
@@ -44,6 +39,8 @@ public class ObjectCollectManager : MonoBehaviour
         if (collider.GetComponent<ObjectCollect>() != null)
         {
             Release();
+            this.Collider = null;
+            isValid = false;
         }
     }
 
@@ -61,7 +58,7 @@ public class ObjectCollectManager : MonoBehaviour
         }
     }
 
-    public void Release()
+    void Release()
     {
         if (chara.Collected)
         {
@@ -73,8 +70,6 @@ public class ObjectCollectManager : MonoBehaviour
 
             Destroy(objectGet);
             grab = false;
-            collider = null;
-            isValid = false;
         }
     }
 }

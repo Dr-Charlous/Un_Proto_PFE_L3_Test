@@ -1294,6 +1294,17 @@ Transform:
   m_Father: {fileID: 1277964765}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &338962149 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5467908056113217841, guid: fa9729e406818e448bec2c61a9a0b0fd, type: 3}
+  m_PrefabInstance: {fileID: 7837234544312767916}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 17a41103193f29f44ba08c72c2e541d5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &378957133
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4894,7 +4905,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1622981940}
-  m_LocalRotation: {x: -0.000000012996612, y: 0.8999012, z: -0.4360939, w: -0.000000026819148}
+  m_LocalRotation: {x: -5.47618e-16, y: 0.8999012, z: -0.43609387, w: -1.2429233e-15}
   m_LocalPosition: {x: -3.63, y: 4.3, z: 8.91}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -11166,11 +11177,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3626532298474892044, guid: fa9729e406818e448bec2c61a9a0b0fd, type: 3}
       propertyPath: m_LocalRotation.w
-      value: -0.000000026819148
+      value: -1.2429233e-15
       objectReference: {fileID: 0}
     - target: {fileID: 3626532298474892044, guid: fa9729e406818e448bec2c61a9a0b0fd, type: 3}
       propertyPath: m_LocalRotation.x
-      value: -0.000000012996612
+      value: -5.47618e-16
       objectReference: {fileID: 0}
     - target: {fileID: 3626532298474892044, guid: fa9729e406818e448bec2c61a9a0b0fd, type: 3}
       propertyPath: m_LocalRotation.y
@@ -11178,7 +11189,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3626532298474892044, guid: fa9729e406818e448bec2c61a9a0b0fd, type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0.4360939
+      value: -0.43609387
       objectReference: {fileID: 0}
     - target: {fileID: 4178105595152385395, guid: fa9729e406818e448bec2c61a9a0b0fd, type: 3}
       propertyPath: Water
@@ -11803,6 +11814,10 @@ PrefabInstance:
       propertyPath: Fish
       value: 
       objectReference: {fileID: 453548883}
+    - target: {fileID: 4120704927260063811, guid: 1cd0605085741f541a8f656e92ee1294, type: 3}
+      propertyPath: Collect
+      value: 
+      objectReference: {fileID: 338962149}
     - target: {fileID: 4120704927260063811, guid: 1cd0605085741f541a8f656e92ee1294, type: 3}
       propertyPath: Items.Array.data[0]
       value: 
