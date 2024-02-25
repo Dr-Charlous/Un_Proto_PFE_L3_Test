@@ -2,35 +2,27 @@ using UnityEngine;
 
 public class ObjectCollectManager : MonoBehaviour
 {
-    [SerializeField] bool grab;
     [SerializeField] CharaMove chara;
-    public Collider Collider;
-    [SerializeField] GameObject objectGetModel;
-    [SerializeField] GameObject objectGet;
-    [SerializeField] bool isValid = false;
+    [SerializeField] Transform parentCharacter;
+    Transform parentOrigin;
+    GameObject objectGet;
+    Collider objectCollectCollider;
+    bool grab;
 
     private void Update()
     {
         if (chara.Collected)
         {
-            if (Collider != null)
-            {
-                if (!grab)
-                    Grab(Collider);
-                else if (grab)
-                    Release();
-            }
-
+            GrabCheck();
             chara.Collected = false;
         }
     }
 
-    private void OnTriggerStay(Collider collider)
+    private void OnTriggerEnter(Collider collider)
     {
         if (collider.GetComponent<ObjectCollect>() != null)
         {
-            this.Collider = collider;
-            isValid = true;
+            objectCollectCollider = collider;
         }
     }
 
@@ -39,21 +31,28 @@ public class ObjectCollectManager : MonoBehaviour
         if (collider.GetComponent<ObjectCollect>() != null)
         {
             Release();
-            this.Collider = null;
-            isValid = false;
+            objectCollectCollider = null;
         }
+    }
+
+    void GrabCheck()
+    {
+        if (!grab)
+            Grab(objectCollectCollider);
+        else if (grab)
+            Release();
     }
 
     void Grab(Collider collider)
     {
-        if (collider.gameObject != objectGet && collider.GetComponent<ObjectCollect>() != null)
-        {
-            objectGetModel = collider.gameObject;
-            objectGetModel.SetActive(false);
+        ObjectCollect objectInMouth = collider.GetComponent<ObjectCollect>();
+        Transform objectTransform = collider.transform;
 
-            objectGet = Instantiate(objectGetModel);
-            objectGet.transform.SetParent(chara.transform);
-            objectGet.SetActive(true);
+        if (objectInMouth != null)
+        {
+            objectGet = objectInMouth.gameObject;
+            parentOrigin = objectTransform.parent;
+            objectTransform.SetParent(parentCharacter);
             grab = true;
         }
     }
@@ -62,13 +61,7 @@ public class ObjectCollectManager : MonoBehaviour
     {
         if (chara.Collected)
         {
-            objectGetModel.transform.position = objectGet.transform.position;
-            objectGetModel.transform.rotation = objectGet.transform.rotation;
-
-            objectGetModel.SetActive(true);
-            objectGetModel = null;
-
-            Destroy(objectGet);
+            objectGet.transform.SetParent(parentOrigin);
             grab = false;
         }
     }

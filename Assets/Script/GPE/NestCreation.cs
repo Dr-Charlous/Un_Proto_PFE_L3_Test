@@ -7,42 +7,44 @@ public class NestCreation : MonoBehaviour
     [SerializeField] Material _material;
     [SerializeField] Color _colorInitial;
     [SerializeField] Color _colorValid;
-    public GameObject[] Items;
-    public bool[] ItemsVerification;
-    public bool isCreated = false;
-    public bool isFeed = false;
+
+
+    [SerializeField] GameObject[] ItemsToConstruct;
+    [SerializeField] bool[] ItemsVerification;
+
+    public bool IsCreated = false;
+    public bool IsFeed = false;
+
     public GameObject Fish;
-    public ObjectCollectManager Collect;
 
     private void Start()
     {
         _material.color = _colorInitial;
     }
 
-    private void OnTriggerStay(Collider other)
+    private void OnTriggerEnter(Collider other)
     {
-        VerificationItem(other, true);
-        VerificationArray();
+        VerificationItem(other);
 
-        if (other.gameObject == Fish && isCreated == true)
-        {
-            isFeed = true;
-            Fish.SetActive(false);
-        }
+        if (other.gameObject == Fish && IsCreated == true)
+            CreateNest();
     }
 
-    private void OnTriggerExit(Collider other)
+    void CreateNest()
     {
-        VerificationItem(other, false);
+        IsFeed = true;
+        Fish.SetActive(false);
     }
 
-    void VerificationItem(Collider other, bool prensent)
+    void VerificationItem(Collider other)
     {
-        for (int i = 0; i < Items.Length; i++)
+        for (int i = 0; i < ItemsToConstruct.Length; i++)
         {
-            if (Items[i] == other.gameObject)
+            if (ItemsToConstruct[i] == other.gameObject)
             {
-                ItemsVerification[i] = prensent;
+                ItemsVerification[i] = true;
+                other.gameObject.SetActive(false);
+                VerificationArray();
                 return;
             }
         }
@@ -52,7 +54,7 @@ public class NestCreation : MonoBehaviour
     {
         bool isEveryOne = true;
 
-        for(int i = 0;i < Items.Length;i++)
+        for (int i = 0; i < ItemsToConstruct.Length; i++)
         {
             if (ItemsVerification[i] == false)
             {
@@ -63,14 +65,7 @@ public class NestCreation : MonoBehaviour
         if (isEveryOne)
         {
             _material.color = _colorValid;
-
-            for (int i = 0; i < Items.Length; i++)
-            {
-                Items[i].SetActive(false);
-            }
-
-            Collect.Collider = null;
-            isCreated = true;
+            IsCreated = true;
         }
     }
 }

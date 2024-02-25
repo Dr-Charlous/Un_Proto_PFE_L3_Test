@@ -38,7 +38,7 @@ public class BabyMove : MonoBehaviour
 
     void Update()
     {
-        if (Nest.isCreated && Nest.isFeed)
+        if (Nest.IsCreated && Nest.IsFeed)
         {
             if (State == state.Follow && Vector3.Distance(Parent.position, Target) > Distance)
             {

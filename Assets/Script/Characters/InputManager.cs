@@ -9,7 +9,6 @@ public class InputManager : MonoBehaviour
     Controls _controls;
     [SerializeField] CharaMove Chara;
 
-    #region Inputs
     private void OnEnable()
     {
         _controls.Diplocaulus.Enable();
@@ -115,6 +114,5 @@ public class InputManager : MonoBehaviour
     private void Awake()
     {
         _controls = new Controls();
-    }
-    #endregion   
+    }  
 }

@@ -16,7 +16,7 @@ public class StateBabyFollow : IState
     {
         Debug.Log("Follow");
 
-        if (controller.Nest.isCreated && controller.Nest.isFeed)
+        if (controller.Nest.IsCreated && controller.Nest.IsFeed)
         {
             if (Vector3.Distance(controller.Parent.position, controller.Target) > controller.Distance)
             {
