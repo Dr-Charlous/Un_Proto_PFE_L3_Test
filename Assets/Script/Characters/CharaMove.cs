@@ -1,16 +1,14 @@
 using System;
 using System.Collections;
 using UnityEngine;
-using UnityEngine.InputSystem;
 
-[RequireComponent(typeof(PlayerInput))]
 [RequireComponent(typeof(BoatController))]
 [RequireComponent(typeof(Gravity))]
+[RequireComponent(typeof(InputManager))]
 
 public class CharaMove : MonoBehaviour
 {
     [Header("Input System :")]
-    Controls _controls;
     public float Position;
     public float Rotation;
 
@@ -35,118 +33,13 @@ public class CharaMove : MonoBehaviour
     public float DashCooldown = 1f;
 
     //private UI _UIObject;
+    public BabyManager _BabyManager;
     Transform _body;
     BoatController _BoatController;
     Gravity _Gravity;
-    BabyManager _BabyManager;
-
-    #region Inputs
-    private void OnEnable()
-    {
-        _controls.Diplocaulus.Enable();
-        _controls.Diplocaulus.Move.performed += GetMoveInputs;
-        _controls.Diplocaulus.Collect.started += GetCollectInputs;
-        _controls.Diplocaulus.Dash.started += GetDashInput;
-        _controls.Diplocaulus.KidsGamePad.performed += GetKidsInputGamePad;
-        _controls.Diplocaulus.KidsKeyBoard.started += GetKidsInputMouse;
-        _controls.Diplocaulus.BabyFollow.started += GetBabyFollowInput;
-        _controls.Diplocaulus.BabyAction.started += GetBabyActionInput;
-        _controls.Diplocaulus.BabyGet.started += GetBabyGetInput;
-        _controls.Diplocaulus.Quest.started += GetUIInput;
-    }
-
-    private void OnDisable()
-    {
-        _controls.Diplocaulus.Disable();
-        _controls.Diplocaulus.Move.performed -= GetMoveInputs;
-        _controls.Diplocaulus.Collect.started -= GetCollectInputs;
-        _controls.Diplocaulus.Dash.started -= GetDashInput;
-        _controls.Diplocaulus.KidsGamePad.performed -= GetKidsInputGamePad;
-        _controls.Diplocaulus.KidsKeyBoard.started -= GetKidsInputMouse;
-        _controls.Diplocaulus.BabyFollow.started -= GetBabyFollowInput;
-        _controls.Diplocaulus.BabyAction.started -= GetBabyActionInput;
-        _controls.Diplocaulus.BabyGet.started -= GetBabyGetInput;
-        _controls.Diplocaulus.Quest.started -= GetUIInput;
-    }
-
-    void GetMoveInputs(InputAction.CallbackContext move)
-    {
-        Position = -move.ReadValue<Vector2>().y;
-        Rotation = move.ReadValue<Vector2>().x;
-    }
-    
-    void GetCollectInputs(InputAction.CallbackContext collect)
-    {
-        Collected = !Collected;
-    }
-
-    void GetDashInput(InputAction.CallbackContext dash)
-    {
-        if (IsDashing == false)
-        {
-            StartCoroutine(Dash());
-        }
-    }
-
-    private void GetKidsInputMouse(InputAction.CallbackContext input)
-    {
-        if (int.Parse(input.action.ReadValueAsObject().ToString()) > 0 && BabieNumber < Babies.Length)
-        {
-            BabieNumber++;
-        }
-        else if (int.Parse(input.action.ReadValueAsObject().ToString()) < 0 && BabieNumber > 1)
-        {
-            BabieNumber--;
-        }
-    }
-
-    private void GetKidsInputGamePad(InputAction.CallbackContext input)
-    {
-        if (input.action.ReadValue<Vector2>().x == 1 && Babies.Length > 1)
-        {
-            BabieNumber = 1;
-        }
-        else if (input.action.ReadValue<Vector2>().x == -1 && Babies.Length > 3)
-        {
-            BabieNumber = 3;
-        }
-        else if(input.action.ReadValue<Vector2>().y == 1 && Babies.Length > 2)
-        {
-            BabieNumber = 2;
-        }
-        else if (input.action.ReadValue<Vector2>().y == -1)
-        {
-            BabieNumber = 0;
-        }
-    }
-
-    void GetBabyFollowInput(InputAction.CallbackContext baby)
-    {
-        _BabyManager.BabyFollow();
-    }
-
-    void GetBabyActionInput(InputAction.CallbackContext baby)
-    {
-        _BabyManager.BabyAction();
-    }
-
-    void GetBabyGetInput(InputAction.CallbackContext baby)
-    {
-        _BabyManager.GetBaby(BabieNumberOnBack);
-    }
-
-    private void GetUIInput(InputAction.CallbackContext ui)
-    {
-        if (UI.activeInHierarchy)
-            UI.SetActive(false);
-        else 
-            UI.SetActive(true);
-    }
 
     private void Awake()
     {
-        _controls = new Controls();
-        
         _rb = GetComponent<Rigidbody>();
         _BoatController = GetComponent<BoatController>();
         _Gravity = GetComponent<Gravity>();
@@ -154,7 +47,6 @@ public class CharaMove : MonoBehaviour
 
         UI.SetActive(false);
     }
-    #endregion
 
     void Update()
     {
@@ -172,7 +64,7 @@ public class CharaMove : MonoBehaviour
         }
     }
 
-    IEnumerator Dash()
+    public IEnumerator Dash()
     {
         IsDashing = true;
         var direction = transform.forward.normalized;
