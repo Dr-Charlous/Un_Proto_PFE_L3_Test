@@ -90,17 +90,17 @@ public class InputManager : MonoBehaviour
 
     void GetBabyFollowInput(InputAction.CallbackContext baby)
     {
-        Chara._BabyManager.BabyFollow();
+        Chara.BabyManager.BabyFollow();
     }
 
     void GetBabyActionInput(InputAction.CallbackContext baby)
     {
-        Chara._BabyManager.BabyAction();
+        Chara.BabyManager.BabyAction();
     }
 
     void GetBabyGetInput(InputAction.CallbackContext baby)
     {
-        Chara._BabyManager.GetBaby(Chara.BabieNumberOnBack);
+        Chara.BabyManager.CanWeGetBaby(Chara.BabieNumberOnBack);
     }
 
     private void GetUIInput(InputAction.CallbackContext ui)

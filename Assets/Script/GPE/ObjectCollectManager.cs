@@ -37,7 +37,7 @@ public class ObjectCollectManager : MonoBehaviour
 
     void GrabCheck()
     {
-        if (!grab)
+        if (!grab && objectCollectCollider != null)
             Grab(objectCollectCollider);
         else if (grab)
             Release();

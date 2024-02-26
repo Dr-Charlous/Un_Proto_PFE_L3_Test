@@ -33,8 +33,7 @@ public class CharaMove : MonoBehaviour
     public float DashCooldown = 1f;
 
     //private UI _UIObject;
-    public BabyManager _BabyManager;
-    Transform _body;
+    public BabyManager BabyManager;
     BoatController _BoatController;
     Gravity _Gravity;
 
@@ -43,7 +42,6 @@ public class CharaMove : MonoBehaviour
         _rb = GetComponent<Rigidbody>();
         _BoatController = GetComponent<BoatController>();
         _Gravity = GetComponent<Gravity>();
-        _BabyManager = GetComponent<BabyManager>();
 
         UI.SetActive(false);
     }

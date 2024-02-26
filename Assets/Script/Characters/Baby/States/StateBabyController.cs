@@ -21,12 +21,14 @@ public class StateBabyController : MonoBehaviour
     public List<Vector3> Point;
 
     public GameObject ObjectBaby;
+    public GameObject BabyMesh;
     public NestCreation Nest;
 
     [Header("Parent follow :")]
     public Transform Parent;
     public Vector3 Target;
     public float Distance = 5;
+    public bool PathActivated = true;
     public bool ShowPath = true;
 
     private void Start()

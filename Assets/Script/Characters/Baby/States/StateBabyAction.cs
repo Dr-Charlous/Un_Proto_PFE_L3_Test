@@ -11,7 +11,7 @@ public class StateBabyAction : IState
 
     public void UpdateState(StateBabyController controller)
     {
-        Debug.Log("Action");
+        //Debug.Log("Action");
     }
 
     public void OnExit(StateBabyController controller) 

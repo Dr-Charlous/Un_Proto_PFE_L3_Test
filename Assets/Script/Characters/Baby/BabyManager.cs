@@ -5,62 +5,79 @@ using UnityEngine.AI;
 
 public class BabyManager : MonoBehaviour
 {
-    [SerializeField] List<GameObject> babiesRef;
-    [SerializeField] List<GameObject> babiesView;
-    [SerializeField] GameObject babyPrefab;
+    [SerializeField] List<GameObject> babiesOnBack;
+    [SerializeField] List<Transform> ParentOrigin;
+    [SerializeField] Transform ParentCharacter;
     [SerializeField] Transform respawnPoint;
-    public float DistanceFromBaby = 1.5f;
+    [SerializeField] float DistanceFromBaby = 1.5f;
     public CharaMove Chara;
 
-    public void GetBaby(int babyLimit)
+    public void CanWeGetBaby(int babyLimit)
     {
-        var Baby = Chara.Babies[Chara.BabieNumber].GetComponentInChildren<StateBabyController>();
+        StateBabyController Baby = Chara.Babies[Chara.BabieNumber].GetComponentInChildren<StateBabyController>();
 
-        if (Baby.currentState != Baby.StateRide && babiesRef.Count < babyLimit && Vector3.Distance(Baby.transform.position, transform.position) <= DistanceFromBaby)
+        if (Baby != null)
         {
-            Baby.ChangeState(Baby.StateRide);
-
-            babiesRef.Add(Baby.transform.parent.gameObject);
-            Baby.transform.parent.gameObject.SetActive(false);
-
-            var baby = Instantiate(babyPrefab, transform);
-            babiesView.Add(baby);
-
-            baby.transform.rotation = Baby.transform.rotation;
-            baby.transform.localScale = new Vector3(0.5f, 0.5f, 0.5f);
-
-            for (int i = 0; i < babiesView.Count; i++)
+            if (Baby.currentState != Baby.StateRide && babiesOnBack.Count < babyLimit && Vector3.Distance(Baby.transform.position, transform.position) <= DistanceFromBaby)
             {
-                babiesView[i].transform.localPosition = Vector3.up * (i / 10f - transform.position.y);
+                GrabBaby(Baby);
+            }
+            else if (babiesOnBack.Count > 0 && Baby.currentState == Baby.StateRide)
+            {
+                Debug.Log("Release");
+                ReleaseBaby();
             }
         }
-        else if (babiesRef.Count > 0 && Baby.currentState == Baby.StateRide)
+    }
+
+    void GrabBaby(StateBabyController baby)
+    {
+        Transform babyTransform = baby.BabyMesh.transform;
+
+        babiesOnBack.Add(babyTransform.gameObject);
+        ParentOrigin.Add(babyTransform.parent);
+
+        baby.ChangeState(baby.StateRide);
+
+        babyTransform.SetParent(ParentCharacter);
+        baby.transform.parent.gameObject.SetActive(false);
+
+        for (int i = 0; i < babiesOnBack.Count; i++)
         {
-            babiesRef[0].SetActive(true);
-            babiesRef[0].GetComponentInChildren<NavMeshAgent>().destination = respawnPoint.position;
+            babiesOnBack[i].transform.localPosition = Vector3.up * (i / 10f - transform.position.y);
+        }
+    }
 
-            babiesRef[0].GetComponentInChildren<NavMeshAgent>().transform.localPosition = Vector3.zero;
+    void ReleaseBaby()
+    {
+        Transform babyTransform = babiesOnBack[0].transform;
+        babyTransform.SetParent(ParentOrigin[0]);
+        ParentOrigin[0].parent.gameObject.SetActive(true);
 
-            babiesRef[0].GetComponentInChildren<Gravity>().transform.localPosition = Vector3.zero;
-            babiesRef[0].GetComponentInChildren<StateBabyController>().ChangeState(babiesRef[0].GetComponentInChildren<StateBabyController>().StateAction);
+        StateBabyController babyController = ParentOrigin[0].transform.parent.GetComponentInChildren<StateBabyController>();
 
-            babiesRef[0].transform.position = respawnPoint.position;
-            babiesRef.RemoveAt(0);
+        babyTransform.localPosition = Vector3.zero;
+        babyTransform.localRotation = Quaternion.Euler(Vector3.zero);
 
-            Destroy(babiesView[0]);
-            babiesView.RemoveAt(0);
+        babyController.transform.parent.transform.position = respawnPoint.position;
+        babyController.transform.localPosition = Vector3.zero;
+        babyTransform.parent.localPosition = Vector3.zero;
+
+        babyController.ChangeState(babyController.StateAction);
+
+        ParentOrigin.RemoveAt(0);
+        babiesOnBack.RemoveAt(0);
 
 
-            for (int i = 0; i < babiesView.Count; i++)
-            {
-                babiesView[i].transform.localPosition = Vector3.up * (i / 10f - transform.position.y);
-            }
+        for (int i = 0; i < babiesOnBack.Count; i++)
+        {
+            babiesOnBack[i].transform.localPosition = Vector3.up * (i / 10f - transform.position.y);
         }
     }
 
     public void BabyFollow()
     {
-        var Baby = Chara.Babies[Chara.BabieNumber].GetComponentInChildren<StateBabyController>();
+        StateBabyController Baby = Chara.Babies[Chara.BabieNumber].GetComponentInChildren<StateBabyController>();
 
         if (Baby.currentState != Baby.StateRide)
         {
@@ -73,7 +90,7 @@ public class BabyManager : MonoBehaviour
 
     public void BabyAction()
     {
-        var Baby = Chara.Babies[Chara.BabieNumber].GetComponentInChildren<StateBabyController>();
+        StateBabyController Baby = Chara.Babies[Chara.BabieNumber].GetComponentInChildren<StateBabyController>();
 
         if (Baby.currentState != Baby.StateRide)
             Baby.ChangeState(Baby.StateAction);

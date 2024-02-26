@@ -8763,7 +8763,7 @@ MonoBehaviour:
   IsDashing: 0
   DashForce: 1
   DashCooldown: 1
-  _BabyManager: {fileID: 0}
+  BabyManager: {fileID: 5015772605977868268}
 --- !u!114 &4494263771166995183
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8792,9 +8792,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6f1a7cedbe3a3254999806fa8e331d19, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  babiesRef: []
-  babiesView: []
-  babyPrefab: {fileID: 919132149155446097, guid: afcc0728fdfa1bf45abfa8eeae951905, type: 3}
+  ParentCharacter: {fileID: 8108754018328759833}
   respawnPoint: {fileID: 2760491969323922473}
   DistanceFromBaby: 1.5
   Chara: {fileID: 6699909869382925849}
@@ -9231,6 +9229,11 @@ PrefabInstance:
 --- !u!4 &5710937609840675665 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4238095212807392714, guid: 60ce6b083b6175c42b81f8e96bed26e6, type: 3}
+  m_PrefabInstance: {fileID: 8471814452215531163}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &8108754018328759833 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 367600317414639746, guid: 60ce6b083b6175c42b81f8e96bed26e6, type: 3}
   m_PrefabInstance: {fileID: 8471814452215531163}
   m_PrefabAsset: {fileID: 0}
 --- !u!4 &8222261368333443440 stripped

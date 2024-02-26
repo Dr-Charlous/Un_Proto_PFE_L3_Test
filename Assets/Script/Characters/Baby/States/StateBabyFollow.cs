@@ -14,7 +14,7 @@ public class StateBabyFollow : IState
 
     public void UpdateState(StateBabyController controller)
     {
-        Debug.Log("Follow");
+        //Debug.Log("Follow");
 
         if (controller.Nest.IsCreated && controller.Nest.IsFeed)
         {

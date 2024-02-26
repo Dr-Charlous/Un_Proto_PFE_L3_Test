@@ -11,7 +11,7 @@ public class StateBabySelect : IState
 
     public void UpdateState(StateBabyController controller)
     {
-        Debug.Log("Select");
+        //Debug.Log("Select");
     }
 
     public void OnExit(StateBabyController controller)
