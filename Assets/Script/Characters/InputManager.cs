@@ -65,7 +65,7 @@ public class InputManager : MonoBehaviour
         {
             babies.BabieNumber++;
         }
-        else if (int.Parse(input.action.ReadValueAsObject().ToString()) < 0 && babies.BabieNumber > 1)
+        else if (int.Parse(input.action.ReadValueAsObject().ToString()) < 0 && babies.BabieNumber > 0)
         {
             babies.BabieNumber--;
         }
