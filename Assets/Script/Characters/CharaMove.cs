@@ -21,12 +21,6 @@ public class CharaMove : MonoBehaviour
     public Rigidbody _rb;
     public GameObject UI;
 
-
-    [Header("Babies :")]
-    public int BabieNumber = 0;
-    public int BabieNumberOnBack = 1;
-    public GameObject[] Babies;
-
     [Header("Dash")]
     public bool IsDashing = false;
     public float DashForce = 5f;

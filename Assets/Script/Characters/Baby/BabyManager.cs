@@ -1,5 +1,6 @@
 using DG.Tweening;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -10,11 +11,21 @@ public class BabyManager : MonoBehaviour
     [SerializeField] Transform ParentCharacter;
     [SerializeField] Transform respawnPoint;
     [SerializeField] float DistanceFromBaby = 1.5f;
-    public CharaMove Chara;
+
+    [Header("Babies :")]
+    public int BabieNumber = 0;
+    public int BabieNumberOnBack = 1;
+    public GameObject[] Babies;
+    public Material[] BabiesMaterial;
+
+    public void ChangeOutlineBaby(int number, float scale)
+    {
+        BabiesMaterial[number].SetFloat("_Scale", scale);
+    }
 
     public void CanWeGetBaby(int babyLimit)
     {
-        StateBabyController Baby = Chara.Babies[Chara.BabieNumber].GetComponentInChildren<StateBabyController>();
+        StateBabyController Baby = Babies[BabieNumber].GetComponentInChildren<StateBabyController>();
 
         if (Baby != null)
         {
@@ -77,7 +88,7 @@ public class BabyManager : MonoBehaviour
 
     public void BabyFollow()
     {
-        StateBabyController Baby = Chara.Babies[Chara.BabieNumber].GetComponentInChildren<StateBabyController>();
+        StateBabyController Baby = Babies[BabieNumber].GetComponentInChildren<StateBabyController>();
 
         if (Baby.currentState != Baby.StateRide)
         {
@@ -90,7 +101,7 @@ public class BabyManager : MonoBehaviour
 
     public void BabyAction()
     {
-        StateBabyController Baby = Chara.Babies[Chara.BabieNumber].GetComponentInChildren<StateBabyController>();
+        StateBabyController Baby = Babies[BabieNumber].GetComponentInChildren<StateBabyController>();
 
         if (Baby.currentState != Baby.StateRide)
             Baby.ChangeState(Baby.StateAction);
