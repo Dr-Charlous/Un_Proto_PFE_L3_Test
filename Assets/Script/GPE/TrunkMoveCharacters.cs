@@ -17,11 +17,11 @@ public class TrunkMoveCharacters : MonoBehaviour
 
             if (Vector3.Distance(other.transform.position, _entry1.position) > Vector3.Distance(other.transform.position, _entry2.position))
             {
-                destinantion = new Vector3(_entry1.position.x, _entry1.position.y, _entry1.position.z);
+                destinantion = _entry1.position;
             }
             else
             {
-                destinantion = new Vector3(_entry2.position.x, _entry2.position.y, _entry2.position.z);
+                destinantion = _entry2.position;
             }
 
             other.transform.DOMove(destinantion, _time * Time.deltaTime, false);
