@@ -61,7 +61,7 @@ public class InputManager : MonoBehaviour
         var babies = Chara.BabyManager;
         babies.ChangeOutlineBaby(babies.BabieNumber, 0);
 
-        if (int.Parse(input.action.ReadValueAsObject().ToString()) > 0 && babies.BabieNumber < babies.Babies.Length-1)
+        if (int.Parse(input.action.ReadValueAsObject().ToString()) > 0 && babies.BabieNumber < babies.Babies.Length - 1)
         {
             babies.BabieNumber++;
         }
@@ -124,5 +124,14 @@ public class InputManager : MonoBehaviour
     private void Awake()
     {
         _controls = new Controls();
+
+        var babies = Chara.BabyManager;
+
+        for (int i = 0; i < babies.Babies.Length; i++)
+        {
+            babies.ChangeOutlineBaby(i, 0);
+        }
+
+        babies.ChangeOutlineBaby(babies.BabieNumber, 1.1f);
     }
 }
