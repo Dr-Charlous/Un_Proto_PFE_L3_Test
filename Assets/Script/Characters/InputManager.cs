@@ -59,58 +59,68 @@ public class InputManager : MonoBehaviour
     private void GetKidsInputMouse(InputAction.CallbackContext input)
     {
         var babies = Chara.BabyManager;
-        babies.ChangeOutlineBaby(babies.BabieNumber, 0);
-
-        if (int.Parse(input.action.ReadValueAsObject().ToString()) > 0 && babies.BabieNumber < babies.Babies.Length - 1)
+        if (babies.Babies.Length > 0)
         {
-            babies.BabieNumber++;
-        }
-        else if (int.Parse(input.action.ReadValueAsObject().ToString()) < 0 && babies.BabieNumber > 0)
-        {
-            babies.BabieNumber--;
-        }
+            babies.ChangeOutlineBaby(babies.BabieNumber, 0);
 
-        babies.ChangeOutlineBaby(babies.BabieNumber, 1.1f);
+            if (int.Parse(input.action.ReadValueAsObject().ToString()) > 0 && babies.BabieNumber < babies.Babies.Length - 1)
+            {
+                babies.BabieNumber++;
+            }
+            else if (int.Parse(input.action.ReadValueAsObject().ToString()) < 0 && babies.BabieNumber > 0)
+            {
+                babies.BabieNumber--;
+            }
+
+            babies.ChangeOutlineBaby(babies.BabieNumber, 1.1f);
+        }
     }
 
     private void GetKidsInputGamePad(InputAction.CallbackContext input)
     {
         var babies = Chara.BabyManager;
-        babies.ChangeOutlineBaby(babies.BabieNumber, 0);
 
-        if (input.action.ReadValue<Vector2>().x == 1 && babies.Babies.Length > 1)
+        if (babies.Babies.Length > 0)
         {
-            babies.BabieNumber = 1;
-        }
-        else if (input.action.ReadValue<Vector2>().x == -1 && babies.Babies.Length > 3)
-        {
-            babies.BabieNumber = 3;
-        }
-        else if (input.action.ReadValue<Vector2>().y == 1 && babies.Babies.Length > 2)
-        {
-            babies.BabieNumber = 2;
-        }
-        else if (input.action.ReadValue<Vector2>().y == -1)
-        {
-            babies.BabieNumber = 0;
-        }
+            babies.ChangeOutlineBaby(babies.BabieNumber, 0);
 
-        babies.ChangeOutlineBaby(babies.BabieNumber, 1.1f);
+            if (input.action.ReadValue<Vector2>().x == 1 && babies.Babies.Length > 1)
+            {
+                babies.BabieNumber = 1;
+            }
+            else if (input.action.ReadValue<Vector2>().x == -1 && babies.Babies.Length > 3)
+            {
+                babies.BabieNumber = 3;
+            }
+            else if (input.action.ReadValue<Vector2>().y == 1 && babies.Babies.Length > 2)
+            {
+                babies.BabieNumber = 2;
+            }
+            else if (input.action.ReadValue<Vector2>().y == -1)
+            {
+                babies.BabieNumber = 0;
+            }
+
+            babies.ChangeOutlineBaby(babies.BabieNumber, 1.1f);
+        }
     }
 
     void GetBabyFollowInput(InputAction.CallbackContext baby)
     {
-        Chara.BabyManager.BabyFollow();
+        if (Chara.BabyManager.Babies.Length > 0)
+            Chara.BabyManager.BabyFollow();
     }
 
     void GetBabyActionInput(InputAction.CallbackContext baby)
     {
-        Chara.BabyManager.BabyAction();
+        if (Chara.BabyManager.Babies.Length > 0)
+            Chara.BabyManager.BabyAction();
     }
 
     void GetBabyGetInput(InputAction.CallbackContext baby)
     {
-        Chara.BabyManager.CanWeGetBaby(Chara.BabyManager.BabieNumberOnBack);
+        if (Chara.BabyManager.Babies.Length > 0)
+            Chara.BabyManager.CanWeGetBaby(Chara.BabyManager.BabieNumberOnBack);
     }
 
     private void GetUIInput(InputAction.CallbackContext ui)
@@ -132,6 +142,7 @@ public class InputManager : MonoBehaviour
             babies.ChangeOutlineBaby(i, 0);
         }
 
-        babies.ChangeOutlineBaby(babies.BabieNumber, 1.1f);
+        if (babies.Babies.Length > 0)
+            babies.ChangeOutlineBaby(babies.BabieNumber, 1.1f);
     }
 }
