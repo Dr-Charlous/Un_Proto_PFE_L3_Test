@@ -89,13 +89,20 @@ MonoBehaviour:
   _material: {fileID: 2100000, guid: 208e2f6d5978d4946afbc58cbd12f3bc, type: 2}
   _colorInitial: {r: 1, g: 0.58513975, b: 0, a: 1}
   _colorValid: {r: 0.087417364, g: 1, b: 0, a: 1}
-  Items:
+  ItemsToConstruct:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
   ItemsVerification: 000000
-  isCreated: 0
-  isFeed: 0
+  _taskBoard: {fileID: 0}
+  _tasksToValidate:
+  - {fileID: 11400000, guid: 61012a7af6761124f8cd9f7c0094612f, type: 2}
+  - {fileID: 11400000, guid: 3b8f252f045de8c4e994858ad29c719d, type: 2}
+  - {fileID: 11400000, guid: c4cfdc0eb5a8fce43b6aab4eb71329af, type: 2}
+  - {fileID: 11400000, guid: 34c45afdbb5800444970e2e740309545, type: 2}
+  _taskToGive: {fileID: 11400000, guid: 34c45afdbb5800444970e2e740309545, type: 2}
+  IsCreated: 0
+  IsFeed: 0
   Fish: {fileID: 0}
 --- !u!54 &8962664812280116586
 Rigidbody:

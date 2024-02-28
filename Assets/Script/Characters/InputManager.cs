@@ -134,7 +134,7 @@ public class InputManager : MonoBehaviour
         else
         {
             _chara.UI.SetActive(true);
-            _taskBoard.ShowTasks(0, 1);
+            _taskBoard.ShowTasks();
         }
     }
 

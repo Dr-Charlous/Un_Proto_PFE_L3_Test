@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using TMPro;
 using Unity.VisualScripting;
@@ -5,21 +6,24 @@ using UnityEngine;
 
 public class TasksManager : MonoBehaviour
 {
-    [SerializeField] Tasks[] _tasks;
+    [SerializeField] List<Tasks> _tasks;
     [SerializeField] GameObject _tasksShowPrefab;
     [SerializeField] Transform _taskBoard;
+    [SerializeField] CharaMove _chara;
 
     [HideInInspector] public List<GameObject> _tasksShow;
 
-    public void ShowTasks(int begin, int end)
+    public void ShowTasks()
     {
-        for (int i = 0; i <= end - begin; i++)
+        HideTasks();
+
+        for (int i = 0; i < _tasks.Count; i++)
         {
             GameObject obj = Instantiate(_tasksShowPrefab, Vector3.zero, Quaternion.identity, _taskBoard);
             _tasksShow.Add(obj);
         }
 
-        for (int i = begin; i <= end; i++)
+        for (int i = 0; i < _tasksShow.Count; i++)
         {
             _tasksShow[i].GetComponentInChildren<TextMeshProUGUI>().text = _tasks[i]._textTask;
         }
@@ -33,5 +37,18 @@ public class TasksManager : MonoBehaviour
         }
 
         _tasksShow.Clear();
+    }
+
+    public void AddTask(Tasks task)
+    {
+        _chara.UI.SetActive(true);
+        ShowTasks();
+
+        _tasks.Add(task);
+    }
+
+    public void RemoveTask(Tasks task)
+    {
+        _tasks.Remove(task);
     }
 }

@@ -12,6 +12,10 @@ public class NestCreation : MonoBehaviour
     [SerializeField] GameObject[] ItemsToConstruct;
     [SerializeField] bool[] ItemsVerification;
 
+    [SerializeField] TasksManager _taskBoard;
+    [SerializeField] Tasks[] _tasksToValidate;
+    [SerializeField] Tasks _taskToGive;
+
     public bool IsCreated = false;
     public bool IsFeed = false;
 
@@ -27,13 +31,18 @@ public class NestCreation : MonoBehaviour
         VerificationItem(other);
 
         if (other.gameObject == Fish && IsCreated == true)
+        {
             CreateNest();
+        }
     }
 
     void CreateNest()
     {
         IsFeed = true;
         Fish.SetActive(false);
+
+        _taskBoard.RemoveTask(_tasksToValidate[_tasksToValidate.Length - 1]);
+        _taskBoard.ShowTasks();
     }
 
     void VerificationItem(Collider other)
@@ -44,6 +53,10 @@ public class NestCreation : MonoBehaviour
             {
                 ItemsVerification[i] = true;
                 other.gameObject.SetActive(false);
+
+                _taskBoard.RemoveTask(_tasksToValidate[i]);
+                _taskBoard.ShowTasks();
+
                 VerificationArray();
                 return;
             }
@@ -66,6 +79,8 @@ public class NestCreation : MonoBehaviour
         {
             _material.color = _colorValid;
             IsCreated = true;
+            _taskBoard.AddTask(_taskToGive);
+            _taskBoard.ShowTasks();
         }
     }
 }
