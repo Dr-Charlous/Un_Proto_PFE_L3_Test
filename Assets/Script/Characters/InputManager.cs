@@ -7,7 +7,8 @@ using UnityEngine.InputSystem;
 public class InputManager : MonoBehaviour
 {
     Controls _controls;
-    [SerializeField] CharaMove Chara;
+    [SerializeField] CharaMove _chara;
+    [SerializeField] TasksManager _taskBoard;
 
     private void OnEnable()
     {
@@ -39,26 +40,26 @@ public class InputManager : MonoBehaviour
 
     void GetMoveInputs(InputAction.CallbackContext move)
     {
-        Chara.Position = -move.ReadValue<Vector2>().y;
-        Chara.Rotation = move.ReadValue<Vector2>().x;
+        _chara.Position = -move.ReadValue<Vector2>().y;
+        _chara.Rotation = move.ReadValue<Vector2>().x;
     }
 
     void GetCollectInputs(InputAction.CallbackContext collect)
     {
-        Chara.Collected = !Chara.Collected;
+        _chara.Collected = !_chara.Collected;
     }
 
     void GetDashInput(InputAction.CallbackContext dash)
     {
-        if (Chara.IsDashing == false)
+        if (_chara.IsDashing == false)
         {
-            StartCoroutine(Chara.Dash());
+            StartCoroutine(_chara.Dash());
         }
     }
 
     private void GetKidsInputMouse(InputAction.CallbackContext input)
     {
-        var babies = Chara.BabyManager;
+        var babies = _chara.BabyManager;
         if (babies.Babies.Length > 0)
         {
             babies.ChangeOutlineBaby(babies.BabieNumber, 0);
@@ -78,7 +79,7 @@ public class InputManager : MonoBehaviour
 
     private void GetKidsInputGamePad(InputAction.CallbackContext input)
     {
-        var babies = Chara.BabyManager;
+        var babies = _chara.BabyManager;
 
         if (babies.Babies.Length > 0)
         {
@@ -107,35 +108,41 @@ public class InputManager : MonoBehaviour
 
     void GetBabyFollowInput(InputAction.CallbackContext baby)
     {
-        if (Chara.BabyManager.Babies.Length > 0)
-            Chara.BabyManager.BabyFollow();
+        if (_chara.BabyManager.Babies.Length > 0)
+            _chara.BabyManager.BabyFollow();
     }
 
     void GetBabyActionInput(InputAction.CallbackContext baby)
     {
-        if (Chara.BabyManager.Babies.Length > 0)
-            Chara.BabyManager.BabyAction();
+        if (_chara.BabyManager.Babies.Length > 0)
+            _chara.BabyManager.BabyAction();
     }
 
     void GetBabyGetInput(InputAction.CallbackContext baby)
     {
-        if (Chara.BabyManager.Babies.Length > 0)
-            Chara.BabyManager.CanWeGetBaby(Chara.BabyManager.BabieNumberOnBack);
+        if (_chara.BabyManager.Babies.Length > 0)
+            _chara.BabyManager.CanWeGetBaby(_chara.BabyManager.BabieNumberOnBack);
     }
 
     private void GetUIInput(InputAction.CallbackContext ui)
     {
-        if (Chara.UI.activeInHierarchy)
-            Chara.UI.SetActive(false);
+        if (_chara.UI.activeInHierarchy)
+        {
+            _taskBoard.HideTasks();
+            _chara.UI.SetActive(false);
+        }
         else
-            Chara.UI.SetActive(true);
+        {
+            _chara.UI.SetActive(true);
+            _taskBoard.ShowTasks(0, 1);
+        }
     }
 
     private void Awake()
     {
         _controls = new Controls();
 
-        var babies = Chara.BabyManager;
+        var babies = _chara.BabyManager;
 
         for (int i = 0; i < babies.Babies.Length; i++)
         {
