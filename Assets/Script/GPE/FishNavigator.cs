@@ -2,69 +2,73 @@ using DG.Tweening;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UIElements;
 
 public class FishNavigator : MonoBehaviour
 {
-    [SerializeField] Transform[] _positions;
+    [SerializeField] FishPointNavigation[] _positions;
+    [SerializeField] FishPointNavigation _position;
+    [SerializeField] Rigidbody _rb;
+    [SerializeField] CharaMove _chara;
     [SerializeField] float _speed;
-    [SerializeField] int _number;
     [SerializeField] bool _isMoving;
-    float _time = 0;
-    float _timer = 2;
-    Transform _transform;
-    Vector3 actualPos;
 
+    int _number;
+    int _numberLast;
+    float _time = 0;
+    Vector3 _positionFishTimer;
+
+    private void Start()
+    {
+        _positionFishTimer = transform.position;
+    }
 
     private void Update()
     {
         _time += Time.deltaTime;
-
-        if (_time >= _timer)
+        if (_time >= 0.2f)
         {
-            if ((actualPos - _transform.position).magnitude < 0.1f)
-            {
-                _isMoving = false;
-            }
+            float velocity = (_positionFishTimer - _position.transform.position).magnitude;
+            Debug.Log(velocity);
+
+            if (velocity != 0)
+                _isMoving = true;
             else
-            {
-                 _isMoving = true;
-            }
+                _isMoving = false;
 
-            Debug.Log((actualPos - _transform.position).magnitude);
-            actualPos = _transform.position;
+            _time = 0;
+
+            _positionFishTimer = _position.transform.position;
         }
     }
 
-    private void OnTriggerEnter(Collider other)
+    private void OnTriggerEnter(Collider collision)
     {
-        if (other.GetComponent<CharaMove>() != null && !_isMoving)
-        {
-            GetNearestPosition(other.transform);
-        }
+        if (collision.GetComponent<CharaMove>() != null && !_isMoving)
+            GetNearetPoint();
     }
 
-    void GetNearestPosition(Transform charaTransform)
+    void GetNearetPoint()
     {
-        _transform = charaTransform;
-        float distance = 100000000;
+        float minusDistance = 1000;
         int number = 0;
 
-        for (int i = 0; i < _positions.Length; i++)
+        for (int i = 0; i < _position.Neighbours.Length; i++)
         {
-            float distancePoint = Vector3.Distance(_positions[i].position, transform.position);
-            float distanceCharacter = Vector3.Distance(_positions[i].position, charaTransform.position);
+            float distance = Vector3.Distance(_position.Neighbours[i].transform.position, _position.transform.position);
+            float distancePlayer = Vector3.Distance(_position.Neighbours[i].transform.position, _chara.transform.position);
 
-            if (distancePoint < distance && distanceCharacter > distancePoint && i != _number)
+            if ((distance < minusDistance || distance < distancePlayer) && i != _number && i != _numberLast)
             {
-                distancePoint = distance;
+                minusDistance = distance;
                 number = i;
             }
         }
 
+        _numberLast = _number;
         _number = number;
 
-        transform.DOComplete();
-        transform.DOMove(_positions[_number].position, _speed * Time.deltaTime);
-        _isMoving = true;
+        _position = _position.Neighbours[_number].GetComponent<FishPointNavigation>();
+        transform.DOMove(_position.transform.position, _speed * Time.deltaTime);
     }
 }
