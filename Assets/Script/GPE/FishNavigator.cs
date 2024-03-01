@@ -13,25 +13,23 @@ public class FishNavigator : MonoBehaviour
     [SerializeField] float _speed;
     [SerializeField] bool _isMoving;
 
-    int _number;
-    int _numberLast;
     float _time = 0;
+    float _velocity = 0;
     Vector3 _positionFishTimer;
 
     private void Start()
     {
-        _positionFishTimer = transform.position;
+        _positionFishTimer = _position.transform.position;
     }
 
     private void Update()
     {
         _time += Time.deltaTime;
-        if (_time >= 0.2f)
+        if (_time >= 1)
         {
-            float velocity = (_positionFishTimer - _position.transform.position).magnitude;
-            Debug.Log(velocity);
+            _velocity = (_positionFishTimer - _position.transform.position).magnitude / Time.deltaTime;
 
-            if (velocity != 0)
+            if (_velocity >= 0.1f)
                 _isMoving = true;
             else
                 _isMoving = false;
@@ -50,7 +48,7 @@ public class FishNavigator : MonoBehaviour
 
     void GetNearetPoint()
     {
-        float minusDistance = 1000;
+        float minusDistance = 0;
         int number = 0;
 
         for (int i = 0; i < _position.Neighbours.Length; i++)
@@ -58,17 +56,19 @@ public class FishNavigator : MonoBehaviour
             float distance = Vector3.Distance(_position.Neighbours[i].transform.position, _position.transform.position);
             float distancePlayer = Vector3.Distance(_position.Neighbours[i].transform.position, _chara.transform.position);
 
-            if ((distance < minusDistance || distance < distancePlayer) && i != _number && i != _numberLast)
+            float pourcentage = distancePlayer / distance * 100;
+            Debug.Log($"{pourcentage} : {minusDistance}");
+            if (minusDistance < pourcentage)
             {
-                minusDistance = distance;
+                minusDistance = pourcentage;
                 number = i;
             }
         }
 
-        _numberLast = _number;
-        _number = number;
+        Debug.Log(number);
 
-        _position = _position.Neighbours[_number].GetComponent<FishPointNavigation>();
+        _position = _position.Neighbours[number].GetComponent<FishPointNavigation>();
         transform.DOMove(_position.transform.position, _speed * Time.deltaTime);
+        _isMoving = true;
     }
 }
