@@ -6,16 +6,17 @@ using UnityEngine.AI;
 
 public class BabyManager : MonoBehaviour
 {
-    [SerializeField] List<GameObject> babiesOnBack;
-    [SerializeField] List<Transform> ParentOrigin;
+    List<GameObject> babiesOnBack;
+    List<Transform> ParentOrigin;
+
     [SerializeField] Transform ParentCharacter;
     [SerializeField] Transform respawnPoint;
     [SerializeField] float DistanceFromBaby = 1.5f;
 
     [Header("Babies :")]
-    public int BabieNumber = 0;
+    public int BabieNumberSelect = 0;
     public int BabieNumberOnBack = 1;
-    public GameObject[] Babies;
+    public GameObject[] BabiesInScene;
     public Material[] BabiesMaterial;
 
     public void ChangeOutlineBaby(int number, float scale)
@@ -25,11 +26,11 @@ public class BabyManager : MonoBehaviour
 
     public void CanWeGetBaby(int babyLimit)
     {
-        StateBabyController Baby = Babies[BabieNumber].GetComponentInChildren<StateBabyController>();
+        StateBabyController Baby = BabiesInScene[BabieNumberSelect].GetComponentInChildren<StateBabyController>();
 
         if (Baby != null)
         {
-            if (Baby.currentState != Baby.StateRide && babiesOnBack.Count < babyLimit && Vector3.Distance(Baby.transform.position, transform.position) <= DistanceFromBaby)
+            if (Baby.currentState != Baby.StateRide && babiesOnBack.Count < babyLimit && Vector3.Distance(Baby.transform.position, ParentCharacter.position) <= DistanceFromBaby)
             {
                 GrabBaby(Baby);
             }
@@ -55,7 +56,7 @@ public class BabyManager : MonoBehaviour
 
         for (int i = 0; i < babiesOnBack.Count; i++)
         {
-            babiesOnBack[i].transform.localPosition = Vector3.up * (i / 10f - transform.position.y);
+            babiesOnBack[i].transform.localPosition = Vector3.up * (i / 10f - ParentCharacter.position.y);
         }
     }
 
@@ -82,13 +83,13 @@ public class BabyManager : MonoBehaviour
 
         for (int i = 0; i < babiesOnBack.Count; i++)
         {
-            babiesOnBack[i].transform.localPosition = Vector3.up * (i / 10f - transform.position.y);
+            babiesOnBack[i].transform.localPosition = Vector3.up * (i / 10f - ParentCharacter.position.y);
         }
     }
 
     public void BabyFollow()
     {
-        StateBabyController Baby = Babies[BabieNumber].GetComponentInChildren<StateBabyController>();
+        StateBabyController Baby = BabiesInScene[BabieNumberSelect].GetComponentInChildren<StateBabyController>();
 
         if (Baby.currentState != Baby.StateRide)
         {
@@ -101,7 +102,7 @@ public class BabyManager : MonoBehaviour
 
     public void BabyAction()
     {
-        StateBabyController Baby = Babies[BabieNumber].GetComponentInChildren<StateBabyController>();
+        StateBabyController Baby = BabiesInScene[BabieNumberSelect].GetComponentInChildren<StateBabyController>();
 
         if (Baby.currentState != Baby.StateRide)
             Baby.ChangeState(Baby.StateAction);

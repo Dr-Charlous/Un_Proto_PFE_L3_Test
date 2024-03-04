@@ -10,25 +10,25 @@ using static UnityEditor.Experimental.GraphView.GraphView;
 public class CharaMove : MonoBehaviour
 {
     [Header("Input System :")]
-    public float Position;
-    public float Rotation;
+    [HideInInspector] public float Position;
+    [HideInInspector] public float Rotation;
+
     [SerializeField] float _speed = 10;
     [SerializeField] float _decreaseSpeed = 1.01f;
     [SerializeField] float _steering = 500f;
 
     [Header("Components/Values :")]
     [Range(0, 5)]
-    public int Life = 5;
     public bool Collected;
-    public GameObject Floaters;
     public GameObject ParticuleSystem;
     public Rigidbody _rb;
     public GameObject UI;
 
     [Header("Dash")]
+    [SerializeField] float DashForce = 5f;
+    [SerializeField] float DashCooldown = 1f;
+
     public bool IsDashing = false;
-    public float DashForce = 5f;
-    public float DashCooldown = 1f;
 
     //private UI _UIObject;
     public BabyManager BabyManager;
@@ -49,13 +49,9 @@ public class CharaMove : MonoBehaviour
 
     void Movement()
     {
-        if (Position > 0)
+        if (Position != 0)
         {
-            _rb.AddRelativeForce(Vector3.forward * _speed * Time.fixedDeltaTime);
-        }
-        else if (Position < 0)
-        {
-            _rb.AddRelativeForce(Vector3.back * _speed * Time.fixedDeltaTime);
+            _rb.AddRelativeForce(Vector3.forward * Position * _speed * Time.fixedDeltaTime);
         }
         else
         {
@@ -65,18 +61,16 @@ public class CharaMove : MonoBehaviour
 
     void Rotate()
     {
-        if (Rotation > 0)
+        if (Rotation != 0)
         {
-            transform.rotation *= Quaternion.Euler(Vector3.up * _steering * Time.fixedDeltaTime);
-        }
-        else if (Rotation < 0)
-        {
-            transform.rotation *= Quaternion.Euler(Vector3.down * _steering * Time.fixedDeltaTime);
+            _rb.angularVelocity += Vector3.up * Rotation * _steering * Time.fixedDeltaTime;
         }
         else
         {
-
+            _rb.angularVelocity = _rb.angularVelocity / _decreaseSpeed;
         }
+
+        Debug.Log(Rotation);
     }
 
     void FallingRotate()
