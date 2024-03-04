@@ -57,15 +57,12 @@ public class FishNavigator : MonoBehaviour
             float distancePlayer = Vector3.Distance(_position.Neighbours[i].transform.position, _chara.transform.position);
 
             float pourcentage = distancePlayer / distance * 100;
-            Debug.Log($"{pourcentage} : {minusDistance}");
             if (minusDistance < pourcentage)
             {
                 minusDistance = pourcentage;
                 number = i;
             }
         }
-
-        Debug.Log(number);
 
         _position = _position.Neighbours[number].GetComponent<FishPointNavigation>();
         transform.DOMove(_position.transform.position, _speed * Time.deltaTime);

@@ -1,9 +1,10 @@
+using DG.Tweening;
 using System;
 using System.Collections;
 using UnityEngine;
+using UnityEngine.InputSystem;
+using static UnityEditor.Experimental.GraphView.GraphView;
 
-[RequireComponent(typeof(BoatController))]
-[RequireComponent(typeof(Gravity))]
 [RequireComponent(typeof(InputManager))]
 
 public class CharaMove : MonoBehaviour
@@ -11,6 +12,9 @@ public class CharaMove : MonoBehaviour
     [Header("Input System :")]
     public float Position;
     public float Rotation;
+    [SerializeField] float _speed = 10;
+    [SerializeField] float _decreaseSpeed = 1.01f;
+    [SerializeField] float _steering = 500f;
 
     [Header("Components/Values :")]
     [Range(0, 5)]
@@ -28,21 +32,51 @@ public class CharaMove : MonoBehaviour
 
     //private UI _UIObject;
     public BabyManager BabyManager;
-    BoatController _BoatController;
-    Gravity _Gravity;
 
     private void Awake()
     {
         _rb = GetComponent<Rigidbody>();
-        _BoatController = GetComponent<BoatController>();
-        _Gravity = GetComponent<Gravity>();
 
         UI.SetActive(false);
     }
 
     void Update()
     {
+        Movement();
+        Rotate();
         FallingRotate();
+    }
+
+    void Movement()
+    {
+        if (Position > 0)
+        {
+            _rb.AddRelativeForce(Vector3.forward * _speed * Time.fixedDeltaTime);
+        }
+        else if (Position < 0)
+        {
+            _rb.AddRelativeForce(Vector3.back * _speed * Time.fixedDeltaTime);
+        }
+        else
+        {
+            _rb.velocity = _rb.velocity / _decreaseSpeed; // <-- This will gradually slow down the player when they're idle.
+        }
+    }
+
+    void Rotate()
+    {
+        if (Rotation > 0)
+        {
+            transform.rotation *= Quaternion.Euler(Vector3.up * _steering * Time.fixedDeltaTime);
+        }
+        else if (Rotation < 0)
+        {
+            transform.rotation *= Quaternion.Euler(Vector3.down * _steering * Time.fixedDeltaTime);
+        }
+        else
+        {
+
+        }
     }
 
     void FallingRotate()

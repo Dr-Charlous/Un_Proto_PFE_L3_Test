@@ -56,6 +56,5 @@ public class BoatController : MonoBehaviour
 
         //force rotation
         _rb.AddForceAtPosition(-steer * transform.right * steering / 100f, Motor.position);
-
     }
 }
