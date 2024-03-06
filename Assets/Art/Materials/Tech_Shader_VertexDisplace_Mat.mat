@@ -22,12 +22,12 @@ Material:
   m_PrefabAsset: {fileID: 0}
   m_Name: Tech_Shader_VertexDisplace_Mat
   m_Shader: {fileID: -6465566751694194690, guid: 3ab53d563b46e1549bf1d1ef0c8e8162, type: 3}
-  m_Parent: {fileID: 0}
-  m_ModifiedSerializedProperties: 0
+  m_Parent: {fileID: 2100000, guid: 6e880a67022712244b49de17fc64a75d, type: 2}
+  m_ModifiedSerializedProperties: 8
   m_ValidKeywords: []
   m_InvalidKeywords:
   - _SURFACE_TYPE_TRANSPARENT
-  m_LightmapFlags: 2
+  m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
   m_CustomRenderQueue: -1
@@ -37,49 +37,15 @@ Material:
   m_SavedProperties:
     serializedVersion: 3
     m_TexEnvs:
-    - _EmissiveTexture2D:
-        m_Texture: {fileID: 0}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
     - _Texture2D:
-        m_Texture: {fileID: 0}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
-    - unity_Lightmaps:
-        m_Texture: {fileID: 0}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
-    - unity_LightmapsInd:
-        m_Texture: {fileID: 0}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
-    - unity_ShadowMasks:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
-    - _AlphaClip: 0
-    - _AlphaToMask: 0
     - _Amplitude: 0
-    - _Blend: 0
-    - _BlendModePreserveSpecular: 0
-    - _CastShadows: 1
-    - _Cull: 0
     - _DepthFrequence: 1
-    - _DstBlend: 10
-    - _MaxMask: 1
     - _MinMask: 0
-    - _QueueControl: 0
-    - _QueueOffset: 0
-    - _ReceiveShadows: 1
     - _Speed: 1
-    - _SrcBlend: 5
-    - _Surface: 1
-    - _WorkflowMode: 1
-    - _ZTest: 4
-    - _ZWrite: 0
-    - _ZWriteControl: 0
-    m_Colors:
-    - _EmissiveColor: {r: 0, g: 0, b: 0, a: 1}
+    m_Colors: []
   m_BuildTextureStacks: []
