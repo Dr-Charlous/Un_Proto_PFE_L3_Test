@@ -5314,6 +5314,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6f1a7cedbe3a3254999806fa8e331d19, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  babiesOnBack: []
+  ParentOrigin: []
   ParentCharacter: {fileID: 4159851384457639390}
   respawnPoint: {fileID: 2760491969323922473}
   DistanceFromBaby: 1.5
@@ -5396,7 +5398,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   chara: {fileID: 6699909869382925849}
-  parentCharacter: {fileID: 0}
+  parentCharacter: {fileID: 8167787379187678340}
 --- !u!1 &7735877318323042571
 GameObject:
   m_ObjectHideFlags: 0
@@ -5600,7 +5602,7 @@ MonoBehaviour:
   _acceleration: 10
   _limitMaxSpeed: 5
   _decreaseSpeed: 1.01
-  _steering: 1
+  _steering: 0.75
   Collected: 0
   ParticuleSystem: {fileID: 2068147541598324142}
   _rb: {fileID: 6626216848454042332}
