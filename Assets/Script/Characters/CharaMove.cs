@@ -13,7 +13,8 @@ public class CharaMove : MonoBehaviour
     [HideInInspector] public float Position;
     [HideInInspector] public float Rotation;
 
-    [SerializeField] float _speed = 10;
+    [SerializeField] float _acceleration = 10;
+    [SerializeField] float _limitMaxSpeed = 5;
     [SerializeField] float _decreaseSpeed = 1.01f;
     [SerializeField] float _steering = 500f;
 
@@ -51,12 +52,13 @@ public class CharaMove : MonoBehaviour
     {
         if (Position != 0)
         {
-            _rb.AddRelativeForce(Vector3.forward * Position * _speed * Time.fixedDeltaTime);
+            if (_rb.velocity.magnitude < _limitMaxSpeed)
+                _rb.AddRelativeForce(Vector3.forward * Position * _acceleration * Time.fixedDeltaTime);
         }
-        else
-        {
-            _rb.velocity = _rb.velocity / _decreaseSpeed; // <-- This will gradually slow down the player when they're idle.
-        }
+        _rb.velocity = _rb.velocity / _decreaseSpeed; // <-- This will gradually slow down the player when they're idle.
+
+
+        Debug.Log(_rb.velocity.magnitude);
     }
 
     void Rotate()
@@ -69,8 +71,6 @@ public class CharaMove : MonoBehaviour
         {
             _rb.angularVelocity = _rb.angularVelocity / _decreaseSpeed;
         }
-
-        Debug.Log(Rotation);
     }
 
     void FallingRotate()
