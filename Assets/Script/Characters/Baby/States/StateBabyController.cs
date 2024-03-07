@@ -28,7 +28,6 @@ public class StateBabyController : MonoBehaviour
     public Transform Parent;
     public Vector3 Target;
     public float Distance = 5;
-    public bool PathActivated = true;
     public bool ShowPath = true;
 
     private void Start()
@@ -106,6 +105,11 @@ public class StateBabyController : MonoBehaviour
 
             i++;
         }
+    }
+
+    private void OnDrawGizmosSelected()
+    {
+        Gizmos.DrawWireSphere(transform.position, Distance);
     }
 }
 

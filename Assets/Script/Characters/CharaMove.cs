@@ -56,9 +56,6 @@ public class CharaMove : MonoBehaviour
                 _rb.AddRelativeForce(Vector3.forward * Position * _acceleration * Time.fixedDeltaTime);
         }
         _rb.velocity = _rb.velocity / _decreaseSpeed; // <-- This will gradually slow down the player when they're idle.
-
-
-        Debug.Log(_rb.velocity.magnitude);
     }
 
     void Rotate()
