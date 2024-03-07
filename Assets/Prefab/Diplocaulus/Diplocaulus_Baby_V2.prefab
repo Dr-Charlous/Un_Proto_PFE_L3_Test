@@ -4844,7 +4844,7 @@ GameObject:
   m_Layer: 0
   m_Name: Diplocaulus_Baby_target
   m_TagString: Untagged
-  m_Icon: {fileID: 2974397684917235467, guid: 0000000000000000d000000000000000, type: 0}
+  m_Icon: {fileID: 2488908585195742037, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
@@ -4873,11 +4873,11 @@ NavMeshAgent:
   m_Enabled: 1
   m_AgentTypeID: 0
   m_Radius: 0.5
-  m_Speed: 3.5
-  m_Acceleration: 1
+  m_Speed: 10
+  m_Acceleration: 7
   avoidancePriority: 50
   m_AngularSpeed: 360
-  m_StoppingDistance: 1
+  m_StoppingDistance: 0.5
   m_AutoTraverseOffMeshLink: 1
   m_AutoBraking: 1
   m_AutoRepath: 1
@@ -5027,9 +5027,10 @@ MonoBehaviour:
   BabyMesh: {fileID: 4916751055347077368}
   Nest: {fileID: 0}
   Parent: {fileID: 0}
+  TargetParent: {fileID: 0}
   Target: {x: 0, y: 0, z: 0}
-  Distance: 3
-  ShowPath: 0
+  Distance: 1.5
+  ShowPath: 1
 --- !u!1 &6762036587902153467
 GameObject:
   m_ObjectHideFlags: 0

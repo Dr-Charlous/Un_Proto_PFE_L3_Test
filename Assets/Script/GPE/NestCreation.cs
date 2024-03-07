@@ -32,11 +32,11 @@ public class NestCreation : MonoBehaviour
 
         if (other.gameObject == Fish && IsCreated == true)
         {
-            CreateNest();
+            FeedBabies();
         }
     }
 
-    void CreateNest()
+    void FeedBabies()
     {
         IsFeed = true;
         Fish.SetActive(false);
