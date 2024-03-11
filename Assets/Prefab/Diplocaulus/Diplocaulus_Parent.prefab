@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 568469553284077158}
   - component: {fileID: 3065417244339046940}
   - component: {fileID: 7445593824837546928}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Main Camera
   m_TagString: MainCamera
   m_Icon: {fileID: 0}
@@ -192,7 +192,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2760491969323922473}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: RespawnPointBaby
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -223,7 +223,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2621046803189885080}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Target-1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -256,7 +256,7 @@ GameObject:
   - component: {fileID: 7451975863919034634}
   - component: {fileID: 5999852544569158498}
   - component: {fileID: 2437911762015447316}
-  m_Layer: 1
+  m_Layer: 6
   m_Name: Particle System
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5085,7 +5085,7 @@ GameObject:
   - component: {fileID: 1926230644020215155}
   - component: {fileID: 5305920824747930604}
   - component: {fileID: 7591485596378578372}
-  m_Layer: 5
+  m_Layer: 6
   m_Name: CanvaUI
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5185,7 +5185,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5312835927110634239}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Target-4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5216,7 +5216,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6121629605911139520}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Target-3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5247,7 +5247,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1156046046609228438}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Target-2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5282,7 +5282,7 @@ GameObject:
   - component: {fileID: 1917003646550759149}
   - component: {fileID: 3821512413179205089}
   - component: {fileID: 1055634757857928434}
-  m_Layer: 5
+  m_Layer: 6
   m_Name: BackTasks
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5404,7 +5404,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5737708356442622611}
   - component: {fileID: 945246323412029050}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: BabyManager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5470,7 +5470,7 @@ GameObject:
   - component: {fileID: 8167787379187678340}
   - component: {fileID: 4656694911870537287}
   - component: {fileID: 5467908056113217841}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: CollectManager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5536,7 +5536,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 561789950328062133}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Motor
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5574,7 +5574,7 @@ GameObject:
   - component: {fileID: 6699909869382925849}
   - component: {fileID: 4235063686340100310}
   - component: {fileID: 1559451473123666355}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Diplocaulus_Parent
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5601,7 +5601,7 @@ Transform:
   - {fileID: 5737708356442622611}
   - {fileID: 3626532298474892044}
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &5724808921936430591
 MonoBehaviour:
@@ -5676,7 +5676,7 @@ CapsuleCollider:
     m_Bits: 0
   m_ExcludeLayers:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 128
   m_LayerOverridePriority: 0
   m_IsTrigger: 0
   m_ProvidesContacts: 0
@@ -5826,9 +5826,21 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -7974364832369395008, guid: 0f3a6e1fefd43b147912e44abe2cf4eb, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: -3285083907508740184, guid: 0f3a6e1fefd43b147912e44abe2cf4eb, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 0f3a6e1fefd43b147912e44abe2cf4eb, type: 3}
       propertyPath: m_Name
       value: Car_Player_Mesh_03
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 0f3a6e1fefd43b147912e44abe2cf4eb, type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -5848,6 +5860,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 2972827253276486820}
     m_Modifications:
+    - target: {fileID: 1209744674412531184, guid: 2b2b9242a29d3cc498b2a36185959a3c, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 2312252354060489474, guid: 2b2b9242a29d3cc498b2a36185959a3c, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -5932,9 +5948,17 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4676350817501282591, guid: 2b2b9242a29d3cc498b2a36185959a3c, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 7010970890408995564, guid: 2b2b9242a29d3cc498b2a36185959a3c, type: 3}
       propertyPath: m_Name
       value: Task
+      objectReference: {fileID: 0}
+    - target: {fileID: 7010970890408995564, guid: 2b2b9242a29d3cc498b2a36185959a3c, type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
