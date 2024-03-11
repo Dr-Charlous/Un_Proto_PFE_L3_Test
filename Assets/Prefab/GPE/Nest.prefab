@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 6918232110633548579}
   - component: {fileID: 4120704927260063811}
   - component: {fileID: 8962664812280116586}
+  - component: {fileID: 467042492710364594}
   m_Layer: 0
   m_Name: Nest
   m_TagString: Untagged
@@ -131,6 +132,29 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!136 &467042492710364594
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7186832027559375590}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.5
+  m_Height: 1
+  m_Direction: 1
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &8598059983421590684
 GameObject:
   m_ObjectHideFlags: 0
