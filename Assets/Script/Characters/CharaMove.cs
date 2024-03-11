@@ -10,8 +10,8 @@ using static UnityEditor.Experimental.GraphView.GraphView;
 public class CharaMove : MonoBehaviour
 {
     [Header("Input System :")]
-    [HideInInspector] public float Position;
-    [HideInInspector] public float Rotation;
+     public float Position;
+     public float Rotation;
 
     [SerializeField] float _acceleration = 10;
     [SerializeField] float _limitMaxSpeed = 5;
