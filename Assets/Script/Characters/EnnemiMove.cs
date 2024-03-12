@@ -1,16 +1,19 @@
+using DG.Tweening;
+using System.Collections;
 using UnityEngine;
 using UnityEngine.AI;
 
 public class EnnemiMove : MonoBehaviour
 {
     public NavMeshAgent Character;
+    public GameObject EnnemyMesh;
     public Vector3[] RoundPositions;
+    public float Speed = 10;
 
     private int _i;
 
     private void Start()
     {
-        Character.SetDestination(RoundPositions[0]);
         _i = 0;
     }
 
@@ -23,15 +26,34 @@ public class EnnemiMove : MonoBehaviour
             else
                 _i = 0;
 
-            Character.SetDestination(RoundPositions[_i]);
+            Vector3 destination = new Vector3(RoundPositions[_i].x, transform.position.y, RoundPositions[_i].z);
+            Character.SetDestination(destination);
         }
+
+        BodyFollow();
+    }
+
+    private void BodyFollow()
+    {
+        Vector3 Direction = Character.velocity;
+
+        if (Direction != Vector3.zero)
+        {
+            Quaternion lookRotation = Quaternion.LookRotation(Direction);
+            Vector3 rotation = Quaternion.Lerp(EnnemyMesh.transform.rotation, lookRotation, Time.deltaTime * 10).eulerAngles;
+            EnnemyMesh.transform.rotation = Quaternion.Euler(0f, rotation.y, 0f);
+        }
+
+        EnnemyMesh.transform.DOKill();
+        EnnemyMesh.transform.DOMove(transform.position, 0.5f);
+        //EnnemyMesh.transform.position = transform.position;
     }
 
     private void OnDrawGizmos()
     {
         foreach (var position in RoundPositions)
         {
-            Gizmos.DrawCube(position, Vector3.one);
+            Gizmos.DrawWireSphere(position, 0.5f);
         }
     }
 }

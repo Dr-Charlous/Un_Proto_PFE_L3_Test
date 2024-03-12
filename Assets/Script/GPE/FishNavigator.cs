@@ -10,6 +10,7 @@ public class FishNavigator : MonoBehaviour
     [SerializeField] FishPointNavigation _position;
     [SerializeField] Rigidbody _rb;
     [SerializeField] CharaMove _chara;
+    [SerializeField] GameObject _fish;
     [SerializeField] float _speed;
     [SerializeField] bool _isMoving;
 
@@ -20,6 +21,7 @@ public class FishNavigator : MonoBehaviour
     private void Start()
     {
         _positionFishTimer = _position.transform.position;
+        _fish.SetActive(false);
     }
 
     private void Update()
@@ -48,24 +50,32 @@ public class FishNavigator : MonoBehaviour
 
     void GetNearetPoint()
     {
-        float minusDistance = 0;
-        int number = 0;
-
-        for (int i = 0; i < _position.Neighbours.Length; i++)
+        if (_position.Neighbours.Length > 0)
         {
-            float distance = Vector3.Distance(_position.Neighbours[i].transform.position, _position.transform.position);
-            float distancePlayer = Vector3.Distance(_position.Neighbours[i].transform.position, _chara.transform.position);
+            float minusDistance = 0;
+            int number = 0;
 
-            float pourcentage = distancePlayer / distance * 100;
-            if (minusDistance < pourcentage)
+            for (int i = 0; i < _position.Neighbours.Length; i++)
             {
-                minusDistance = pourcentage;
-                number = i;
-            }
-        }
+                float distance = Vector3.Distance(_position.Neighbours[i].transform.position, _position.transform.position);
+                float distancePlayer = Vector3.Distance(_position.Neighbours[i].transform.position, _chara.transform.position);
 
-        _position = _position.Neighbours[number].GetComponent<FishPointNavigation>();
-        transform.DOMove(_position.transform.position, _speed * Time.deltaTime);
-        _isMoving = true;
+                float pourcentage = distancePlayer / distance * 100;
+                if (minusDistance < pourcentage)
+                {
+                    minusDistance = pourcentage;
+                    number = i;
+                }
+            }
+
+            _position = _position.Neighbours[number].GetComponent<FishPointNavigation>();
+            transform.DOMove(_position.transform.position, _speed * Time.deltaTime);
+            _isMoving = true;
+        }
+        else
+        {
+            _fish.SetActive(true);
+            gameObject.SetActive(false);
+        }
     }
 }

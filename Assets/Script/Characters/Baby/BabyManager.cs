@@ -6,8 +6,8 @@ using UnityEngine.AI;
 
 public class BabyManager : MonoBehaviour
 {
-    List<GameObject> babiesOnBack;
-    List<Transform> ParentOrigin;
+    [HideInInspector][SerializeField] List<GameObject> babiesOnBack;
+    [HideInInspector] [SerializeField] List<Transform> ParentOrigin;
 
     [SerializeField] Transform ParentCharacter;
     [SerializeField] Transform respawnPoint;
@@ -106,5 +106,10 @@ public class BabyManager : MonoBehaviour
 
         if (Baby.currentState != Baby.StateRide)
             Baby.ChangeState(Baby.StateAction);
+    }
+
+    private void OnDrawGizmosSelected()
+    {
+        Gizmos.DrawWireSphere(transform.position, DistanceFromBaby);
     }
 }

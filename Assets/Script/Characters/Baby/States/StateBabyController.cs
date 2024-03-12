@@ -26,15 +26,14 @@ public class StateBabyController : MonoBehaviour
 
     [Header("Parent follow :")]
     public Transform Parent;
+    public Transform TargetParent;
     public Vector3 Target;
     public float Distance = 5;
-    public bool PathActivated = true;
     public bool ShowPath = true;
 
     private void Start()
     {
         ChangeState(StateFollow);
-        Target = transform.position;
     }
 
     private void Update()
@@ -71,12 +70,13 @@ public class StateBabyController : MonoBehaviour
         if (Direction != Vector3.zero)
         {
             Quaternion lookRotation = Quaternion.LookRotation(Direction);
-            Vector3 rotation = Quaternion.Lerp(ObjectBaby.transform.rotation, lookRotation, Time.deltaTime * 1).eulerAngles;
+            Vector3 rotation = Quaternion.Lerp(ObjectBaby.transform.rotation, lookRotation, Time.deltaTime * 10).eulerAngles;
             ObjectBaby.transform.rotation = Quaternion.Euler(0f, rotation.y, 0f);
         }
 
         ObjectBaby.transform.DOKill();
-        ObjectBaby.transform.DOMove(transform.position, 1);
+        ObjectBaby.transform.DOMove(transform.position, 0.5f);
+        //ObjectBaby.transform.position = transform.position;
     }
 
     void FallingRotate()
@@ -106,6 +106,11 @@ public class StateBabyController : MonoBehaviour
 
             i++;
         }
+    }
+
+    private void OnDrawGizmosSelected()
+    {
+        Gizmos.DrawWireSphere(transform.position, Distance);
     }
 }
 
