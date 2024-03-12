@@ -54,6 +54,26 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 20
   Length: 10381
+--- !u!114 &-3588873137610343824
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
+  m_Name: bank:/Master.bank
+  m_EditorClassIdentifier: 
+  Path: Assets/Sound/Fmod_test_sounds_effects/Build/Desktop/Master.bank
+  Name: Master
+  StudioPath: bank:/Master
+  lastModified: 638458444829725578
+  FileSizes:
+  - Name: Desktop
+    Value: 11088512
+  Exists: 1
 --- !u!114 &-3256341449041694475
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -74,6 +94,33 @@ MonoBehaviour:
   - Name: Desktop
     Value: 902
   Exists: 1
+--- !u!114 &-2327066766179404898
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/SoundsEffects/crickets-sound effect
+  m_EditorClassIdentifier: 
+  Path: event:/SoundsEffects/crickets-sound effect
+  Guid:
+    Data1: 1117126135
+    Data2: 1089536736
+    Data3: -1577248073
+    Data4: 561191402
+  Banks:
+  - {fileID: -3588873137610343824}
+  IsStream: 1
+  Is3D: 1
+  IsOneShot: 0
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 4100
 --- !u!114 &11400000
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -87,17 +134,17 @@ MonoBehaviour:
   m_Name: FMODStudioCache
   m_EditorClassIdentifier: 
   EditorBanks:
-  - {fileID: -3256341449041694475}
-  - {fileID: 4029775780549125945}
+  - {fileID: 5539400880745674241}
+  - {fileID: -3588873137610343824}
   EditorEvents:
-  - {fileID: -8176386695307878722}
-  - {fileID: -8804501176705792334}
-  - {fileID: 633122731855839148}
+  - {fileID: 4863278430351865215}
+  - {fileID: 9118684553601494887}
+  - {fileID: -2327066766179404898}
   EditorParameters: []
   MasterBanks:
-  - {fileID: 4029775780549125945}
+  - {fileID: -3588873137610343824}
   StringsBanks:
-  - {fileID: -3256341449041694475}
+  - {fileID: 5539400880745674241}
   cacheTime: 638458444829755589
   cacheVersion: 131616
 --- !u!114 &633122731855839148
@@ -147,3 +194,77 @@ MonoBehaviour:
   - Name: Desktop
     Value: 11088512
   Exists: 1
+--- !u!114 &4863278430351865215
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: "event:/SoundsEffects/Frog Sounds \U0001F438"
+  m_EditorClassIdentifier: 
+  Path: "event:/SoundsEffects/Frog Sounds \U0001F438"
+  Guid:
+    Data1: -1705568718
+    Data2: 1223258260
+    Data3: 2118234032
+    Data4: -1399583928
+  Banks:
+  - {fileID: -3588873137610343824}
+  IsStream: 0
+  Is3D: 1
+  IsOneShot: 0
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 10381
+--- !u!114 &5539400880745674241
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
+  m_Name: bank:/Master.strings.bank
+  m_EditorClassIdentifier: 
+  Path: Assets/Sound/Fmod_test_sounds_effects/Build/Desktop/Master.strings.bank
+  Name: Master.strings
+  StudioPath: bank:/Master.strings
+  lastModified: 638458444829755589
+  FileSizes:
+  - Name: Desktop
+    Value: 902
+  Exists: 1
+--- !u!114 &9118684553601494887
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Ambiant/Ambiant
+  m_EditorClassIdentifier: 
+  Path: event:/Ambiant/Ambiant
+  Guid:
+    Data1: 614563247
+    Data2: 1322644173
+    Data3: 1970000041
+    Data4: -846051293
+  Banks:
+  - {fileID: -3588873137610343824}
+  IsStream: 1
+  Is3D: 0
+  IsOneShot: 0
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 899548
