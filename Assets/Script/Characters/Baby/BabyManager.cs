@@ -48,6 +48,7 @@ public class BabyManager : MonoBehaviour
 
         babiesOnBack.Add(babyTransform.gameObject);
         ParentOrigin.Add(babyTransform.parent);
+        baby.GetComponent<NavMeshAgent>().Stop();
 
         baby.ChangeState(baby.StateRide);
 
