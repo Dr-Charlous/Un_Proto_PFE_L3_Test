@@ -10,7 +10,6 @@ GameObject:
   m_Component:
   - component: {fileID: 3626532298474892044}
   - component: {fileID: 8118420156703881654}
-  - component: {fileID: 113251585908343411}
   - component: {fileID: 568469553284077158}
   - component: {fileID: 3065417244339046940}
   - component: {fileID: 7445593824837546928}
@@ -88,14 +87,6 @@ Camera:
   m_OcclusionCulling: 1
   m_StereoConvergence: 10
   m_StereoSeparation: 0.022
---- !u!81 &113251585908343411
-AudioListener:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 798545639392804350}
-  m_Enabled: 1
 --- !u!114 &568469553284077158
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5602,7 +5593,7 @@ Transform:
   - {fileID: 5737708356442622611}
   - {fileID: 3626532298474892044}
   m_Father: {fileID: 0}
-  m_RootOrder: -1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &5724808921936430591
 MonoBehaviour:
@@ -6034,8 +6025,24 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: f2a2f1395d6c805419ba7e7da6fbb4cc, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 5756525184734518306}
   m_SourcePrefab: {fileID: 100100000, guid: f2a2f1395d6c805419ba7e7da6fbb4cc, type: 3}
+--- !u!1 &6104164470266941136 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: f2a2f1395d6c805419ba7e7da6fbb4cc, type: 3}
+  m_PrefabInstance: {fileID: 6374617602515235713}
+  m_PrefabAsset: {fileID: 0}
+--- !u!81 &5756525184734518306
+AudioListener:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6104164470266941136}
+  m_Enabled: 1
 --- !u!4 &6916835863110489194 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: f2a2f1395d6c805419ba7e7da6fbb4cc, type: 3}
