@@ -5085,6 +5085,11 @@ Transform:
   m_Father: {fileID: 439514386}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1400677235 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8628009554936787675, guid: fa9729e406818e448bec2c61a9a0b0fd, type: 3}
+  m_PrefabInstance: {fileID: 7837234544312767916}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1404665252
 GameObject:
   m_ObjectHideFlags: 0
@@ -13995,12 +14000,25 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 6699909869382925849, guid: fa9729e406818e448bec2c61a9a0b0fd, type: 3}
   m_PrefabInstance: {fileID: 7837234544312767916}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 1400677235}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 94fe25f091bbbad4bacbab2a367cacb3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1237436349181856689
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1400677235}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 86c6556701af9e04380698b89f691b6e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  attenuationObject: {fileID: 0}
 --- !u!1 &1342582514820994912
 GameObject:
   m_ObjectHideFlags: 0
@@ -18096,22 +18114,22 @@ MonoBehaviour:
   CollisionTag: Player
   EventReference:
     Guid:
-      Data1: 0
-      Data2: 0
-      Data3: 0
-      Data4: 0
-    Path: 
+      Data1: -1705568718
+      Data2: 1223258260
+      Data3: 2118234032
+      Data4: -1399583928
+    Path: "event:/SoundsEffects/Frog Sounds \U0001F438"
   Event: 
   PlayEvent: 3
-  StopEvent: 0
+  StopEvent: 4
   AllowFadeout: 1
   TriggerOnce: 0
   Preload: 0
   AllowNonRigidbodyDoppler: 0
   Params: []
   OverrideAttenuation: 0
-  OverrideMinDistance: -1
-  OverrideMaxDistance: -1
+  OverrideMinDistance: 1
+  OverrideMaxDistance: 20
 --- !u!64 &7792048791694785251
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -18630,6 +18648,10 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 6
       objectReference: {fileID: 0}
+    - target: {fileID: 8628009554936787675, guid: fa9729e406818e448bec2c61a9a0b0fd, type: 3}
+      propertyPath: m_TagString
+      value: Player
+      objectReference: {fileID: 0}
     - target: {fileID: 8741635904430341066, guid: fa9729e406818e448bec2c61a9a0b0fd, type: 3}
       propertyPath: m_IsActive
       value: 0
@@ -18656,6 +18678,9 @@ PrefabInstance:
     - {fileID: 8741635904430341066, guid: fa9729e406818e448bec2c61a9a0b0fd, type: 3}
     m_AddedGameObjects: []
     m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 8628009554936787675, guid: fa9729e406818e448bec2c61a9a0b0fd, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1237436349181856689}
     - targetCorrespondingSourceObject: {fileID: 6104164470266941136, guid: fa9729e406818e448bec2c61a9a0b0fd, type: 3}
       insertIndex: -1
       addedObject: {fileID: 7837234544312767918}
