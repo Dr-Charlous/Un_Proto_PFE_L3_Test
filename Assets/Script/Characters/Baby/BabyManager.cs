@@ -6,12 +6,13 @@ using UnityEngine.AI;
 
 public class BabyManager : MonoBehaviour
 {
-    [HideInInspector][SerializeField] List<GameObject> babiesOnBack;
-    [HideInInspector] [SerializeField] List<Transform> ParentOrigin;
+    [HideInInspector][SerializeField] List<GameObject> _babiesOnBack;
+    [HideInInspector] [SerializeField] List<Transform> _parentOrigin;
 
-    [SerializeField] Transform ParentCharacter;
-    [SerializeField] Transform respawnPoint;
-    [SerializeField] float DistanceFromBaby = 1.5f;
+    [SerializeField] Transform _parentCharacter;
+    [SerializeField] Transform _respawnPoint;
+    [SerializeField] float _distanceFromBaby = 1.5f;
+    [SerializeField] float _babyOffsetOnBack = 1f;
 
     [Header("Babies :")]
     public int BabieNumberSelect = 0;
@@ -30,11 +31,11 @@ public class BabyManager : MonoBehaviour
 
         if (Baby != null)
         {
-            if (Baby.currentState != Baby.StateRide && babiesOnBack.Count < babyLimit && Vector3.Distance(Baby.transform.position, ParentCharacter.position) <= DistanceFromBaby)
+            if (Baby.currentState != Baby.StateRide && _babiesOnBack.Count < babyLimit && Vector3.Distance(Baby.transform.position, _parentCharacter.position) <= _distanceFromBaby)
             {
                 GrabBaby(Baby);
             }
-            else if (babiesOnBack.Count > 0 && Baby.currentState == Baby.StateRide)
+            else if (_babiesOnBack.Count > 0 && Baby.currentState == Baby.StateRide)
             {
                 Debug.Log("Release");
                 ReleaseBaby();
@@ -46,45 +47,46 @@ public class BabyManager : MonoBehaviour
     {
         Transform babyTransform = baby.BabyMesh.transform;
 
-        babiesOnBack.Add(babyTransform.gameObject);
-        ParentOrigin.Add(babyTransform.parent);
+        _babiesOnBack.Add(babyTransform.gameObject);
+        _parentOrigin.Add(babyTransform.parent);
         baby.GetComponent<NavMeshAgent>().Stop();
 
         baby.ChangeState(baby.StateRide);
 
-        babyTransform.SetParent(ParentCharacter);
+        babyTransform.SetParent(_parentCharacter);
         baby.transform.parent.gameObject.SetActive(false);
 
-        for (int i = 0; i < babiesOnBack.Count; i++)
-        {
-            babiesOnBack[i].transform.localPosition = Vector3.up * (i / 10f - ParentCharacter.position.y);
-        }
+        BabyOnBackUp(_babyOffsetOnBack);
     }
 
     void ReleaseBaby()
     {
-        Transform babyTransform = babiesOnBack[0].transform;
-        babyTransform.SetParent(ParentOrigin[0]);
-        ParentOrigin[0].parent.gameObject.SetActive(true);
+        Transform babyTransform = _babiesOnBack[0].transform;
+        babyTransform.SetParent(_parentOrigin[0]);
+        _parentOrigin[0].parent.gameObject.SetActive(true);
 
-        StateBabyController babyController = ParentOrigin[0].transform.parent.GetComponentInChildren<StateBabyController>();
+        StateBabyController babyController = _parentOrigin[0].transform.parent.GetComponentInChildren<StateBabyController>();
 
         babyTransform.localPosition = Vector3.zero;
         babyTransform.localRotation = Quaternion.Euler(Vector3.zero);
 
-        babyController.transform.parent.transform.position = respawnPoint.position;
+        babyController.transform.parent.transform.position = _respawnPoint.position;
         babyController.transform.localPosition = Vector3.zero;
         babyTransform.parent.localPosition = Vector3.zero;
 
         babyController.ChangeState(babyController.StateAction);
 
-        ParentOrigin.RemoveAt(0);
-        babiesOnBack.RemoveAt(0);
+        _parentOrigin.RemoveAt(0);
+        _babiesOnBack.RemoveAt(0);
 
+        BabyOnBackUp(_babyOffsetOnBack);
+    }
 
-        for (int i = 0; i < babiesOnBack.Count; i++)
+    void BabyOnBackUp(float offset)
+    {
+        for (int i = 0; i < _babiesOnBack.Count; i++)
         {
-            babiesOnBack[i].transform.localPosition = Vector3.up * (i / 10f - ParentCharacter.position.y);
+            _babiesOnBack[i].transform.localPosition = Vector3.up * (i / 10f + offset);
         }
     }
 
@@ -111,6 +113,6 @@ public class BabyManager : MonoBehaviour
 
     private void OnDrawGizmosSelected()
     {
-        Gizmos.DrawWireSphere(transform.position, DistanceFromBaby);
+        Gizmos.DrawWireSphere(transform.position, _distanceFromBaby);
     }
 }
