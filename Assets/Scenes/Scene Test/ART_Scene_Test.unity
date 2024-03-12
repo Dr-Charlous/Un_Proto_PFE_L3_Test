@@ -9175,6 +9175,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 5419459536876116399, guid: 820ef543034e1314d9dc58f346ebd320, type: 3}
+    - {fileID: 221608654409871868, guid: 820ef543034e1314d9dc58f346ebd320, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -29283,102 +29284,37 @@ Transform:
   m_Father: {fileID: 1920122711}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 120, z: 0}
---- !u!82 &816605428
-AudioSource:
+--- !u!114 &816605428
+MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 816605426}
   m_Enabled: 1
-  serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 1ac922dcb284015429ee75db83338cb8, type: 3}
-  m_PlayOnAwake: 1
-  m_Volume: 1
-  m_Pitch: 1
-  Loop: 1
-  Mute: 0
-  Spatialize: 0
-  SpatializePostEffects: 0
-  Priority: 128
-  DopplerLevel: 1
-  MinDistance: 1
-  MaxDistance: 10
-  Pan2D: 0
-  rolloffMode: 2
-  BypassEffects: 0
-  BypassListenerEffects: 0
-  BypassReverbZones: 0
-  rolloffCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 1
-      inSlope: -2.1778853
-      outSlope: -2.1778853
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.16
-    - serializedVersion: 3
-      time: 1
-      value: 0
-      inSlope: -0.029615384
-      outSlope: -0.029615384
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.28571427
-      outWeight: 0.33333334
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  panLevelCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 1
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  spreadCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  reverbZoneMixCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 1
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a6610d2e704f1648819acc8d7460285, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CollisionTag: 
+  EventReference:
+    Guid:
+      Data1: 1117126135
+      Data2: 1089536736
+      Data3: -1577248073
+      Data4: 561191402
+    Path: event:/SoundsEffects/crickets-sound effect
+  Event: 
+  PlayEvent: 1
+  StopEvent: 0
+  AllowFadeout: 1
+  TriggerOnce: 0
+  Preload: 0
+  AllowNonRigidbodyDoppler: 0
+  Params: []
+  OverrideAttenuation: 0
+  OverrideMinDistance: 1
+  OverrideMaxDistance: 20
 --- !u!1001 &822391991
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -45759,6 +45695,7 @@ PrefabInstance:
     m_RemovedComponents:
     - {fileID: 113251585908343411, guid: fa9729e406818e448bec2c61a9a0b0fd, type: 3}
     - {fileID: 1499805674067845110, guid: fa9729e406818e448bec2c61a9a0b0fd, type: 3}
+    - {fileID: 5756525184734518306, guid: fa9729e406818e448bec2c61a9a0b0fd, type: 3}
     m_RemovedGameObjects:
     - {fileID: 3221094852031949068, guid: fa9729e406818e448bec2c61a9a0b0fd, type: 3}
     m_AddedGameObjects: []
@@ -47235,14 +47172,15 @@ Transform:
   m_Father: {fileID: 1920122711}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 120, z: 0}
---- !u!82 &1323466827
-AudioSource:
+--- !u!114 &1323466827
+MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1323466825}
   m_Enabled: 1
+<<<<<<< HEAD
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: f80ffba8032a42a44bcfbb7f377939e5, type: 3}
@@ -47332,6 +47270,51 @@ AudioSource:
     m_PostInfinity: 2
     m_RotationOrder: 4
 --- !u!4 &1331394524 stripped
+=======
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a6610d2e704f1648819acc8d7460285, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CollisionTag: 
+  EventReference:
+    Guid:
+      Data1: -1705568718
+      Data2: 1223258260
+      Data3: 2118234032
+      Data4: -1399583928
+    Path: "event:/SoundsEffects/Frog Sounds \U0001F438"
+  Event: 
+  PlayEvent: 1
+  StopEvent: 0
+  AllowFadeout: 1
+  TriggerOnce: 0
+  Preload: 0
+  AllowNonRigidbodyDoppler: 0
+  Params: []
+  OverrideAttenuation: 0
+  OverrideMinDistance: 1
+  OverrideMaxDistance: 20
+--- !u!1 &1324233050
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1324233051}
+  - component: {fileID: 1324233054}
+  - component: {fileID: 1324233053}
+  - component: {fileID: 1324233052}
+  m_Layer: 0
+  m_Name: Cube (161)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1324233051
+>>>>>>> d2f20fd16479c6aec5daeb11cff9d47b05ee055a
 Transform:
   m_CorrespondingSourceObject: {fileID: 1715266014108068126, guid: 889f54e0ac480184499d46548a4ddb3a, type: 3}
   m_PrefabInstance: {fileID: 665461644}

@@ -1,25 +1,5 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!114 &-9085266070507890645
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
-  m_Name: bank:/Master.bank
-  m_EditorClassIdentifier: 
-  Path: ../../../Downloads/Fmod_test_sounds_effects/Build/Desktop/Master.bank
-  Name: Master
-  StudioPath: bank:/Master
-  lastModified: 638458406227926813
-  FileSizes:
-  - Name: Desktop
-    Value: 192896
-  Exists: 1
 --- !u!114 &-8804501176705792334
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -39,10 +19,10 @@ MonoBehaviour:
     Data3: -1577248073
     Data4: 561191402
   Banks:
-  - {fileID: -9085266070507890645}
+  - {fileID: 4029775780549125945}
   IsStream: 1
   Is3D: 1
-  IsOneShot: 1
+  IsOneShot: 0
   Parameters: []
   MinDistance: 1
   MaxDistance: 20
@@ -66,15 +46,15 @@ MonoBehaviour:
     Data3: 2118234032
     Data4: -1399583928
   Banks:
-  - {fileID: -9085266070507890645}
+  - {fileID: 4029775780549125945}
   IsStream: 0
   Is3D: 1
-  IsOneShot: 1
+  IsOneShot: 0
   Parameters: []
   MinDistance: 1
   MaxDistance: 20
-  Length: 15381
---- !u!114 &-6451057999514691559
+  Length: 10381
+--- !u!114 &-3256341449041694475
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -86,13 +66,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
   m_Name: bank:/Master.strings.bank
   m_EditorClassIdentifier: 
-  Path: ../../../Downloads/Fmod_test_sounds_effects/Build/Desktop/Master.strings.bank
+  Path: Assets/Sound/Fmod_test_sounds_effects/Build/Desktop/Master.strings.bank
   Name: Master.strings
   StudioPath: bank:/Master.strings
-  lastModified: 638458406227946812
+  lastModified: 638458444829755589
   FileSizes:
   - Name: Desktop
-    Value: 844
+    Value: 902
   Exists: 1
 --- !u!114 &11400000
 MonoBehaviour:
@@ -107,15 +87,63 @@ MonoBehaviour:
   m_Name: FMODStudioCache
   m_EditorClassIdentifier: 
   EditorBanks:
-  - {fileID: -6451057999514691559}
-  - {fileID: -9085266070507890645}
+  - {fileID: -3256341449041694475}
+  - {fileID: 4029775780549125945}
   EditorEvents:
   - {fileID: -8176386695307878722}
   - {fileID: -8804501176705792334}
+  - {fileID: 633122731855839148}
   EditorParameters: []
   MasterBanks:
-  - {fileID: -9085266070507890645}
+  - {fileID: 4029775780549125945}
   StringsBanks:
-  - {fileID: -6451057999514691559}
-  cacheTime: 638458406227946812
+  - {fileID: -3256341449041694475}
+  cacheTime: 638458444829755589
   cacheVersion: 131616
+--- !u!114 &633122731855839148
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Ambiant/Ambiant
+  m_EditorClassIdentifier: 
+  Path: event:/Ambiant/Ambiant
+  Guid:
+    Data1: 614563247
+    Data2: 1322644173
+    Data3: 1970000041
+    Data4: -846051293
+  Banks:
+  - {fileID: 4029775780549125945}
+  IsStream: 1
+  Is3D: 0
+  IsOneShot: 0
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 899548
+--- !u!114 &4029775780549125945
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
+  m_Name: bank:/Master.bank
+  m_EditorClassIdentifier: 
+  Path: Assets/Sound/Fmod_test_sounds_effects/Build/Desktop/Master.bank
+  Name: Master
+  StudioPath: bank:/Master
+  lastModified: 638458444829725578
+  FileSizes:
+  - Name: Desktop
+    Value: 11088512
+  Exists: 1

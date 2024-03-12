@@ -18070,7 +18070,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7443110739073877606}
   - component: {fileID: 7782481172815453406}
-  - component: {fileID: 7782481172815453405}
+  - component: {fileID: 7782481172815453407}
   m_Layer: 0
   m_Name: Diplocaulus_V3 (1)
   m_TagString: Untagged
@@ -18078,27 +18078,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!65 &7782481172815453405
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7782481172815453404}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 1
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 2.18, y: 1.12, z: 2.4}
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &7782481172815453406
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -18130,6 +18109,27 @@ MonoBehaviour:
   OverrideAttenuation: 0
   OverrideMinDistance: 1
   OverrideMaxDistance: 20
+--- !u!135 &7782481172815453407
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7782481172815453404}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Radius: 10
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!64 &7792048791694785251
 MeshCollider:
   m_ObjectHideFlags: 0
