@@ -1,5 +1,6 @@
 using DG.Tweening;
 using System.Collections;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -26,7 +27,7 @@ public class EnnemiMove : MonoBehaviour
             else
                 _i = 0;
 
-            Vector3 destination = new Vector3(RoundPositions[_i].x, EnnemyMesh.transform.position.y, RoundPositions[_i].z);
+            Vector3 destination = new Vector3(RoundPositions[_i].x, transform.position.y, RoundPositions[_i].z);
             Character.SetDestination(destination);
         }
 
@@ -45,8 +46,11 @@ public class EnnemiMove : MonoBehaviour
         }
 
         EnnemyMesh.transform.DOKill();
-        EnnemyMesh.transform.DOMove(transform.position, 0.5f);
-        //EnnemyMesh.transform.position = transform.position;
+
+        Vector3 destinationPos = new Vector3(transform.position.x, EnnemyMesh.transform.position.y, transform.position.z);
+        float distance = (new Vector3(RoundPositions[_i].x, 0, RoundPositions[_i].z) - new Vector3(transform.position.x, 0, transform.position.z)).magnitude;
+        EnnemyMesh.transform.DOMove(destinationPos, distance * Speed * Time.deltaTime);
+        //EnnemyMesh.transform.position = destinationPos;
     }
 
     private void OnDrawGizmos()
