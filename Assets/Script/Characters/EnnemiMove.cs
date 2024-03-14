@@ -16,6 +16,8 @@ public class EnnemiMove : MonoBehaviour
     private void Start()
     {
         _i = 0;
+        transform.position = RoundPositions[_i];
+        EnnemyMesh.transform.position = new Vector3(transform.position.x, EnnemyMesh.transform.position.y, transform.position.z);
     }
 
     private void Update()
@@ -49,8 +51,9 @@ public class EnnemiMove : MonoBehaviour
 
         Vector3 destinationPos = new Vector3(transform.position.x, EnnemyMesh.transform.position.y, transform.position.z);
         float distance = (new Vector3(RoundPositions[_i].x, 0, RoundPositions[_i].z) - new Vector3(transform.position.x, 0, transform.position.z)).magnitude;
-        EnnemyMesh.transform.DOMove(destinationPos, distance * Speed * Time.deltaTime);
-        //EnnemyMesh.transform.position = destinationPos;
+
+        //EnnemyMesh.transform.DOMove(destinationPos, distance * Speed * Time.deltaTime);
+        EnnemyMesh.transform.position = destinationPos;
     }
 
     private void OnDrawGizmos()
