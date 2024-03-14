@@ -26,7 +26,7 @@ public class EnnemiMove : MonoBehaviour
             else
                 _i = 0;
 
-            Vector3 destination = new Vector3(RoundPositions[_i].x, transform.position.y, RoundPositions[_i].z);
+            Vector3 destination = new Vector3(RoundPositions[_i].x, EnnemyMesh.transform.position.y, RoundPositions[_i].z);
             Character.SetDestination(destination);
         }
 
