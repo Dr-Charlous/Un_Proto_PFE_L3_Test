@@ -10,8 +10,8 @@ using static UnityEditor.Experimental.GraphView.GraphView;
 public class CharaMove : MonoBehaviour
 {
     [Header("Input System :")]
-     public float Position;
-     public float Rotation;
+    public float Position;
+    public float Rotation;
 
     [SerializeField] float _acceleration = 10;
     [SerializeField] float _limitMaxSpeed = 5;
@@ -53,7 +53,12 @@ public class CharaMove : MonoBehaviour
         if (Position != 0)
         {
             if (_rb.velocity.magnitude < _limitMaxSpeed)
-                _rb.AddRelativeForce(Vector3.forward * Position * _acceleration * Time.fixedDeltaTime);
+            {
+                if (Position < 0)
+                    _rb.AddRelativeForce(Vector3.forward * Position * _acceleration * Time.fixedDeltaTime);
+                else
+                    _rb.AddRelativeForce(Vector3.forward * Position * _acceleration / 10 * Time.fixedDeltaTime);
+            }
         }
         _rb.velocity = _rb.velocity / _decreaseSpeed; // <-- This will gradually slow down the player when they're idle.
     }

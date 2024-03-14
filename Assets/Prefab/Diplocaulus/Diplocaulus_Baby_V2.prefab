@@ -4841,7 +4841,7 @@ GameObject:
   - component: {fileID: 3550012051485149638}
   - component: {fileID: 2575108883141116011}
   - component: {fileID: 5110501017408960396}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Diplocaulus_Baby_target
   m_TagString: Untagged
   m_Icon: {fileID: 2488908585195742037, guid: 0000000000000000d000000000000000, type: 0}
@@ -5029,8 +5029,8 @@ MonoBehaviour:
   Parent: {fileID: 0}
   TargetParent: {fileID: 0}
   Target: {x: 0, y: 0, z: 0}
-  Distance: 1.5
-  ShowPath: 1
+  Distance: 1
+  ShowPath: 0
 --- !u!1 &6762036587902153467
 GameObject:
   m_ObjectHideFlags: 0
@@ -5095,7 +5095,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3729595735577426133}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Diplocaulus_Baby_V2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5195,6 +5195,10 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[1]
       value: 
       objectReference: {fileID: 2100000, guid: 1e5c92b83030bf04e8a4b11e1fc1ecd9, type: 2}
+    - target: {fileID: -3540938561319437288, guid: 06c0f603844c9ec49a6d11411d45ee18, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
     - target: {fileID: -3375979249112139182, guid: 06c0f603844c9ec49a6d11411d45ee18, type: 3}
       propertyPath: m_Materials.Array.size
       value: 1
@@ -5203,9 +5207,17 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[1]
       value: 
       objectReference: {fileID: 2100000, guid: 1e5c92b83030bf04e8a4b11e1fc1ecd9, type: 2}
+    - target: {fileID: -840696749391965069, guid: 06c0f603844c9ec49a6d11411d45ee18, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 06c0f603844c9ec49a6d11411d45ee18, type: 3}
       propertyPath: m_Name
       value: Car_Baby_Diplocaulus2_low
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 06c0f603844c9ec49a6d11411d45ee18, type: 3}
+      propertyPath: m_Layer
+      value: 7
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
