@@ -17904,7 +17904,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7443110739073877606}
-  - component: {fileID: 7782481172815453406}
   - component: {fileID: 7782481172815453407}
   m_Layer: 0
   m_Name: Diplocaulus_V3 (1)
@@ -17913,37 +17912,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &7782481172815453406
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7782481172815453404}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9a6610d2e704f1648819acc8d7460285, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  CollisionTag: Player
-  EventReference:
-    Guid:
-      Data1: -1705568718
-      Data2: 1223258260
-      Data3: 2118234032
-      Data4: -1399583928
-    Path: "event:/SoundsEffects/Frog Sounds \U0001F438"
-  Event: 
-  PlayEvent: 3
-  StopEvent: 4
-  AllowFadeout: 1
-  TriggerOnce: 0
-  Preload: 0
-  AllowNonRigidbodyDoppler: 0
-  Params: []
-  OverrideAttenuation: 0
-  OverrideMinDistance: 1
-  OverrideMaxDistance: 20
 --- !u!135 &7782481172815453407
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -18496,15 +18464,14 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents:
-    - {fileID: 430607885428120779, guid: fa9729e406818e448bec2c61a9a0b0fd, type: 3}
-    - {fileID: 1098121176668842924, guid: fa9729e406818e448bec2c61a9a0b0fd, type: 3}
-    - {fileID: 6064672585018898978, guid: fa9729e406818e448bec2c61a9a0b0fd, type: 3}
-    - {fileID: 4482381171381020804, guid: fa9729e406818e448bec2c61a9a0b0fd, type: 3}
-    - {fileID: 291853611338480430, guid: fa9729e406818e448bec2c61a9a0b0fd, type: 3}
-    - {fileID: 4494263771166995183, guid: fa9729e406818e448bec2c61a9a0b0fd, type: 3}
-    - {fileID: 5015772605977868268, guid: fa9729e406818e448bec2c61a9a0b0fd, type: 3}
-    - {fileID: 2397897305387199981, guid: fa9729e406818e448bec2c61a9a0b0fd, type: 3}
-    - {fileID: 5756525184734518306, guid: fa9729e406818e448bec2c61a9a0b0fd, type: 3}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
     m_RemovedGameObjects:
     - {fileID: 5546277485136253131, guid: fa9729e406818e448bec2c61a9a0b0fd, type: 3}
     - {fileID: 3221094852031949068, guid: fa9729e406818e448bec2c61a9a0b0fd, type: 3}
@@ -18516,29 +18483,8 @@ PrefabInstance:
     - {fileID: 1397637999124206929, guid: fa9729e406818e448bec2c61a9a0b0fd, type: 3}
     - {fileID: 8741635904430341066, guid: fa9729e406818e448bec2c61a9a0b0fd, type: 3}
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 6104164470266941136, guid: fa9729e406818e448bec2c61a9a0b0fd, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 7837234544312767918}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: fa9729e406818e448bec2c61a9a0b0fd, type: 3}
---- !u!1 &7837234544312767917 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 6104164470266941136, guid: fa9729e406818e448bec2c61a9a0b0fd, type: 3}
-  m_PrefabInstance: {fileID: 7837234544312767916}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &7837234544312767918
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7837234544312767917}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 86c6556701af9e04380698b89f691b6e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  attenuationObject: {fileID: 0}
 --- !u!137 &7879528415455273069
 SkinnedMeshRenderer:
   m_ObjectHideFlags: 0
