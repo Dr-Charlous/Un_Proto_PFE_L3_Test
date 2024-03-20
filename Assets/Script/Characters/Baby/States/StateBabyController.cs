@@ -14,6 +14,7 @@ public class StateBabyController : MonoBehaviour
     public StateBabyRide StateRide = new StateBabyRide();
     public StateBabyAction StateAction = new StateBabyAction();
     public StateBabySelect StateSelect = new StateBabySelect();
+    public StateBabyCollect StateCollect = new StateBabyCollect();
 
     [Header("Components :")]
     public NavMeshAgent Agent;
@@ -30,6 +31,12 @@ public class StateBabyController : MonoBehaviour
     public Vector3 Target;
     public float Distance = 5;
     public bool ShowPath = true;
+
+    [Header("Collect object")]
+    public bool isTransporting = false;
+    public GameObject TargetObject;
+    public Transform ParentObject;
+    public Transform ParentCollect;
 
     private void Start()
     {
