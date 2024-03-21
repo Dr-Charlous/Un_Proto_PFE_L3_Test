@@ -18,7 +18,7 @@ PrefabInstance:
       objectReference: {fileID: 2488908585195742037, guid: 0000000000000000d000000000000000, type: 0}
     - target: {fileID: 3729595735577426133, guid: f96583597eac02a40b501e4cc51dd2e1, type: 3}
       propertyPath: m_RootOrder
-      value: 0
+      value: -1
       objectReference: {fileID: 0}
     - target: {fileID: 3729595735577426133, guid: f96583597eac02a40b501e4cc51dd2e1, type: 3}
       propertyPath: m_LocalPosition.x
@@ -60,6 +60,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5110501017408960396, guid: f96583597eac02a40b501e4cc51dd2e1, type: 3}
+      propertyPath: ParentCollect
+      value: 
+      objectReference: {fileID: 4288869237670035675}
+    - target: {fileID: 7134607714540538396, guid: f96583597eac02a40b501e4cc51dd2e1, type: 3}
+      propertyPath: m_ExcludeLayers.m_Bits
+      value: 64
+      objectReference: {fileID: 0}
     - target: {fileID: 7453332763307562728, guid: f96583597eac02a40b501e4cc51dd2e1, type: 3}
       propertyPath: m_Name
       value: Diplocaulus_Baby_Alpha
@@ -73,3 +81,8 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f96583597eac02a40b501e4cc51dd2e1, type: 3}
+--- !u!4 &4288869237670035675 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 4281432564024060639, guid: f96583597eac02a40b501e4cc51dd2e1, type: 3}
+  m_PrefabInstance: {fileID: 67461508784581124}
+  m_PrefabAsset: {fileID: 0}

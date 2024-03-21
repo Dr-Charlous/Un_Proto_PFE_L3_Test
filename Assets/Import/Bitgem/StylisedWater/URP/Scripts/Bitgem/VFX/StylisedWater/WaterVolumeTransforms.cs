@@ -23,7 +23,7 @@ namespace Bitgem.VFX.StylisedWater
             // iterate the chldren
             for (var i = 0; i < transform.childCount; i++)
             {
-                // grab the local position/scale
+                // Grab the local position/scale
                 var pos = transform.GetChild(i).localPosition;
                 var sca = transform.GetChild(i).localScale / TileSize;
 
@@ -57,7 +57,7 @@ namespace Bitgem.VFX.StylisedWater
             // iterate the chldren
             for (var i = 0; i < transform.childCount; i++)
             {
-                // grab the local position/scale
+                // Grab the local position/scale
                 var pos = transform.GetChild(i).localPosition;
                 var sca = transform.GetChild(i).localScale / TileSize;
 

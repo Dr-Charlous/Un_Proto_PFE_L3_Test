@@ -33,7 +33,7 @@ Transform:
   m_Children:
   - {fileID: 4942062288145252454}
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 90, y: 45, z: 0}
 --- !u!65 &5868634094593493914
 BoxCollider:
@@ -84,6 +84,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 85de443a2c5bfda4993723352e180c18, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  MaterialOutline: {fileID: 2100000, guid: 11f4ae2ea635b1c46a1f0691945ec5d6, type: 2}
 --- !u!1 &5755155962645240540
 GameObject:
   m_ObjectHideFlags: 0
@@ -146,6 +147,7 @@ MeshRenderer:
   m_RendererPriority: 0
   m_Materials:
   - {fileID: 2100000, guid: 01af045ab75d6404c932e3bc25574dde, type: 2}
+  - {fileID: 2100000, guid: 11f4ae2ea635b1c46a1f0691945ec5d6, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

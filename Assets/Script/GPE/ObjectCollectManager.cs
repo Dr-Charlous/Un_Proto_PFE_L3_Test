@@ -4,6 +4,7 @@ public class ObjectCollectManager : MonoBehaviour
 {
     [SerializeField] CharaMove chara;
     [SerializeField] Transform parentCharacter;
+    [SerializeField] GameObject ObjectFish;
     Transform parentOrigin;
     GameObject objectGet;
     Collider objectCollectCollider;
@@ -48,7 +49,7 @@ public class ObjectCollectManager : MonoBehaviour
         ObjectCollect objectInMouth = collider.GetComponent<ObjectCollect>();
         Transform objectTransform = collider.transform;
 
-        if (objectInMouth != null)
+        if (objectInMouth != null && objectInMouth.gameObject == ObjectFish)
         {
             objectGet = objectInMouth.gameObject;
             parentOrigin = objectTransform.parent;

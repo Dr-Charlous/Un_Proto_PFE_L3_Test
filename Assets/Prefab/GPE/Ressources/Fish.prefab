@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 5868634094593493914}
   - component: {fileID: 6276614836100828818}
   - component: {fileID: 3513089037772812021}
+  - component: {fileID: 8331891136811552473}
   m_Layer: 0
   m_Name: Fish
   m_TagString: Untagged
@@ -33,7 +34,7 @@ Transform:
   m_Children:
   - {fileID: 5511242446638227417}
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!65 &5868634094593493914
 BoxCollider:
@@ -84,6 +85,34 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 85de443a2c5bfda4993723352e180c18, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  MaterialOutline: {fileID: 2100000, guid: 11f4ae2ea635b1c46a1f0691945ec5d6, type: 2}
+--- !u!54 &8331891136811552473
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1088659286591762077}
+  serializedVersion: 4
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
+  m_UseGravity: 0
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!1001 &5472265743541237810
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -136,6 +165,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: 51f2243634fbdef4ab3d09a97002275e, type: 3}
+      propertyPath: m_Materials.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: 51f2243634fbdef4ab3d09a97002275e, type: 3}
+      propertyPath: m_Materials.Array.data[1]
+      value: 
+      objectReference: {fileID: 2100000, guid: 11f4ae2ea635b1c46a1f0691945ec5d6, type: 2}
     - target: {fileID: 919132149155446097, guid: 51f2243634fbdef4ab3d09a97002275e, type: 3}
       propertyPath: m_Name
       value: FISH_MESH_SHADER

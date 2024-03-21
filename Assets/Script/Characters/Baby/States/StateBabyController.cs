@@ -37,6 +37,7 @@ public class StateBabyController : MonoBehaviour
     public GameObject TargetObject;
     public Transform ParentObject;
     public Transform ParentCollect;
+    public OnTriggerEnterScript OnTriggerEnterScript;
 
     private void Start()
     {

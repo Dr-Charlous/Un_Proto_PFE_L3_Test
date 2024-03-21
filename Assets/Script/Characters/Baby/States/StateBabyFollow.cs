@@ -26,11 +26,8 @@ public class StateBabyFollow : IState
         }
         else
         {
-            if (Vector3.Distance(controller.Nest.transform.position, controller.Target) > controller.Distance)
-            {
-                controller.Target = controller.Nest.transform.position;
-                controller.Agent.SetDestination(controller.Target);
-            }
+            controller.Target = controller.Nest.transform.position;
+            controller.Agent.SetDestination(controller.Target);
         }
     }
 

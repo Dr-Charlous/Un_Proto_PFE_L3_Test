@@ -37,7 +37,7 @@ public class BabyManager : MonoBehaviour
             }
             else if (_babiesOnBack.Count > 0 && Baby.currentState == Baby.StateRide)
             {
-                Debug.Log("Release");
+                Debug.Log("ReleaseOrder");
                 ReleaseBaby();
             }
         }
@@ -109,6 +109,14 @@ public class BabyManager : MonoBehaviour
 
         if (Baby.currentState != Baby.StateRide)
             Baby.ChangeState(Baby.StateAction);
+    }
+
+    public void BabyCollect()
+    {
+        StateBabyController Baby = BabiesInScene[BabieNumberSelect].GetComponentInChildren<StateBabyController>();
+
+        if (Baby.currentState != Baby.StateRide)
+            Baby.ChangeState(Baby.StateCollect);
     }
 
     private void OnDrawGizmosSelected()
