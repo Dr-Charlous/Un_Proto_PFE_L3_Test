@@ -3,14 +3,16 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.AI;
+using UnityEngine.InputSystem.XR;
 
 public class BabyManager : MonoBehaviour
 {
     [HideInInspector][SerializeField] List<GameObject> _babiesOnBack;
-    [HideInInspector] [SerializeField] List<Transform> _parentOrigin;
+    [HideInInspector][SerializeField] List<Transform> _parentOrigin;
 
     [SerializeField] Transform _parentCharacter;
     [SerializeField] Transform _respawnPoint;
+    [SerializeField] NestCreation _nest;
     [SerializeField] float _distanceFromBaby = 1.5f;
     [SerializeField] float _babyOffsetOnBack = 1f;
 
@@ -19,6 +21,19 @@ public class BabyManager : MonoBehaviour
     public int BabieNumberOnBack = 1;
     public GameObject[] BabiesInScene;
     public Material[] BabiesMaterial;
+
+    private void Update()
+    {
+        if (_nest.IsCreated && !_nest.IsFeed)
+        {
+            for (int j = 0; j < _babiesOnBack.Count; j++)
+            {
+                var baby = _babiesOnBack[j].GetComponent<StateBabyController>();
+
+                ReleaseBaby();
+            }
+        }
+    }
 
     public void ChangeOutlineBaby(int number, float scale)
     {
@@ -49,7 +64,7 @@ public class BabyManager : MonoBehaviour
 
         _babiesOnBack.Add(babyTransform.gameObject);
         _parentOrigin.Add(babyTransform.parent);
-        baby.GetComponent<NavMeshAgent>().Stop();
+        baby.GetComponent<NavMeshAgent>().isStopped = true;
 
         baby.ChangeState(baby.StateRide);
 

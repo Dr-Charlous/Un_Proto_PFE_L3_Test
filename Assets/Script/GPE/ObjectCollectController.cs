@@ -8,7 +8,15 @@ public class ObjectCollectController : MonoBehaviour
 {
     [SerializeField] CharaMove _chara;
     [SerializeField] GameObject _objectToGrab;
-    public bool Grab = false;
+    public bool[] Grab = new bool[4];
+
+    private void Start()
+    {
+        for (int i = 0; i < _chara.BabyManager.BabiesInScene.Length - 1; i++)
+        {
+            Grab[i] = false;
+        }
+    }
 
     private void Update()
     {
@@ -42,25 +50,34 @@ public class ObjectCollectController : MonoBehaviour
 
     void GrabCheck()
     {
-        if (!Grab)
+        if (!Grab[_chara.BabyManager.BabieNumberSelect])
             GrabOrder();
-        else if (Grab)
+        else if (Grab[_chara.BabyManager.BabieNumberSelect])
             ReleaseOrder();
     }
 
     void GrabOrder()
     {
-        _chara.BabyManager.BabiesInScene[_chara.BabyManager.BabieNumberSelect].GetComponentInChildren<StateBabyController>().TargetObject = _objectToGrab;
-        _chara.BabyManager.BabyCollect();
-        Grab = true;
+        var target = _objectToGrab;
+        var baby = _chara.BabyManager;
+
+        if (target != null)
+        {
+            baby.BabiesInScene[_chara.BabyManager.BabieNumberSelect].GetComponentInChildren<StateBabyController>().TargetObject = target;
+            baby.BabyCollect();
+            Grab[_chara.BabyManager.BabieNumberSelect] = true;
+        }
     }
 
     void ReleaseOrder()
     {
         var controller = _chara.BabyManager.BabiesInScene[_chara.BabyManager.BabieNumberSelect].GetComponentInChildren<StateBabyController>();
 
-        controller.TargetObject.transform.SetParent(controller.ParentObject);
-        controller.isTransporting = false;
-        Grab = false;
+        if (controller.TargetObject != null)
+        {
+            controller.TargetObject.transform.SetParent(controller.ParentObject);
+            controller.isTransporting = false;
+            Grab[_chara.BabyManager.BabieNumberSelect] = false;
+        }
     }
 }

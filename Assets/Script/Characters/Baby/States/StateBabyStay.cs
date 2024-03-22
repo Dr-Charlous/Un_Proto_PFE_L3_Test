@@ -17,8 +17,7 @@ public class StateBabyStay : IState
         {
             if (Vector3.Distance(controller.Nest.transform.position, controller.Target) > controller.Distance)
             {
-                controller.Target = controller.Nest.transform.position;
-                controller.Agent.SetDestination(controller.Target);
+                controller.ChangeState(controller.StateFollow);
             }
         }
     }

@@ -40,6 +40,13 @@ public class FishNavigator : MonoBehaviour
 
             _positionFishTimer = _position.transform.position;
         }
+
+        if (transform.position != _position.transform.position && _isMoving == false)
+        {
+            transform.DOMove(_position.transform.position, _speed * Time.deltaTime);
+            if (_position.Neighbours.Length == 0)
+                GetFish();
+        }
     }
 
     private void OnTriggerEnter(Collider collision)
@@ -74,8 +81,13 @@ public class FishNavigator : MonoBehaviour
         }
         else
         {
-            _fish.SetActive(true);
-            gameObject.SetActive(false);
+            GetFish();
         }
+    }
+
+    void GetFish()
+    {
+        _fish.SetActive(true);
+        gameObject.SetActive(false);
     }
 }

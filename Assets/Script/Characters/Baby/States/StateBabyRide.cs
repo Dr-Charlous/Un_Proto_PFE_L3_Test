@@ -12,6 +12,8 @@ public class StateBabyRide : IState
     public void UpdateState(StateBabyController controller)
     {
         //Debug.Log("Ride");
+
+        
     }
 
     public void OnExit(StateBabyController controller)
