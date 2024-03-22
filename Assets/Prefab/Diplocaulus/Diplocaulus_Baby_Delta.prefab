@@ -5010,7 +5010,6 @@ MonoBehaviour:
   Distance: 1
   ShowPath: 0
   isTransporting: 0
-  DistanceGrab: 0.03
   TargetObject: {fileID: 0}
   ParentObject: {fileID: 0}
   ParentCollect: {fileID: 4281432564024060639}
@@ -5102,7 +5101,7 @@ Transform:
   - {fileID: 7398762894353963990}
   - {fileID: 4281432564024060639}
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &8776239064773938301
 GameObject:
@@ -5152,7 +5151,7 @@ BoxCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
