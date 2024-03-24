@@ -20,10 +20,10 @@ public class ObjectCollectController : MonoBehaviour
 
     private void Update()
     {
-        if (_chara.Collected)
+        if (_chara.CollectedBabies)
         {
             GrabCheck();
-            _chara.Collected = false;
+            _chara.CollectedBabies = false;
         }
     }
 
@@ -76,6 +76,7 @@ public class ObjectCollectController : MonoBehaviour
         if (controller.TargetObject != null)
         {
             controller.TargetObject.transform.SetParent(controller.ParentObject);
+            controller.TargetObject.GetComponent<BoxCollider>().excludeLayers += LayerMask.GetMask("Player");
             controller.isTransporting = false;
             Grab[_chara.BabyManager.BabieNumberSelect] = false;
         }

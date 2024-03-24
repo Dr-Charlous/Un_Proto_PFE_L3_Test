@@ -21,6 +21,7 @@ public class CharaMove : MonoBehaviour
     [Header("Components/Values :")]
     [Range(0, 5)]
     public bool Collected;
+    public bool CollectedBabies;
     public GameObject ParticuleSystem;
     public Rigidbody _rb;
     public GameObject UI;
