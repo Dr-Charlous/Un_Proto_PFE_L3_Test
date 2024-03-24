@@ -22,6 +22,7 @@ public class StateBabyCollect : IState
         if (controller.OnTriggerEnterScript.isTrigger && controller.OnTriggerEnterScript.ObjectTouch.GetComponent<ObjectCollect>() != null && controller.isTransporting == false)
         {
             controller.TargetObject.transform.SetParent(controller.ParentCollect);
+            controller.TargetObject.GetComponent<BoxCollider>().enabled = false;
             controller.isTransporting = true;
         }
     }

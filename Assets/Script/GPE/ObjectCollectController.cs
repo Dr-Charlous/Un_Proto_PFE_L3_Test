@@ -76,6 +76,7 @@ public class ObjectCollectController : MonoBehaviour
         if (controller.TargetObject != null)
         {
             controller.TargetObject.transform.SetParent(controller.ParentObject);
+            controller.TargetObject.GetComponent<BoxCollider>().enabled = true;
             controller.isTransporting = false;
             Grab[_chara.BabyManager.BabieNumberSelect] = false;
         }
