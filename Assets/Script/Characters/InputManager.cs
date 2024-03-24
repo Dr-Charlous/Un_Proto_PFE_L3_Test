@@ -47,6 +47,7 @@ public class InputManager : MonoBehaviour
     void GetCollectInputs(InputAction.CallbackContext collect)
     {
         _chara.Collected = !_chara.Collected;
+        _chara.CollectedBabies = !_chara.CollectedBabies;
     }
 
     void GetDashInput(InputAction.CallbackContext dash)

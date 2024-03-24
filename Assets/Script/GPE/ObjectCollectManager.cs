@@ -60,7 +60,7 @@ public class ObjectCollectManager : MonoBehaviour
 
     void Release()
     {
-        if (chara.Collected)
+        if (chara.CollectedBabies)
         {
             objectGet.transform.SetParent(parentOrigin);
             grab = false;
