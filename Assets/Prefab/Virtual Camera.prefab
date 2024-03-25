@@ -11,7 +11,6 @@ GameObject:
   - component: {fileID: 8766137930526491360}
   - component: {fileID: 5296044884158776327}
   - component: {fileID: 5374800077418757530}
-  - component: {fileID: 7216834352542386014}
   m_Layer: 0
   m_Name: Virtual Camera
   m_TagString: Untagged
@@ -95,37 +94,6 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 2.99, y: 2.82, z: 2.54}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &7216834352542386014
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4236430828341365327}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9a6610d2e704f1648819acc8d7460285, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  CollisionTag: 
-  EventReference:
-    Guid:
-      Data1: 614563247
-      Data2: 1322644173
-      Data3: 1970000041
-      Data4: -846051293
-    Path: event:/Ambiant/Ambiant
-  Event: 
-  PlayEvent: 1
-  StopEvent: 0
-  AllowFadeout: 1
-  TriggerOnce: 0
-  Preload: 0
-  AllowNonRigidbodyDoppler: 0
-  Params: []
-  OverrideAttenuation: 0
-  OverrideMinDistance: 1
-  OverrideMaxDistance: 20
 --- !u!1 &6882495999022576615
 GameObject:
   m_ObjectHideFlags: 0
@@ -191,13 +159,13 @@ MonoBehaviour:
   m_HorizontalDamping: 0.5
   m_VerticalDamping: 0.5
   m_ScreenX: 0.5
-  m_ScreenY: 0.5
+  m_ScreenY: 0.66
   m_DeadZoneWidth: 0
   m_DeadZoneHeight: 0
   m_SoftZoneWidth: 0.8
   m_SoftZoneHeight: 0.8
   m_BiasX: 0
-  m_BiasY: 0
+  m_BiasY: -0.2
   m_CenterOnActivate: 1
 --- !u!114 &2480507456529827089
 MonoBehaviour:
@@ -212,7 +180,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Damping: {x: 0.1, y: 0.5, z: 0.3}
-  ShoulderOffset: {x: 0, y: 2.25, z: 4}
+  ShoulderOffset: {x: 0, y: 2.25, z: 5}
   VerticalArmLength: 0.45
   CameraSide: 1
   CameraDistance: 0
