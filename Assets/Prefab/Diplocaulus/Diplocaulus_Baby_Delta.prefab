@@ -4998,12 +4998,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 55d7030b008ff98488513fe450bb5fa4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  StateAnim: {fileID: 0}
   Agent: {fileID: 4162133263437982154}
   Line: {fileID: 3550012051485149638}
   Point: []
   ObjectBaby: {fileID: 6762036587902153467}
   BabyMesh: {fileID: 9074457955953540276}
   Nest: {fileID: 0}
+  IsParalysed: 0
   Parent: {fileID: 0}
   TargetParent: {fileID: 0}
   Target: {x: 0, y: 0, z: 0}
@@ -5101,7 +5103,7 @@ Transform:
   - {fileID: 7398762894353963990}
   - {fileID: 4281432564024060639}
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &8776239064773938301
 GameObject:
@@ -5171,6 +5173,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isTrigger: 0
   ObjectTouch: {fileID: 0}
+  ObjectStay: {fileID: 0}
+  ObjectLastExit: {fileID: 0}
+  isEnterMode: 1
+  isStayMode: 0
 --- !u!1001 &8155907596761350629
 PrefabInstance:
   m_ObjectHideFlags: 0

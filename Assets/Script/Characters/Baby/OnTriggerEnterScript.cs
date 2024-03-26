@@ -6,15 +6,29 @@ public class OnTriggerEnterScript : MonoBehaviour
 {
     public bool isTrigger = false;
     public GameObject ObjectTouch;
+    public GameObject ObjectStay;
+    public GameObject ObjectLastExit;
+    public bool isEnterMode = false;
+    public bool isStayMode = false;
 
     private void OnTriggerEnter(Collider other)
     {
-        ObjectTouch = other.gameObject;
-        isTrigger = true;
+        if (isEnterMode)
+        {
+            ObjectTouch = other.gameObject;
+            isTrigger = true;
+        }
+    }
+
+    private void OnTriggerStay(Collider other)
+    {
+        if (isStayMode)
+            ObjectStay = other.gameObject;
     }
 
     private void OnTriggerExit(Collider other)
     {
+        ObjectLastExit = ObjectStay;
         ObjectTouch = null;
         isTrigger = false;
     }

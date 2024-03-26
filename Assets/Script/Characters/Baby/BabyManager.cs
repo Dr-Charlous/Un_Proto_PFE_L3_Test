@@ -52,7 +52,6 @@ public class BabyManager : MonoBehaviour
             }
             else if (_babiesOnBack.Count > 0 && Baby.currentState == Baby.StateRide)
             {
-                Debug.Log("ReleaseOrder");
                 ReleaseBaby();
             }
         }
