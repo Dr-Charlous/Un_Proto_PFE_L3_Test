@@ -21,11 +21,11 @@ public class StateBabyController : MonoBehaviour
     public NavMeshAgent Agent;
     public LineRenderer Line;
     public List<Vector3> Point;
-    public GameObject AnimMultiple;
 
     public GameObject ObjectBaby;
     public GameObject BabyMesh;
     public NestCreation Nest;
+    public bool IsParalysed = false;
 
     [Header("Parent follow :")]
     public Transform Parent;
@@ -48,19 +48,19 @@ public class StateBabyController : MonoBehaviour
 
     private void Update()
     {
-        if (currentState != null)
+        if (!IsParalysed)
         {
-            currentState.UpdateState(this);
-        }
+            if (currentState != null)
+            {
+                currentState.UpdateState(this);
+            }
 
-        if (ShowPath)
-        {
-            DrawPath();
+            if (ShowPath)
+            {
+                DrawPath();
+            }
         }
-
         BodyFollow();
-
-        FallingRotate();
     }
 
     public void ChangeState(IState newState)
@@ -69,6 +69,7 @@ public class StateBabyController : MonoBehaviour
         {
             currentState.OnExit(this);
         }
+        IsParalysed = false;
         currentState = newState;
         currentState.OnEnter(this);
     }
@@ -87,17 +88,6 @@ public class StateBabyController : MonoBehaviour
         ObjectBaby.transform.DOKill();
         ObjectBaby.transform.DOMove(transform.position, 0.5f);
         //ObjectBaby.transform.position = transform.position;
-    }
-
-    void FallingRotate()
-    {
-        if (Agent != null && (Agent.velocity.y < -10 || Agent.velocity.y > 10))
-        {
-            var rot = transform.eulerAngles;
-            rot.x = 0;
-            rot.z = 0;
-            transform.eulerAngles = rot;
-        }
     }
 
     void DrawPath()

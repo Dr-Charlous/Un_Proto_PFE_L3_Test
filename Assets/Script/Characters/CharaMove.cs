@@ -31,6 +31,7 @@ public class CharaMove : MonoBehaviour
     [SerializeField] float DashCooldown = 1f;
 
     public bool IsDashing = false;
+    public bool IsParalysed = false;
 
     //private UI _UIObject;
     public BabyManager BabyManager;
@@ -44,9 +45,11 @@ public class CharaMove : MonoBehaviour
 
     void Update()
     {
-        Movement();
-        Rotate();
-        FallingRotate();
+        if (!IsParalysed)
+        {
+            Movement();
+            Rotate();
+        }
     }
 
     void Movement()
@@ -73,17 +76,6 @@ public class CharaMove : MonoBehaviour
         else
         {
             _rb.angularVelocity = _rb.angularVelocity / _decreaseSpeed;
-        }
-    }
-
-    void FallingRotate()
-    {
-        if (_rb != null && (_rb.velocity.y < -2 || _rb.velocity.y > 2))
-        {
-            var rot = transform.eulerAngles;
-            rot.x = 0;
-            rot.z = 0;
-            transform.eulerAngles = rot;
         }
     }
 
