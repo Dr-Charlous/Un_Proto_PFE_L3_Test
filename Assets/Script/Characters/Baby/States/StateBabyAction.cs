@@ -11,7 +11,7 @@ public class StateBabyAction : IState
 
     public void UpdateState(StateBabyController controller)
     {
-        //Debug.Log("Action");
+        //Debug.Log("CheckForAction");
 
         if (controller.Nest != null && controller.Nest.IsCreated && !controller.Nest.IsFeed)
         {

@@ -9,10 +9,15 @@ public class BabyPosCheckAction : MonoBehaviour
 
     private void OnTriggerStay(Collider other)
     {
-        StateBabyController baby = null;
-        baby = other.transform.parent.GetComponentInChildren<StateBabyController>();
+        StateBabyController baby = other.transform.parent.GetComponentInChildren<StateBabyController>();
+        CharaMove mama = other.GetComponent<CharaMove>();
 
-        if (baby != null && baby != _isBabyOccupied)
+        if (mama != null)
+        {
+            IsBabyActionned = false;
+            _isBabyOccupied = null;
+        }
+        else if (baby != null)
         {
             if (baby.currentState == baby.StateAction)
             {
@@ -20,23 +25,12 @@ public class BabyPosCheckAction : MonoBehaviour
                 IsBabyActionned = true;
                 _isBabyOccupied = baby;
             }
-            else if (baby == null)
+            else
             {
+                baby.IsParalysed = false;
                 IsBabyActionned = false;
+                _isBabyOccupied = null;
             }
-        }
-    }
-
-    private void OnTriggerExit(Collider other)
-    {
-        StateBabyController baby = null;
-        baby = other.transform.parent.GetComponentInChildren<StateBabyController>();
-
-        if (baby != null)
-        {
-            _isBabyOccupied = null;
-            baby.IsParalysed = false;
-            IsBabyActionned = false;
         }
     }
 }

@@ -29,6 +29,7 @@ public class OnTriggerEnterScript : MonoBehaviour
     private void OnTriggerExit(Collider other)
     {
         ObjectLastExit = ObjectStay;
+        ObjectStay = null;
         ObjectTouch = null;
         isTrigger = false;
     }

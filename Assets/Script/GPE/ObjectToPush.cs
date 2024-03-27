@@ -1,3 +1,4 @@
+using DG.Tweening;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -6,6 +7,7 @@ public class ObjectToPush : MonoBehaviour
 {
     [SerializeField] BabyPosCheckAction[] _checkBabies;
     [SerializeField] bool[] _isBabyActionned;
+    [SerializeField] Transform _Destination;
 
     private void Update()
     {
@@ -14,14 +16,14 @@ public class ObjectToPush : MonoBehaviour
             if (_checkBabies[i].IsBabyActionned)
             {
                 _isBabyActionned[i] = true;
-                Action();
+                CheckForAction();
             }
             else
                 _isBabyActionned[i] = false;
         }
     }
 
-    void Action()
+    void CheckForAction()
     {
         bool isEveryOneHere = true;
 
@@ -33,7 +35,14 @@ public class ObjectToPush : MonoBehaviour
 
         if (isEveryOneHere)
         {
-            Debug.Log("Action");
+            Action();
         }
+    }
+
+    void Action()
+    {
+        transform.DOMove(_Destination.position, 2);
+        transform.DORotate(_Destination.rotation.eulerAngles, 2);
+        this.enabled = false;
     }
 }
