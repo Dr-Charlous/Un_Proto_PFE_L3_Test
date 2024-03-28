@@ -13,7 +13,6 @@ public class StateBabyController : MonoBehaviour
     public StateBabyFollow StateFollow = new StateBabyFollow();
     public StateBabyRide StateRide = new StateBabyRide();
     public StateBabyAction StateAction = new StateBabyAction();
-    public StateBabySelect StateSelect = new StateBabySelect();
     public StateBabyCollect StateCollect = new StateBabyCollect();
     //public StateBabyAnim StateAnim = new StateBabyAnim();
 
