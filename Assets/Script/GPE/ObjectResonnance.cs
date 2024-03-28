@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class ObjectResonnance : MonoBehaviour
 {
+    public bool IsResonating = false;
+
     [SerializeField] AudioSource _source;
     [SerializeField] AudioClip _clip;
 
@@ -16,6 +18,18 @@ public class ObjectResonnance : MonoBehaviour
             babyController.IsParalysed = true;
             babyController.gameObject.transform.position = transform.position;
             PlaySound(_source, _clip);
+            IsResonating = true;
+        }
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        StateBabyController babyController = other.transform.parent.GetComponentInChildren<StateBabyController>();
+
+        if (babyController != null)
+        {
+            _source.Stop();
+            IsResonating = false;
         }
     }
 
@@ -23,12 +37,10 @@ public class ObjectResonnance : MonoBehaviour
     {
         if (source.isPlaying)
         {
-            Debug.Log("AudioSource is playing");
             return;
         }
         else
         {
-            Debug.Log("AudioSource play");
             source.clip = clip;
             source.Play();
         }

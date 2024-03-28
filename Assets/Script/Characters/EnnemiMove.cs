@@ -11,7 +11,8 @@ public class EnnemiMove : MonoBehaviour
     public Transform[] RoundPositions;
     public float Speed = 10;
 
-    public TrunkMoveCharacters TrunkMoveCharacters;
+    public ObjectResonnance Resonance;
+    public GameObject Fish;
 
     private int _i;
 
@@ -24,7 +25,25 @@ public class EnnemiMove : MonoBehaviour
 
     private void Update()
     {
-        FollowPath();
+        if (Resonance.IsResonating)
+        {
+            if (Fish.activeInHierarchy)
+            {
+                Vector3 fishPos = Fish.transform.position;
+                Vector3 destination = new Vector3(fishPos.x, transform.position.y, fishPos.z);
+                Character.SetDestination(destination);
+            }
+            if (!Fish.activeInHierarchy)
+            {
+                Vector3 ResonPos = Resonance.transform.position;
+                Vector3 destination = new Vector3(ResonPos.x, transform.position.y, ResonPos.z);
+                Character.SetDestination(destination);
+            }
+        }
+        else
+        {
+            FollowPath();
+        }
     }
 
     void FollowPath()
