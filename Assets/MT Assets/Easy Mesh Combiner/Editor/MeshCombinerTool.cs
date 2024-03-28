@@ -216,7 +216,7 @@ namespace MTAssets.EasyMeshCombiner.Editor
             Texture iconDoneOfUi = (Texture)AssetDatabase.LoadAssetAtPath("Assets/MT Assets/Easy Mesh Combiner/Editor/Images/IconDone.png", typeof(Texture));
             Texture arrowIcon = (Texture)AssetDatabase.LoadAssetAtPath("Assets/MT Assets/Easy Mesh Combiner/Editor/Images/Arrow.png", typeof(Texture));
             Texture arrowDoneIcon = (Texture)AssetDatabase.LoadAssetAtPath("Assets/MT Assets/Easy Mesh Combiner/Editor/Images/ArrowDone.png", typeof(Texture));
-            //If fails on load needed assets, locks ui
+            //If fails on load needed assets, locks _doMoving
             if (iconOfUi == null || arrowIcon == null || arrowDoneIcon == null || iconDoneOfUi == null)
             {
                 EditorGUILayout.HelpBox("Unable to load required files. Please reinstall Easy Mesh Combiner to correct this problem.", MessageType.Error);

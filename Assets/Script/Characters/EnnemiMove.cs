@@ -1,8 +1,11 @@
 using DG.Tweening;
+using DG.Tweening.Core;
+using DG.Tweening.Plugins.Options;
 using System.Collections;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.AI;
+using UnityEngine.UIElements;
 
 public class EnnemiMove : MonoBehaviour
 {
@@ -11,10 +14,11 @@ public class EnnemiMove : MonoBehaviour
     public Transform[] RoundPositions;
     public float Speed = 10;
 
-    public ObjectResonnance Resonance;
+    public ObjectResonnance[] Resonance;
     public GameObject Fish;
 
     private int _i;
+    private float _timer = 0;
 
     private void Start()
     {
@@ -25,22 +29,27 @@ public class EnnemiMove : MonoBehaviour
 
     private void Update()
     {
-        if (Resonance.IsResonating)
+        bool isThereSounds = false;
+
+        for (int i = 0; i < Resonance.Length; i++)
         {
-            if (Fish.activeInHierarchy)
+            if (Resonance[i].IsResonating)
             {
-                Vector3 fishPos = Fish.transform.position;
-                Vector3 destination = new Vector3(fishPos.x, transform.position.y, fishPos.z);
-                Character.SetDestination(destination);
-            }
-            if (!Fish.activeInHierarchy)
-            {
-                Vector3 ResonPos = Resonance.transform.position;
-                Vector3 destination = new Vector3(ResonPos.x, transform.position.y, ResonPos.z);
-                Character.SetDestination(destination);
+                if (Fish != null && Fish.activeInHierarchy)
+                {
+                    Move(Fish.transform.position);
+                }
+                else
+                {
+                    Move(Resonance[i].transform.position);
+                }
+
+                isThereSounds = true;
+                break;
             }
         }
-        else
+
+        if (isThereSounds == false)
         {
             FollowPath();
         }
@@ -48,6 +57,8 @@ public class EnnemiMove : MonoBehaviour
 
     void FollowPath()
     {
+        _timer += Time.deltaTime;
+
         if (Character.velocity.magnitude < 1 && Vector3.Distance(new Vector3(transform.position.x, 0, transform.position.z), new Vector3(RoundPositions[_i].position.x, 0, RoundPositions[_i].position.z)) < 1)
         {
             if (_i + 1 < RoundPositions.Length)
@@ -55,11 +66,16 @@ public class EnnemiMove : MonoBehaviour
             else
                 _i = 0;
 
-            Vector3 destination = new Vector3(RoundPositions[_i].position.x, transform.position.y, RoundPositions[_i].position.z);
-            Character.SetDestination(destination);
+            Move(new Vector3(RoundPositions[_i].position.x, transform.position.y, RoundPositions[_i].position.z));
         }
 
         BodyFollow();
+    }
+
+    void Move(Vector3 destinationPath)
+    {
+        Vector3 destination = new Vector3(destinationPath.x, transform.position.y, destinationPath.z);
+        Character.SetDestination(destination);
     }
 
     private void BodyFollow()

@@ -15,7 +15,7 @@ public class StateBabyController : MonoBehaviour
     public StateBabyAction StateAction = new StateBabyAction();
     public StateBabySelect StateSelect = new StateBabySelect();
     public StateBabyCollect StateCollect = new StateBabyCollect();
-    public StateBabyAnim StateAnim = new StateBabyAnim();
+    //public StateBabyAnim StateAnim = new StateBabyAnim();
 
     [Header("Components :")]
     public NavMeshAgent Agent;

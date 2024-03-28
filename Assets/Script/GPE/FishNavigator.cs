@@ -1,4 +1,6 @@
 using DG.Tweening;
+using DG.Tweening.Core;
+using DG.Tweening.Plugins.Options;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -14,6 +16,8 @@ public class FishNavigator : MonoBehaviour
     [SerializeField] float _speed;
     [SerializeField] bool _isMoving;
 
+    [SerializeField] TweenerCore<Vector3, Vector3, VectorOptions> _doMoving;
+
     float _time = 0;
     float _velocity = 0;
     Vector3 _positionFishTimer;
@@ -22,6 +26,7 @@ public class FishNavigator : MonoBehaviour
     {
         _positionFishTimer = _position.transform.position;
         _fish.SetActive(false);
+        _doMoving = transform.DOMove(_position.transform.position, 0);
     }
 
     private void Update()
@@ -41,9 +46,9 @@ public class FishNavigator : MonoBehaviour
             _positionFishTimer = _position.transform.position;
         }
 
-        if (transform.position != _position.transform.position && _isMoving == false)
+        if (transform.position != _position.transform.position && _isMoving == false && _doMoving.IsComplete())
         {
-            transform.DOMove(_position.transform.position, _speed * Time.deltaTime);
+            _doMoving = transform.DOMove(_position.transform.position, _speed * Time.deltaTime);
             if (_position.Neighbours.Length == 0)
                 GetFish();
         }
