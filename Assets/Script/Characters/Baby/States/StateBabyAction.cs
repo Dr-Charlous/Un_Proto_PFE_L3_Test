@@ -6,8 +6,8 @@ public class StateBabyAction : IState
 {
     public void OnEnter(StateBabyController controller)
     {
-        controller.transform.position = controller.TargetParent.position;
-        controller.Target = controller.TargetParent.position;
+        controller.transform.position = controller.transform.position;
+        controller.Target = controller.transform.position;
         controller.Agent.SetDestination(controller.Target);
     }
 
