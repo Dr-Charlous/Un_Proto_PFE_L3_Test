@@ -8,28 +8,35 @@ public class EnnemiMove : MonoBehaviour
 {
     public NavMeshAgent Character;
     public GameObject EnnemyMesh;
-    public Vector3[] RoundPositions;
+    public Transform[] RoundPositions;
     public float Speed = 10;
+
+    public TrunkMoveCharacters TrunkMoveCharacters;
 
     private int _i;
 
     private void Start()
     {
         _i = 0;
-        transform.position = RoundPositions[_i];
+        transform.position = RoundPositions[_i].position;
         EnnemyMesh.transform.position = new Vector3(transform.position.x, EnnemyMesh.transform.position.y, transform.position.z);
     }
 
     private void Update()
     {
-        if (Character.velocity.magnitude < 1 && Vector3.Distance(new Vector3(transform.position.x, 0, transform.position.z), new Vector3(RoundPositions[_i].x, 0, RoundPositions[_i].z)) < 1)
+        FollowPath();
+    }
+
+    void FollowPath()
+    {
+        if (Character.velocity.magnitude < 1 && Vector3.Distance(new Vector3(transform.position.x, 0, transform.position.z), new Vector3(RoundPositions[_i].position.x, 0, RoundPositions[_i].position.z)) < 1)
         {
             if (_i + 1 < RoundPositions.Length)
                 _i += 1;
             else
                 _i = 0;
 
-            Vector3 destination = new Vector3(RoundPositions[_i].x, transform.position.y, RoundPositions[_i].z);
+            Vector3 destination = new Vector3(RoundPositions[_i].position.x, transform.position.y, RoundPositions[_i].position.z);
             Character.SetDestination(destination);
         }
 
@@ -50,7 +57,7 @@ public class EnnemiMove : MonoBehaviour
         EnnemyMesh.transform.DOKill();
 
         Vector3 destinationPos = new Vector3(transform.position.x, EnnemyMesh.transform.position.y, transform.position.z);
-        float distance = (new Vector3(RoundPositions[_i].x, 0, RoundPositions[_i].z) - new Vector3(transform.position.x, 0, transform.position.z)).magnitude;
+        float distance = (new Vector3(RoundPositions[_i].position.x, 0, RoundPositions[_i].position.z) - new Vector3(transform.position.x, 0, transform.position.z)).magnitude;
 
         //EnnemyMesh.transform.DOMove(destinationPos, distance * Speed * Time.deltaTime);
         EnnemyMesh.transform.position = destinationPos;
@@ -60,7 +67,7 @@ public class EnnemiMove : MonoBehaviour
     {
         foreach (var position in RoundPositions)
         {
-            Gizmos.DrawWireSphere(position, 0.5f);
+            Gizmos.DrawWireSphere(position.position, 0.5f);
         }
     }
 }
