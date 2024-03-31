@@ -9,7 +9,7 @@ public class ObjectResonnance : MonoBehaviour
     [SerializeField] AudioSource _source;
     [SerializeField] AudioClip _clip;
 
-    private void OnTriggerEnter(Collider other)
+    private void OnTriggerStay(Collider other)
     {
         StateBabyController babyController = other.transform.parent.GetComponentInChildren<StateBabyController>();
 
