@@ -7,7 +7,7 @@ public class ObjectToPush : MonoBehaviour
 {
     [SerializeField] BabyPosCheckAction[] _checkBabies;
     [SerializeField] bool[] _isBabyActionned;
-    [SerializeField] Transform _Destination;
+    [SerializeField] Transform[] _Destination;
 
     private void Update()
     {
@@ -41,8 +41,14 @@ public class ObjectToPush : MonoBehaviour
 
     void Action()
     {
-        transform.DOMove(_Destination.position, 2);
-        transform.DORotate(_Destination.rotation.eulerAngles, 2);
+        Vector3[] destinationPos = new Vector3[_Destination.Length];
+        for (int i = 0; i < _Destination.Length; i++)
+        {
+            destinationPos[i] = _Destination[i].position;
+        }
+
+        transform.DOPath(destinationPos, 2);
+        transform.DORotate(_Destination[_Destination.Length-1].rotation.eulerAngles, 2);
         this.enabled = false;
     }
 }

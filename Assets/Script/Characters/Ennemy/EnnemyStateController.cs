@@ -24,6 +24,7 @@ public class EnnemyStateController : MonoBehaviour
 
     public int _i;
     public float DistanceNext;
+    public bool isEating = false;
 
 
     private void Start()
@@ -42,7 +43,9 @@ public class EnnemyStateController : MonoBehaviour
             currentState.UpdateState(this);
         }
 
-        Check();
+        if (!isEating)
+            Check();
+
         BodyFollow();
         Debug.Log(currentState.ToString());
     }

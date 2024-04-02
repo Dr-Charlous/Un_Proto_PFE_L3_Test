@@ -19,8 +19,6 @@ public class StateEnnemyRound : IStateEnnemy
 
             controller.Move(new Vector3(controller.RoundPositions[controller._i].position.x, controller.transform.position.y, controller.RoundPositions[controller._i].position.z));
         }
-
-        Debug.Log((new Vector3(controller.transform.position.x, 0, controller.transform.position.z) - new Vector3(controller.RoundPositions[controller._i].position.x, 0, controller.RoundPositions[controller._i].position.z)).magnitude);
     }
 
     public void OnExit(EnnemyStateController controller)

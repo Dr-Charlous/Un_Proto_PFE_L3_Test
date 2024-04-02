@@ -14,7 +14,7 @@ public class CutoutObject : MonoBehaviour
 
     private void Awake()
     {
-        mainCamera = GetComponent<Camera>();        
+        mainCamera = Camera.main;        
     }
 
     private void Update()
