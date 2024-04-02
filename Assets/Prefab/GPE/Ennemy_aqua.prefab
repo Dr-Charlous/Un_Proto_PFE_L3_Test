@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6100997611511938344}
-  - component: {fileID: 9075769075103098071}
+  - component: {fileID: 3134857647185000123}
   - component: {fileID: 2497921143574613898}
   m_Layer: 0
   m_Name: Ennemy
@@ -33,7 +33,7 @@ Transform:
   m_Father: {fileID: 1987116622278729961}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &9075769075103098071
+--- !u!114 &3134857647185000123
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -42,7 +42,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 27272652279780789}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 82453bfb6d9067f46b7e3bcffc22cd1f, type: 3}
+  m_Script: {fileID: 11500000, guid: 87953a1ee0749ac45af1af4d51df821e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   Character: {fileID: 2497921143574613898}
@@ -52,12 +52,11 @@ MonoBehaviour:
   - {fileID: 2279246562518180852}
   - {fileID: 2152010888932214999}
   - {fileID: 8758145128787051521}
-  - {fileID: 1517909364181804969}
-  - {fileID: 1340714515254585258}
-  - {fileID: 2433908899041119600}
   Speed: 10
-  Resonance: []
+  Resonance:
+  - {fileID: 0}
   Fish: {fileID: 0}
+  _i: 0
 --- !u!195 &2497921143574613898
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -243,7 +242,7 @@ Transform:
   - {fileID: 3868605789195617693}
   - {fileID: 1901189160932311061}
   m_Father: {fileID: 0}
-  m_RootOrder: -1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &5287974547449920250
 GameObject:
