@@ -5790,17 +5790,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Position: 0
   Rotation: 0
-  _acceleration: 10
-  _limitMaxSpeed: 5
-  _decreaseSpeed: 1.01
-  _steering: 0.75
+  _acceleration: 12.5
+  _limitMaxSpeed: 4
+  _decreaseSpeed: 1.02
+  _steering: 0.7
   Collected: 0
+  CollectedBabies: 0
   ParticuleSystem: {fileID: 2068147541598324142}
   _rb: {fileID: 6626216848454042332}
   UI: {fileID: 3713041439029576309}
-  DashForce: 0.75
-  DashCooldown: 3
+  DashForce: 0.5
+  DashCooldown: 1.5
   IsDashing: 0
+  IsParalysed: 0
   BabyManager: {fileID: 945246323412029050}
 --- !u!95 &4235063686340100310
 Animator:
