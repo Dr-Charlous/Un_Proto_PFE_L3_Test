@@ -19,7 +19,7 @@ public class ObjectCollectManager : MonoBehaviour
         }
     }
 
-    private void OnTriggerEnter(Collider collider)
+    private void OnTriggerStay(Collider collider)
     {
         if (collider.GetComponent<ObjectCollect>() != null)
         {
@@ -38,7 +38,7 @@ public class ObjectCollectManager : MonoBehaviour
 
     void GrabCheck()
     {
-        if (!grab && objectCollectCollider != null)
+        if (grab == false && objectCollectCollider != null)
             Grab(objectCollectCollider);
         else if (grab)
             Release();
@@ -60,10 +60,7 @@ public class ObjectCollectManager : MonoBehaviour
 
     void Release()
     {
-        if (chara.CollectedBabies)
-        {
-            objectGet.transform.SetParent(parentOrigin);
-            grab = false;
-        }
+        objectGet.transform.parent = parentOrigin;
+        grab = false;
     }
 }
