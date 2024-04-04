@@ -15,7 +15,6 @@ public class InputManager : MonoBehaviour
         _controls.Diplocaulus.Enable();
         _controls.Diplocaulus.Move.performed += GetMoveInputs;
         _controls.Diplocaulus.Collect.started += GetCollectInputs;
-        _controls.Diplocaulus.Dash.started += GetDashInput;
         _controls.Diplocaulus.KidsGamePad.performed += GetKidsInputGamePad;
         _controls.Diplocaulus.KidsKeyBoard.started += GetKidsInputMouse;
         _controls.Diplocaulus.BabyFollow.started += GetBabyFollowInput;
@@ -29,7 +28,6 @@ public class InputManager : MonoBehaviour
         _controls.Diplocaulus.Disable();
         _controls.Diplocaulus.Move.performed -= GetMoveInputs;
         _controls.Diplocaulus.Collect.started -= GetCollectInputs;
-        _controls.Diplocaulus.Dash.started -= GetDashInput;
         _controls.Diplocaulus.KidsGamePad.performed -= GetKidsInputGamePad;
         _controls.Diplocaulus.KidsKeyBoard.started -= GetKidsInputMouse;
         _controls.Diplocaulus.BabyFollow.started -= GetBabyFollowInput;
@@ -48,14 +46,6 @@ public class InputManager : MonoBehaviour
     {
         _chara.Collected = !_chara.Collected;
         _chara.CollectedBabies = !_chara.CollectedBabies;
-    }
-
-    void GetDashInput(InputAction.CallbackContext dash)
-    {
-        if (_chara.IsDashing == false)
-        {
-            StartCoroutine(_chara.Dash());
-        }
     }
 
     private void GetKidsInputMouse(InputAction.CallbackContext input)

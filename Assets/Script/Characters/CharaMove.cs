@@ -25,11 +25,6 @@ public class CharaMove : MonoBehaviour
     public Rigidbody _rb;
     public GameObject UI;
 
-    [Header("Dash")]
-    [SerializeField] float DashForce = 5f;
-    [SerializeField] float DashCooldown = 1f;
-
-    public bool IsDashing = false;
     public bool IsParalysed = false;
 
     //private UI _UIObject;
@@ -76,14 +71,5 @@ public class CharaMove : MonoBehaviour
         {
             _rb.angularVelocity = _rb.angularVelocity / _decreaseSpeed;
         }
-    }
-
-    public IEnumerator Dash()
-    {
-        IsDashing = true;
-        var direction = transform.forward.normalized;
-        _rb.AddForce(-direction * DashForce, ForceMode.Impulse);
-        yield return new WaitForSeconds(DashCooldown);
-        IsDashing = false;
     }
 }
