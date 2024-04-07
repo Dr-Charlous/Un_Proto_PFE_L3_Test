@@ -26,6 +26,7 @@ public class StateBabyCollect : IState
             controller.TargetObject.transform.SetParent(controller.ParentCollect);
             controller.TargetObject.GetComponent<BoxCollider>().excludeLayers -= LayerMask.GetMask("Player");
             controller.isTransporting = true;
+            controller.ChangeState(controller.StateFollow);
         }
     }
 

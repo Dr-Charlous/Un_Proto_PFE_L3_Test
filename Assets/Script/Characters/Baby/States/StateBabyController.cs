@@ -35,6 +35,7 @@ public class StateBabyController : MonoBehaviour
 
     [Header("Collect object")]
     public bool isTransporting = false;
+    public bool isGrab = false;
     public GameObject TargetObject;
     public Transform ParentObject;
     public Transform ParentCollect;

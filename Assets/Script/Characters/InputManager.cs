@@ -15,8 +15,6 @@ public class InputManager : MonoBehaviour
         _controls.Diplocaulus.Enable();
         _controls.Diplocaulus.Move.performed += GetMoveInputs;
         _controls.Diplocaulus.Collect.started += GetCollectInputs;
-        _controls.Diplocaulus.KidsGamePad.performed += GetKidsInputGamePad;
-        _controls.Diplocaulus.KidsKeyBoard.started += GetKidsInputMouse;
         _controls.Diplocaulus.BabyFollow.started += GetBabyFollowInput;
         _controls.Diplocaulus.BabyAction.started += GetBabyActionInput;
         _controls.Diplocaulus.BabyGet.started += GetBabyGetInput;
@@ -28,8 +26,6 @@ public class InputManager : MonoBehaviour
         _controls.Diplocaulus.Disable();
         _controls.Diplocaulus.Move.performed -= GetMoveInputs;
         _controls.Diplocaulus.Collect.started -= GetCollectInputs;
-        _controls.Diplocaulus.KidsGamePad.performed -= GetKidsInputGamePad;
-        _controls.Diplocaulus.KidsKeyBoard.started -= GetKidsInputMouse;
         _controls.Diplocaulus.BabyFollow.started -= GetBabyFollowInput;
         _controls.Diplocaulus.BabyAction.started -= GetBabyActionInput;
         _controls.Diplocaulus.BabyGet.started -= GetBabyGetInput;
@@ -48,70 +44,21 @@ public class InputManager : MonoBehaviour
         _chara.CollectedBabies = !_chara.CollectedBabies;
     }
 
-    private void GetKidsInputMouse(InputAction.CallbackContext input)
-    {
-        var babies = _chara.BabyManager;
-        if (babies.BabiesInScene.Length > 0)
-        {
-            babies.ChangeOutlineBaby(babies.BabieNumberSelect, 0);
-
-            if (int.Parse(input.action.ReadValueAsObject().ToString()) > 0 && babies.BabieNumberSelect < babies.BabiesInScene.Length - 1)
-            {
-                babies.BabieNumberSelect++;
-            }
-            else if (int.Parse(input.action.ReadValueAsObject().ToString()) < 0 && babies.BabieNumberSelect > 0)
-            {
-                babies.BabieNumberSelect--;
-            }
-
-            babies.ChangeOutlineBaby(babies.BabieNumberSelect, 1.1f);
-        }
-    }
-
-    private void GetKidsInputGamePad(InputAction.CallbackContext input)
-    {
-        var babies = _chara.BabyManager;
-
-        if (babies.BabiesInScene.Length > 0)
-        {
-            babies.ChangeOutlineBaby(babies.BabieNumberSelect, 0);
-
-            if (input.action.ReadValue<Vector2>().x == 1 && babies.BabiesInScene.Length > 1)
-            {
-                babies.BabieNumberSelect = 1;
-            }
-            else if (input.action.ReadValue<Vector2>().x == -1 && babies.BabiesInScene.Length > 3)
-            {
-                babies.BabieNumberSelect = 3;
-            }
-            else if (input.action.ReadValue<Vector2>().y == 1 && babies.BabiesInScene.Length > 2)
-            {
-                babies.BabieNumberSelect = 2;
-            }
-            else if (input.action.ReadValue<Vector2>().y == -1)
-            {
-                babies.BabieNumberSelect = 0;
-            }
-
-            babies.ChangeOutlineBaby(babies.BabieNumberSelect, 1.1f);
-        }
-    }
-
     void GetBabyFollowInput(InputAction.CallbackContext baby)
     {
-        if (_chara.BabyManager.BabiesInScene.Length > 0)
+        if (_chara.BabyManager.BabiesInScene.Count > 0)
             _chara.BabyManager.BabyFollow();
     }
 
     void GetBabyActionInput(InputAction.CallbackContext baby)
     {
-        if (_chara.BabyManager.BabiesInScene.Length > 0)
+        if (_chara.BabyManager.BabiesInScene.Count > 0)
             _chara.BabyManager.BabyAction();
     }
 
     void GetBabyGetInput(InputAction.CallbackContext baby)
     {
-        if (_chara.BabyManager.BabiesInScene.Length > 0)
+        if (_chara.BabyManager.BabiesInScene.Count > 0)
             _chara.BabyManager.CanWeGetBaby(_chara.BabyManager.BabieNumberOnBack);
     }
 
@@ -132,15 +79,5 @@ public class InputManager : MonoBehaviour
     private void Awake()
     {
         _controls = new Controls();
-
-        var babies = _chara.BabyManager;
-
-        for (int i = 0; i < babies.BabiesInScene.Length; i++)
-        {
-            babies.ChangeOutlineBaby(i, 0);
-        }
-
-        if (babies.BabiesInScene.Length > 0)
-            babies.ChangeOutlineBaby(babies.BabieNumberSelect, 1.1f);
     }
 }

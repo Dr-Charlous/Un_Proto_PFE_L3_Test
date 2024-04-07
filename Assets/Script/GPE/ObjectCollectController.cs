@@ -8,13 +8,12 @@ public class ObjectCollectController : MonoBehaviour
 {
     [SerializeField] CharaMove _chara;
     [SerializeField] GameObject _objectToGrab;
-    public bool[] Grab = new bool[4];
 
     private void Start()
     {
-        for (int i = 0; i < _chara.BabyManager.BabiesInScene.Length - 1; i++)
+        for (int i = 0; i < _chara.BabyManager.BabiesInScene.Count - 1; i++)
         {
-            Grab[i] = false;
+            _chara.BabyManager.BabiesInScene[i].GetComponentInChildren<StateBabyController>().isGrab = false;
         }
     }
 
@@ -22,7 +21,7 @@ public class ObjectCollectController : MonoBehaviour
     {
         if (_chara.CollectedBabies)
         {
-            GrabCheck();
+            GrabCheck(0);
             _chara.CollectedBabies = false;
         }
     }
@@ -48,37 +47,37 @@ public class ObjectCollectController : MonoBehaviour
         }
     }
 
-    void GrabCheck()
+    void GrabCheck(int i)
     {
-        if (!Grab[_chara.BabyManager.BabieNumberSelect])
-            GrabOrder();
-        else if (Grab[_chara.BabyManager.BabieNumberSelect])
-            ReleaseOrder();
+        if (!_chara.BabyManager.BabiesInScene[i].GetComponentInChildren<StateBabyController>().isGrab)
+            GrabOrder(i);
+        else if (_chara.BabyManager.BabiesInScene[i].GetComponentInChildren<StateBabyController>().isGrab)
+            ReleaseOrder(i);
     }
 
-    void GrabOrder()
+    void GrabOrder(int i)
     {
         var target = _objectToGrab;
         var baby = _chara.BabyManager;
 
         if (target != null)
         {
-            baby.BabiesInScene[_chara.BabyManager.BabieNumberSelect].GetComponentInChildren<StateBabyController>().TargetObject = target;
+            baby.BabiesInScene[i].GetComponentInChildren<StateBabyController>().TargetObject = target;
             baby.BabyCollect();
-            Grab[_chara.BabyManager.BabieNumberSelect] = true;
+            _chara.BabyManager.BabiesInScene[baby.BabiesInScene.Count - 1].GetComponentInChildren<StateBabyController>().isGrab = true;
         }
     }
 
-    void ReleaseOrder()
+    void ReleaseOrder(int i)
     {
-        var controller = _chara.BabyManager.BabiesInScene[_chara.BabyManager.BabieNumberSelect].GetComponentInChildren<StateBabyController>();
+        var controller = _chara.BabyManager.BabiesInScene[i].GetComponentInChildren<StateBabyController>();
 
         if (controller.TargetObject != null)
         {
             controller.TargetObject.transform.SetParent(controller.ParentObject);
             controller.TargetObject.GetComponent<BoxCollider>().excludeLayers += LayerMask.GetMask("Player");
             controller.isTransporting = false;
-            Grab[_chara.BabyManager.BabieNumberSelect] = false;
+            _chara.BabyManager.BabiesInScene[i].GetComponentInChildren<StateBabyController>().isGrab = false;
         }
     }
 }

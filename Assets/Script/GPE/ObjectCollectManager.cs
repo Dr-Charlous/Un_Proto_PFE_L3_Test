@@ -41,7 +41,7 @@ public class ObjectCollectManager : MonoBehaviour
         if (grab == false && objectCollectCollider != null)
             Grab(objectCollectCollider);
         else if (grab)
-            Release();
+           Release();
     }
 
     void Grab(Collider collider)
@@ -60,7 +60,7 @@ public class ObjectCollectManager : MonoBehaviour
 
     void Release()
     {
-        objectGet.transform.parent = parentOrigin;
-        grab = false;
+        //objectGet.transform.parent = parentOrigin;
+        //grab = false;
     }
 }

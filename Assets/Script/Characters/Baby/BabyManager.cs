@@ -17,10 +17,8 @@ public class BabyManager : MonoBehaviour
     [SerializeField] float _babyOffsetOnBack = 1f;
 
     [Header("Babies :")]
-    public int BabieNumberSelect = 0;
     public int BabieNumberOnBack = 1;
-    public GameObject[] BabiesInScene;
-    public Material[] BabiesMaterial;
+    public List<GameObject> BabiesInScene;
 
     private void Update()
     {
@@ -35,24 +33,40 @@ public class BabyManager : MonoBehaviour
         }
     }
 
-    public void ChangeOutlineBaby(int number, float scale)
-    {
-        BabiesMaterial[number].SetFloat("_Scale", scale);
-    }
+    //public void ChangeOutlineBaby(int number, float scale)
+    //{
+    //    BabiesMaterial[number].SetFloat("_Scale", scale);
+    //}
 
     public void CanWeGetBaby(int babyLimit)
     {
-        StateBabyController Baby = BabiesInScene[BabieNumberSelect].GetComponentInChildren<StateBabyController>();
-
-        if (Baby != null)
+        float distance = 0;
+        int j = -1;
+        for (int i = 0; i < BabiesInScene.Count; i++)
         {
-            if (Baby.currentState != Baby.StateRide && _babiesOnBack.Count < babyLimit && Vector3.Distance(Baby.transform.position, _parentCharacter.position) <= _distanceFromBaby)
+            float actualDistance = (transform.position - BabiesInScene[i].transform.position).magnitude;
+
+            if (actualDistance < distance && BabiesInScene[i].GetComponentInChildren<StateBabyController>().currentState != BabiesInScene[i].GetComponentInChildren<StateBabyController>().StateRide)
             {
-                GrabBaby(Baby);
+                distance = actualDistance;
+                j = i;
             }
-            else if (_babiesOnBack.Count > 0 && Baby.currentState == Baby.StateRide)
+        }
+
+        if (j != -1)
+        {
+            StateBabyController Baby = BabiesInScene[j].GetComponentInChildren<StateBabyController>();
+
+            if (Baby != null)
             {
-                ReleaseBaby();
+                if (Baby.currentState != Baby.StateRide && _babiesOnBack.Count < babyLimit && Vector3.Distance(Baby.transform.position, _parentCharacter.position) <= _distanceFromBaby)
+                {
+                    GrabBaby(Baby);
+                }
+                else if (_babiesOnBack.Count > 0 && Baby.currentState == Baby.StateRide)
+                {
+                    ReleaseBaby();
+                }
             }
         }
     }
@@ -106,31 +120,54 @@ public class BabyManager : MonoBehaviour
 
     public void BabyFollow()
     {
-        StateBabyController Baby = BabiesInScene[BabieNumberSelect].GetComponentInChildren<StateBabyController>();
-
-        if (Baby.currentState != Baby.StateRide)
+        for (int i = 0; i < BabiesInScene.Count; i++)
         {
-            if (Baby.currentState == Baby.StateFollow)
-                Baby.ChangeState(Baby.StateStay);
-            else
-                Baby.ChangeState(Baby.StateFollow);
+            StateBabyController Baby = BabiesInScene[i].GetComponentInChildren<StateBabyController>();
+
+            if (Baby.currentState != Baby.StateRide)
+            {
+                if (Baby.currentState == Baby.StateFollow)
+                    Baby.ChangeState(Baby.StateStay);
+                else
+                    Baby.ChangeState(Baby.StateFollow);
+            }
         }
     }
 
     public void BabyAction()
     {
-        StateBabyController Baby = BabiesInScene[BabieNumberSelect].GetComponentInChildren<StateBabyController>();
+        for (int i = 0; i < BabiesInScene.Count; i++)
+        {
+            StateBabyController Baby = BabiesInScene[i].GetComponentInChildren<StateBabyController>();
 
-        if (Baby.currentState != Baby.StateRide)
-            Baby.ChangeState(Baby.StateAction);
+            if (Baby.currentState != Baby.StateRide)
+            {
+                Baby.ChangeState(Baby.StateAction);
+
+                GameObject obj = BabiesInScene[0];
+                BabiesInScene.Remove(BabiesInScene[0]);
+                BabiesInScene.Add(obj);
+                break;
+            }
+        }
     }
 
     public void BabyCollect()
     {
-        StateBabyController Baby = BabiesInScene[BabieNumberSelect].GetComponentInChildren<StateBabyController>();
+        for (int i = 0; i < BabiesInScene.Count; i++)
+        {
+            StateBabyController Baby = BabiesInScene[i].GetComponentInChildren<StateBabyController>();
 
-        if (Baby.currentState != Baby.StateRide)
-            Baby.ChangeState(Baby.StateCollect);
+            if (Baby.currentState != Baby.StateRide)
+            {
+                Baby.ChangeState(Baby.StateCollect);
+
+                GameObject obj = BabiesInScene[0];
+                BabiesInScene.Remove(BabiesInScene[0]);
+                BabiesInScene.Add(obj);
+                break;
+            }
+        }
     }
 
     private void OnDrawGizmosSelected()
