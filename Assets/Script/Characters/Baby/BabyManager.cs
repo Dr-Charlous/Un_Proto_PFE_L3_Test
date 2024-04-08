@@ -120,15 +120,32 @@ public class BabyManager : MonoBehaviour
 
     public void BabyFollow()
     {
-        for (int i = 0; i < BabiesInScene.Count; i++)
+        StateBabyController Baby = BabiesInScene[0].GetComponentInChildren<StateBabyController>();
+        bool isFollowing = false;
+
+        if (Baby.currentState != Baby.StateRide)
         {
-            StateBabyController Baby = BabiesInScene[i].GetComponentInChildren<StateBabyController>();
+            if (Baby.currentState == Baby.StateFollow)
+            {
+                Baby.ChangeState(Baby.StateStay);
+                isFollowing = false;
+            }
+            else
+            {
+                Baby.ChangeState(Baby.StateFollow);
+                isFollowing = true;
+            }
+        }
+
+        for (int i = 1; i < BabiesInScene.Count; i++)
+        {
+            Baby = BabiesInScene[i].GetComponentInChildren<StateBabyController>();
 
             if (Baby.currentState != Baby.StateRide)
             {
-                if (Baby.currentState == Baby.StateFollow)
+                if (Baby.currentState != Baby.StateStay && !isFollowing)
                     Baby.ChangeState(Baby.StateStay);
-                else
+                else if (Baby.currentState != Baby.StateFollow)
                     Baby.ChangeState(Baby.StateFollow);
             }
         }
@@ -154,18 +171,33 @@ public class BabyManager : MonoBehaviour
 
     public void BabyCollect()
     {
+        bool isCollecting = false;
+
         for (int i = 0; i < BabiesInScene.Count; i++)
         {
             StateBabyController Baby = BabiesInScene[i].GetComponentInChildren<StateBabyController>();
 
-            if (Baby.currentState != Baby.StateRide)
+            if (Baby.currentState == Baby.StateCollect)
             {
-                Baby.ChangeState(Baby.StateCollect);
+                isCollecting = true;
+            }
+        }
 
-                GameObject obj = BabiesInScene[0];
-                BabiesInScene.Remove(BabiesInScene[0]);
-                BabiesInScene.Add(obj);
-                break;
+        if (!isCollecting)
+        {
+            for (int i = 0; i < BabiesInScene.Count; i++)
+            {
+                StateBabyController Baby = BabiesInScene[i].GetComponentInChildren<StateBabyController>();
+
+                if (Baby.currentState != Baby.StateRide)
+                {
+                    Baby.ChangeState(Baby.StateCollect);
+
+                    GameObject obj = BabiesInScene[0];
+                    BabiesInScene.Remove(BabiesInScene[0]);
+                    BabiesInScene.Add(obj);
+                    break;
+                }
             }
         }
     }
