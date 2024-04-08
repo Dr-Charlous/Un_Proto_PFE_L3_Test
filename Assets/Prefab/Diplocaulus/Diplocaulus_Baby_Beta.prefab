@@ -5026,12 +5026,14 @@ MonoBehaviour:
   ObjectBaby: {fileID: 6762036587902153467}
   BabyMesh: {fileID: 9074457955953540276}
   Nest: {fileID: 0}
+  IsParalysed: 0
   Parent: {fileID: 0}
   TargetParent: {fileID: 0}
   Target: {x: 0, y: 0, z: 0}
   Distance: 1
   ShowPath: 0
   isTransporting: 0
+  isGrab: 0
   TargetObject: {fileID: 0}
   ParentObject: {fileID: 0}
   ParentCollect: {fileID: 8549278784491333134}
@@ -5194,7 +5196,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -7766121206740895547, guid: 06c0f603844c9ec49a6d11411d45ee18, type: 3}
       propertyPath: m_Materials.Array.size
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: -7766121206740895547, guid: 06c0f603844c9ec49a6d11411d45ee18, type: 3}
       propertyPath: m_Materials.Array.data[1]

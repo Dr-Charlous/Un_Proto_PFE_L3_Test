@@ -4998,7 +4998,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 55d7030b008ff98488513fe450bb5fa4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  StateAnim: {fileID: 0}
   Agent: {fileID: 4162133263437982154}
   Line: {fileID: 3550012051485149638}
   Point: []
@@ -5012,6 +5011,7 @@ MonoBehaviour:
   Distance: 1
   ShowPath: 0
   isTransporting: 0
+  isGrab: 0
   TargetObject: {fileID: 0}
   ParentObject: {fileID: 0}
   ParentCollect: {fileID: 8549278784491333134}
@@ -5103,7 +5103,7 @@ Transform:
   - {fileID: 7398762894353963990}
   - {fileID: 4281432564024060639}
   m_Father: {fileID: 0}
-  m_RootOrder: -1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &8776239064773938301
 GameObject:
@@ -5247,7 +5247,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -7766121206740895547, guid: 06c0f603844c9ec49a6d11411d45ee18, type: 3}
       propertyPath: m_Materials.Array.size
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: -7766121206740895547, guid: 06c0f603844c9ec49a6d11411d45ee18, type: 3}
       propertyPath: m_Materials.Array.data[1]
