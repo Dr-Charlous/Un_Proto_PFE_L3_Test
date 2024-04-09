@@ -5,15 +5,15 @@ using UnityEngine;
 
 public class ObjectToPush : MonoBehaviour
 {
-    [SerializeField] BabyPosCheckAction[] _checkBabies;
+    public BabyPosCheckAction[] CheckBabies;
     [SerializeField] bool[] _isBabyActionned;
-    [SerializeField] Transform[] _Destination;
+    [SerializeField] Transform[] _destination;
 
     private void Update()
     {
-        for (int i = 0; i < _checkBabies.Length; i++)
+        for (int i = 0; i < CheckBabies.Length; i++)
         {
-            if (_checkBabies[i].IsBabyActionned)
+            if (CheckBabies[i].IsBabyActionned)
             {
                 _isBabyActionned[i] = true;
                 CheckForAction();
@@ -41,14 +41,14 @@ public class ObjectToPush : MonoBehaviour
 
     void Action()
     {
-        Vector3[] destinationPos = new Vector3[_Destination.Length];
-        for (int i = 0; i < _Destination.Length; i++)
+        Vector3[] destinationPos = new Vector3[_destination.Length];
+        for (int i = 0; i < _destination.Length; i++)
         {
-            destinationPos[i] = _Destination[i].position;
+            destinationPos[i] = _destination[i].position;
         }
 
         transform.DOPath(destinationPos, 2);
-        transform.DORotate(_Destination[_Destination.Length-1].rotation.eulerAngles, 2);
+        transform.DORotate(_destination[_destination.Length-1].rotation.eulerAngles, 2);
         this.enabled = false;
     }
 }

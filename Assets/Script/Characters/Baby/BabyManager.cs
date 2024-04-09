@@ -10,6 +10,7 @@ public class BabyManager : MonoBehaviour
     [HideInInspector][SerializeField] List<GameObject> _babiesOnBack;
     [HideInInspector][SerializeField] List<Transform> _parentOrigin;
 
+    [SerializeField] GameObject _objectCollide;
     [SerializeField] Transform _parentCharacter;
     [SerializeField] Transform _respawnPoint;
     [SerializeField] NestCreation _nest;
@@ -153,18 +154,22 @@ public class BabyManager : MonoBehaviour
 
     public void BabyAction()
     {
-        for (int i = 0; i < BabiesInScene.Count; i++)
+        if (_objectCollide != null)
         {
-            StateBabyController Baby = BabiesInScene[i].GetComponentInChildren<StateBabyController>();
-
-            if (Baby.currentState != Baby.StateRide)
+            for (int i = 0; i < _objectCollide.GetComponent<ObjectToPush>().CheckBabies.Length; i++)
             {
-                Baby.ChangeState(Baby.StateAction);
+                StateBabyController Baby = BabiesInScene[i].GetComponentInChildren<StateBabyController>();
 
-                GameObject obj = BabiesInScene[0];
-                BabiesInScene.Remove(BabiesInScene[0]);
-                BabiesInScene.Add(obj);
-                break;
+                if (Baby.currentState != Baby.StateRide)
+                {
+                    Baby.ChangeState(Baby.StateAction);
+                    Baby.Agent.destination = _objectCollide.GetComponent<ObjectToPush>().CheckBabies[i].transform.position;
+
+                    GameObject obj = BabiesInScene[0];
+                    BabiesInScene.Remove(BabiesInScene[0]);
+                    BabiesInScene.Add(obj);
+                    break;
+                }
             }
         }
     }
@@ -200,6 +205,19 @@ public class BabyManager : MonoBehaviour
                 }
             }
         }
+    }
+
+    private void OnTriggerStay(Collider other)
+    {
+        _objectCollide = other.gameObject;
+        if (_objectCollide.GetComponent<ObjectToPush>() == null)
+            _objectCollide = null;
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        if (_objectCollide != null && _objectCollide.GetComponent<ObjectToPush>() != null)
+            _objectCollide = null;
     }
 
     private void OnDrawGizmosSelected()
