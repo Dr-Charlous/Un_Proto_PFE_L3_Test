@@ -5463,6 +5463,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5737708356442622611}
+  - component: {fileID: 5037144690507714099}
   - component: {fileID: 945246323412029050}
   m_Layer: 6
   m_Name: BabyManager
@@ -5490,6 +5491,27 @@ Transform:
   m_Father: {fileID: 2140746911345890558}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &5037144690507714099
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7541176520772360697}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.4, y: 0.5, z: 10}
+  m_Center: {x: 0, y: -0.19999999, z: -4.5}
 --- !u!114 &945246323412029050
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5504,23 +5526,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _babiesOnBack: []
   _parentOrigin: []
+  _objectCollide: {fileID: 0}
   _parentCharacter: {fileID: 6318835249215218757}
   _respawnPoint: {fileID: 5737708356442622611}
   _nest: {fileID: 0}
   _distanceFromBaby: 1.5
   _babyOffsetOnBack: 0.15
-  BabieNumberSelect: 0
   BabieNumberOnBack: 1
   BabiesInScene:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
-  BabiesMaterial:
-  - {fileID: 2100000, guid: 1e5c92b83030bf04e8a4b11e1fc1ecd9, type: 2}
-  - {fileID: 2100000, guid: 352d70f48060acd43b8e4d884b50f664, type: 2}
-  - {fileID: 2100000, guid: 45412353590e6d246a3373f6c6b78b48, type: 2}
-  - {fileID: 2100000, guid: bac06330002553e44bca79aed918fecd, type: 2}
 --- !u!1 &7707303959506229241
 GameObject:
   m_ObjectHideFlags: 0
@@ -5589,7 +5606,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _chara: {fileID: 6699909869382925849}
   _objectToGrab: {fileID: 0}
-  Grab: 00000000
 --- !u!1 &7735877318323042571
 GameObject:
   m_ObjectHideFlags: 0
@@ -5799,9 +5815,6 @@ MonoBehaviour:
   ParticuleSystem: {fileID: 2068147541598324142}
   _rb: {fileID: 6626216848454042332}
   UI: {fileID: 3713041439029576309}
-  DashForce: 0.5
-  DashCooldown: 1.5
-  IsDashing: 0
   IsParalysed: 0
   BabyManager: {fileID: 945246323412029050}
 --- !u!95 &4235063686340100310

@@ -505,6 +505,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8682291846813988253}
+  - component: {fileID: 8868597740068455964}
+  - component: {fileID: 1025497679270334376}
   - component: {fileID: 6392850096088389207}
   m_Layer: 3
   m_Name: TrunkPush
@@ -530,8 +532,56 @@ Transform:
   - {fileID: 4200561564624009477}
   - {fileID: 3227754606535820482}
   m_Father: {fileID: 0}
-  m_RootOrder: -1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &8868597740068455964
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5302451079238615736}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1, y: 1, z: 5}
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!54 &1025497679270334376
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5302451079238615736}
+  serializedVersion: 4
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
+  m_UseGravity: 0
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!114 &6392850096088389207
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -544,9 +594,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0524f862a1805c74485def69a2f65297, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _checkBabies:
+  CheckBabies:
   - {fileID: 3800451251803577579}
   - {fileID: 5843756309497024561}
   _isBabyActionned: 0000
-  _Destination:
+  _destination:
   - {fileID: 3227754606535820482}
