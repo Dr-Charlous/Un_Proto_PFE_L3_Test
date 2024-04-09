@@ -158,7 +158,7 @@ public class BabyManager : MonoBehaviour
         {
             for (int i = 0; i < _objectCollide.GetComponent<ObjectToPush>().CheckBabies.Length; i++)
             {
-                StateBabyController Baby = BabiesInScene[i].GetComponentInChildren<StateBabyController>();
+                StateBabyController Baby = BabiesInScene[0].GetComponentInChildren<StateBabyController>();
 
                 if (Baby.currentState != Baby.StateRide)
                 {
@@ -168,7 +168,6 @@ public class BabyManager : MonoBehaviour
                     GameObject obj = BabiesInScene[0];
                     BabiesInScene.Remove(BabiesInScene[0]);
                     BabiesInScene.Add(obj);
-                    break;
                 }
             }
         }
