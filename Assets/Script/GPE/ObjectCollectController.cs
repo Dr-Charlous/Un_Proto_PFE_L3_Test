@@ -26,7 +26,7 @@ public class ObjectCollectController : MonoBehaviour
         }
     }
 
-    private void OnTriggerEnter(Collider collider)
+    private void OnTriggerStay(Collider collider)
     {
         ObjectCollect obj = collider.GetComponent<ObjectCollect>();
 
@@ -44,6 +44,7 @@ public class ObjectCollectController : MonoBehaviour
         if (obj != null)
         {
             obj.ChangeOutlineObject(obj.MaterialOutline, 0f);
+            obj = null;
         }
     }
 

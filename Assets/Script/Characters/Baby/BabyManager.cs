@@ -156,14 +156,34 @@ public class BabyManager : MonoBehaviour
     {
         if (_objectCollide != null)
         {
-            for (int i = 0; i < _objectCollide.GetComponent<ObjectToPush>().CheckBabies.Length; i++)
+            Debug.Log(_objectCollide);
+
+            if (_objectCollide.GetComponent<ObjectToPush>() != null)
+            {
+                for (int i = 0; i < _objectCollide.GetComponent<ObjectToPush>().CheckBabies.Length; i++)
+                {
+                    StateBabyController Baby = BabiesInScene[0].GetComponentInChildren<StateBabyController>();
+
+                    if (Baby.currentState != Baby.StateRide)
+                    {
+                        Baby.ChangeState(Baby.StateAction);
+                        Baby.Agent.destination = _objectCollide.GetComponent<ObjectToPush>().CheckBabies[i].transform.position;
+
+                        GameObject obj = BabiesInScene[0];
+                        BabiesInScene.Remove(BabiesInScene[0]);
+                        BabiesInScene.Add(obj);
+                    }
+                }
+            }
+            
+            if (_objectCollide.GetComponent<ObjectResonnance>() != null)
             {
                 StateBabyController Baby = BabiesInScene[0].GetComponentInChildren<StateBabyController>();
 
-                if (Baby.currentState != Baby.StateRide)
+                if (Baby.currentState != Baby.StateRide && !_objectCollide.GetComponent<ObjectResonnance>().IsResonating)
                 {
                     Baby.ChangeState(Baby.StateAction);
-                    Baby.Agent.destination = _objectCollide.GetComponent<ObjectToPush>().CheckBabies[i].transform.position;
+                    Baby.Agent.destination = _objectCollide.GetComponent<ObjectResonnance>().transform.position;
 
                     GameObject obj = BabiesInScene[0];
                     BabiesInScene.Remove(BabiesInScene[0]);
@@ -209,13 +229,13 @@ public class BabyManager : MonoBehaviour
     private void OnTriggerStay(Collider other)
     {
         _objectCollide = other.gameObject;
-        if (_objectCollide.GetComponent<ObjectToPush>() == null)
+        if (_objectCollide.GetComponent<ObjectToPush>() == null && _objectCollide.GetComponent<ObjectResonnance>() == null)
             _objectCollide = null;
     }
 
     private void OnTriggerExit(Collider other)
     {
-        if (_objectCollide != null && _objectCollide.GetComponent<ObjectToPush>() != null)
+        if (_objectCollide != null && (_objectCollide.GetComponent<ObjectToPush>() != null || _objectCollide.GetComponent<ObjectResonnance>() != null))
             _objectCollide = null;
     }
 
