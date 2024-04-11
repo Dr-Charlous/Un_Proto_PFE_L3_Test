@@ -5626,7 +5626,7 @@ GameObject:
   - component: {fileID: 2140746911345890558}
   - component: {fileID: 5724808921936430591}
   - component: {fileID: 8500554790792352500}
-  - component: {fileID: 4265605625403080065}
+  - component: {fileID: 7658233164505986377}
   - component: {fileID: 6626216848454042332}
   - component: {fileID: 6699909869382925849}
   - component: {fileID: 4235063686340100310}
@@ -5720,8 +5720,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _chara: {fileID: 6699909869382925849}
   _taskBoard: {fileID: 1055634757857928434}
---- !u!136 &4265605625403080065
-CapsuleCollider:
+--- !u!65 &7658233164505986377
+BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -5738,10 +5738,8 @@ CapsuleCollider:
   m_IsTrigger: 0
   m_ProvidesContacts: 0
   m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 0.2
-  m_Height: 1.2
-  m_Direction: 2
+  serializedVersion: 3
+  m_Size: {x: 0.5, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!54 &6626216848454042332
 Rigidbody:

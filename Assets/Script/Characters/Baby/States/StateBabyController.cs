@@ -26,7 +26,7 @@ public class StateBabyController : MonoBehaviour
     public NestCreation Nest;
     public bool IsParalysed = false;
 
-    [Header("Parent follow :")]
+    [Header("ParentTag follow :")]
     public Transform Parent;
     public Transform TargetParent;
     public Vector3 Target;

@@ -1,9 +1,6 @@
 using DG.Tweening;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
-using UnityEngine.InputSystem.XR;
 
 public class EnnemyStateController : MonoBehaviour
 {
@@ -18,9 +15,14 @@ public class EnnemyStateController : MonoBehaviour
     public GameObject EnnemyMesh;
     public Transform[] RoundPositions;
     public float Speed = 10;
+    public float DistanceSee = 4;
+    public float TimeSinceNoSee = 10;
 
     public ObjectResonnance[] Resonance;
     public GameObject Fish;
+
+    public string ParentTag;
+    public string BabiesTag;
 
     public int _i;
     public float DistanceNext;
@@ -111,6 +113,9 @@ public class EnnemyStateController : MonoBehaviour
         {
             Gizmos.DrawWireSphere(position.position, 0.5f);
         }
+
+        Gizmos.color = Color.red;
+        Gizmos.DrawRay(transform.position, transform.TransformDirection(Vector3.forward) * DistanceSee);
     }
 
     public void ChangeState(IStateEnnemy newState)

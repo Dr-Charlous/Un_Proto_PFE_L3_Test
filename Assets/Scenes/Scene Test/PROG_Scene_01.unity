@@ -16828,6 +16828,10 @@ PrefabInstance:
       propertyPath: m_Icon
       value: 
       objectReference: {fileID: 5132851093641282708, guid: 0000000000000000d000000000000000, type: 0}
+    - target: {fileID: 438242827779571321, guid: 1a4c63a022a00214395eea231e1616d9, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 497832216437042112, guid: 1a4c63a022a00214395eea231e1616d9, type: 3}
       propertyPath: m_Icon
       value: 
@@ -16836,6 +16840,10 @@ PrefabInstance:
       propertyPath: m_Icon
       value: 
       objectReference: {fileID: 5132851093641282708, guid: 0000000000000000d000000000000000, type: 0}
+    - target: {fileID: 1797669589972143422, guid: 1a4c63a022a00214395eea231e1616d9, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1987116622278729961, guid: 1a4c63a022a00214395eea231e1616d9, type: 3}
       propertyPath: m_RootOrder
       value: -1
@@ -16885,9 +16893,25 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1057960272}
     - target: {fileID: 3134857647185000123, guid: 1a4c63a022a00214395eea231e1616d9, type: 3}
+      propertyPath: LayerBabies.m_Bits
+      value: 128
+      objectReference: {fileID: 0}
+    - target: {fileID: 3134857647185000123, guid: 1a4c63a022a00214395eea231e1616d9, type: 3}
+      propertyPath: LayerParent.m_Bits
+      value: 64
+      objectReference: {fileID: 0}
+    - target: {fileID: 3134857647185000123, guid: 1a4c63a022a00214395eea231e1616d9, type: 3}
       propertyPath: Resonance.Array.data[0]
       value: 
       objectReference: {fileID: 2117705840}
+    - target: {fileID: 3134857647185000123, guid: 1a4c63a022a00214395eea231e1616d9, type: 3}
+      propertyPath: RoundPositions.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3134857647185000123, guid: 1a4c63a022a00214395eea231e1616d9, type: 3}
+      propertyPath: RoundPositions.Array.data[2]
+      value: 
+      objectReference: {fileID: 813862845}
     - target: {fileID: 3586445331631801585, guid: 1a4c63a022a00214395eea231e1616d9, type: 3}
       propertyPath: m_Name
       value: Ennemy_aqua
@@ -16900,14 +16924,26 @@ PrefabInstance:
       propertyPath: m_Icon
       value: 
       objectReference: {fileID: 5132851093641282708, guid: 0000000000000000d000000000000000, type: 0}
+    - target: {fileID: 5287974547449920250, guid: 1a4c63a022a00214395eea231e1616d9, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5744997843401853288, guid: 1a4c63a022a00214395eea231e1616d9, type: 3}
       propertyPath: m_Icon
       value: 
       objectReference: {fileID: 5132851093641282708, guid: 0000000000000000d000000000000000, type: 0}
+    - target: {fileID: 5744997843401853288, guid: 1a4c63a022a00214395eea231e1616d9, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8510758903824534659, guid: 1a4c63a022a00214395eea231e1616d9, type: 3}
       propertyPath: m_Icon
       value: 
       objectReference: {fileID: 5132851093641282708, guid: 0000000000000000d000000000000000, type: 0}
+    - target: {fileID: 8510758903824534659, guid: 1a4c63a022a00214395eea231e1616d9, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8690694066567449237, guid: 1a4c63a022a00214395eea231e1616d9, type: 3}
       propertyPath: m_Icon
       value: 
@@ -30311,6 +30347,11 @@ Transform:
 GameObject:
   m_CorrespondingSourceObject: {fileID: 6104164470266941136, guid: fa9729e406818e448bec2c61a9a0b0fd, type: 3}
   m_PrefabInstance: {fileID: 1165459480}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &813862845 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 8758145128787051521, guid: 1a4c63a022a00214395eea231e1616d9, type: 3}
+  m_PrefabInstance: {fileID: 322810166}
   m_PrefabAsset: {fileID: 0}
 --- !u!4 &814520094 stripped
 Transform:
@@ -47448,6 +47489,10 @@ PrefabInstance:
       propertyPath: m_LocalPosition.y
       value: -0.124
       objectReference: {fileID: 0}
+    - target: {fileID: 4265605625403080065, guid: fa9729e406818e448bec2c61a9a0b0fd, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4437438093497024314, guid: fa9729e406818e448bec2c61a9a0b0fd, type: 3}
       propertyPath: ObjectFish
       value: 
@@ -47689,6 +47734,7 @@ PrefabInstance:
     - {fileID: 0}
     - {fileID: 0}
     - {fileID: 5037144690507714099, guid: fa9729e406818e448bec2c61a9a0b0fd, type: 3}
+    - {fileID: 4265605625403080065, guid: fa9729e406818e448bec2c61a9a0b0fd, type: 3}
     m_RemovedGameObjects:
     - {fileID: 3221094852031949068, guid: fa9729e406818e448bec2c61a9a0b0fd, type: 3}
     m_AddedGameObjects:

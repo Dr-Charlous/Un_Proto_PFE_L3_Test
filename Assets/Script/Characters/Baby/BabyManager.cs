@@ -17,7 +17,7 @@ public class BabyManager : MonoBehaviour
     [SerializeField] float _babyOffsetOnBack = 1f;
     [SerializeField] float _distanceAssign = 10;
 
-    [Header("Babies :")]
+    [Header("BabiesTag :")]
     public int BabieNumberOnBack = 1;
     public List<GameObject> BabiesInScene;
 
