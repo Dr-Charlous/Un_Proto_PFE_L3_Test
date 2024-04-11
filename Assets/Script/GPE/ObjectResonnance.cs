@@ -24,9 +24,7 @@ public class ObjectResonnance : MonoBehaviour
 
     private void OnTriggerExit(Collider other)
     {
-        StateBabyController babyController = other.transform.parent.GetComponentInChildren<StateBabyController>();
-
-        if (babyController != null)
+        if (other.transform.parent.GetComponentInChildren<StateBabyController>() != null)
         {
             _source.Stop();
             IsResonating = false;

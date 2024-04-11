@@ -10,12 +10,12 @@ public class BabyManager : MonoBehaviour
     [HideInInspector][SerializeField] List<GameObject> _babiesOnBack;
     [HideInInspector][SerializeField] List<Transform> _parentOrigin;
 
-    [SerializeField] GameObject _objectCollide;
     [SerializeField] Transform _parentCharacter;
     [SerializeField] Transform _respawnPoint;
     [SerializeField] NestCreation _nest;
     [SerializeField] float _distanceFromBaby = 1.5f;
     [SerializeField] float _babyOffsetOnBack = 1f;
+    [SerializeField] float _distanceAssign = 10;
 
     [Header("Babies :")]
     public int BabieNumberOnBack = 1;
@@ -154,41 +154,67 @@ public class BabyManager : MonoBehaviour
 
     public void BabyAction()
     {
-        if (_objectCollide != null)
+        RaycastHit hit;
+        Physics.Raycast(transform.position, transform.TransformDirection(Vector3.back), out hit, _distanceAssign);
+
+        if (hit.transform.GetComponent<ObjectToPush>() != null)
         {
-            Debug.Log(_objectCollide);
+            Debug.Log("ObjectToPush");
 
-            if (_objectCollide.GetComponent<ObjectToPush>() != null)
-            {
-                for (int i = 0; i < _objectCollide.GetComponent<ObjectToPush>().CheckBabies.Length; i++)
-                {
-                    StateBabyController Baby = BabiesInScene[0].GetComponentInChildren<StateBabyController>();
+            var obj = hit.transform.GetComponent<ObjectToPush>();
 
-                    if (Baby.currentState != Baby.StateRide)
-                    {
-                        Baby.ChangeState(Baby.StateAction);
-                        Baby.Agent.destination = _objectCollide.GetComponent<ObjectToPush>().CheckBabies[i].transform.position;
-
-                        GameObject obj = BabiesInScene[0];
-                        BabiesInScene.Remove(BabiesInScene[0]);
-                        BabiesInScene.Add(obj);
-                    }
-                }
-            }
-            
-            if (_objectCollide.GetComponent<ObjectResonnance>() != null)
+            for (int i = 0; i < obj.CheckBabies.Length; i++)
             {
                 StateBabyController Baby = BabiesInScene[0].GetComponentInChildren<StateBabyController>();
 
-                if (Baby.currentState != Baby.StateRide && !_objectCollide.GetComponent<ObjectResonnance>().IsResonating)
+                if (Baby.currentState != Baby.StateRide)
                 {
                     Baby.ChangeState(Baby.StateAction);
-                    Baby.Agent.destination = _objectCollide.GetComponent<ObjectResonnance>().transform.position;
+                    Baby.Agent.destination = obj.CheckBabies[i].transform.position;
 
-                    GameObject obj = BabiesInScene[0];
+                    GameObject baby = BabiesInScene[0];
                     BabiesInScene.Remove(BabiesInScene[0]);
-                    BabiesInScene.Add(obj);
+                    BabiesInScene.Add(baby);
                 }
+            }
+        }
+        else if (hit.transform.GetComponentInParent<ObjectToPush>() != null)
+        {
+            Debug.Log("ObjectToPush");
+
+            var obj = hit.transform.GetComponentInParent<ObjectToPush>();
+
+            for (int i = 0; i < obj.CheckBabies.Length; i++)
+            {
+                StateBabyController Baby = BabiesInScene[0].GetComponentInChildren<StateBabyController>();
+
+                if (Baby.currentState != Baby.StateRide)
+                {
+                    Baby.ChangeState(Baby.StateAction);
+                    Baby.Agent.destination = obj.CheckBabies[i].transform.position;
+
+                    GameObject baby = BabiesInScene[0];
+                    BabiesInScene.Remove(BabiesInScene[0]);
+                    BabiesInScene.Add(baby);
+                }
+            }
+        }
+
+        if (hit.transform.GetComponent<ObjectResonnance>() != null)
+        {
+            Debug.Log("ObjectResonnance");
+
+            StateBabyController Baby = BabiesInScene[0].GetComponentInChildren<StateBabyController>();
+            var obj = hit.transform.GetComponent<ObjectResonnance>();
+
+            if (Baby.currentState != Baby.StateRide && !obj.IsResonating)
+            {
+                Baby.ChangeState(Baby.StateAction);
+                Baby.Agent.destination = obj.transform.position;
+
+                GameObject baby = BabiesInScene[0];
+                BabiesInScene.Remove(BabiesInScene[0]);
+                BabiesInScene.Add(baby);
             }
         }
     }
@@ -226,21 +252,10 @@ public class BabyManager : MonoBehaviour
         }
     }
 
-    private void OnTriggerStay(Collider other)
-    {
-        _objectCollide = other.gameObject;
-        if (_objectCollide.GetComponent<ObjectToPush>() == null && _objectCollide.GetComponent<ObjectResonnance>() == null)
-            _objectCollide = null;
-    }
-
-    private void OnTriggerExit(Collider other)
-    {
-        if (_objectCollide != null && (_objectCollide.GetComponent<ObjectToPush>() != null || _objectCollide.GetComponent<ObjectResonnance>() != null))
-            _objectCollide = null;
-    }
-
     private void OnDrawGizmosSelected()
     {
         Gizmos.DrawWireSphere(transform.position, _distanceFromBaby);
+        Gizmos.color = Color.cyan;
+        Gizmos.DrawRay(transform.position, transform.TransformDirection(Vector3.back) * _distanceAssign);
     }
 }

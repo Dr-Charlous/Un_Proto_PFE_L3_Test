@@ -47,7 +47,7 @@ public class EnnemyStateController : MonoBehaviour
             Check();
 
         BodyFollow();
-        Debug.Log(currentState.ToString());
+        //Debug.Log(currentState.ToString());
     }
 
     public void Check()
