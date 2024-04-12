@@ -27,6 +27,7 @@ public class EnnemyStateController : MonoBehaviour
     public int _i;
     public float DistanceNext;
     public bool isEating = false;
+    public bool isChasing = false;
 
 
     private void Start()
@@ -54,29 +55,34 @@ public class EnnemyStateController : MonoBehaviour
 
     public void Check()
     {
-        bool isThereSounds = false;
-
-        for (int i = 0; i < Resonance.Length; i++)
+        if (isChasing)
+            ChangeState(StateChase);
+        else
         {
-            if (Resonance[i].IsResonating)
+            bool isThereSounds = false;
+
+            for (int i = 0; i < Resonance.Length; i++)
             {
-                if (Fish != null && Fish.activeInHierarchy)
+                if (Resonance[i].IsResonating)
                 {
-                    ChangeState(StateFollowFish);
-                }
-                else
-                {
-                    ChangeState(StateFollowBranch);
-                }
+                    if (Fish != null && Fish.activeInHierarchy)
+                    {
+                        ChangeState(StateFollowFish);
+                    }
+                    else
+                    {
+                        ChangeState(StateFollowBranch);
+                    }
 
-                isThereSounds = true;
-                break;
+                    isThereSounds = true;
+                    break;
+                }
             }
-        }
 
-        if (isThereSounds == false)
-        {
-            ChangeState(StateFollowRound);
+            if (isThereSounds == false)
+            {
+                ChangeState(StateFollowRound);
+            }
         }
     }
 

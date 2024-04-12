@@ -16,9 +16,8 @@ public class StateEnnemyChase : IStateEnnemy
         Debug.Log(this.ToString());
 
         RaycastHit hit;
-        Physics.Raycast(controller.transform.position, controller.transform.TransformDirection(Vector3.forward), out hit, controller.DistanceSee);
-
-        if (hit.transform.gameObject.tag == controller.BabiesTag || hit.transform.gameObject.tag == controller.ParentTag)
+        
+        if (Physics.Raycast(controller.transform.position, controller.transform.TransformDirection(Vector3.forward), out hit, controller.DistanceSee) && (hit.transform.gameObject.tag == controller.BabiesTag || hit.transform.gameObject.tag == controller.ParentTag))
         {
             controller.Character.destination = hit.transform.position;
             _time = 0;
@@ -29,7 +28,7 @@ public class StateEnnemyChase : IStateEnnemy
 
             if (_time > controller.TimeSinceNoSee)
             {
-                controller.ChangeState(controller.StateFollowRound);
+                controller.isChasing = false;
             }
         }
     }
