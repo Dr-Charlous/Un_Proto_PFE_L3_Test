@@ -29,6 +29,8 @@ public class StateEnnemyRound : IStateEnnemy
                 controller.isChasing = true;
             }
         }
+
+        controller.Animations.AnimSwim();
     }
 
     public void OnExit(EnnemyStateController controller)

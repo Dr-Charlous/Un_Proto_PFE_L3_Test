@@ -11,6 +11,8 @@ public class EnnemyStateController : MonoBehaviour
     public StateEnnemyChase StateChase = new StateEnnemyChase();
     //public StateBabyAnim StateAnim = new StateBabyAnim();
 
+    public EnnemyAnimations Animations;
+    public Jaws JawsController;
     public NavMeshAgent Character;
     public GameObject EnnemyMesh;
     public Transform[] RoundPositions;

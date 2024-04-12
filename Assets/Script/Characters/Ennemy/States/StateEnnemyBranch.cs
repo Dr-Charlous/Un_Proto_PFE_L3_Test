@@ -21,6 +21,8 @@ public class StateEnnemyBranch : IStateEnnemy
                 break;
             }
         }
+
+        controller.Animations.AnimAttack();
     }
 
     public void UpdateState(EnnemyStateController controller)

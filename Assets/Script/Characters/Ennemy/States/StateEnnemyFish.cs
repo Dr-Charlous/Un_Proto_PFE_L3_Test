@@ -12,7 +12,7 @@ public class StateEnnemyFish : IStateEnnemy
 
     public void UpdateState(EnnemyStateController controller)
     {
-        
+        controller.Animations.AnimAttack();
     }
 
     public void OnExit(EnnemyStateController controller)

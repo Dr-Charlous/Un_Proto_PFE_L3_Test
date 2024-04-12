@@ -31,6 +31,11 @@ public class StateEnnemyChase : IStateEnnemy
                 controller.isChasing = false;
             }
         }
+
+        if (controller.JawsController.IsBitting)
+            controller.Animations.AnimAttackBit();
+        else
+            controller.Animations.AnimAttack();
     }
 
     public void OnExit(EnnemyStateController controller)
