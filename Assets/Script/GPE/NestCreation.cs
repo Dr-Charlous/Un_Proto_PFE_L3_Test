@@ -16,6 +16,8 @@ public class NestCreation : MonoBehaviour
     [SerializeField] Tasks[] _tasksToValidate;
     [SerializeField] Tasks _taskToGive;
 
+    [SerializeField] CharaMove _character;
+
     public bool IsCreated = false;
     public bool IsFeed = false;
 
@@ -43,6 +45,13 @@ public class NestCreation : MonoBehaviour
 
         _taskBoard.RemoveTask(_tasksToValidate[_tasksToValidate.Length - 1]);
         _taskBoard.ShowTasks();
+
+        List<GameObject> baby = _character.BabyManager.BabiesInScene;
+
+        for (int i = 0; i < baby.Count; i++)
+        {
+            baby[i].GetComponentInChildren<StateBabyController>().Charges += 10;
+        }
     }
 
     void VerificationItem(Collider other)

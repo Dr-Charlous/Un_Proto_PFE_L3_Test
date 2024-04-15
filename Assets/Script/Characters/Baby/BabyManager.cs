@@ -178,7 +178,7 @@ public class BabyManager : MonoBehaviour
                 }
             }
         }
-        else if (hit.transform.GetComponentInParent<ObjectToPush>() != null)
+        else if (hit.transform.GetComponentInParent<ObjectToPush>() != null && BabiesInScene[0].GetComponentInChildren<StateBabyController>().Charges > 0)
         {
             Debug.Log("ObjectToPush");
 

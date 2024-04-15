@@ -21,10 +21,12 @@ public class StateBabyController : MonoBehaviour
     public LineRenderer Line;
     public List<Vector3> Point;
 
+    [Header("Babies stuffs :")]
     public GameObject ObjectBaby;
     public GameObject BabyMesh;
     public NestCreation Nest;
     public bool IsParalysed = false;
+    public int Charges = 1;
 
     [Header("ParentTag follow :")]
     public Transform Parent;

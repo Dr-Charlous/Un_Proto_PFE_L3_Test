@@ -1,13 +1,24 @@
 using DG.Tweening;
+using DG.Tweening.Core;
+using DG.Tweening.Plugins.Core.PathCore;
+using DG.Tweening.Plugins.Options;
 using System.Collections;
 using System.Collections.Generic;
+using System.Runtime.InteropServices;
 using UnityEngine;
 
 public class ObjectToPush : MonoBehaviour
 {
     public BabyPosCheckAction[] CheckBabies;
+
     [SerializeField] bool[] _isBabyActionned;
     [SerializeField] Transform[] _destination;
+    [SerializeField] GameObject _mesh;
+    [SerializeField] CharaMove _character;
+
+    Transform _parent;
+    TweenerCore<Vector3, Path, PathOptions> isFinish;
+    bool _isActivated = false;
 
     private void Update()
     {
@@ -21,6 +32,14 @@ public class ObjectToPush : MonoBehaviour
             else
                 _isBabyActionned[i] = false;
         }
+
+        _parent = transform.parent;
+
+        if (isFinish != null && !isFinish.IsActive())
+        {
+            _mesh.transform.parent = _parent;
+            Destroy(this.gameObject);
+        }
     }
 
     void CheckForAction()
@@ -33,7 +52,7 @@ public class ObjectToPush : MonoBehaviour
                 isEveryOneHere = false;
         }
 
-        if (isEveryOneHere)
+        if (isEveryOneHere && !_isActivated)
         {
             Action();
         }
@@ -47,8 +66,16 @@ public class ObjectToPush : MonoBehaviour
             destinationPos[i] = _destination[i].position;
         }
 
-        transform.DOPath(destinationPos, 2);
-        transform.DORotate(_destination[_destination.Length-1].rotation.eulerAngles, 2);
-        this.enabled = false;
+        List<GameObject> baby = _character.BabyManager.BabiesInScene;
+
+        for (int i = 0; i < baby.Count; i++)
+        {
+            baby[i].GetComponentInChildren<StateBabyController>().Charges--;
+        }
+
+        isFinish = transform.DOPath(destinationPos, 2);
+        transform.DORotate(_destination[_destination.Length - 1].rotation.eulerAngles, 2);
+
+        _isActivated = true;
     }
 }
