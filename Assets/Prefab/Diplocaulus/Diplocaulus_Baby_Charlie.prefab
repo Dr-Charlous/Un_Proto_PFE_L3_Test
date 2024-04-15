@@ -5027,6 +5027,7 @@ MonoBehaviour:
   BabyMesh: {fileID: 9074457955953540276}
   Nest: {fileID: 0}
   IsParalysed: 0
+  Charges: 1
   Parent: {fileID: 0}
   TargetParent: {fileID: 0}
   Target: {x: 0, y: 0, z: 0}
@@ -5199,9 +5200,17 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: -7766121206740895547, guid: 06c0f603844c9ec49a6d11411d45ee18, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: e25dc7ff63423ce4eaa90bfded996962, type: 2}
+    - target: {fileID: -7766121206740895547, guid: 06c0f603844c9ec49a6d11411d45ee18, type: 3}
       propertyPath: m_Materials.Array.data[1]
       value: 
       objectReference: {fileID: 2100000, guid: 45412353590e6d246a3373f6c6b78b48, type: 2}
+    - target: {fileID: -5824417792234735663, guid: 06c0f603844c9ec49a6d11411d45ee18, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 238a67416e9278e468ebd481c9a2e488, type: 2}
     - target: {fileID: -3540938561319437288, guid: 06c0f603844c9ec49a6d11411d45ee18, type: 3}
       propertyPath: m_Layer
       value: 7
