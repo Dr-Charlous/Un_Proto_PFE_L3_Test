@@ -17,6 +17,7 @@ public class NestCreation : MonoBehaviour
     [SerializeField] Tasks _taskToGive;
 
     [SerializeField] CharaMove _character;
+    [SerializeField] StonePathFalling _stones;
 
     public bool IsCreated = false;
     public bool IsFeed = false;
@@ -87,7 +88,11 @@ public class NestCreation : MonoBehaviour
         if (isEveryOne)
         {
             _material.color = _colorValid;
+
             IsCreated = true;
+
+            _stones.Fall();
+
             _taskBoard.AddTask(_taskToGive);
             _taskBoard.ShowTasks();
         }
