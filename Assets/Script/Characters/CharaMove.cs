@@ -34,7 +34,7 @@ public class CharaMove : MonoBehaviour
     {
         _rb = GetComponent<Rigidbody>();
 
-        UI.SetActive(false);
+        //UI.SetActive(false);
     }
 
     void Update()

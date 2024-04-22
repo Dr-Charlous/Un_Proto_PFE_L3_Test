@@ -15,11 +15,26 @@ public class StateEnnemyChase : IStateEnnemy
     {
         Debug.Log(this.ToString());
 
-        RaycastHit hit;
-        
-        if (Physics.Raycast(controller.transform.position, controller.transform.TransformDirection(Vector3.forward), out hit, controller.DistanceSee) && (hit.transform.gameObject.tag == controller.BabiesTag || hit.transform.gameObject.tag == controller.ParentTag))
+        RaycastHit hitMid;
+        RaycastHit hitLeft;
+        RaycastHit hitRight;
+        bool RayMid = Physics.Raycast(controller.transform.position, controller.transform.TransformDirection(Vector3.forward), out hitMid, controller.DistanceSee);
+        bool RayLeft = Physics.Raycast(controller.transform.position, controller.transform.TransformDirection(Vector3.forward + Vector3.left), out hitLeft, controller.DistanceSee);
+        bool RayRight = Physics.Raycast(controller.transform.position, controller.transform.TransformDirection(Vector3.forward + Vector3.right), out hitRight, controller.DistanceSee);
+
+        if (RayMid && (hitMid.transform.gameObject.tag == controller.BabiesTag || hitMid.transform.gameObject.tag == controller.ParentTag))
         {
-            controller.Character.destination = hit.transform.position;
+            controller.Character.destination = hitMid.transform.position;
+            _time = 0;
+        }
+        else if (RayLeft && (hitLeft.transform.gameObject.tag == controller.BabiesTag || hitLeft.transform.gameObject.tag == controller.ParentTag))
+        {
+            controller.Character.destination = hitLeft.transform.position;
+            _time = 0;
+        }
+        else if (RayRight && (hitRight.transform.gameObject.tag == controller.BabiesTag || hitRight.transform.gameObject.tag == controller.ParentTag))
+        {
+            controller.Character.destination = hitRight.transform.position;
             _time = 0;
         }
         else

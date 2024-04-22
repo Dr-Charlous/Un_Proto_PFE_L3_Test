@@ -20,12 +20,37 @@ public class StateEnnemyRound : IStateEnnemy
             controller.Move(new Vector3(controller.RoundPositions[controller._i].position.x, controller.transform.position.y, controller.RoundPositions[controller._i].position.z));
         }
 
-        RaycastHit hit;
+        RaycastHit hitMid;
+        RaycastHit hitLeft;
+        RaycastHit hitRight;
 
-        if (Physics.Raycast(controller.transform.position, controller.transform.TransformDirection(Vector3.forward), out hit, controller.DistanceSee))
+        bool RayMid = Physics.Raycast(controller.transform.position, controller.transform.TransformDirection(Vector3.forward), out hitMid, controller.DistanceSee);
+        bool RayLeft = Physics.Raycast(controller.transform.position, controller.transform.TransformDirection(Vector3.forward + Vector3.left), out hitLeft, controller.DistanceSee);
+        bool RayRight = Physics.Raycast(controller.transform.position, controller.transform.TransformDirection(Vector3.forward + Vector3.right), out hitRight, controller.DistanceSee);
+
+        if (RayMid)
         {
-            if (hit.transform.gameObject.tag == controller.BabiesTag || hit.transform.gameObject.tag == controller.ParentTag)
+            if (hitMid.transform.gameObject.tag == controller.BabiesTag || hitMid.transform.gameObject.tag == controller.ParentTag)
             {
+                Debug.Log("Mid");
+                controller.isChasing = true;
+            }
+        }
+
+        if (RayLeft)
+        {
+            if (hitLeft.transform.gameObject.tag == controller.BabiesTag || hitLeft.transform.gameObject.tag == controller.ParentTag)
+            {
+                Debug.Log("Left");
+                controller.isChasing = true;
+            }
+        }
+
+        if (RayRight)
+        {
+            if (hitRight.transform.gameObject.tag == controller.BabiesTag || hitRight.transform.gameObject.tag == controller.ParentTag)
+            {
+                Debug.Log("Right");
                 controller.isChasing = true;
             }
         }

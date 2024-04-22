@@ -109,7 +109,7 @@ public class EnnemyStateController : MonoBehaviour
         EnnemyMesh.transform.DOKill();
 
         Vector3 destinationPos = new Vector3(transform.position.x, EnnemyMesh.transform.position.y, transform.position.z);
-        float distance = (new Vector3(RoundPositions[_i].position.x, 0, RoundPositions[_i].position.z) - new Vector3(transform.position.x, 0, transform.position.z)).magnitude;
+        //float distance = (new Vector3(RoundPositions[_i].position.x, 0, RoundPositions[_i].position.z) - new Vector3(transform.position.x, 0, transform.position.z)).magnitude;
 
         //EnnemyMesh.transform.DOMove(destinationPos, distance * Speed * Time.deltaTime);
         EnnemyMesh.transform.position = destinationPos;
@@ -124,6 +124,8 @@ public class EnnemyStateController : MonoBehaviour
 
         Gizmos.color = Color.red;
         Gizmos.DrawRay(transform.position, transform.TransformDirection(Vector3.forward) * DistanceSee);
+        Gizmos.DrawRay(transform.position, transform.TransformDirection(Vector3.forward + Vector3.left) * DistanceSee);
+        Gizmos.DrawRay(transform.position, transform.TransformDirection(Vector3.forward + Vector3.right) * DistanceSee);
     }
 
     public void ChangeState(IStateEnnemy newState)
