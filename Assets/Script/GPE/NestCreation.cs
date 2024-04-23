@@ -12,10 +12,6 @@ public class NestCreation : MonoBehaviour
     [SerializeField] GameObject[] ItemsToConstruct;
     [SerializeField] bool[] ItemsVerification;
 
-    [SerializeField] TasksManager _taskBoard;
-    [SerializeField] Tasks[] _tasksToValidate;
-    [SerializeField] Tasks _taskToGive;
-
     [SerializeField] CharaMove _character;
     [SerializeField] StonePathFalling _stones;
 
@@ -44,9 +40,6 @@ public class NestCreation : MonoBehaviour
         IsFeed = true;
         Fish.SetActive(false);
 
-        _taskBoard.RemoveTask(_tasksToValidate[_tasksToValidate.Length - 1]);
-        _taskBoard.ShowTasks();
-
         List<GameObject> baby = _character.BabyManager.BabiesInScene;
 
         for (int i = 0; i < baby.Count; i++)
@@ -63,9 +56,6 @@ public class NestCreation : MonoBehaviour
             {
                 ItemsVerification[i] = true;
                 other.gameObject.SetActive(false);
-
-                _taskBoard.RemoveTask(_tasksToValidate[i]);
-                _taskBoard.ShowTasks();
 
                 VerificationArray();
                 return;
@@ -92,9 +82,6 @@ public class NestCreation : MonoBehaviour
             IsCreated = true;
 
             _stones.Fall();
-
-            _taskBoard.AddTask(_taskToGive);
-            _taskBoard.ShowTasks();
         }
     }
 }

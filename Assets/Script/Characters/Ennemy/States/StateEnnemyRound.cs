@@ -30,7 +30,7 @@ public class StateEnnemyRound : IStateEnnemy
 
         if (RayMid)
         {
-            if (hitMid.transform.gameObject.tag == controller.BabiesTag || hitMid.transform.gameObject.tag == controller.ParentTag)
+            if (hitMid.transform.gameObject.GetComponent<StateBabyController>() != null || hitMid.transform.gameObject.GetComponent<CharaMove>() != null)
             {
                 Debug.Log("Mid");
                 controller.isChasing = true;
@@ -39,7 +39,7 @@ public class StateEnnemyRound : IStateEnnemy
 
         if (RayLeft)
         {
-            if (hitLeft.transform.gameObject.tag == controller.BabiesTag || hitLeft.transform.gameObject.tag == controller.ParentTag)
+            if (hitLeft.transform.gameObject.GetComponent<StateBabyController>() != null || hitLeft.transform.gameObject.GetComponent<CharaMove>() != null)
             {
                 Debug.Log("Left");
                 controller.isChasing = true;
@@ -48,7 +48,7 @@ public class StateEnnemyRound : IStateEnnemy
 
         if (RayRight)
         {
-            if (hitRight.transform.gameObject.tag == controller.BabiesTag || hitRight.transform.gameObject.tag == controller.ParentTag)
+            if (hitRight.transform.gameObject.GetComponent<StateBabyController>() != null || hitRight.transform.gameObject.GetComponent<CharaMove>() != null)
             {
                 Debug.Log("Right");
                 controller.isChasing = true;

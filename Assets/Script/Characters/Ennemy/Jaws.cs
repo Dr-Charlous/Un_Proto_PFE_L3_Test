@@ -14,7 +14,7 @@ public class Jaws : MonoBehaviour
 
     private void OnTriggerStay(Collider other)
     {
-        if (other.transform.gameObject.tag == _ennemyStateController.BabiesTag || other.GetComponent<CharaMove>() != null)
+        if (other.transform.gameObject.GetComponent<StateBabyController>() != null || other.GetComponent<CharaMove>() != null)
         {
             IsBitting = true;
             _death.ActiveUI();

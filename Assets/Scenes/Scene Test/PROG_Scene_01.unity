@@ -16386,10 +16386,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 2967161289759413017, guid: 1a4c63a022a00214395eea231e1616d9, type: 3}
-      propertyPath: m_Size.x
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 3134857647185000123, guid: 1a4c63a022a00214395eea231e1616d9, type: 3}
       propertyPath: Fish
       value: 
@@ -16471,6 +16467,10 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8672683276129443511, guid: 1a4c63a022a00214395eea231e1616d9, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8672683276129443511, guid: 1a4c63a022a00214395eea231e1616d9, type: 3}
       propertyPath: m_TagString
       value: Ennemy
       objectReference: {fileID: 0}
@@ -16490,10 +16490,7 @@ PrefabInstance:
     - {fileID: 5031417499556791156, guid: 1a4c63a022a00214395eea231e1616d9, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 8672683276129443511, guid: 1a4c63a022a00214395eea231e1616d9, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 2076672669}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1a4c63a022a00214395eea231e1616d9, type: 3}
 --- !u!1 &332165043
 GameObject:
@@ -74122,38 +74119,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 8fab4196cf4585f419c57113641d7eee, type: 3}
   m_PrefabInstance: {fileID: 2074701009}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &2076672665 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 8672683276129443511, guid: 1a4c63a022a00214395eea231e1616d9, type: 3}
-  m_PrefabInstance: {fileID: 322810166}
-  m_PrefabAsset: {fileID: 0}
---- !u!54 &2076672669
-Rigidbody:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2076672665}
-  serializedVersion: 4
-  m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 0.05
-  m_CenterOfMass: {x: 0, y: 0, z: 0}
-  m_InertiaTensor: {x: 1, y: 1, z: 1}
-  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ImplicitCom: 1
-  m_ImplicitTensor: 1
-  m_UseGravity: 0
-  m_IsKinematic: 1
-  m_Interpolate: 0
-  m_Constraints: 0
-  m_CollisionDetection: 0
 --- !u!1 &2077958252
 GameObject:
   m_ObjectHideFlags: 0

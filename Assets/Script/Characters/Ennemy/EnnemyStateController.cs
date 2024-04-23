@@ -22,6 +22,7 @@ public class EnnemyStateController : MonoBehaviour
 
     public ObjectResonnance[] Resonance;
     public GameObject Fish;
+    public GameObject Target;
 
     public string ParentTag;
     public string BabiesTag;

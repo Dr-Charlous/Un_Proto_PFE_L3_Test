@@ -5,16 +5,18 @@ using UnityEngine.SceneManagement;
 
 public class Death : MonoBehaviour
 {
-    [SerializeField] GameObject UIDeath;
+    [SerializeField] GameObject _UIDeath;
+    [SerializeField] CharaMove _chara;
 
     private void Start()
     {
-        UIDeath.SetActive(false);
+        _UIDeath.SetActive(false);
     }
           
     public void ActiveUI()
     {
-        UIDeath.SetActive(true);
+        _UIDeath.SetActive(true);
+        _chara.IsParalysed = true;
     }
 
     public void RetryButton()

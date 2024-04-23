@@ -4840,6 +4840,7 @@ GameObject:
   - component: {fileID: 4162133263437982154}
   - component: {fileID: 3550012051485149638}
   - component: {fileID: 5110501017408960396}
+  - component: {fileID: 1057510676573603201}
   m_Layer: 7
   m_Name: Diplocaulus_Baby_target
   m_TagString: Untagged
@@ -5017,6 +5018,27 @@ MonoBehaviour:
   ParentObject: {fileID: 0}
   ParentCollect: {fileID: 8549278784491333134}
   OnTriggerEnterScript: {fileID: 5378149781991607405}
+--- !u!65 &1057510676573603201
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2672925135583029387}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0.5, z: 0}
 --- !u!1 &6762036587902153467
 GameObject:
   m_ObjectHideFlags: 0

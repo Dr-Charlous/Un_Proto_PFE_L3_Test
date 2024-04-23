@@ -22,19 +22,19 @@ public class StateEnnemyChase : IStateEnnemy
         bool RayLeft = Physics.Raycast(controller.transform.position, controller.transform.TransformDirection(Vector3.forward + Vector3.left), out hitLeft, controller.DistanceSee);
         bool RayRight = Physics.Raycast(controller.transform.position, controller.transform.TransformDirection(Vector3.forward + Vector3.right), out hitRight, controller.DistanceSee);
 
-        if (RayMid && (hitMid.transform.gameObject.tag == controller.BabiesTag || hitMid.transform.gameObject.tag == controller.ParentTag))
+        if (RayMid && (hitMid.transform.gameObject.GetComponent<StateBabyController>() != null || hitMid.transform.gameObject.GetComponent<CharaMove>() != null))
         {
-            controller.Character.destination = hitMid.transform.position;
+            controller.Target = hitMid.transform.gameObject;
             _time = 0;
         }
-        else if (RayLeft && (hitLeft.transform.gameObject.tag == controller.BabiesTag || hitLeft.transform.gameObject.tag == controller.ParentTag))
+        else if (RayLeft && (hitLeft.transform.gameObject.GetComponent<StateBabyController>() != null || hitLeft.transform.gameObject.GetComponent<CharaMove>() != null))
         {
-            controller.Character.destination = hitLeft.transform.position;
+            controller.Target = hitLeft.transform.gameObject;
             _time = 0;
         }
-        else if (RayRight && (hitRight.transform.gameObject.tag == controller.BabiesTag || hitRight.transform.gameObject.tag == controller.ParentTag))
+        else if (RayRight && (hitRight.transform.gameObject.GetComponent<StateBabyController>() != null || hitRight.transform.gameObject.GetComponent<CharaMove>() != null))
         {
-            controller.Character.destination = hitRight.transform.position;
+            controller.Target = hitRight.transform.gameObject;
             _time = 0;
         }
         else
@@ -44,8 +44,12 @@ public class StateEnnemyChase : IStateEnnemy
             if (_time > controller.TimeSinceNoSee)
             {
                 controller.isChasing = false;
+                controller.Target = null;
             }
         }
+
+        if (controller.Target != null)
+            controller.Character.destination = controller.Target.transform.position;
 
         if (controller.JawsController.IsBitting)
             controller.Animations.AnimAttackBit();

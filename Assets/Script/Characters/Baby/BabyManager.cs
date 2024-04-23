@@ -180,7 +180,7 @@ public class BabyManager : MonoBehaviour
         }
         else if (hit.transform.GetComponentInParent<ObjectToPush>() != null && BabiesInScene[0].GetComponentInChildren<StateBabyController>().Charges > 0)
         {
-            Debug.Log("ObjectToPush");
+            //Debug.Log("ObjectToPush");
 
             var obj = hit.transform.GetComponentInParent<ObjectToPush>();
 
@@ -202,7 +202,7 @@ public class BabyManager : MonoBehaviour
 
         if (hit.transform.GetComponent<ObjectResonnance>() != null)
         {
-            Debug.Log("ObjectResonnance");
+            //Debug.Log("ObjectResonnance");
 
             StateBabyController Baby = BabiesInScene[0].GetComponentInChildren<StateBabyController>();
             var obj = hit.transform.GetComponent<ObjectResonnance>();
