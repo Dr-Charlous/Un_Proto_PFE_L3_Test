@@ -31,6 +31,7 @@ public class EnnemyStateController : MonoBehaviour
     public float DistanceNext;
     public bool isEating = false;
     public bool isChasing = false;
+    public GameObject Jaw;
 
 
     private void Start()
