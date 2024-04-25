@@ -64,16 +64,16 @@ public class InputManager : MonoBehaviour
 
     private void GetUIInput(InputAction.CallbackContext ui)
     {
-        if (_chara.UI.activeInHierarchy)
-        {
-            _taskBoard.HideTasks();
-            _chara.UI.SetActive(false);
-        }
-        else
-        {
-            _chara.UI.SetActive(true);
-            _taskBoard.ShowTasks();
-        }
+        //if (_chara.UI.activeInHierarchy)
+        //{
+        //    _taskBoard.HideTasks();
+        //    _chara.UI.SetActive(false);
+        //}
+        //else
+        //{
+        //    _chara.UI.SetActive(true);
+        //    _taskBoard.ShowTasks();
+        //}
     }
 
     private void Awake()

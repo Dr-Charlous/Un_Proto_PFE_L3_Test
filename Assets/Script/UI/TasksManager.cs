@@ -41,7 +41,7 @@ public class TasksManager : MonoBehaviour
 
     public void AddTask(Tasks task)
     {
-        _chara.UI.SetActive(true);
+        //_chara.UI.SetActive(true);
         ShowTasks();
 
         _tasks.Add(task);

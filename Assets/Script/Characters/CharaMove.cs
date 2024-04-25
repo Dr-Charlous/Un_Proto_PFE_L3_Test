@@ -23,18 +23,13 @@ public class CharaMove : MonoBehaviour
     public bool CollectedBabies;
     public GameObject ParticuleSystem;
     public Rigidbody _rb;
-    public GameObject UI;
 
     public bool IsParalysed = false;
-
-    //private UI _UIObject;
     public BabyManager BabyManager;
 
     private void Awake()
     {
         _rb = GetComponent<Rigidbody>();
-
-        //UI.SetActive(false);
     }
 
     void Update()
