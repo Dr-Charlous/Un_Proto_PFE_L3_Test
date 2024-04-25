@@ -16,6 +16,7 @@ public class NestCreation : MonoBehaviour
     [SerializeField] StonePathFalling _stones;
 
     [SerializeField] GameObject _transition;
+    [SerializeField] Cinematic _cine;
 
     public bool IsCreated = false;
     public bool IsFeed = false;
@@ -86,6 +87,8 @@ public class NestCreation : MonoBehaviour
             IsCreated = true;
 
             _stones.Fall();
+
+            StartCoroutine(_cine.Cinematic1());
         }
     }
 }
