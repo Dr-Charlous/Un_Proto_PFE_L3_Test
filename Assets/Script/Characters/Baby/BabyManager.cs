@@ -159,7 +159,7 @@ public class BabyManager : MonoBehaviour
 
         if (hit.transform.GetComponent<ObjectToPush>() != null)
         {
-            Debug.Log("ObjectToPush");
+            //Debug.Log("ObjectToPush");
 
             var obj = hit.transform.GetComponent<ObjectToPush>();
 

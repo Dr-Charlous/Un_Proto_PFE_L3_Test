@@ -60,22 +60,25 @@ public class ObjectToPush : MonoBehaviour
 
     void Action()
     {
-        Vector3[] destinationPos = new Vector3[_destination.Length];
-        for (int i = 0; i < _destination.Length; i++)
+        if (_character.BabyManager.BabiesInScene[0].GetComponentInChildren<StateBabyController>().Charges > 0)
         {
-            destinationPos[i] = _destination[i].position;
+            Vector3[] destinationPos = new Vector3[_destination.Length];
+            for (int i = 0; i < _destination.Length; i++)
+            {
+                destinationPos[i] = _destination[i].position;
+            }
+
+            List<GameObject> baby = _character.BabyManager.BabiesInScene;
+
+            for (int i = 0; i < baby.Count; i++)
+            {
+                baby[i].GetComponentInChildren<StateBabyController>().Charges--;
+            }
+
+            isFinish = transform.DOPath(destinationPos, 2);
+            transform.DORotate(_destination[_destination.Length - 1].rotation.eulerAngles, 2);
+
+            _isActivated = true;
         }
-
-        List<GameObject> baby = _character.BabyManager.BabiesInScene;
-
-        for (int i = 0; i < baby.Count; i++)
-        {
-            baby[i].GetComponentInChildren<StateBabyController>().Charges--;
-        }
-
-        isFinish = transform.DOPath(destinationPos, 2);
-        transform.DORotate(_destination[_destination.Length - 1].rotation.eulerAngles, 2);
-
-        _isActivated = true;
     }
 }
