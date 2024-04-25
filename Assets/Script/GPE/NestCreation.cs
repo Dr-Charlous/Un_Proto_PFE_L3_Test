@@ -15,6 +15,8 @@ public class NestCreation : MonoBehaviour
     [SerializeField] CharaMove _character;
     [SerializeField] StonePathFalling _stones;
 
+    [SerializeField] GameObject _transition;
+
     public bool IsCreated = false;
     public bool IsFeed = false;
 
@@ -23,6 +25,7 @@ public class NestCreation : MonoBehaviour
     private void Start()
     {
         _material.color = _colorInitial;
+        _transition.SetActive(false);
     }
 
     private void OnTriggerEnter(Collider other)
@@ -39,6 +42,7 @@ public class NestCreation : MonoBehaviour
     {
         IsFeed = true;
         Fish.SetActive(false);
+        _transition.SetActive(true);
 
         List<GameObject> baby = _character.BabyManager.BabiesInScene;
 

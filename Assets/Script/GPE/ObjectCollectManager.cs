@@ -10,39 +10,40 @@ public class ObjectCollectManager : MonoBehaviour
     Collider objectCollectCollider;
     bool grab;
 
-    private void Update()
-    {
-        if (chara.Collected)
-        {
-            GrabCheck();
-            chara.Collected = false;
-        }
-    }
+    //private void Update()
+    //{
+    //    if (chara.Collected)
+    //    {
+    //        GrabCheck();
+    //        chara.Collected = false;
+    //    }
+    //}
 
     private void OnTriggerStay(Collider collider)
     {
         if (collider.GetComponent<ObjectCollect>() != null)
         {
-            objectCollectCollider = collider;
+            //objectCollectCollider = collider;
+            Grab(collider);
         }
     }
 
-    private void OnTriggerExit(Collider collider)
-    {
-        if (collider.GetComponent<ObjectCollect>() != null)
-        {
-            Release();
-            objectCollectCollider = null;
-        }
-    }
+    //private void OnTriggerExit(Collider collider)
+    //{
+    //    if (collider.GetComponent<ObjectCollect>() != null)
+    //    {
+    //        Release();
+    //        objectCollectCollider = null;
+    //    }
+    //}
 
-    void GrabCheck()
-    {
-        if (grab == false && objectCollectCollider != null)
-            Grab(objectCollectCollider);
-        else if (grab)
-           Release();
-    }
+    //void GrabCheck()
+    //{
+    //    if (grab == false && objectCollectCollider != null)
+    //        Grab(objectCollectCollider);
+    //    else if (grab)
+    //       Release();
+    //}
 
     void Grab(Collider collider)
     {
@@ -58,9 +59,9 @@ public class ObjectCollectManager : MonoBehaviour
         }
     }
 
-    void Release()
-    {
-        //objectGet.transform.parent = parentOrigin;
-        //grab = false;
-    }
+    //void Release()
+    //{
+    //    objectGet.transform.parent = parentOrigin;
+    //    grab = false;
+    //}
 }

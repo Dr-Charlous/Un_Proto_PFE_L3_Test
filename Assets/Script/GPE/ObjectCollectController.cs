@@ -52,8 +52,8 @@ public class ObjectCollectController : MonoBehaviour
     {
         if (!_chara.BabyManager.BabiesInScene[i].GetComponentInChildren<StateBabyController>().isGrab)
             GrabOrder(i);
-        else if (_chara.BabyManager.BabiesInScene[i].GetComponentInChildren<StateBabyController>().isGrab)
-            ReleaseOrder(i);
+        //else if (_chara.BabyManager.BabiesInScene[i].GetComponentInChildren<StateBabyController>().isGrab)
+        //    ReleaseOrder(i);
     }
 
     void GrabOrder(int i)
@@ -69,16 +69,16 @@ public class ObjectCollectController : MonoBehaviour
         }
     }
 
-    void ReleaseOrder(int i)
-    {
-        var controller = _chara.BabyManager.BabiesInScene[i].GetComponentInChildren<StateBabyController>();
+    //void ReleaseOrder(int i)
+    //{
+    //    var controller = _chara.BabyManager.BabiesInScene[i].GetComponentInChildren<StateBabyController>();
 
-        if (controller.TargetObject != null)
-        {
-            controller.TargetObject.transform.SetParent(controller.ParentObject);
-            controller.TargetObject.GetComponent<BoxCollider>().excludeLayers += LayerMask.GetMask("Player");
-            controller.isTransporting = false;
-            _chara.BabyManager.BabiesInScene[i].GetComponentInChildren<StateBabyController>().isGrab = false;
-        }
-    }
+    //    if (controller.TargetObject != null)
+    //    {
+    //        controller.TargetObject.transform.SetParent(controller.ParentObject);
+    //        controller.TargetObject.GetComponent<BoxCollider>().excludeLayers += LayerMask.GetMask("Player");
+    //        controller.isTransporting = false;
+    //        _chara.BabyManager.BabiesInScene[i].GetComponentInChildren<StateBabyController>().isGrab = false;
+    //    }
+    //}
 }
