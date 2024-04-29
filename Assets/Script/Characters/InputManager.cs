@@ -8,7 +8,6 @@ public class InputManager : MonoBehaviour
 {
     Controls _controls;
     [SerializeField] CharaMove _chara;
-    [SerializeField] TasksManager _taskBoard;
 
     private void OnEnable()
     {

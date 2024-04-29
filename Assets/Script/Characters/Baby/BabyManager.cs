@@ -157,28 +157,7 @@ public class BabyManager : MonoBehaviour
         RaycastHit hit;
         Physics.Raycast(transform.position, transform.TransformDirection(Vector3.back), out hit, _distanceAssign);
 
-        if (hit.transform.GetComponent<ObjectToPush>() != null)
-        {
-            //Debug.Log("ObjectToPush");
-
-            var obj = hit.transform.GetComponent<ObjectToPush>();
-
-            for (int i = 0; i < obj.CheckBabies.Length; i++)
-            {
-                StateBabyController Baby = BabiesInScene[0].GetComponentInChildren<StateBabyController>();
-
-                if (Baby.currentState != Baby.StateRide)
-                {
-                    Baby.ChangeState(Baby.StateAction);
-                    Baby.Agent.destination = obj.CheckBabies[i].transform.position;
-
-                    GameObject baby = BabiesInScene[0];
-                    BabiesInScene.Remove(BabiesInScene[0]);
-                    BabiesInScene.Add(baby);
-                }
-            }
-        }
-        else if (hit.transform.GetComponentInParent<ObjectToPush>() != null && BabiesInScene[0].GetComponentInChildren<StateBabyController>().Charges > 0)
+        if (hit.transform.GetComponentInParent<ObjectToPush>() != null && BabiesInScene[0].GetComponentInChildren<StateBabyController>().Charges > 0)
         {
             //Debug.Log("ObjectToPush");
 
@@ -193,9 +172,7 @@ public class BabyManager : MonoBehaviour
                     Baby.ChangeState(Baby.StateAction);
                     Baby.Agent.destination = obj.CheckBabies[i].transform.position;
 
-                    GameObject baby = BabiesInScene[0];
-                    BabiesInScene.Remove(BabiesInScene[0]);
-                    BabiesInScene.Add(baby);
+                    ChangeOrder();
                 }
             }
         }
@@ -212,9 +189,7 @@ public class BabyManager : MonoBehaviour
                 Baby.ChangeState(Baby.StateAction);
                 Baby.Agent.destination = obj.transform.position;
 
-                GameObject baby = BabiesInScene[0];
-                BabiesInScene.Remove(BabiesInScene[0]);
-                BabiesInScene.Add(baby);
+                ChangeOrder();
             }
         }
     }
@@ -243,13 +218,18 @@ public class BabyManager : MonoBehaviour
                 {
                     Baby.ChangeState(Baby.StateCollect);
 
-                    GameObject obj = BabiesInScene[0];
-                    BabiesInScene.Remove(BabiesInScene[0]);
-                    BabiesInScene.Add(obj);
+                    ChangeOrder();
                     break;
                 }
             }
         }
+    }
+
+    public void ChangeOrder()
+    {
+        GameObject baby = BabiesInScene[0];
+        BabiesInScene.Remove(BabiesInScene[0]);
+        BabiesInScene.Add(baby);
     }
 
     private void OnDrawGizmosSelected()
