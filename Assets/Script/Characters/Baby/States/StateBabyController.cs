@@ -31,7 +31,7 @@ public class StateBabyController : MonoBehaviour
     [Header("ParentTag follow :")]
     public Transform Parent;
     public Transform TargetParent;
-    public Vector3 Target;
+    public Transform Target;
     public float Distance = 5;
     public bool ShowPath = true;
 

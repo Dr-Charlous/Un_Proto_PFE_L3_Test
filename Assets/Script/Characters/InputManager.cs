@@ -57,8 +57,8 @@ public class InputManager : MonoBehaviour
 
     void GetBabyGetInput(InputAction.CallbackContext baby)
     {
-        if (_chara.BabyManager.BabiesInScene.Count > 0)
-            _chara.BabyManager.CanWeGetBaby(_chara.BabyManager.BabieNumberOnBack);
+        //if (_chara.BabyManager.BabiesInScene.Count > 0)
+        //_chara.BabyManager.CanWeGetBaby(_chara.BabyManager.BabieNumberOnBack);
     }
 
     private void GetUIInput(InputAction.CallbackContext ui)

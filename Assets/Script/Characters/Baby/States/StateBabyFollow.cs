@@ -9,8 +9,8 @@ public class StateBabyFollow : IState
     public void OnEnter(StateBabyController controller)
     {
         //controller.transform.position = controller.TargetParent.position;
-        //controller.Target = controller.TargetParent.position;
-        //controller.Agent.SetDestination(controller.Target);
+        //controller.Target = controller.TargetParent;
+        //controller.Agent.SetDestination(controller.Target.position);
     }
 
     public void UpdateState(StateBabyController controller)
@@ -19,16 +19,13 @@ public class StateBabyFollow : IState
 
         if (controller.Nest == null || !controller.Nest.IsCreated || (controller.Nest.IsCreated && controller.Nest.IsFeed))
         {
-            if (Vector3.Distance(controller.Parent.position, controller.Target) > controller.Distance)
-            {
-                controller.Target = controller.TargetParent.position;
-                controller.Agent.SetDestination(controller.Target);
-            }
+            controller.Target = controller.TargetParent;
+            controller.Agent.SetDestination(controller.Target.position);
         }
         else
         {
-            controller.Target = controller.Nest.transform.position;
-            controller.Agent.SetDestination(controller.Target);
+            controller.Target = controller.Nest.transform;
+            controller.Agent.SetDestination(controller.Target.position);
         }
     }
 

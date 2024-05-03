@@ -21,13 +21,13 @@ public class BabyPosCheckAction : MonoBehaviour
         {
             if (baby.currentState == baby.StateAction)
             {
-                baby.IsParalysed = true;
+                //baby.IsParalysed = true;
                 IsBabyActionned = true;
                 _isBabyOccupied = baby;
             }
             else
             {
-                baby.IsParalysed = false;
+                //baby.IsParalysed = false;
                 IsBabyActionned = false;
                 _isBabyOccupied = null;
             }

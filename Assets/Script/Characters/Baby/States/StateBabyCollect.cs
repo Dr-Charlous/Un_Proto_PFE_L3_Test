@@ -10,8 +10,8 @@ public class StateBabyCollect : IState
         if (controller.Nest == null || !controller.Nest.IsCreated || (controller.Nest.IsCreated && controller.Nest.IsFeed))
         {
             controller.ParentObject = controller.TargetObject.transform.parent;
-            controller.Target = controller.TargetObject.transform.position;
-            controller.Agent.SetDestination(controller.Target);
+            controller.Target = controller.TargetObject.transform;
+            controller.Agent.SetDestination(controller.Target.position);
         }
         else
             controller.ChangeState(controller.StateFollow);
