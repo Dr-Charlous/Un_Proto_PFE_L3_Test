@@ -174,15 +174,21 @@ public class BabyManager : MonoBehaviour
         {
             //Debug.Log("ObjectResonnance");
 
-            StateBabyController Baby = BabiesInScene[0].GetComponentInChildren<StateBabyController>();
             var obj = hit.transform.GetComponent<ObjectResonnance>();
+            obj.CameraMove();
 
-            if (!obj.IsResonating)
+            for (int i = 0; i < BabiesInScene.Count; i++)
             {
-                Baby.ChangeState(Baby.StateAction);
-                Baby.Target = obj.transform;
+                StateBabyController Baby = BabiesInScene[0].GetComponentInChildren<StateBabyController>();
 
-                ChangeOrder();
+                if (!obj.IsResonating)
+                {
+                    Baby.ChangeState(Baby.StateAction);
+                    Baby.Target = obj.BabyPos;
+
+
+                    ChangeOrder();
+                }
             }
         }
     }
