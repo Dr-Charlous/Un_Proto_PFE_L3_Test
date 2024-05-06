@@ -9,6 +9,7 @@ using UnityEngine;
 
 public class ObjectToPush : MonoBehaviour
 {
+    public ObjectToPush[] CheckBlockers;
     public BabyPosCheckAction[] CheckBabies;
     public TriggerIsParetnHere CheckParent;
 
@@ -17,7 +18,7 @@ public class ObjectToPush : MonoBehaviour
     [SerializeField] GameObject _mesh;
     [SerializeField] CharaMove _character;
 
-    [SerializeField] float _valuePush;
+    public float ValuePush;
     [SerializeField] float _speedPush;
 
     Transform _parent;
@@ -51,7 +52,7 @@ public class ObjectToPush : MonoBehaviour
 
         _parent = transform.parent;
 
-        if (_valuePush == 1)
+        if (ValuePush == 1)
         {
             _mesh.transform.parent = _parent;
             Destroy(this.gameObject);
@@ -68,8 +69,17 @@ public class ObjectToPush : MonoBehaviour
                 isEveryOneHere = false;
         }
 
-        if (CheckParent != null)
+        if (CheckParent != null && !CheckParent.isTrigger)
             isEveryOneHere = false;
+
+        if (CheckBlockers.Length > 0)
+        {
+            for (int i = 0; i < CheckBlockers.Length; i++)
+            {
+                if (CheckBlockers[i].ValuePush != 1)
+                    isEveryOneHere = false;
+            }
+        }
 
         if (isEveryOneHere && !_isActivated)
         {
@@ -81,13 +91,13 @@ public class ObjectToPush : MonoBehaviour
     {
         //if (_character.BabyManager.BabiesInScene[0].GetComponentInChildren<StateBabyController>().Charges > 0)
         //{
-        if (_valuePush < 1)
-            _valuePush += _speedPush * Time.deltaTime;
+        if (ValuePush < 1)
+            ValuePush += _speedPush * Time.deltaTime;
         else
-            _valuePush = 1;
+            ValuePush = 1;
 
-        transform.position = Vector3.Lerp(_initPos, _endPos, _valuePush);
-        transform.rotation = Quaternion.Lerp(_initRot, _endRot, _valuePush);
+        transform.position = Vector3.Lerp(_initPos, _endPos, ValuePush);
+        transform.rotation = Quaternion.Lerp(_initRot, _endRot, ValuePush);
         //Vector3[] destinationPos = new Vector3[_destination.Length];
         //for (int i = 0; i < _destination.Length; i++)
         //{
