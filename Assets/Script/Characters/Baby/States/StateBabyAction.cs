@@ -18,6 +18,12 @@ public class StateBabyAction : IState
     {
         //Debug.Log("CheckForAction");
 
+        if (controller.Target == null)
+        {
+            controller.Target = controller.transform.parent.transform;
+            controller.ChangeState(controller.StateFollow);
+        }
+
         if (_target != controller.Target.position)
         {
             _target = controller.Target.position;

@@ -25,7 +25,16 @@ public class BabyPosCheckAction : MonoBehaviour
                 IsBabyActionned = true;
                 _isBabyOccupied = baby;
             }
-            else
+        }
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        StateBabyController baby = other.transform.parent.GetComponentInChildren<StateBabyController>();
+
+        if (baby != null)
+        {
+            if (baby == _isBabyOccupied)
             {
                 //baby.IsParalysed = false;
                 IsBabyActionned = false;

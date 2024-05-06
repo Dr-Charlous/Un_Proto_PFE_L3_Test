@@ -21,7 +21,6 @@ public class ObjectToPush : MonoBehaviour
     [SerializeField] float _speedPush;
 
     Transform _parent;
-    TweenerCore<Vector3, Path, PathOptions> isFinish;
     bool _isActivated = false;
     Vector3 _initPos;
     Vector3 _endPos;
@@ -52,7 +51,7 @@ public class ObjectToPush : MonoBehaviour
 
         _parent = transform.parent;
 
-        if (isFinish != null && !isFinish.IsActive())
+        if (_valuePush == 1)
         {
             _mesh.transform.parent = _parent;
             Destroy(this.gameObject);
