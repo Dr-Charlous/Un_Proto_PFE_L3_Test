@@ -68,7 +68,7 @@ public class ObjectToPush : MonoBehaviour
                 isEveryOneHere = false;
         }
 
-        if (!CheckParent.isTrigger)
+        if (CheckParent != null)
             isEveryOneHere = false;
 
         if (isEveryOneHere && !_isActivated)
