@@ -5030,7 +5030,7 @@ MonoBehaviour:
   Charges: 1
   Parent: {fileID: 0}
   TargetParent: {fileID: 0}
-  Target: {x: 0, y: 0, z: 0}
+  Target: {fileID: 0}
   Distance: 1
   ShowPath: 0
   isTransporting: 0
@@ -5066,10 +5066,10 @@ Transform:
   m_GameObject: {fileID: 5840319561461277699}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 3729595735577426133}
+  m_Father: {fileID: 4281432564024060639}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!65 &1680732680862014882
@@ -5140,6 +5140,7 @@ Transform:
   m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
   m_ConstrainProportionsScale: 1
   m_Children:
+  - {fileID: 2088949740450645896}
   - {fileID: 5343445004071094528}
   - {fileID: 8549278784491333134}
   m_Father: {fileID: 3729595735577426133}
@@ -5196,9 +5197,8 @@ Transform:
   m_Children:
   - {fileID: 7398762894353963990}
   - {fileID: 4281432564024060639}
-  - {fileID: 2088949740450645896}
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &8155907596761350629
 PrefabInstance:

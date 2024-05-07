@@ -61,6 +61,14 @@ public class StateBabyController : MonoBehaviour
             {
                 DrawPath();
             }
+
+            if (OnTriggerEnterScript.isTrigger && OnTriggerEnterScript.ObjectTouch.GetComponent<ObjectCollect>() != null
+            && isTransporting == false
+            && Parent.GetComponent<CharaMove>().TrapResonnance.IsPlayerInside)
+            {
+                TargetObject = OnTriggerEnterScript.ObjectTouch;
+                GetObj();
+            }
         }
         BodyFollow();
     }
@@ -97,7 +105,6 @@ public class StateBabyController : MonoBehaviour
         TargetObject.transform.SetParent(ParentCollect);
         TargetObject.GetComponent<BoxCollider>().excludeLayers -= LayerMask.GetMask("Player");
         isTransporting = true;
-        ChangeState(StateFollow);
     }
 
     void DrawPath()

@@ -12,6 +12,7 @@ public class ObjectResonnance : MonoBehaviour
     public float SpeedBabyTarget = 5;
     public bool IsResonating = false;
     public bool IsCoroutineFinish;
+    public bool IsPlayerInside;
 
     [SerializeField] CharaMove _character;
     [SerializeField] Camera _cameraMove;
@@ -22,19 +23,31 @@ public class ObjectResonnance : MonoBehaviour
 
     Camera _mainCamera;
     Vector3 LastPosPlayer;
-    bool _isPlayerInside;
 
     private void Start()
     {
         _mainCamera = Camera.main;
         _cameraMove.gameObject.SetActive(false);
         IsCoroutineFinish = true;
-        _isPlayerInside = false;
+        IsPlayerInside = false;
+    }
+
+    private void Update()
+    {
+        if (IsPlayerInside)
+        {
+            PlaySound(_source, _clip);
+            IsResonating = true;
+        }
+        else
+        {
+            IsResonating = false;
+        }
     }
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.GetComponent<CharaMove>() != null && _isPlayerInside == false)
+        if (other.GetComponent<CharaMove>() != null && IsPlayerInside == false)
         {
             PlayerGetInside();
         }
@@ -79,7 +92,7 @@ public class ObjectResonnance : MonoBehaviour
             _character.GetComponentInChildren<BabyManager>().BabiesInScene[0].GetComponentInChildren<StateBabyController>().Target = BabyTarget;
 
             _character.TrapResonnance = this;
-            _isPlayerInside = true;
+            IsPlayerInside = true;
         }
     }
 
@@ -104,7 +117,7 @@ public class ObjectResonnance : MonoBehaviour
             }
 
             _character.TrapResonnance = null;
-            _isPlayerInside = false;
+            IsPlayerInside = false;
         }
     }
 

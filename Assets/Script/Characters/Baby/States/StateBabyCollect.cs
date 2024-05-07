@@ -24,6 +24,7 @@ public class StateBabyCollect : IState
             && controller.isTransporting == false)
         {
             controller.GetObj();
+            controller.ChangeState(controller.StateFollow);
         }
     }
 
