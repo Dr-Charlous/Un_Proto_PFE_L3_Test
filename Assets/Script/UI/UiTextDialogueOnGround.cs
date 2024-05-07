@@ -10,7 +10,7 @@ public class UiTextDialogueOnGround : MonoBehaviour
     {
         TextDialogueManager textManager = other.GetComponentInChildren<TextDialogueManager>();
 
-        if (other.GetComponent<CharaMove>() != null)
+        if (other.GetComponent<CharaMove>() != null && textManager != null)
         {
             textManager.UiText.text = Text;
             textManager.UiText.gameObject.SetActive(true);
@@ -22,7 +22,7 @@ public class UiTextDialogueOnGround : MonoBehaviour
     {
         TextDialogueManager textManager = other.GetComponentInChildren<TextDialogueManager>();
 
-        if (other.GetComponent<CharaMove>() != null)
+        if (other.GetComponent<CharaMove>() != null && textManager != null)
         {
             textManager.UiText.gameObject.SetActive(false);
             textManager.UiBack.gameObject.SetActive(false);

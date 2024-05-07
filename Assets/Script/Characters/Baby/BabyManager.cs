@@ -154,7 +154,7 @@ public class BabyManager : MonoBehaviour
         {
             //Debug.Log("ObjectToPush");
 
-            var obj = hit.transform.GetComponentInParent<ObjectToPush>();
+            ObjectToPush obj = hit.transform.GetComponentInParent<ObjectToPush>();
 
             for (int i = 0; i < obj.CheckBabies.Length; i++)
             {
@@ -164,28 +164,6 @@ public class BabyManager : MonoBehaviour
                 {
                     Baby.ChangeState(Baby.StateAction);
                     Baby.Target = obj.CheckBabies[i].transform;
-
-                    ChangeOrder();
-                }
-            }
-        }
-
-        if (hit.transform.GetComponent<ObjectResonnance>() != null)
-        {
-            //Debug.Log("ObjectResonnance");
-
-            var obj = hit.transform.GetComponent<ObjectResonnance>();
-            obj.CameraMove();
-
-            for (int i = 0; i < BabiesInScene.Count; i++)
-            {
-                StateBabyController Baby = BabiesInScene[0].GetComponentInChildren<StateBabyController>();
-
-                if (!obj.IsResonating)
-                {
-                    Baby.ChangeState(Baby.StateAction);
-                    Baby.Target = obj.BabyPos;
-
 
                     ChangeOrder();
                 }

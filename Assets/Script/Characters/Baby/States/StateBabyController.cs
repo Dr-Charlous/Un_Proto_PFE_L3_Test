@@ -92,6 +92,14 @@ public class StateBabyController : MonoBehaviour
         //ObjectBaby.transform.position = transform.position;
     }
 
+    public void GetObj()
+    {
+        TargetObject.transform.SetParent(ParentCollect);
+        TargetObject.GetComponent<BoxCollider>().excludeLayers -= LayerMask.GetMask("Player");
+        isTransporting = true;
+        ChangeState(StateFollow);
+    }
+
     void DrawPath()
     {
         if (Agent.path.corners.Length < 2) return;

@@ -26,6 +26,7 @@ public class CharaMove : MonoBehaviour
 
     public bool IsParalysed = false;
     public BabyManager BabyManager;
+    [HideInInspector] public ObjectResonnance TrapResonnance;
 
     private void Awake()
     {
@@ -38,6 +39,12 @@ public class CharaMove : MonoBehaviour
         {
             Movement();
             Rotate();
+        }
+        else
+        {
+            _rb.velocity = Vector3.zero;
+
+            TrapResonnance.BabyTarget.position += (Vector3.right * Position + Vector3.forward * Rotation) * TrapResonnance.SpeedBabyTarget * Time.deltaTime;
         }
     }
 

@@ -39,19 +39,26 @@ public class InputManager : MonoBehaviour
 
     void GetCollectInputs(InputAction.CallbackContext collect)
     {
-        _chara.Collected = !_chara.Collected;
-        _chara.CollectedBabies = !_chara.CollectedBabies;
+        if (!_chara.IsParalysed)
+        {
+            _chara.Collected = !_chara.Collected;
+            _chara.CollectedBabies = !_chara.CollectedBabies;
+        }
     }
 
     void GetBabyFollowInput(InputAction.CallbackContext baby)
     {
-        if (_chara.BabyManager.BabiesInScene.Count > 0)
+        if (_chara.BabyManager.BabiesInScene.Count > 0 && !_chara.IsParalysed)
             _chara.BabyManager.BabyFollow();
+        else if (_chara.TrapResonnance != null)
+        {
+            _chara.TrapResonnance.PlayerGetOutside();
+        }
     }
 
     void GetBabyActionInput(InputAction.CallbackContext baby)
     {
-        if (_chara.BabyManager.BabiesInScene.Count > 0)
+        if (_chara.BabyManager.BabiesInScene.Count > 0 && !_chara.IsParalysed)
             _chara.BabyManager.BabyAction();
     }
 
