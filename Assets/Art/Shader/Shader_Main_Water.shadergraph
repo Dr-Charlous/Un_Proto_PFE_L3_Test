@@ -80,6 +80,9 @@
         },
         {
             "m_Id": "eadc2f233b9040ab878c696f8192ffc7"
+        },
+        {
+            "m_Id": "97ab994c4791496497a28aff3b148ec4"
         }
     ],
     "m_Keywords": [],
@@ -401,6 +404,9 @@
         },
         {
             "m_Id": "d942d9999e364c50bcafbbd6de253039"
+        },
+        {
+            "m_Id": "f178676c535f4e10805009d9dbc918cd"
         }
     ],
     "m_GroupDatas": [
@@ -1837,6 +1843,20 @@
                     "m_Id": "be06bd5e495b41db8c3e1625a218fd7e"
                 },
                 "m_SlotId": -1883960120
+            }
+        },
+        {
+            "m_OutputSlot": {
+                "m_Node": {
+                    "m_Id": "f178676c535f4e10805009d9dbc918cd"
+                },
+                "m_SlotId": 0
+            },
+            "m_InputSlot": {
+                "m_Node": {
+                    "m_Id": "641d0878e6974d7aba1880c78308dce7"
+                },
+                "m_SlotId": 1
             }
         },
         {
@@ -6208,7 +6228,7 @@
     "m_CustomColors": {
         "m_SerializableColors": []
     },
-    "m_HashType": 1
+    "m_HashType": 0
 }
 
 {
@@ -8332,6 +8352,34 @@
     },
     "m_Labels": [],
     "m_Space": 0
+}
+
+{
+    "m_SGVersion": 1,
+    "m_Type": "UnityEditor.ShaderGraph.Internal.Vector1ShaderProperty",
+    "m_ObjectId": "97ab994c4791496497a28aff3b148ec4",
+    "m_Guid": {
+        "m_GuidSerialized": "8f477a75-a8ed-4bf9-8c62-a787e1729852"
+    },
+    "m_Name": "FoamGradentNoise",
+    "m_DefaultRefNameVersion": 1,
+    "m_RefNameGeneratedByDisplayName": "FoamGradentNoise",
+    "m_DefaultReferenceName": "_FoamGradentNoise",
+    "m_OverrideReferenceName": "",
+    "m_GeneratePropertyBlock": true,
+    "m_UseCustomSlotLabel": false,
+    "m_CustomSlotLabel": "",
+    "m_DismissedVersion": 0,
+    "m_Precision": 0,
+    "overrideHLSLDeclaration": false,
+    "hlslDeclarationOverride": 0,
+    "m_Hidden": false,
+    "m_Value": 1.0,
+    "m_FloatType": 0,
+    "m_RangeValues": {
+        "x": 0.0,
+        "y": 1.0
+    }
 }
 
 {
@@ -10705,10 +10753,10 @@
         "m_Expanded": true,
         "m_Position": {
             "serializedVersion": "2",
-            "x": -2361.999755859375,
-            "y": 1169.0001220703125,
-            "width": 200.999755859375,
-            "height": 117.9998779296875
+            "x": -2357.0,
+            "y": 1140.0,
+            "width": 201.0,
+            "height": 118.0
         }
     },
     "m_Slots": [
@@ -11431,7 +11479,7 @@
     "m_Hidden": false,
     "m_ShaderOutputName": "Scale",
     "m_StageCapability": 3,
-    "m_Value": 1.0,
+    "m_Value": 1.2899999618530274,
     "m_DefaultValue": 10.0,
     "m_Labels": []
 }
@@ -11636,6 +11684,21 @@
 
 {
     "m_SGVersion": 0,
+    "m_Type": "UnityEditor.ShaderGraph.Vector1MaterialSlot",
+    "m_ObjectId": "e011d4c4ebf44261b757da1c3e4e7759",
+    "m_Id": 0,
+    "m_DisplayName": "FoamGradentNoise",
+    "m_SlotType": 1,
+    "m_Hidden": false,
+    "m_ShaderOutputName": "Out",
+    "m_StageCapability": 3,
+    "m_Value": 0.0,
+    "m_DefaultValue": 0.0,
+    "m_Labels": []
+}
+
+{
+    "m_SGVersion": 0,
     "m_Type": "UnityEditor.ShaderGraph.DynamicVectorMaterialSlot",
     "m_ObjectId": "e05fdc19f16248c696e4323bcd7b24e5",
     "m_Id": 1,
@@ -11771,6 +11834,9 @@
         },
         {
             "m_Id": "eadc2f233b9040ab878c696f8192ffc7"
+        },
+        {
+            "m_Id": "97ab994c4791496497a28aff3b148ec4"
         }
     ]
 }
@@ -12415,6 +12481,42 @@
     "m_Position": {
         "x": -3057.0,
         "y": 859.0
+    }
+}
+
+{
+    "m_SGVersion": 0,
+    "m_Type": "UnityEditor.ShaderGraph.PropertyNode",
+    "m_ObjectId": "f178676c535f4e10805009d9dbc918cd",
+    "m_Group": {
+        "m_Id": "f06f0d6bc7354028b5a837f7fdf58db7"
+    },
+    "m_Name": "Property",
+    "m_DrawState": {
+        "m_Expanded": true,
+        "m_Position": {
+            "serializedVersion": "2",
+            "x": -2268.0,
+            "y": 1317.0,
+            "width": 176.0,
+            "height": 34.0
+        }
+    },
+    "m_Slots": [
+        {
+            "m_Id": "e011d4c4ebf44261b757da1c3e4e7759"
+        }
+    ],
+    "synonyms": [],
+    "m_Precision": 0,
+    "m_PreviewExpanded": true,
+    "m_DismissedVersion": 0,
+    "m_PreviewMode": 0,
+    "m_CustomColors": {
+        "m_SerializableColors": []
+    },
+    "m_Property": {
+        "m_Id": "97ab994c4791496497a28aff3b148ec4"
     }
 }
 
