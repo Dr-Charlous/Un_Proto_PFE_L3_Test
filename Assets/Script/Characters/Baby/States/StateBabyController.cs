@@ -62,12 +62,13 @@ public class StateBabyController : MonoBehaviour
                 DrawPath();
             }
 
-            if (OnTriggerEnterScript.isTrigger && OnTriggerEnterScript.ObjectTouch.GetComponent<ObjectCollect>() != null
-            && isTransporting == false
-            && Parent.GetComponent<CharaMove>().TrapResonnance.IsPlayerInside)
+            if (OnTriggerEnterScript.isTrigger && OnTriggerEnterScript.ObjectTouch != null && isTransporting == false && Parent.GetComponent<CharaMove>().TrapResonnance != null)
             {
-                TargetObject = OnTriggerEnterScript.ObjectTouch;
-                GetObj();
+                if (OnTriggerEnterScript.ObjectTouch.GetComponent<ObjectCollect>() != null && Parent.GetComponent<CharaMove>().TrapResonnance.IsPlayerInside)
+                {
+                    TargetObject = OnTriggerEnterScript.ObjectTouch;
+                    GetObj();
+                }
             }
 
             if (Target == null)

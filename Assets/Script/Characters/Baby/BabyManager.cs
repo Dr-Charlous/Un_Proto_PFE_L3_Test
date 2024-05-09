@@ -122,8 +122,8 @@ public class BabyManager : MonoBehaviour
         StateBabyController Baby = BabiesInScene[0].GetComponentInChildren<StateBabyController>();
         bool isFollowing = false;
 
-        if (Vector3.Distance(new Vector3(Baby.Parent.position.x, 0, Baby.Parent.position.z), new Vector3(Baby.Target.position.x, 0, Baby.Target.position.z)) < Baby.Distance)
-        {
+        //if (Vector3.Distance(new Vector3(Baby.Parent.position.x, 0, Baby.Parent.position.z), new Vector3(Baby.Target.position.x, 0, Baby.Target.position.z)) < Baby.Distance)
+        //{
             if (Baby.currentState != Baby.StateStay)
             {
                 isFollowing = false;
@@ -142,7 +142,7 @@ public class BabyManager : MonoBehaviour
                 else if (Baby.currentState != Baby.StateFollow)
                     Baby.ChangeState(Baby.StateFollow);
             }
-        }
+        //}
     }
 
     public void BabyAction()

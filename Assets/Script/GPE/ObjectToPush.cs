@@ -14,7 +14,7 @@ public class ObjectToPush : MonoBehaviour
     public TriggerIsParetnHere CheckParent;
 
     [SerializeField] bool[] _isBabyActionned;
-    [SerializeField] Transform[] _destination;
+    [SerializeField] Transform _destination;
     [SerializeField] GameObject _mesh;
     [SerializeField] CharaMove _character;
 
@@ -31,9 +31,9 @@ public class ObjectToPush : MonoBehaviour
     private void Start()
     {
         _initPos = transform.position;
-        _endPos = _destination[0].position;
+        _endPos = _destination.position;
         _initRot = transform.rotation;
-        _endRot = _destination[0].rotation;
+        _endRot = _destination.rotation;
     }
 
     private void Update()
@@ -54,6 +54,11 @@ public class ObjectToPush : MonoBehaviour
 
         if (ValuePush == 1)
         {
+            for (int i = 0; i < _character.BabyManager.BabiesInScene.Count; i++)
+            {
+                _character.BabyManager.BabiesInScene[i].GetComponentInChildren<StateBabyController>().Charges--;
+            }
+
             _mesh.transform.parent = _parent;
             Destroy(this.gameObject);
         }
@@ -89,32 +94,27 @@ public class ObjectToPush : MonoBehaviour
 
     void Action()
     {
-        //if (_character.BabyManager.BabiesInScene[0].GetComponentInChildren<StateBabyController>().Charges > 0)
-        //{
-        if (ValuePush < 1)
-            ValuePush += _speedPush * Time.deltaTime;
-        else
-            ValuePush = 1;
+        if (_character.BabyManager.BabiesInScene[0].GetComponentInChildren<StateBabyController>().Charges > 0)
+        {
+            if (ValuePush < 1)
+                ValuePush += _speedPush * Time.deltaTime;
+            else
+                ValuePush = 1;
 
-        transform.position = Vector3.Lerp(_initPos, _endPos, ValuePush);
-        transform.rotation = Quaternion.Lerp(_initRot, _endRot, ValuePush);
-        //Vector3[] destinationPos = new Vector3[_destination.Length];
-        //for (int i = 0; i < _destination.Length; i++)
-        //{
-        //    destinationPos[i] = _destination[i].position;
-        //}
+            transform.position = Vector3.Lerp(_initPos, _endPos, ValuePush);
+            transform.rotation = Quaternion.Lerp(_initRot, _endRot, ValuePush);
+            //Vector3[] destinationPos = new Vector3[_destination.Length];
+            //for (int i = 0; i < _destination.Length; i++)
+            //{
+            //    destinationPos[i] = _destination[i].position;
+            //}
 
-        //List<GameObject> baby = _character.BabyManager.BabiesInScene;
+            //List<GameObject> baby = _character.BabyManager.BabiesInScene;
 
-        //for (int i = 0; i < baby.Count; i++)
-        //{
-        //    baby[i].GetComponentInChildren<StateBabyController>().Charges--;
-        //}
+            //isFinish = transform.DOPath(destinationPos, 2);
+            //transform.DORotate(_destination[_destination.Length - 1].rotation.eulerAngles, 2);
 
-        //isFinish = transform.DOPath(destinationPos, 2);
-        //transform.DORotate(_destination[_destination.Length - 1].rotation.eulerAngles, 2);
-
-        //_isActivated = true;
-        //}
+            //_isActivated = true;
+        }
     }
 }
