@@ -23,6 +23,7 @@ public class ObjectResonnance : MonoBehaviour
 
     Camera _mainCamera;
     Vector3 LastPosPlayer;
+    float _speedCam = 0;
 
     private void Start()
     {
@@ -74,6 +75,8 @@ public class ObjectResonnance : MonoBehaviour
 
             StartCoroutine(CameraMove());
 
+            BabyTarget.position = BabyPos.position;
+
             for (int i = 0; i < _character.GetComponentInChildren<BabyManager>().BabiesInScene.Count; i++)
             {
                 StateBabyController Baby = _character.GetComponentInChildren<BabyManager>().BabiesInScene[0].GetComponentInChildren<StateBabyController>();
@@ -81,15 +84,11 @@ public class ObjectResonnance : MonoBehaviour
                 if (!IsResonating)
                 {
                     Baby.ChangeState(Baby.StateAction);
-                    Baby.Target = BabyPos;
+                    Baby.Target = BabyTarget;
 
                     _character.GetComponentInChildren<BabyManager>().ChangeOrder();
                 }
             }
-
-            BabyTarget.position = BabyPos.position;
-
-            _character.GetComponentInChildren<BabyManager>().BabiesInScene[0].GetComponentInChildren<StateBabyController>().Target = BabyTarget;
 
             _character.TrapResonnance = this;
             IsPlayerInside = true;
@@ -110,7 +109,7 @@ public class ObjectResonnance : MonoBehaviour
 
                 if (!IsResonating)
                 {
-                    Baby.ChangeState(Baby.StateFollow);
+                    Baby.ChangeState(Baby.StateStay);
 
                     _character.GetComponentInChildren<BabyManager>().ChangeOrder();
                 }
@@ -136,12 +135,12 @@ public class ObjectResonnance : MonoBehaviour
                 _cameraMove.transform.position = _mainCamera.transform.position;
                 _cameraMove.transform.rotation = _mainCamera.transform.rotation;
 
-                float speed = (_destinationCamera.position - _cameraMove.transform.position).magnitude * _speed * Time.deltaTime;
+                _speedCam = (_destinationCamera.position - _cameraMove.transform.position).magnitude * _speed * Time.deltaTime;
 
-                _cameraMove.transform.DOMove(_destinationCamera.position, speed);
-                _cameraMove.transform.DORotate(_destinationCamera.rotation.eulerAngles, speed);
+                _cameraMove.transform.DOMove(_destinationCamera.position, _speedCam);
+                _cameraMove.transform.DORotate(_destinationCamera.rotation.eulerAngles, _speedCam);
 
-                yield return new WaitForSeconds(speed);
+                yield return new WaitForSeconds(_speedCam);
             }
             else if (_cameraMove.gameObject.activeSelf)
             {
@@ -151,13 +150,14 @@ public class ObjectResonnance : MonoBehaviour
                 _cameraMove.transform.position = _destinationCamera.position;
                 _cameraMove.transform.rotation = _destinationCamera.rotation;
 
-                float speed = (_mainCamera.transform.position - _cameraMove.transform.position).magnitude * _speed * Time.deltaTime;
 
-                _cameraMove.transform.DOMove(_mainCamera.transform.position, speed);
-                _cameraMove.transform.DORotate(_mainCamera.transform.rotation.eulerAngles, speed);
+                _cameraMove.transform.DOMove(_mainCamera.transform.position, _speedCam);
+                _cameraMove.transform.DORotate(_mainCamera.transform.rotation.eulerAngles, _speedCam);
 
-                yield return new WaitForSeconds(speed);
+                yield return new WaitForSeconds(_speedCam);
 
+                _cameraMove.transform.DOMove(_mainCamera.transform.position, _speedCam);
+                _cameraMove.transform.DORotate(_mainCamera.transform.rotation.eulerAngles, _speedCam);
                 ChangeCam();
             }
 
@@ -186,6 +186,7 @@ public class ObjectResonnance : MonoBehaviour
             float speed = (transform.position - _character.transform.position).magnitude * _speed * Time.deltaTime;
 
             _character.transform.DOMove(LastPosPlayer, speed);
+            _character._rb.velocity = Vector3.zero;
 
             LastPosPlayer = Vector3.zero;
         }

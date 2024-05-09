@@ -69,6 +69,9 @@ public class StateBabyController : MonoBehaviour
                 TargetObject = OnTriggerEnterScript.ObjectTouch;
                 GetObj();
             }
+
+            if (Target == null)
+                Target = transform.parent;
         }
         BodyFollow();
     }
