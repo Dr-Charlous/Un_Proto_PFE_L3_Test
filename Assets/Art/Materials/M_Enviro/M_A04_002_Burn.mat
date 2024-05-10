@@ -1,0 +1,95 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!21 &2100000
+Material:
+  serializedVersion: 8
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: M_A04_002_Burn
+  m_Shader: {fileID: -6465566751694194690, guid: abcd9006e94e678418a37820a33ec2b0, type: 3}
+  m_Parent: {fileID: 0}
+  m_ModifiedSerializedProperties: 0
+  m_ValidKeywords: []
+  m_InvalidKeywords: []
+  m_LightmapFlags: 4
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_LockedProperties: 
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs:
+    - _BaseAO:
+        m_Texture: {fileID: 2800000, guid: b462bc04707a5504b8d950ce1747bb34, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _BaseAlbedo:
+        m_Texture: {fileID: 2800000, guid: a6eb478856fd3ab49b6d2432f1ab1e51, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _BaseNormal:
+        m_Texture: {fileID: 2800000, guid: 8bffd246cebeb8d47a83e2378e311d16, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _Normal:
+        m_Texture: {fileID: 2800000, guid: e1bfed5166f7a0342b4cb519b1c8c60d, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _Texture2D:
+        m_Texture: {fileID: 2800000, guid: cbcdd0c7ed4bb4645a9735c0ee2cc3fc, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - unity_Lightmaps:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - unity_LightmapsInd:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - unity_ShadowMasks:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Ints: []
+    m_Floats:
+    - _Contrast: 1.43
+    - _DisolveStep: 2.33
+    - _DistrotionAmount: 6.9
+    - _DivideAmount: 15.1
+    - _DotPro: 1
+    - _EmissivePower: 3.04
+    - _HeatWave: 0.66
+    - _HeightBlend: -0.1
+    - _Influance: 1
+    - _QueueControl: 0
+    - _QueueOffset: 0
+    - _Speed: 1.58
+    - _Tiling_1: 4.17
+    - _TriplanarAmpli: 10
+    - _TriplanarThreshold: 10
+    m_Colors:
+    - _ColorMult: {r: 0.05660379, g: 0.010946958, b: 0.010946958, a: 0}
+    - _Hot: {r: 0.82669353, g: 0.2250684, b: 0, a: 1}
+    - _Hotter: {r: 0.045018706, g: 0, b: 0.0026694778, a: 1}
+    - _OffSet: {r: 0, g: 0, b: 0, a: 0}
+    - _Offset: {r: 1, g: 1, b: 0, a: 0}
+    - _OffsetSmoothStep: {r: 1.04, g: 2.83, b: 0, a: 0}
+  m_BuildTextureStacks: []
+--- !u!114 &5596781699142604565
+MonoBehaviour:
+  m_ObjectHideFlags: 11
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0353a89b1f911e48b9e16bdc9f2e058, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  version: 7
