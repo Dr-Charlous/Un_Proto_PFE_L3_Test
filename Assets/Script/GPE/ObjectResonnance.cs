@@ -10,6 +10,7 @@ public class ObjectResonnance : MonoBehaviour
     public Transform BabyTarget;
     public Transform BabyPos;
     public float SpeedBabyTarget = 5;
+    public float DistanceFromTrunk = 3;
     public bool IsResonating = false;
     public bool IsCoroutineFinish;
     public bool IsPlayerInside;

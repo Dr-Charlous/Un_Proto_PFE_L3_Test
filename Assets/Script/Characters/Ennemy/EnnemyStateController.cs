@@ -4,12 +4,14 @@ using UnityEngine.AI;
 
 public class EnnemyStateController : MonoBehaviour
 {
+    #region statemachine
     public IStateEnnemy currentState;
     public StateEnnemyRound StateFollowRound = new StateEnnemyRound();
     public StateEnnemyBranch StateFollowBranch = new StateEnnemyBranch();
     public StateEnnemyFish StateFollowFish = new StateEnnemyFish();
     public StateEnnemyChase StateChase = new StateEnnemyChase();
     //public StateBabyAnim StateAnim = new StateBabyAnim();
+    #endregion
 
     public EnnemyAnimations Animations;
     public Jaws JawsController;
@@ -99,16 +101,17 @@ public class EnnemyStateController : MonoBehaviour
 
     private void BodyFollow()
     {
+        EnnemyMesh.transform.DOComplete();
+
         Vector3 Direction = Character.velocity;
 
         if (Direction != Vector3.zero)
         {
             Quaternion lookRotation = Quaternion.LookRotation(Direction);
             Vector3 rotation = Quaternion.Lerp(EnnemyMesh.transform.rotation, lookRotation, Time.deltaTime * 10).eulerAngles;
-            EnnemyMesh.transform.rotation = Quaternion.Euler(0f, rotation.y, 0f);
+            //EnnemyMesh.transform.rotation = Quaternion.Euler(0f, rotation.y, 0f);
+            EnnemyMesh.transform.DORotate(Quaternion.Euler(0f, rotation.y, 0f).eulerAngles, 10);
         }
-
-        EnnemyMesh.transform.DOKill();
 
         Vector3 destinationPos = new Vector3(transform.position.x, EnnemyMesh.transform.position.y, transform.position.z);
         //float distance = (new Vector3(RoundPositions[_i].position.x, 0, RoundPositions[_i].position.z) - new Vector3(transform.position.x, 0, transform.position.z)).magnitude;

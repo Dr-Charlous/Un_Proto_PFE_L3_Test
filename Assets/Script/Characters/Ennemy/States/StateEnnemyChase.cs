@@ -22,17 +22,17 @@ public class StateEnnemyChase : IStateEnnemy
         bool RayLeft = Physics.Raycast(controller.transform.position, controller.transform.TransformDirection(Vector3.forward + Vector3.left), out hitLeft, controller.DistanceSee);
         bool RayRight = Physics.Raycast(controller.transform.position, controller.transform.TransformDirection(Vector3.forward + Vector3.right), out hitRight, controller.DistanceSee);
 
-        if (RayMid && (hitMid.transform.gameObject.GetComponent<StateBabyController>() != null || hitMid.transform.gameObject.GetComponent<CharaMove>() != null))
+        if (RayMid && (hitMid.transform.gameObject.GetComponent<StateBabyController>() != null || hitMid.transform.gameObject.GetComponent<CharaMove>() != null) && controller.DistanceSee > Vector3.Distance(hitMid.transform.position, controller.transform.position))
         {
             controller.Target = hitMid.transform.gameObject;
             _time = 0;
         }
-        else if (RayLeft && (hitLeft.transform.gameObject.GetComponent<StateBabyController>() != null || hitLeft.transform.gameObject.GetComponent<CharaMove>() != null))
+        else if (RayLeft && (hitLeft.transform.gameObject.GetComponent<StateBabyController>() != null || hitLeft.transform.gameObject.GetComponent<CharaMove>() != null) && controller.DistanceSee > Vector3.Distance(hitLeft.transform.position, controller.transform.position))
         {
             controller.Target = hitLeft.transform.gameObject;
             _time = 0;
         }
-        else if (RayRight && (hitRight.transform.gameObject.GetComponent<StateBabyController>() != null || hitRight.transform.gameObject.GetComponent<CharaMove>() != null))
+        else if (RayRight && (hitRight.transform.gameObject.GetComponent<StateBabyController>() != null || hitRight.transform.gameObject.GetComponent<CharaMove>() != null) && controller.DistanceSee > Vector3.Distance(hitRight.transform.position, controller.transform.position))
         {
             controller.Target = hitRight.transform.gameObject;
             _time = 0;

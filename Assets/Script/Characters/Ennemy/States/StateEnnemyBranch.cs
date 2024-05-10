@@ -15,7 +15,7 @@ public class StateEnnemyBranch : IStateEnnemy
             {
                 if (controller.Fish == null || !controller.Fish.activeInHierarchy)
                 {
-                    controller.Move(controller.Resonance[i].transform.position);
+                    controller.Move(controller.Resonance[i].transform.position - ((controller.Resonance[i].transform.position - controller.transform.position) / 10) * controller.Resonance[i].DistanceFromTrunk);
                     _i = i;
                 }
                 break;

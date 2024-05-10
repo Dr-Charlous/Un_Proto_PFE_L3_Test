@@ -101,7 +101,7 @@ Transform:
   - {fileID: 3329660916395325131}
   - {fileID: 6658130190631057988}
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!65 &1876527225442909746
 BoxCollider:
@@ -187,6 +187,7 @@ MonoBehaviour:
   BabyTarget: {fileID: 6658130190631057988}
   BabyPos: {fileID: 2709150712340961137}
   SpeedBabyTarget: 2
+  DistanceFromTrunk: 3
   IsResonating: 0
   IsCoroutineFinish: 0
   IsPlayerInside: 0
@@ -302,7 +303,6 @@ GameObject:
   m_Component:
   - component: {fileID: 7903284385253499902}
   - component: {fileID: 5757125549489576553}
-  - component: {fileID: 4173367822716428743}
   - component: {fileID: 6725492824821592727}
   m_Layer: 0
   m_Name: CameraViewTrunk
@@ -377,14 +377,6 @@ Camera:
   m_OcclusionCulling: 1
   m_StereoConvergence: 10
   m_StereoSeparation: 0.022
---- !u!81 &4173367822716428743
-AudioListener:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5771499826286662944}
-  m_Enabled: 1
 --- !u!114 &6725492824821592727
 MonoBehaviour:
   m_ObjectHideFlags: 0
