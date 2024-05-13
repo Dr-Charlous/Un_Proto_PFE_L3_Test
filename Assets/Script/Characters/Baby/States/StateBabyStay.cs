@@ -13,13 +13,6 @@ public class StateBabyStay : IState
     {
         //Debug.Log("Stay");
 
-        if (controller.Nest != null && controller.Nest.IsCreated && !controller.Nest.IsFeed)
-        {
-            if (Vector3.Distance(controller.Nest.transform.position, controller.Target.position) > controller.Distance)
-            {
-                controller.ChangeState(controller.StateFollow);
-            }
-        }
     }
 
     public void OnExit(StateBabyController controller)

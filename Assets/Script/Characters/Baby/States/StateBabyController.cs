@@ -5,6 +5,7 @@ using System.Linq;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.AI;
+using UnityEngine.InputSystem.XR;
 
 public class StateBabyController : MonoBehaviour
 {
@@ -34,6 +35,7 @@ public class StateBabyController : MonoBehaviour
     public Transform Target;
     public float Distance = 5;
     public bool ShowPath = true;
+    public bool IsInNest = false;
 
     [Header("Collect object")]
     public bool isTransporting = false;
@@ -46,33 +48,37 @@ public class StateBabyController : MonoBehaviour
     private void Start()
     {
         ChangeState(StateFollow);
+        IsInNest = false;
     }
 
     private void Update()
     {
         if (!IsParalysed)
         {
-            if (currentState != null)
+            if (Nest == null || !Nest.IsCreated || (Nest.IsCreated && Nest.IsFeed))
             {
-                currentState.UpdateState(this);
-            }
-
-            if (ShowPath)
-            {
-                DrawPath();
-            }
-
-            if (OnTriggerEnterScript.isTrigger && OnTriggerEnterScript.ObjectTouch != null && isTransporting == false && Parent.GetComponent<CharaMove>().TrapResonnance != null)
-            {
-                if (OnTriggerEnterScript.ObjectTouch.GetComponent<ObjectCollect>() != null && Parent.GetComponent<CharaMove>().TrapResonnance.IsPlayerInside)
+                if (currentState != null)
                 {
-                    TargetObject = OnTriggerEnterScript.ObjectTouch;
-                    GetObj();
+                    currentState.UpdateState(this);
                 }
-            }
 
-            if (Target == null)
-                Target = transform.parent;
+                if (ShowPath)
+                {
+                    DrawPath();
+                }
+
+                if (OnTriggerEnterScript.isTrigger && OnTriggerEnterScript.ObjectTouch != null && isTransporting == false && Parent.GetComponent<CharaMove>().TrapResonnance != null)
+                {
+                    if (OnTriggerEnterScript.ObjectTouch.GetComponent<ObjectCollect>() != null && Parent.GetComponent<CharaMove>().TrapResonnance.IsPlayerInside)
+                    {
+                        TargetObject = OnTriggerEnterScript.ObjectTouch;
+                        GetObj();
+                    }
+                }
+
+                if (Target == null)
+                    Target = transform.parent;
+            }
         }
         BodyFollow();
     }

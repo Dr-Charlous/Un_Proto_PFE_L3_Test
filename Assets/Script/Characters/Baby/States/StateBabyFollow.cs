@@ -22,11 +22,6 @@ public class StateBabyFollow : IState
             controller.Target = controller.TargetParent;
             controller.Agent.SetDestination(controller.Target.position);
         }
-        else
-        {
-            controller.Target = controller.Nest.transform;
-            controller.Agent.SetDestination(controller.Target.position);
-        }
     }
 
     public void OnExit(StateBabyController controller)

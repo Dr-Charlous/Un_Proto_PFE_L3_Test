@@ -9,15 +9,17 @@ public class NestCreation : MonoBehaviour
     [SerializeField] Color _colorValid;
 
 
-    [SerializeField] GameObject[] ItemsToConstruct;
-    [SerializeField] bool[] ItemsVerification;
+    [SerializeField] GameObject[] _itemsToConstruct;
+    [SerializeField] bool[] _itemsVerification;
 
     [SerializeField] CharaMove _character;
+    [SerializeField] BabyManager _babyManager;
     [SerializeField] StonePathFalling _stones;
 
     [SerializeField] GameObject _transition;
     [SerializeField] Cinematic _cine;
 
+    public Transform[] Entries;
     public bool IsCreated = false;
     public bool IsFeed = false;
 
@@ -55,11 +57,11 @@ public class NestCreation : MonoBehaviour
 
     void VerificationItem(Collider other)
     {
-        for (int i = 0; i < ItemsToConstruct.Length; i++)
+        for (int i = 0; i < _itemsToConstruct.Length; i++)
         {
-            if (ItemsToConstruct[i] == other.gameObject)
+            if (_itemsToConstruct[i] == other.gameObject)
             {
-                ItemsVerification[i] = true;
+                _itemsVerification[i] = true;
                 other.gameObject.SetActive(false);
 
                 VerificationArray();
@@ -72,9 +74,9 @@ public class NestCreation : MonoBehaviour
     {
         bool isEveryOne = true;
 
-        for (int i = 0; i < ItemsToConstruct.Length; i++)
+        for (int i = 0; i < _itemsToConstruct.Length; i++)
         {
-            if (ItemsVerification[i] == false)
+            if (_itemsVerification[i] == false)
             {
                 isEveryOne = false;
             }
@@ -89,6 +91,17 @@ public class NestCreation : MonoBehaviour
             _stones.Fall();
 
             StartCoroutine(_cine.Cinematic1());
+
+            BabyGoToNest();
+        }
+    }
+
+    public void BabyGoToNest()
+    {
+        for (int i = 0; i < _babyManager.BabiesInScene.Count; i++)
+        {
+            _babyManager.BabiesInScene[i].GetComponentInChildren<StateBabyController>().Target = Entries[i];
+            _babyManager.BabiesInScene[i].GetComponentInChildren<StateBabyController>().Agent.SetDestination(_babyManager.BabiesInScene[i].GetComponentInChildren<StateBabyController>().Target.position);
         }
     }
 }
