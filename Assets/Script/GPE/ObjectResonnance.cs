@@ -96,6 +96,7 @@ public class ObjectResonnance : MonoBehaviour
             StartCoroutine(CameraMove());
 
             BabyTarget.position = BabyPos.position;
+            BabyTarget.rotation = BabyPos.rotation;
 
             for (int i = 0; i < _character.GetComponentInChildren<BabyManager>().BabiesInScene.Count; i++)
             {
