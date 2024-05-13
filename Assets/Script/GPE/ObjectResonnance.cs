@@ -20,6 +20,8 @@ public class ObjectResonnance : MonoBehaviour
     [SerializeField] AudioSource _source;
     [SerializeField] AudioClip _clip;
     [SerializeField] Transform _destinationCamera;
+    [SerializeField] Transform[] _entries;
+    [SerializeField] bool _isTraveling = false;
     [SerializeField] float _speed = 5;
 
     Camera _mainCamera;
@@ -66,6 +68,23 @@ public class ObjectResonnance : MonoBehaviour
             source.clip = clip;
             source.Play();
         }
+    }
+
+    Vector3 NearestEntry(Vector3 lastPos)
+    {
+        Vector3 farAway = Vector3.zero;
+        float maxValue = 0;
+
+        for (int i = 0; i < _entries.Length; i++)
+        {
+            if (Vector3.Distance(lastPos, _entries[i].position) > maxValue)
+            {
+                farAway = _entries[i].position;
+                maxValue = Vector3.Distance(lastPos, _entries[i].position);
+            }
+        }
+
+        return farAway;
     }
 
     void PlayerGetInside()
@@ -186,7 +205,11 @@ public class ObjectResonnance : MonoBehaviour
         {
             float speed = (transform.position - _character.transform.position).magnitude * _speed * Time.deltaTime;
 
-            _character.transform.DOMove(LastPosPlayer, speed);
+            if (_isTraveling)
+                _character.transform.DOMove(NearestEntry(LastPosPlayer), speed);
+            else
+                _character.transform.DOMove(LastPosPlayer, speed);
+
             _character._rb.velocity = Vector3.zero;
 
             LastPosPlayer = Vector3.zero;
