@@ -94,7 +94,7 @@ public class ObjectToPush : MonoBehaviour
 
     void Action()
     {
-        if (_character.BabyManager.BabiesInScene[0].GetComponentInChildren<StateBabyController>().Charges > 0)
+        if (_character.BabyManager.BabiesInScene[0].GetComponentInChildren<StateBabyController>().Charges > 0 || CheckParent == null)
         {
             if (ValuePush < 1)
                 ValuePush += _speedPush * Time.deltaTime;

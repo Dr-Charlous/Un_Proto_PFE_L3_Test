@@ -29,6 +29,8 @@ public class NestCreation : MonoBehaviour
     {
         _material.color = _colorInitial;
         _transition.SetActive(false);
+
+        _itemsVerification = new bool[_itemsToConstruct.Length];
     }
 
     private void OnTriggerEnter(Collider other)
