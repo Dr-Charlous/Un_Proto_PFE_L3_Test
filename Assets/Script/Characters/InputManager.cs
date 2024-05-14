@@ -13,7 +13,6 @@ public class InputManager : MonoBehaviour
     {
         _controls.Diplocaulus.Enable();
         _controls.Diplocaulus.Move.performed += GetMoveInputs;
-        _controls.Diplocaulus.Collect.started += GetCollectInputs;
         _controls.Diplocaulus.BabyFollow.started += GetBabyFollowInput;
         _controls.Diplocaulus.BabyAction.started += GetBabyActionInput;
         _controls.Diplocaulus.BabyGet.started += GetBabyGetInput;
@@ -24,7 +23,6 @@ public class InputManager : MonoBehaviour
     {
         _controls.Diplocaulus.Disable();
         _controls.Diplocaulus.Move.performed -= GetMoveInputs;
-        _controls.Diplocaulus.Collect.started -= GetCollectInputs;
         _controls.Diplocaulus.BabyFollow.started -= GetBabyFollowInput;
         _controls.Diplocaulus.BabyAction.started -= GetBabyActionInput;
         _controls.Diplocaulus.BabyGet.started -= GetBabyGetInput;
@@ -60,6 +58,12 @@ public class InputManager : MonoBehaviour
     {
         if (_chara.BabyManager.BabiesInScene.Count > 0 && !_chara.IsParalysed)
             _chara.BabyManager.BabyAction();
+
+        if (!_chara.IsParalysed)
+        {
+            _chara.Collected = !_chara.Collected;
+            _chara.CollectedBabies = !_chara.CollectedBabies;
+        }
     }
 
     void GetBabyGetInput(InputAction.CallbackContext baby)

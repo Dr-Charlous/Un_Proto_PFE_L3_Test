@@ -44,7 +44,7 @@ public class ObjectCollectController : MonoBehaviour
         if (obj != null)
         {
             obj.ChangeOutlineObject(obj.MaterialOutline, 0f);
-            obj = null;
+            _objectToGrab = null;
         }
     }
 
