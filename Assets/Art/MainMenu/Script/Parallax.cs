@@ -5,7 +5,7 @@ using UnityEngine;
 public class Parallax : MonoBehaviour
 {
 
-    public float offsetMultiplier = 1f;
+    public float offsetMultiplier = 0.1f;
     public float smoothTime = .3f;
 
     private Vector2 startPosition;
@@ -19,8 +19,10 @@ public class Parallax : MonoBehaviour
     private void Update()
     {
         Vector2 offset = Camera.main.ScreenToViewportPoint(Input.mousePosition);
-        transform.position = Vector3.SmoothDamp(transform.position, startPosition + (offset * offsetMultiplier), ref velocity, smoothTime);
+        Vector3 targetPos = Vector3.SmoothDamp(transform.position, startPosition + (offset * offsetMultiplier), ref velocity, smoothTime);
+        transform.position = new Vector3(targetPos.x, targetPos.y, transform.position.z);
     }
 
+    //Merci Antoine pour avoir corrigé le code !!! :3
 
 }
