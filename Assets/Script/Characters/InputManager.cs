@@ -37,11 +37,11 @@ public class InputManager : MonoBehaviour
 
     void GetCollectInputs(InputAction.CallbackContext collect)
     {
-        if (!_chara.IsParalysed)
-        {
-            _chara.Collected = !_chara.Collected;
-            _chara.CollectedBabies = !_chara.CollectedBabies;
-        }
+        //if (!_chara.IsParalysed)
+        //{
+        //    _chara.Collected = !_chara.Collected;
+        //    _chara.CollectedBabies = !_chara.CollectedBabies;
+        //}
     }
 
     void GetBabyFollowInput(InputAction.CallbackContext baby)
@@ -52,6 +52,8 @@ public class InputManager : MonoBehaviour
         {
             _chara.TrapResonnance.PlayerGetOutside();
         }
+
+        _chara.GetComponentInChildren<Animator>().SetTrigger("Call");
     }
 
     void GetBabyActionInput(InputAction.CallbackContext baby)
@@ -64,6 +66,8 @@ public class InputManager : MonoBehaviour
             _chara.Collected = !_chara.Collected;
             _chara.CollectedBabies = !_chara.CollectedBabies;
         }
+
+        _chara.GetComponentInChildren<Animator>().SetTrigger("Call");
     }
 
     void GetBabyGetInput(InputAction.CallbackContext baby)

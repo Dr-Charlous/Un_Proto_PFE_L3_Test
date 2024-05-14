@@ -44,7 +44,8 @@ public class CharaMove : MonoBehaviour
         {
             _rb.velocity = Vector3.zero;
 
-            TrapResonnance.BabyTarget.position += (transform.right * Position + transform.forward * Rotation) * TrapResonnance.SpeedBabyTarget * Time.deltaTime;
+            if (TrapResonnance != null)
+                TrapResonnance.BabyTarget.position += (transform.right * Position + transform.forward * Rotation) * TrapResonnance.SpeedBabyTarget * Time.deltaTime;
         }
     }
 
