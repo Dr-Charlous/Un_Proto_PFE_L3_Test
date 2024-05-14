@@ -49,7 +49,10 @@ public class StateEnnemyChase : IStateEnnemy
         }
 
         if (controller.Target != null)
+        {
             controller.Character.destination = controller.Target.transform.position;
+            controller.Move(controller.Target.transform.position);
+        }
 
         if (controller.JawsController.IsBitting)
             controller.Animations.AnimAttackBit();

@@ -58,7 +58,7 @@ public class InputManager : MonoBehaviour
 
     void GetBabyActionInput(InputAction.CallbackContext baby)
     {
-        if (_chara.BabyManager.BabiesInScene.Count > 0 && !_chara.IsParalysed)
+        if (!_chara.IsParalysed)
             _chara.BabyManager.BabyAction();
 
         if (!_chara.IsParalysed)

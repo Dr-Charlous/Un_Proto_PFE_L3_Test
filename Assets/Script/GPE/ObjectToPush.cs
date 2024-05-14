@@ -20,6 +20,7 @@ public class ObjectToPush : MonoBehaviour
 
     public float ValuePush;
     [SerializeField] float _speedPush;
+    [SerializeField] int _decreasePushValue = 1;
 
     Transform _parent;
     bool _isActivated = false;
@@ -94,7 +95,7 @@ public class ObjectToPush : MonoBehaviour
 
     void Action()
     {
-        if (_character.BabyManager.BabiesInScene[0].GetComponentInChildren<StateBabyController>().Charges > 0 || CheckParent == null)
+        if (_character.BabyManager.BabiesInScene[0].GetComponentInChildren<StateBabyController>().Charges >= _decreasePushValue || CheckParent == null)
         {
             if (ValuePush < 1)
                 ValuePush += _speedPush * Time.deltaTime;
