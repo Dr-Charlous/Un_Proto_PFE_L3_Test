@@ -70,6 +70,12 @@ public class NestCreation : MonoBehaviour
                 return;
             }
         }
+
+        List<GameObject> baby = _character.BabyManager.BabiesInScene;
+        for (int i = 0; i < baby.Count; i++)
+        {
+            baby[i].GetComponentInChildren<StateBabyController>().ChangeState(baby[i].GetComponentInChildren<StateBabyController>().StateFollow);
+        }
     }
 
     void VerificationArray()
@@ -102,6 +108,7 @@ public class NestCreation : MonoBehaviour
     {
         for (int i = 0; i < _babyManager.BabiesInScene.Count; i++)
         {
+            _babyManager.BabiesInScene[i].GetComponentInChildren<StateBabyController>().IsParalysed = true;
             _babyManager.BabiesInScene[i].GetComponentInChildren<StateBabyController>().Target = Entries[i];
             _babyManager.BabiesInScene[i].GetComponentInChildren<StateBabyController>().Agent.SetDestination(_babyManager.BabiesInScene[i].GetComponentInChildren<StateBabyController>().Target.position);
         }
