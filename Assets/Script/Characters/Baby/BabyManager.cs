@@ -150,7 +150,7 @@ public class BabyManager : MonoBehaviour
         RaycastHit hit;
         Physics.Raycast(transform.position, transform.TransformDirection(Vector3.back), out hit, _distanceAssign);
 
-        if (hit.transform != null && hit.transform.GetComponentInParent<ObjectToPush>() != null && BabiesInScene[0].GetComponentInChildren<StateBabyController>().Charges > 0)
+        if (hit.transform != null && hit.transform.GetComponentInParent<ObjectToPush>() != null)
         {
             //Debug.Log("ObjectToPush");
 

@@ -71,11 +71,11 @@ public class NestCreation : MonoBehaviour
             }
         }
 
-        List<GameObject> baby = _character.BabyManager.BabiesInScene;
-        for (int i = 0; i < baby.Count; i++)
-        {
-            baby[i].GetComponentInChildren<StateBabyController>().ChangeState(baby[i].GetComponentInChildren<StateBabyController>().StateFollow);
-        }
+        //List<GameObject> baby = _character.BabyManager.BabiesInScene;
+        //for (int i = 0; i < baby.Count; i++)
+        //{
+        //    baby[i].GetComponentInChildren<StateBabyController>().ChangeState(baby[i].GetComponentInChildren<StateBabyController>().StateFollow);
+        //}
     }
 
     void VerificationArray()
