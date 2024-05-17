@@ -7,6 +7,7 @@ public class MeteorMove : MonoBehaviour
     public float speed;
     public GameObject impactPrefab;
     public List<GameObject> trails;
+    public float Number;
 
     private Rigidbody rb;
 
