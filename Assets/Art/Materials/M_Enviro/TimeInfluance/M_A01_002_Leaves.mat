@@ -20,16 +20,15 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: M_P02_001_Leaves_VertexDisplace
+  m_Name: M_A01_002_Leaves
   m_Shader: {fileID: -6465566751694194690, guid: 3ab53d563b46e1549bf1d1ef0c8e8162, type: 3}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
-  m_ValidKeywords:
-  - _TIME
+  m_ValidKeywords: []
   m_InvalidKeywords:
   - _SURFACE_TYPE_TRANSPARENT
   m_LightmapFlags: 2
-  m_EnableInstancingVariants: 0
+  m_EnableInstancingVariants: 1
   m_DoubleSidedGI: 1
   m_CustomRenderQueue: -1
   stringTagMap: {}
@@ -39,31 +38,31 @@ Material:
     serializedVersion: 3
     m_TexEnvs:
     - _AO:
-        m_Texture: {fileID: 2800000, guid: a01cafc862f224942848949fd3488767, type: 3}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
-    - _Alpha_Texture:
-        m_Texture: {fileID: 2800000, guid: 7725925cb3587284e9340fc249c0501c, type: 3}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
-    - _EmissiveTexture2D:
-        m_Texture: {fileID: 2800000, guid: 728557b91f7b5ea40ad396019dcdef7c, type: 3}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
-    - _Height:
-        m_Texture: {fileID: 2800000, guid: 41f25c95e3ac5a24f8299224cfc7055d, type: 3}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
-    - _METALLIC:
-        m_Texture: {fileID: 2800000, guid: 728557b91f7b5ea40ad396019dcdef7c, type: 3}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
-    - _NORMAL:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
+    - _Alpha_Texture:
+        m_Texture: {fileID: 2800000, guid: 728557b91f7b5ea40ad396019dcdef7c, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _EmissiveTexture2D:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _Height:
+        m_Texture: {fileID: 2800000, guid: a6b92632dc4a7d84c85cefae931d02c2, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _METALLIC:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _NORMAL:
+        m_Texture: {fileID: 2800000, guid: 570d28e3b1ba3a44b952cb550c1112cd, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
     - _Texture2D:
-        m_Texture: {fileID: 2800000, guid: d9ae54aea863a444ab1f15fa75bb7eb5, type: 3}
+        m_Texture: {fileID: 2800000, guid: 143fcb4a92dc21249b7d63bf80bb9a03, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - unity_Lightmaps:
@@ -82,35 +81,36 @@ Material:
     m_Floats:
     - _AlphaClip: 0
     - _AlphaToMask: 0
-    - _Amplitude: 6.22
+    - _Amplitude: 0.67
     - _Blend: 0
     - _BlendModePreserveSpecular: 0
     - _CastShadows: 1
     - _Cull: 0
-    - _Cutout_Size: 0.32
+    - _Cutout_Size: 0.6
     - _DepthFrequence: 0.24
-    - _Dithering: 3.02
+    - _Dithering: 3.45
     - _DstBlend: 10
-    - _Fallout_Size: 0.33
-    - _MaxMask: 0.26
-    - _MinMask: 0.19
-    - _NormalStrenght: 0.5
+    - _Fallout_Size: 0.7
+    - _MaxMask: 0.09
+    - _MinMask: 0
+    - _NormalStrenght: 0.29
+    - _ON_OFF: 0
     - _QueueControl: 0
     - _QueueOffset: 0
     - _ReceiveShadows: 1
     - _Roughness: 0.44
-    - _Speed: 4.47
+    - _Speed: 2.5
     - _SrcBlend: 5
     - _Surface: 1
-    - _TIME: 1
+    - _TIME: 0
     - _Transparency: 0
-    - _TransparencyBool: 1
+    - _TransparencyBool: 0
     - _WorkflowMode: 1
     - _ZTest: 4
     - _ZWrite: 0
     - _ZWriteControl: 0
     m_Colors:
-    - _Color: {r: 1, g: 0.33333337, b: 0.44920605, a: 0}
+    - _Color: {r: 1, g: 1, b: 1, a: 0}
     - _Cutout_Position: {r: 0.5, g: 0.25, b: 0, a: 0}
-    - _EmissiveColor: {r: 1, g: 0.2889198, b: 0, a: 1}
+    - _EmissiveColor: {r: 1367.1202, g: 1367.1202, b: 1367.1202, a: 1}
   m_BuildTextureStacks: []
