@@ -71,7 +71,7 @@ public class ObjectToPush : MonoBehaviour
 
         for (int i = 0; i < _isBabyActionned.Length; i++)
         {
-            if (_isBabyActionned[i] == false)
+            if (_isBabyActionned[i] == false || (_isBabyActionned[i] && _character.BabyManager.BabiesInScene[i].GetComponentInChildren<StateBabyController>().Charges < _decreasePushValue))
                 isEveryOneHere = false;
         }
 

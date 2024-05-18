@@ -57,7 +57,10 @@ public class ObjectCollectManager : MonoBehaviour
             objectTransform.SetParent(parentCharacter);
             grab = true;
 
-            GetComponentInChildren<Animator>().SetTrigger("GetObj");
+            Animator animator = GetComponentInChildren<Animator>();
+
+            if (animator != null)
+                animator.SetTrigger("GetObj");
         }
     }
 

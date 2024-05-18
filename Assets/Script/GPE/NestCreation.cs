@@ -90,6 +90,13 @@ public class NestCreation : MonoBehaviour
             }
         }
 
+        List<GameObject> baby = _character.BabyManager.BabiesInScene;
+
+        for (int j = 0; j < baby.Count; j++)
+        {
+            baby[j].GetComponentInChildren<StateBabyController>().ChangeState(baby[j].GetComponentInChildren<StateBabyController>().StateFollow);
+        }
+
         if (isEveryOne)
         {
             _material.color = _colorValid;

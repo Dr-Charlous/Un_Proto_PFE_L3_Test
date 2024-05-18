@@ -52,8 +52,6 @@ public class ObjectCollectController : MonoBehaviour
     {
         if (!_chara.BabyManager.BabiesInScene[i].GetComponentInChildren<StateBabyController>().isGrab)
             GrabOrder(i);
-        //else if (_chara.BabyManager.BabiesInScene[i].GetComponentInChildren<StateBabyController>().isGrab)
-        //    ReleaseOrder(i);
     }
 
     void GrabOrder(int i)
