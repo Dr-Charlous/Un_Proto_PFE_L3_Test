@@ -87,7 +87,7 @@ public class ObjectToPush : MonoBehaviour
             }
         }
 
-        if (isEveryOneHere && !_isActivated)
+        if (isEveryOneHere && !_isActivated && _character.Position < 0)
         {
             Action();
         }
