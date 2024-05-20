@@ -26,14 +26,10 @@ public class EnnemyStateController : MonoBehaviour
     public GameObject Fish;
     public GameObject Target;
 
-    public string ParentTag;
-    public string BabiesTag;
-
     public int _i;
     public float DistanceNext;
     public bool isEating = false;
     public bool isChasing = false;
-    public GameObject Jaw;
 
 
     private void Start()
@@ -128,9 +124,9 @@ public class EnnemyStateController : MonoBehaviour
         }
 
         Gizmos.color = Color.red;
-        Gizmos.DrawRay(transform.position, transform.TransformDirection(Vector3.forward) * DistanceSee);
-        Gizmos.DrawRay(transform.position, transform.TransformDirection(Vector3.forward + Vector3.left) * DistanceSee);
-        Gizmos.DrawRay(transform.position, transform.TransformDirection(Vector3.forward + Vector3.right) * DistanceSee);
+        Gizmos.DrawRay(Animations.transform.position, transform.TransformDirection(Vector3.forward) * DistanceSee);
+        Gizmos.DrawRay(Animations.transform.position, transform.TransformDirection((Vector3.forward - Vector3.right).normalized) * DistanceSee);
+        Gizmos.DrawRay(Animations.transform.position, transform.TransformDirection((Vector3.forward + Vector3.right).normalized) * DistanceSee);
     }
 
     public void ChangeState(IStateEnnemy newState)

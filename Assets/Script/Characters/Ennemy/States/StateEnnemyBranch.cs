@@ -22,7 +22,7 @@ public class StateEnnemyBranch : IStateEnnemy
             }
         }
 
-        controller.Jaw.SetActive(false);
+        controller.JawsController.gameObject.SetActive(false);
         controller.Animations.AnimAttack();
     }
 
@@ -36,6 +36,6 @@ public class StateEnnemyBranch : IStateEnnemy
 
     public void OnExit(EnnemyStateController controller)
     {
-        controller.Jaw.SetActive(true);
+        controller.JawsController.gameObject.SetActive(true);
     }
 }

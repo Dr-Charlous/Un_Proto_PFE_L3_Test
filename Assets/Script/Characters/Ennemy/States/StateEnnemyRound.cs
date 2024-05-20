@@ -24,11 +24,11 @@ public class StateEnnemyRound : IStateEnnemy
         RaycastHit hitLeft;
         RaycastHit hitRight;
 
-        bool RayMid = Physics.Raycast(controller.transform.position, controller.transform.TransformDirection(Vector3.forward), out hitMid, controller.DistanceSee);
-        bool RayLeft = Physics.Raycast(controller.transform.position, controller.transform.TransformDirection(Vector3.forward + Vector3.left), out hitLeft, controller.DistanceSee);
-        bool RayRight = Physics.Raycast(controller.transform.position, controller.transform.TransformDirection(Vector3.forward + Vector3.right), out hitRight, controller.DistanceSee);
+        bool RayMid = Physics.Raycast(controller.Animations.transform.position, controller.transform.TransformDirection(Vector3.forward), out hitMid);
+        bool RayLeft = Physics.Raycast(controller.Animations.transform.position, controller.transform.TransformDirection(Vector3.forward + Vector3.left), out hitLeft);
+        bool RayRight = Physics.Raycast(controller.Animations.transform.position, controller.transform.TransformDirection(Vector3.forward + Vector3.right), out hitRight);
 
-        if (RayMid)
+        if (RayMid && controller.DistanceSee > Vector3.Distance(hitMid.transform.position, controller.transform.position))
         {
             if (hitMid.transform.gameObject.GetComponent<StateBabyController>() != null || hitMid.transform.gameObject.GetComponent<CharaMove>() != null)
             {
@@ -37,7 +37,7 @@ public class StateEnnemyRound : IStateEnnemy
             }
         }
 
-        if (RayLeft)
+        if (RayLeft && controller.DistanceSee > Vector3.Distance(hitLeft.transform.position, controller.transform.position))
         {
             if (hitLeft.transform.gameObject.GetComponent<StateBabyController>() != null || hitLeft.transform.gameObject.GetComponent<CharaMove>() != null)
             {
@@ -46,7 +46,7 @@ public class StateEnnemyRound : IStateEnnemy
             }
         }
 
-        if (RayRight)
+        if (RayRight && controller.DistanceSee > Vector3.Distance(hitRight.transform.position, controller.transform.position))
         {
             if (hitRight.transform.gameObject.GetComponent<StateBabyController>() != null || hitRight.transform.gameObject.GetComponent<CharaMove>() != null)
             {
