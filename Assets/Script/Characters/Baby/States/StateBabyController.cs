@@ -21,6 +21,8 @@ public class StateBabyController : MonoBehaviour
     public NavMeshAgent Agent;
     public LineRenderer Line;
     public List<Vector3> Point;
+    public Animator Animator;
+    [SerializeField] StateBabyController _babyController;
 
     [Header("Babies stuffs :")]
     public GameObject ObjectBaby;
@@ -108,6 +110,8 @@ public class StateBabyController : MonoBehaviour
         ObjectBaby.transform.DOKill();
         ObjectBaby.transform.DOMove(transform.position, 0.5f);
         //ObjectBaby.transform.position = transform.position;
+
+        Animator.SetFloat("Move", Agent.velocity.magnitude, 0.1f, Time.deltaTime);
     }
 
     public void GetObj()
@@ -115,6 +119,8 @@ public class StateBabyController : MonoBehaviour
         TargetObject.transform.SetParent(ParentCollect);
         TargetObject.GetComponent<BoxCollider>().excludeLayers -= LayerMask.GetMask("Player");
         isTransporting = true;
+
+        Animator.SetTrigger("GetObj");
     }
 
     void DrawPath()

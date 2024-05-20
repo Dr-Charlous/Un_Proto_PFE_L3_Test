@@ -4,11 +4,16 @@ using UnityEngine;
 
 public class AnimationManager : MonoBehaviour
 {
-    [SerializeField] Animator animator;
-    [SerializeField] Rigidbody CharacterRb;
+    [SerializeField] Animator _animator;
+    [SerializeField] StateBabyController _babyController;
 
     private void Update()
     {
-        animator.SetFloat("Move", CharacterRb.velocity.magnitude, 0.1f, Time.deltaTime);
+        _animator.SetFloat("Move", _babyController.Agent.velocity.magnitude, 0.1f, Time.deltaTime);
+    }
+
+    public void CallTrigerAnim(string name)
+    {
+        _animator.SetTrigger(name);
     }
 }

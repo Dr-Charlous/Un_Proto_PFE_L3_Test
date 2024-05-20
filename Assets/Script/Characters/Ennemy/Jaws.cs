@@ -14,8 +14,13 @@ public class Jaws : MonoBehaviour
             IsBitting = true;
             _death.ActiveUI();
 
-            if (other.transform.gameObject.GetComponent<CharaMove>() != null)
-                other.transform.gameObject.GetComponentInChildren<Animator>().SetTrigger("Death");
+            CharaMove move = other.transform.gameObject.GetComponent<CharaMove>();
+            if (move != null)
+                move.Animator.SetTrigger("Death");
+
+            StateBabyController stateBabyController = other.transform.gameObject.GetComponent<StateBabyController>();
+            if (stateBabyController != null)
+                stateBabyController.Animator.SetTrigger("Death");
         }
     }
 }

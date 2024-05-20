@@ -18,7 +18,7 @@ public class AnimationMultiple : MonoBehaviour
             PlayAnim("Interactions");
         }
 
-        //if (animator.)
+        //if (Animator.)
         //{
 
         //}

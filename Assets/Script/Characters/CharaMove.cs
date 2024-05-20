@@ -28,6 +28,9 @@ public class CharaMove : MonoBehaviour
     public BabyManager BabyManager;
     [HideInInspector] public ObjectResonnance TrapResonnance;
 
+    public Animator Animator;
+    [SerializeField] Rigidbody CharacterRb;
+
     private void Awake()
     {
         _rb = GetComponent<Rigidbody>();
@@ -61,7 +64,9 @@ public class CharaMove : MonoBehaviour
                     _rb.AddRelativeForce(Vector3.forward * Position * _acceleration / 10 * Time.fixedDeltaTime);
             }
         }
-        _rb.velocity = _rb.velocity / _decreaseSpeed; // <-- This will gradually slow down the player when they're idle.
+        _rb.velocity = _rb.velocity / _decreaseSpeed;
+
+        Animator.SetFloat("Move", CharacterRb.velocity.magnitude, 0.1f, Time.deltaTime);
     }
 
     void Rotate()
