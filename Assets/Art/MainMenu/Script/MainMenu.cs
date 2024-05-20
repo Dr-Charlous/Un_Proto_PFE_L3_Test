@@ -12,6 +12,19 @@ public class MainMenu : MonoBehaviour
 
     }
 
+    public void Credits()
+    {
+        SceneManager.LoadScene("Scene_Test_Credits");
+    }
+
+    public void Options()
+    {
+        SceneManager.LoadScene("Scene_Test_Options");
+    }
+    public void Back()
+    {
+        SceneManager.LoadScene("Scene_Test_Art_UI");
+    }
    
     public void QuitGame()
     {
