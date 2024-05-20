@@ -13,37 +13,37 @@ MonoBehaviour:
   m_Name: BurnFog
   m_EditorClassIdentifier: 
   raymarchQuality: 6
-  raymarchMinStep: 0.1
-  jittering: 0.5
-  dithering: 1.75
+  raymarchMinStep: 24.9
+  jittering: 0
+  dithering: 2
   renderQueue: 3100
   sortingLayerID: 0
   sortingOrder: 0
   noiseTexture: {fileID: 2800000, guid: 3ffc98f09caae0b43857b0173ec3fbbc, type: 3}
   noiseStrength: 1
-  noiseScale: 25
-  noiseFinalMultiplier: 0.5
+  noiseScale: 6.73
+  noiseFinalMultiplier: 0.87
   useDetailNoise: 0
   detailTexture: {fileID: 11700000, guid: 950add8d241c6479bbab1f10e1035d60, type: 2}
   detailScale: 0.35
   detailStrength: 0.5
   detailOffset: -0.5
-  density: 7.3
-  shape: 1
+  density: 6.52
+  shape: 0
   border: 0.05
-  verticalOffset: 8.39
+  verticalOffset: 0
   distance: 0
   distanceFallOff: 0
   maxDistance: 10000
   maxDistanceFallOff: 0
-  terrainFit: 0
+  terrainFit: 1
   terrainFitResolution: 128
   terrainLayerMask:
     serializedVersion: 2
-    m_Bits: 4294967295
+    m_Bits: 4294967293
   terrainFogHeight: 25
   terrainFogMinAltitude: 0
-  terrainFogMaxAltitude: 150
+  terrainFogMaxAltitude: 0
   albedo: {r: 1, g: 0.7568794, b: 0.4009434, a: 0.85882354}
   enableDepthGradient: 1
   depthGradient:
@@ -80,41 +80,41 @@ MonoBehaviour:
   enableHeightGradient: 1
   heightGradient:
     serializedVersion: 2
-    key0: {r: 766.9962, g: 683.48016, b: 256.8714, a: 0}
-    key1: {r: 11.984314, g: 5.840457, b: 0, a: 1}
-    key2: {r: 2.4022677, g: 0.31442901, b: 0, a: 0.9577465}
-    key3: {r: 0.412983, g: 0.027805615, b: 0.009740164, a: 0}
+    key0: {r: 11.984314, g: 0.71063656, b: 0, a: 1}
+    key1: {r: 0.8538648, g: 0.11176241, b: 0, a: 1}
+    key2: {r: 0, g: 0, b: 0, a: 1}
+    key3: {r: 0, g: 0, b: 0, a: 1}
     key4: {r: 0, g: 0, b: 0, a: 0}
     key5: {r: 0, g: 0, b: 0, a: 0}
     key6: {r: 0, g: 0, b: 0, a: 0}
     key7: {r: 0, g: 0, b: 0, a: 0}
-    ctime0: 3662
-    ctime1: 11180
-    ctime2: 23708
-    ctime3: 43947
-    ctime4: 60716
+    ctime0: 14264
+    ctime1: 24479
+    ctime2: 35273
+    ctime3: 36044
+    ctime4: 38743
     ctime5: 0
     ctime6: 0
     ctime7: 0
     atime0: 0
-    atime1: 5975
-    atime2: 50886
+    atime1: 65535
+    atime2: 65535
     atime3: 65535
     atime4: 0
     atime5: 0
     atime6: 0
     atime7: 0
     m_Mode: 0
-    m_ColorSpace: -1
-    m_NumColorKeys: 5
-    m_NumAlphaKeys: 4
-  brightness: 7.71
-  deepObscurance: 1.16
-  specularColor: {r: 1, g: 0.3134675, b: 0.25943398, a: 1}
-  specularThreshold: 0.343
+    m_ColorSpace: 1
+    m_NumColorKeys: 3
+    m_NumAlphaKeys: 2
+  brightness: 6.96
+  deepObscurance: 0.88
+  specularColor: {r: 0.18867922, g: 0.09317574, b: 0.025809899, a: 1}
+  specularThreshold: 1
   specularIntensity: 1
   turbulence: 0.14
-  windDirection: {x: 0, y: 0, z: 0.02}
+  windDirection: {x: 0, y: 0, z: 0.3}
   useCustomDetailNoiseWindDirection: 0
   detailNoiseWindDirection: {x: 0.02, y: 0, z: 0}
   dayNightCycle: 1
