@@ -1,49 +1,31 @@
 using UnityEngine;
+using UnityEngine.TextCore.Text;
 
 public class ObjectCollectManager : MonoBehaviour
 {
-    [SerializeField] CharaMove chara;
+    [SerializeField] CharaMove _character;
     [SerializeField] Transform parentCharacter;
     [SerializeField] GameObject ObjectFish;
+    [SerializeField] ScriptableDialogue _dialogue;
+    
+    UiTextDialogueSpeaker _speaker;
     Transform parentOrigin;
     GameObject objectGet;
     Collider objectCollectCollider;
     bool grab;
 
-    //private void Update()
-    //{
-    //    if (chara.Collected)
-    //    {
-    //        GrabCheck();
-    //        chara.Collected = false;
-    //    }
-    //}
+    private void Start()
+    {
+        _speaker = _character.GetComponentInChildren<UiTextDialogueSpeaker>();
+    }
 
     private void OnTriggerStay(Collider collider)
     {
         if (collider.GetComponent<ObjectCollect>() != null)
         {
-            //objectCollectCollider = collider;
             Grab(collider);
         }
     }
-
-    //private void OnTriggerExit(Collider collider)
-    //{
-    //    if (collider.GetComponent<ObjectCollect>() != null)
-    //    {
-    //        Release();
-    //        objectCollectCollider = null;
-    //    }
-    //}
-
-    //void GrabCheck()
-    //{
-    //    if (grab == false && objectCollectCollider != null)
-    //        Grab(objectCollectCollider);
-    //    else if (grab)
-    //       Release();
-    //}
 
     void Grab(Collider collider)
     {
@@ -61,12 +43,9 @@ public class ObjectCollectManager : MonoBehaviour
 
             if (animator != null)
                 animator.SetTrigger("GetObj");
+
+            if (_speaker != null && _dialogue != null)
+                _speaker.StartDialogue(_dialogue);
         }
     }
-
-    //void Release()
-    //{
-    //    objectGet.transform.parent = parentOrigin;
-    //    grab = false;
-    //}
 }

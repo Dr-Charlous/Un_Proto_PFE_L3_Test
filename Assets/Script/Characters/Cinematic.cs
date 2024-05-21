@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.TextCore.Text;
 
 public class Cinematic : MonoBehaviour
 {
@@ -8,10 +9,14 @@ public class Cinematic : MonoBehaviour
     [SerializeField] Camera _camPrincipal;
     [SerializeField] Camera _camCine;
 
+    [SerializeField] ScriptableDialogue _dialogueNidBuild;
+    UiTextDialogueSpeaker _speaker;
+
     private void Start()
     {
         _camPrincipal = Camera.main;
         _camCine.enabled = false;
+        _speaker = _player.GetComponentInChildren<UiTextDialogueSpeaker>();
     }
 
     public IEnumerator Cinematic1()
@@ -27,5 +32,8 @@ public class Cinematic : MonoBehaviour
         _camCine.enabled = false;
 
         _player.IsParalysed = false;
+
+        if (_speaker != null && _dialogueNidBuild != null)
+            _speaker.StartDialogue(_dialogueNidBuild);
     }
 }
