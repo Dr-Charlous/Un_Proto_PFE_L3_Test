@@ -23,34 +23,29 @@ public class UiTextDialogueOnGround : MonoBehaviour
         }
     }
 
-    private void OnTriggerExit(Collider other)
-    {
-        _textManager = other.GetComponentInChildren<TextDialogueManager>();
-
-        if (other.GetComponent<CharaMove>() != null && _textManager != null)
-        {
-            _textManager.UiText.gameObject.SetActive(false);
-            _textManager.UiBack.gameObject.SetActive(false);
-            _textManager = null;
-        }
-    }
-
     IEnumerator LaunchDialogue(AudioSource source, TextMeshProUGUI text, int i)
     {
         dialogue.PlayDialogue(source, text, i);
 
-        yield return new WaitForSeconds(dialogue.Voice[i].length + 1);
+        yield return new WaitForSeconds(dialogue.Voice[i].length + 0.1f);
 
         i++;
 
-        if (i < dialogue.Voice.Length)
+        if (i < dialogue.Voice.Length || i < dialogue.Text.Length)
+        {
             StartCoroutine(LaunchDialogue(source, text, i));
+        }
         else
         {
             _coroutine = null;
+            i = 0;
 
-            _textManager.UiText.gameObject.SetActive(false);
-            _textManager.UiBack.gameObject.SetActive(false);
+            if (_textManager != null)
+            {
+                _textManager.UiText.gameObject.SetActive(false);
+                _textManager.UiBack.gameObject.SetActive(false);
+                _textManager = null;
+            }
         }
     }
 }

@@ -6,6 +6,7 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "Dialogue", menuName = "ScriptableObjects/Dialogue", order = 1)]
 public class ScriptableDialogue : ScriptableObject
 {
+    [TextArea]
     public string[] Text;
     public AudioClip[] Voice;
 
@@ -14,8 +15,8 @@ public class ScriptableDialogue : ScriptableObject
         if (source.isPlaying)
             return;
 
+        text.text = Text[i];
         source.clip = Voice[i];
         source.Play();
-        text.text = Text[i];
     }
 }
