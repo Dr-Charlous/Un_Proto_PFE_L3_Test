@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "Dialogue", menuName = "ScriptableObjects/Dialogue", order = 1)]
+[CreateAssetMenu(fileName = "DialogueBabyReccup", menuName = "ScriptableObjects/DialogueBabyReccup", order = 1)]
 public class ScriptableDialogue : ScriptableObject
 {
     [TextArea]

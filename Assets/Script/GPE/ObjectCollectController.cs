@@ -66,17 +66,4 @@ public class ObjectCollectController : MonoBehaviour
             _chara.BabyManager.BabiesInScene[baby.BabiesInScene.Count - 1].GetComponentInChildren<StateBabyController>().isGrab = true;
         }
     }
-
-    //void ReleaseOrder(int i)
-    //{
-    //    var controller = _chara.BabyManager.BabiesInScene[i].GetComponentInChildren<StateBabyController>();
-
-    //    if (controller.TargetObject != null)
-    //    {
-    //        controller.TargetObject.transform.SetParent(controller.ParentObject);
-    //        controller.TargetObject.GetComponent<BoxCollider>().excludeLayers += LayerMask.GetMask("Player");
-    //        controller.isTransporting = false;
-    //        _chara.BabyManager.BabiesInScene[i].GetComponentInChildren<StateBabyController>().isGrab = false;
-    //    }
-    //}
 }

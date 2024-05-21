@@ -19,6 +19,10 @@ public class NestCreation : MonoBehaviour
     [SerializeField] GameObject _transition;
     [SerializeField] Cinematic _cine;
 
+    [SerializeField] ScriptableDialogue _dialogueMiamiam;
+    
+    UiTextDialogueSpeaker _speaker;
+
     public Transform[] Entries;
     public bool IsCreated = false;
     public bool IsFeed = false;
@@ -29,6 +33,8 @@ public class NestCreation : MonoBehaviour
     {
         _material.color = _colorInitial;
         _transition.SetActive(false);
+
+        _speaker = _character.GetComponentInChildren<UiTextDialogueSpeaker>();
 
         _itemsVerification = new bool[_itemsToConstruct.Length];
     }
@@ -55,6 +61,9 @@ public class NestCreation : MonoBehaviour
         {
             baby[i].GetComponentInChildren<StateBabyController>().Charges += 10;
         }
+
+        if (_speaker != null && _dialogueMiamiam != null)
+            _speaker.StartDialogue(_dialogueMiamiam);
     }
 
     void VerificationItem(Collider other)
@@ -70,12 +79,6 @@ public class NestCreation : MonoBehaviour
                 return;
             }
         }
-
-        //List<GameObject> baby = _character.BabyManager.BabiesInScene;
-        //for (int i = 0; i < baby.Count; i++)
-        //{
-        //    baby[i].GetComponentInChildren<StateBabyController>().ChangeState(baby[i].GetComponentInChildren<StateBabyController>().StateFollow);
-        //}
     }
 
     void VerificationArray()

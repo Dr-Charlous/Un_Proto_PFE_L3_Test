@@ -12,6 +12,7 @@ public class BabyManager : MonoBehaviour
     [SerializeField] float _distanceFromBaby = 1.5f;
     [SerializeField] float _babyOffsetOnBack = 1f;
     [SerializeField] float _distanceAssign = 10;
+    public ScriptableDialogue DialogueBabyReccup;
 
     [Header("BabiesTag :")]
     public int BabieNumberOnBack = 1;

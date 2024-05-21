@@ -6,6 +6,7 @@ using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.AI;
 using UnityEngine.InputSystem.XR;
+using UnityEngine.TextCore.Text;
 
 public class StateBabyController : MonoBehaviour
 {
@@ -23,6 +24,8 @@ public class StateBabyController : MonoBehaviour
     public List<Vector3> Point;
     public Animator Animator;
     [SerializeField] StateBabyController _babyController;
+    ScriptableDialogue _dialogue;
+    UiTextDialogueSpeaker _speaker;
 
     [Header("Babies stuffs :")]
     public GameObject ObjectBaby;
@@ -51,6 +54,9 @@ public class StateBabyController : MonoBehaviour
     {
         ChangeState(StateFollow);
         IsInNest = false;
+
+        _speaker = Parent.GetComponentInChildren<UiTextDialogueSpeaker>();
+        _dialogue = Parent.GetComponentInChildren<BabyManager>().DialogueBabyReccup;
     }
 
     private void Update()
@@ -121,6 +127,9 @@ public class StateBabyController : MonoBehaviour
         isTransporting = true;
 
         Animator.SetTrigger("GetObj");
+
+        if (_speaker != null && _dialogue != null)
+            _speaker.StartDialogue(_dialogue);
     }
 
     void DrawPath()
