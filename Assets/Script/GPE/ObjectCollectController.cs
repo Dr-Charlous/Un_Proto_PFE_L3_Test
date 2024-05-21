@@ -32,7 +32,7 @@ public class ObjectCollectController : MonoBehaviour
 
         if (obj != null)
         {
-            obj.ChangeOutlineObject(obj.MaterialOutline, 1.1f);
+            //obj.ChangeOutlineObject(obj.MaterialOutline, 1.1f);
             _objectToGrab = collider.gameObject;
         }
     }
@@ -43,7 +43,7 @@ public class ObjectCollectController : MonoBehaviour
 
         if (obj != null)
         {
-            obj.ChangeOutlineObject(obj.MaterialOutline, 0f);
+            //obj.ChangeOutlineObject(obj.MaterialOutline, 0f);
             _objectToGrab = null;
         }
     }

@@ -6,7 +6,7 @@ public class ObjectCollectManager : MonoBehaviour
     [SerializeField] CharaMove _character;
     [SerializeField] Transform parentCharacter;
     [SerializeField] GameObject ObjectFish;
-    [SerializeField] ScriptableDialogue _dialogue;
+    [SerializeField] ScriptableDialogue _dialogueFish;
     
     UiTextDialogueSpeaker _speaker;
     Transform parentOrigin;
@@ -44,8 +44,8 @@ public class ObjectCollectManager : MonoBehaviour
             if (animator != null)
                 animator.SetTrigger("GetObj");
 
-            if (_speaker != null && _dialogue != null)
-                _speaker.StartDialogue(_dialogue);
+            if (_speaker != null && _dialogueFish != null)
+                _speaker.StartDialogue(_dialogueFish);
         }
     }
 }

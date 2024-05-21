@@ -24,8 +24,8 @@ public class StateBabyController : MonoBehaviour
     public List<Vector3> Point;
     public Animator Animator;
     [SerializeField] StateBabyController _babyController;
-    ScriptableDialogue _dialogue;
-    UiTextDialogueSpeaker _speaker;
+    public ScriptableDialogue Dialogue;
+    public UiTextDialogueSpeaker Speaker;
 
     [Header("Babies stuffs :")]
     public GameObject ObjectBaby;
@@ -55,8 +55,7 @@ public class StateBabyController : MonoBehaviour
         ChangeState(StateFollow);
         IsInNest = false;
 
-        _speaker = Parent.GetComponentInChildren<UiTextDialogueSpeaker>();
-        _dialogue = Parent.GetComponentInChildren<BabyManager>().DialogueBabyReccup;
+        Speaker = Parent.GetComponentInChildren<UiTextDialogueSpeaker>();
     }
 
     private void Update()
@@ -80,7 +79,8 @@ public class StateBabyController : MonoBehaviour
                     if (OnTriggerEnterScript.ObjectTouch.GetComponent<ObjectCollect>() != null && Parent.GetComponent<CharaMove>().TrapResonnance.IsPlayerInside)
                     {
                         TargetObject = OnTriggerEnterScript.ObjectTouch;
-                        GetObj();
+                        Dialogue = OnTriggerEnterScript.ObjectTouch.GetComponent<ObjectCollect>().DialogueBabyReccup;
+                        GetObj(OnTriggerEnterScript.ObjectTouch.GetComponent<ObjectCollect>().IsPortable);
                     }
                 }
 
@@ -120,16 +120,19 @@ public class StateBabyController : MonoBehaviour
         Animator.SetFloat("Move", Agent.velocity.magnitude, 0.1f, Time.deltaTime);
     }
 
-    public void GetObj()
+    public void GetObj(bool var)
     {
-        TargetObject.transform.SetParent(ParentCollect);
-        TargetObject.GetComponent<BoxCollider>().excludeLayers -= LayerMask.GetMask("Player");
-        isTransporting = true;
+        if (var)
+        {
+            TargetObject.transform.SetParent(ParentCollect);
+            TargetObject.GetComponent<BoxCollider>().excludeLayers -= LayerMask.GetMask("Player");
+            isTransporting = true;
 
-        Animator.SetTrigger("GetObj");
+            Animator.SetTrigger("GetObj");
+        }
 
-        if (_speaker != null && _dialogue != null)
-            _speaker.StartDialogue(_dialogue);
+        if (Speaker != null && Dialogue != null)
+            Speaker.StartDialogue(Dialogue);
     }
 
     void DrawPath()
