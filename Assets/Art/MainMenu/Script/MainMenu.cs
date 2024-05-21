@@ -23,7 +23,7 @@ public class MainMenu : MonoBehaviour
     }
     public void Back()
     {
-        SceneManager.LoadScene("Scene_Test_Art_UI");
+        SceneManager.LoadScene("Scene_Test_Art_3D_UI");
     }
    
     public void QuitGame()
