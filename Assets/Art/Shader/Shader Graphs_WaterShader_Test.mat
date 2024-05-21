@@ -1,0 +1,79 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!21 &2100000
+Material:
+  serializedVersion: 8
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Shader Graphs_WaterShader_Test
+  m_Shader: {fileID: -6465566751694194690, guid: c19ae3a6d4969da478deb01077492d91, type: 3}
+  m_Parent: {fileID: 0}
+  m_ModifiedSerializedProperties: 0
+  m_ValidKeywords: []
+  m_InvalidKeywords: []
+  m_LightmapFlags: 2
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: 2999
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_LockedProperties: 
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs:
+    - _Refraction_Normal:
+        m_Texture: {fileID: 2800000, guid: 11154d936b05e66498f68fa178c5cfbb, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - unity_Lightmaps:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - unity_LightmapsInd:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - unity_ShadowMasks:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Ints: []
+    m_Floats:
+    - _Depth: 0.29
+    - _Foam_Amout: 4.18
+    - _Foam_Cutout: 7.2
+    - _Foam_Scale: 50
+    - _Foam_Speed: 0.01
+    - _HightFrequency: 1
+    - _Noise_Scale: 8
+    - _QueueControl: 0
+    - _QueueOffset: -1
+    - _Refraction_Scale: 16.17
+    - _Refraction_Speed: 0.43
+    - _Refraction_Strength: 0.02
+    - _Refraction_speed: 0
+    - _Renge: 1.72
+    - _Water_Noise_Scale: 50
+    - _Wave_Amplitude: 0.5
+    - _Wave_Speed: 0.5
+    m_Colors:
+    - _DeepWaterColor: {r: 0.21308765, g: 0.2735849, b: 0.17937878, a: 0.7372549}
+    - _Foam_Color: {r: 0.14286897, g: 0.24528301, b: 0.070576705, a: 0.4117647}
+    - _NoiseColor: {r: 0.093258515, g: 0.21698111, b: 0.076762185, a: 0.6509804}
+    - _SurfaceWaterColor: {r: 0.17647062, g: 0.43826532, b: 0.48235294, a: 0.2901961}
+  m_BuildTextureStacks: []
+--- !u!114 &8655474154791388433
+MonoBehaviour:
+  m_ObjectHideFlags: 11
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0353a89b1f911e48b9e16bdc9f2e058, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  version: 7
