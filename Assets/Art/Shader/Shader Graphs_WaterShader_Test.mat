@@ -41,12 +41,15 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
-    - _Depth: 0.29
+    - _Depth: 0.58
     - _Foam_Amout: 4.18
     - _Foam_Cutout: 7.2
     - _Foam_Scale: 50
     - _Foam_Speed: 0.01
     - _HightFrequency: 1
+    - _IsMetalic: 1
+    - _Metalic: 1
+    - _NoiseSpeed: 0.18
     - _Noise_Scale: 8
     - _QueueControl: 0
     - _QueueOffset: -1
@@ -54,15 +57,16 @@ Material:
     - _Refraction_Speed: 0.43
     - _Refraction_Strength: 0.02
     - _Refraction_speed: 0
-    - _Renge: 1.72
+    - _Renge: 0.01
+    - _Smoothness: 0.05
     - _Water_Noise_Scale: 50
     - _Wave_Amplitude: 0.5
     - _Wave_Speed: 0.5
     m_Colors:
-    - _DeepWaterColor: {r: 0.21308765, g: 0.2735849, b: 0.17937878, a: 0.7372549}
-    - _Foam_Color: {r: 0.14286897, g: 0.24528301, b: 0.070576705, a: 0.4117647}
-    - _NoiseColor: {r: 0.093258515, g: 0.21698111, b: 0.076762185, a: 0.6509804}
-    - _SurfaceWaterColor: {r: 0.17647062, g: 0.43826532, b: 0.48235294, a: 0.2901961}
+    - _DeepWaterColor: {r: 0.21822715, g: 0.23584908, b: 0.125712, a: 0.8509804}
+    - _Foam_Color: {r: 0.24705882, g: 0.22232533, b: 0.070588246, a: 0.4117647}
+    - _NoiseColor: {r: 0.009611962, g: 0.0754717, b: 0.050470226, a: 0.38039216}
+    - _SurfaceWaterColor: {r: 0.5471698, g: 0.5305452, b: 0.35875756, a: 0.3137255}
   m_BuildTextureStacks: []
 --- !u!114 &8655474154791388433
 MonoBehaviour:
