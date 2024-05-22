@@ -17,7 +17,7 @@ public class StateBabyFollow : IState
     {
         //Debug.Log("Follow");
 
-        if (controller.Nest == null || !controller.Nest.IsCreated || (controller.Nest.IsCreated && controller.Nest.IsFeed))
+        if (GameManager.Instance.Nest == null || !GameManager.Instance.Nest.IsCreated || (GameManager.Instance.Nest.IsCreated && GameManager.Instance.Nest.IsFeed))
         {
             controller.Target = controller.TargetParent;
             controller.Agent.SetDestination(controller.Target.position);

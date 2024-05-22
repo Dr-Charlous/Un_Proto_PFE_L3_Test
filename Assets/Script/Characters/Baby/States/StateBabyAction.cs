@@ -30,9 +30,9 @@ public class StateBabyAction : IState
             controller.Agent.SetDestination(_target);
         }
 
-        if (controller.Nest != null && controller.Nest.IsCreated && !controller.Nest.IsFeed)
+        if (GameManager.Instance.Nest != null && GameManager.Instance.Nest.IsCreated && !GameManager.Instance.Nest.IsFeed)
         {
-            controller.Target = controller.Nest.transform;
+            controller.Target = GameManager.Instance.Nest.transform;
         }
     }
 

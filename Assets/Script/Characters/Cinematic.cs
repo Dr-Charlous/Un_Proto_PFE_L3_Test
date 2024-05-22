@@ -5,7 +5,6 @@ using UnityEngine.TextCore.Text;
 
 public class Cinematic : MonoBehaviour
 {
-    [SerializeField] CharaMove _player;
     [SerializeField] Camera _camPrincipal;
     [SerializeField] Camera _camCine;
 
@@ -16,12 +15,12 @@ public class Cinematic : MonoBehaviour
     {
         _camPrincipal = Camera.main;
         _camCine.enabled = false;
-        _speaker = _player.GetComponentInChildren<UiTextDialogueSpeaker>();
+        _speaker = GameManager.Instance.Character.GetComponentInChildren<UiTextDialogueSpeaker>();
     }
 
     public IEnumerator Cinematic1()
     {
-        _player.IsParalysed = true;
+        GameManager.Instance.Character.IsParalysed = true;
 
         _camPrincipal.enabled = false;
         _camCine.enabled = true;
@@ -31,7 +30,7 @@ public class Cinematic : MonoBehaviour
         _camPrincipal.enabled = true;
         _camCine.enabled = false;
 
-        _player.IsParalysed = false;
+        GameManager.Instance.Character.IsParalysed = false;
 
         if (_speaker != null && _dialogueNidBuild != null)
             _speaker.StartDialogue(_dialogueNidBuild);

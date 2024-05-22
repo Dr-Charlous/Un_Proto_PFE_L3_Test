@@ -16,7 +16,6 @@ public class ObjectToPush : MonoBehaviour
     [SerializeField] bool[] _isBabyActionned;
     [SerializeField] Transform _destination;
     [SerializeField] GameObject _mesh;
-    [SerializeField] CharaMove _character;
 
     public float ValuePush;
     [SerializeField] float _speedPush;
@@ -55,9 +54,9 @@ public class ObjectToPush : MonoBehaviour
 
         if (ValuePush == 1)
         {
-            for (int i = 0; i < _character.BabyManager.BabiesInScene.Count; i++)
+            for (int i = 0; i < GameManager.Instance.BabyManager.BabiesInScene.Count; i++)
             {
-                _character.BabyManager.BabiesInScene[i].GetComponentInChildren<StateBabyController>().Charges--;
+                GameManager.Instance.BabyManager.BabiesInScene[i].GetComponentInChildren<StateBabyController>().Charges--;
             }
 
             _mesh.transform.parent = _parent;
@@ -71,7 +70,7 @@ public class ObjectToPush : MonoBehaviour
 
         for (int i = 0; i < _isBabyActionned.Length; i++)
         {
-            if (_isBabyActionned[i] == false || (_isBabyActionned[i] && _character.BabyManager.BabiesInScene[i].GetComponentInChildren<StateBabyController>().Charges < _decreasePushValue))
+            if (_isBabyActionned[i] == false || (_isBabyActionned[i] && GameManager.Instance.BabyManager.BabiesInScene[i].GetComponentInChildren<StateBabyController>().Charges < _decreasePushValue))
                 isEveryOneHere = false;
         }
 
@@ -87,7 +86,7 @@ public class ObjectToPush : MonoBehaviour
             }
         }
 
-        if (isEveryOneHere && !_isActivated && _character.Position < 0)
+        if (isEveryOneHere && !_isActivated && GameManager.Instance.Character.Position < 0)
         {
             Action();
         }
@@ -95,7 +94,7 @@ public class ObjectToPush : MonoBehaviour
 
     void Action()
     {
-        if (_character.BabyManager.BabiesInScene[0].GetComponentInChildren<StateBabyController>().Charges >= _decreasePushValue || CheckParent == null)
+        if (GameManager.Instance.BabyManager.BabiesInScene[0].GetComponentInChildren<StateBabyController>().Charges >= _decreasePushValue || CheckParent == null)
         {
             if (ValuePush < 1)
                 ValuePush += _speedPush * Time.deltaTime;

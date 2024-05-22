@@ -6,7 +6,6 @@ using UnityEngine.SceneManagement;
 public class Death : MonoBehaviour
 {
     [SerializeField] GameObject _UIDeath;
-    [SerializeField] CharaMove _chara;
 
     private void Start()
     {
@@ -16,7 +15,7 @@ public class Death : MonoBehaviour
     public void ActiveUI()
     {
         _UIDeath.SetActive(true);
-        _chara.IsParalysed = true;
+        GameManager.Instance.Character.IsParalysed = true;
     }
 
     public void RetryButton()

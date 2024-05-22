@@ -12,8 +12,6 @@ public class NestCreation : MonoBehaviour
     [SerializeField] GameObject[] _itemsToConstruct;
     [SerializeField] bool[] _itemsVerification;
 
-    [SerializeField] CharaMove _character;
-    [SerializeField] BabyManager _babyManager;
     [SerializeField] StonePathFalling _stones;
 
     [SerializeField] GameObject _transition;
@@ -34,7 +32,7 @@ public class NestCreation : MonoBehaviour
         _material.color = _colorInitial;
         _transition.SetActive(false);
 
-        _speaker = _character.GetComponentInChildren<UiTextDialogueSpeaker>();
+        _speaker = GameManager.Instance.Character.GetComponentInChildren<UiTextDialogueSpeaker>();
 
         _itemsVerification = new bool[_itemsToConstruct.Length];
     }
@@ -55,7 +53,7 @@ public class NestCreation : MonoBehaviour
         Fish.SetActive(false);
         _transition.SetActive(true);
 
-        List<GameObject> baby = _character.BabyManager.BabiesInScene;
+        List<GameObject> baby = GameManager.Instance.BabyManager.BabiesInScene;
 
         for (int i = 0; i < baby.Count; i++)
         {
@@ -93,7 +91,7 @@ public class NestCreation : MonoBehaviour
             }
         }
 
-        List<GameObject> baby = _character.BabyManager.BabiesInScene;
+        List<GameObject> baby = GameManager.Instance.BabyManager.BabiesInScene;
 
         for (int j = 0; j < baby.Count; j++)
         {
@@ -116,11 +114,11 @@ public class NestCreation : MonoBehaviour
 
     public void BabyGoToNest()
     {
-        for (int i = 0; i < _babyManager.BabiesInScene.Count; i++)
+        for (int i = 0; i < GameManager.Instance.BabyManager.BabiesInScene.Count; i++)
         {
-            _babyManager.BabiesInScene[i].GetComponentInChildren<StateBabyController>().IsParalysed = true;
-            _babyManager.BabiesInScene[i].GetComponentInChildren<StateBabyController>().Target = Entries[i];
-            _babyManager.BabiesInScene[i].GetComponentInChildren<StateBabyController>().Agent.SetDestination(_babyManager.BabiesInScene[i].GetComponentInChildren<StateBabyController>().Target.position);
+            GameManager.Instance.BabyManager.BabiesInScene[i].GetComponentInChildren<StateBabyController>().IsParalysed = true;
+            GameManager.Instance.BabyManager.BabiesInScene[i].GetComponentInChildren<StateBabyController>().Target = Entries[i];
+            GameManager.Instance.BabyManager.BabiesInScene[i].GetComponentInChildren<StateBabyController>().Agent.SetDestination(GameManager.Instance.BabyManager.BabiesInScene[i].GetComponentInChildren<StateBabyController>().Target.position);
         }
     }
 }

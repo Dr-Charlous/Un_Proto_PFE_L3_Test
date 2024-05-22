@@ -7,7 +7,7 @@ public class StateBabyCollect : IState
 {
     public void OnEnter(StateBabyController controller)
     {
-        if (controller.Nest == null || !controller.Nest.IsCreated || (controller.Nest.IsCreated && controller.Nest.IsFeed))
+        if (GameManager.Instance.Nest == null || !GameManager.Instance.Nest.IsCreated || (GameManager.Instance.Nest.IsCreated && GameManager.Instance.Nest.IsFeed))
         {
             controller.ParentObject = controller.TargetObject.transform.parent;
             controller.Target = controller.TargetObject.transform;

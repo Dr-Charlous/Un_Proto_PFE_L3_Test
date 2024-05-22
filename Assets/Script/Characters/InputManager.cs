@@ -7,7 +7,6 @@ using UnityEngine.InputSystem;
 public class InputManager : MonoBehaviour
 {
     Controls _controls;
-    [SerializeField] CharaMove _chara;
 
     private void OnEnable()
     {
@@ -31,8 +30,8 @@ public class InputManager : MonoBehaviour
 
     void GetMoveInputs(InputAction.CallbackContext move)
     {
-        _chara.Position = -move.ReadValue<Vector2>().y;
-        _chara.Rotation = move.ReadValue<Vector2>().x;
+        GameManager.Instance.Character.Position = -move.ReadValue<Vector2>().y;
+        GameManager.Instance.Character.Rotation = move.ReadValue<Vector2>().x;
     }
 
     void GetCollectInputs(InputAction.CallbackContext collect)
@@ -46,27 +45,27 @@ public class InputManager : MonoBehaviour
 
     void GetBabyFollowInput(InputAction.CallbackContext baby)
     {
-        if (_chara.BabyManager.BabiesInScene.Count > 0 && !_chara.IsParalysed)
-            _chara.BabyManager.BabyFollow();
-        else if (_chara.TrapResonnance != null)
+        if (GameManager.Instance.BabyManager.BabiesInScene.Count > 0 && !GameManager.Instance.Character.IsParalysed)
+            GameManager.Instance.BabyManager.BabyFollow();
+        else if (GameManager.Instance.Character.TrapResonnance != null)
         {
-            _chara.TrapResonnance.PlayerGetOutside();
+            GameManager.Instance.Character.TrapResonnance.PlayerGetOutside();
         }
 
-        _chara.GetComponentInChildren<Animator>().SetTrigger("Call");
+        GameManager.Instance.Character.GetComponentInChildren<Animator>().SetTrigger("Call");
     }
 
     void GetBabyActionInput(InputAction.CallbackContext baby)
     {
-        if (!_chara.IsParalysed)
+        if (!GameManager.Instance.Character.IsParalysed)
         {
-            _chara.BabyManager.BabyAction();
+            GameManager.Instance.BabyManager.BabyAction();
 
-            _chara.Collected = !_chara.Collected;
-            _chara.CollectedBabies = !_chara.CollectedBabies;
+            GameManager.Instance.Character.Collected = !GameManager.Instance.Character.Collected;
+            GameManager.Instance.Character.CollectedBabies = !GameManager.Instance.Character.CollectedBabies;
         }
 
-        _chara.GetComponentInChildren<Animator>().SetTrigger("Call");
+        GameManager.Instance.Character.GetComponentInChildren<Animator>().SetTrigger("Call");
     }
 
     void GetBabyGetInput(InputAction.CallbackContext baby)

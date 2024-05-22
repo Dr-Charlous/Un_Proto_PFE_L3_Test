@@ -3,18 +3,9 @@ using UnityEngine;
 
 public class BabyManager : MonoBehaviour
 {
-    [HideInInspector] [SerializeField] List<GameObject> _babiesOnBack;
-    [HideInInspector] [SerializeField] List<Transform> _parentOrigin;
-
-    [SerializeField] Transform _parentCharacter;
-    [SerializeField] Transform _respawnPoint;
-    [SerializeField] NestCreation _nest;
     [SerializeField] float _distanceFromBaby = 1.5f;
-    [SerializeField] float _babyOffsetOnBack = 1f;
     [SerializeField] float _distanceAssign = 10;
 
-    [Header("BabiesTag :")]
-    public int BabieNumberOnBack = 1;
     public List<GameObject> BabiesInScene;
 
     #region comm

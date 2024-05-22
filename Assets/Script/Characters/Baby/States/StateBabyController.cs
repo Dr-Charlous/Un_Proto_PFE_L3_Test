@@ -23,14 +23,12 @@ public class StateBabyController : MonoBehaviour
     public LineRenderer Line;
     public List<Vector3> Point;
     public Animator Animator;
-    [SerializeField] StateBabyController _babyController;
     public ScriptableDialogue Dialogue;
     public UiTextDialogueSpeaker Speaker;
 
     [Header("Babies stuffs :")]
     public GameObject ObjectBaby;
     public GameObject BabyMesh;
-    public NestCreation Nest;
     public bool IsParalysed = false;
     public int Charges = 1;
 
@@ -55,6 +53,7 @@ public class StateBabyController : MonoBehaviour
         ChangeState(StateFollow);
         IsInNest = false;
 
+        Parent = GameManager.Instance.Character.transform;
         Speaker = Parent.GetComponentInChildren<UiTextDialogueSpeaker>();
     }
 
@@ -62,7 +61,7 @@ public class StateBabyController : MonoBehaviour
     {
         if (!IsParalysed)
         {
-            if (Nest == null || !Nest.IsCreated || (Nest.IsCreated && Nest.IsFeed))
+            if (GameManager.Instance.Nest == null || !GameManager.Instance.Nest.IsCreated || (GameManager.Instance.Nest.IsCreated && GameManager.Instance.Nest.IsFeed))
             {
                 if (currentState != null)
                 {
@@ -74,9 +73,9 @@ public class StateBabyController : MonoBehaviour
                     DrawPath();
                 }
 
-                if (OnTriggerEnterScript.isTrigger && OnTriggerEnterScript.ObjectTouch != null && isTransporting == false && Parent.GetComponent<CharaMove>().TrapResonnance != null)
+                if (OnTriggerEnterScript.isTrigger && OnTriggerEnterScript.ObjectTouch != null && isTransporting == false && GameManager.Instance.Character.TrapResonnance != null)
                 {
-                    if (OnTriggerEnterScript.ObjectTouch.GetComponent<ObjectCollect>() != null && Parent.GetComponent<CharaMove>().TrapResonnance.IsPlayerInside)
+                    if (OnTriggerEnterScript.ObjectTouch.GetComponent<ObjectCollect>() != null && GameManager.Instance.Character.TrapResonnance.IsPlayerInside)
                     {
                         TargetObject = OnTriggerEnterScript.ObjectTouch;
                         Dialogue = OnTriggerEnterScript.ObjectTouch.GetComponent<ObjectCollect>().DialogueBabyReccup;

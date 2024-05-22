@@ -11,7 +11,6 @@ public class FishNavigator : MonoBehaviour
     [SerializeField] FishPointNavigation[] _positions;
     [SerializeField] FishPointNavigation _position;
     [SerializeField] Rigidbody _rb;
-    [SerializeField] CharaMove _chara;
     [SerializeField] GameObject _fish;
     [SerializeField] float _speed;
     [SerializeField] bool _isMoving;
@@ -70,7 +69,7 @@ public class FishNavigator : MonoBehaviour
             for (int i = 0; i < _position.Neighbours.Length; i++)
             {
                 float distance = Vector3.Distance(_position.Neighbours[i].transform.position, _position.transform.position);
-                float distancePlayer = Vector3.Distance(_position.Neighbours[i].transform.position, _chara.transform.position);
+                float distancePlayer = Vector3.Distance(_position.Neighbours[i].transform.position, GameManager.Instance.Character.transform.position);
 
                 float pourcentage = distancePlayer / distance * 100;
                 if (minusDistance < pourcentage)

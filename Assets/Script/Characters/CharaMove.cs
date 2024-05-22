@@ -25,7 +25,6 @@ public class CharaMove : MonoBehaviour
     public Rigidbody _rb;
 
     public bool IsParalysed = false;
-    public BabyManager BabyManager;
     [HideInInspector] public ObjectResonnance TrapResonnance;
 
     public Animator Animator;

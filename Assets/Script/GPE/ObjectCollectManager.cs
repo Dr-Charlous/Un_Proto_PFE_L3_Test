@@ -3,7 +3,6 @@ using UnityEngine.TextCore.Text;
 
 public class ObjectCollectManager : MonoBehaviour
 {
-    [SerializeField] CharaMove _character;
     [SerializeField] Transform parentCharacter;
     [SerializeField] GameObject ObjectFish;
     [SerializeField] ScriptableDialogue _dialogueFish;
@@ -16,7 +15,7 @@ public class ObjectCollectManager : MonoBehaviour
 
     private void Start()
     {
-        _speaker = _character.GetComponentInChildren<UiTextDialogueSpeaker>();
+        _speaker = GameManager.Instance.Character.GetComponentInChildren<UiTextDialogueSpeaker>();
     }
 
     private void OnTriggerStay(Collider collider)

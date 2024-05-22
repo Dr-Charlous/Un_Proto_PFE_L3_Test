@@ -15,7 +15,6 @@ public class ObjectResonnance : MonoBehaviour
     public bool IsCoroutineFinish;
     public bool IsPlayerInside;
 
-    [SerializeField] CharaMove _character;
     [SerializeField] Camera _cameraMove;
     [SerializeField] AudioSource _source;
     [SerializeField] AudioClip _clip;
@@ -98,20 +97,20 @@ public class ObjectResonnance : MonoBehaviour
             BabyTarget.position = BabyPos.position;
             BabyTarget.rotation = BabyPos.rotation;
 
-            for (int i = 0; i < _character.GetComponentInChildren<BabyManager>().BabiesInScene.Count; i++)
+            for (int i = 0; i < GameManager.Instance.BabyManager.BabiesInScene.Count; i++)
             {
-                StateBabyController Baby = _character.GetComponentInChildren<BabyManager>().BabiesInScene[0].GetComponentInChildren<StateBabyController>();
+                StateBabyController Baby = GameManager.Instance.BabyManager.BabiesInScene[0].GetComponentInChildren<StateBabyController>();
 
                 if (!IsResonating)
                 {
                     Baby.ChangeState(Baby.StateAction);
                     Baby.Target = BabyTarget;
 
-                    _character.GetComponentInChildren<BabyManager>().ChangeOrder();
+                    GameManager.Instance.BabyManager.ChangeOrder();
                 }
             }
 
-            _character.TrapResonnance = this;
+            GameManager.Instance.Character.TrapResonnance = this;
             IsPlayerInside = true;
         }
     }
@@ -124,19 +123,19 @@ public class ObjectResonnance : MonoBehaviour
 
             StartCoroutine(CameraMove());
 
-            for (int i = 0; i < _character.GetComponentInChildren<BabyManager>().BabiesInScene.Count; i++)
+            for (int i = 0; i < GameManager.Instance.BabyManager.BabiesInScene.Count; i++)
             {
-                StateBabyController Baby = _character.GetComponentInChildren<BabyManager>().BabiesInScene[0].GetComponentInChildren<StateBabyController>();
+                StateBabyController Baby = GameManager.Instance.BabyManager.BabiesInScene[0].GetComponentInChildren<StateBabyController>();
 
                 if (!IsResonating)
                 {
                     Baby.ChangeState(Baby.StateStay);
 
-                    _character.GetComponentInChildren<BabyManager>().ChangeOrder();
+                    GameManager.Instance.BabyManager.ChangeOrder();
                 }
             }
 
-            _character.TrapResonnance = null;
+            GameManager.Instance.Character.TrapResonnance = null;
             IsPlayerInside = false;
         }
     }
@@ -151,7 +150,7 @@ public class ObjectResonnance : MonoBehaviour
             {
                 ChangeCam();
                 ChangePlayerPos();
-                _character.IsParalysed = true;
+                GameManager.Instance.Character.IsParalysed = true;
 
                 _cameraMove.transform.position = _mainCamera.transform.position;
                 _cameraMove.transform.rotation = _mainCamera.transform.rotation;
@@ -165,7 +164,7 @@ public class ObjectResonnance : MonoBehaviour
             }
             else if (_cameraMove.gameObject.activeSelf)
             {
-                _character.IsParalysed = false;
+                GameManager.Instance.Character.IsParalysed = false;
                 ChangePlayerPos();
 
                 _cameraMove.transform.position = _destinationCamera.position;
@@ -196,22 +195,22 @@ public class ObjectResonnance : MonoBehaviour
     {
         if (LastPosPlayer == Vector3.zero)
         {
-            LastPosPlayer = _character.transform.position;
+            LastPosPlayer = GameManager.Instance.Character.transform.position;
 
-            float speed = (transform.position - _character.transform.position).magnitude * _speed * Time.deltaTime;
+            float speed = (transform.position - GameManager.Instance.Character.transform.position).magnitude * _speed * Time.deltaTime;
 
-            _character.transform.DOMove(transform.position, speed);
+            GameManager.Instance.Character.transform.DOMove(transform.position, speed);
         }
         else
         {
-            float speed = (transform.position - _character.transform.position).magnitude * _speed * Time.deltaTime;
+            float speed = (transform.position - GameManager.Instance.Character.transform.position).magnitude * _speed * Time.deltaTime;
 
             if (_isTraveling)
-                _character.transform.DOMove(NearestEntry(LastPosPlayer), speed);
+                GameManager.Instance.Character.transform.DOMove(NearestEntry(LastPosPlayer), speed);
             else
-                _character.transform.DOMove(LastPosPlayer, speed);
+                GameManager.Instance.Character.transform.DOMove(LastPosPlayer, speed);
 
-            _character._rb.velocity = Vector3.zero;
+            GameManager.Instance.Character._rb.velocity = Vector3.zero;
 
             LastPosPlayer = Vector3.zero;
         }

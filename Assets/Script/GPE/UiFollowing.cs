@@ -6,7 +6,6 @@ public class UiFollowing : MonoBehaviour
 {
     Camera _cam;
     SpriteRenderer _render;
-    [SerializeField] CharaMove _chara;
     [SerializeField] float _distance;
 
     private void Start()
@@ -17,7 +16,7 @@ public class UiFollowing : MonoBehaviour
 
     private void Update()
     {
-        if (Vector3.Distance(_chara.transform.position, transform.position) < _distance)
+        if (Vector3.Distance(GameManager.Instance.Character.transform.position, transform.position) < _distance)
         {
             _render.enabled = true;
             transform.LookAt(_cam.transform.position);

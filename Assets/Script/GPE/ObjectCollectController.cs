@@ -6,23 +6,22 @@ using UnityEngine.InputSystem.XR;
 
 public class ObjectCollectController : MonoBehaviour
 {
-    [SerializeField] CharaMove _chara;
     [SerializeField] GameObject _objectToGrab;
 
     private void Start()
     {
-        for (int i = 0; i < _chara.BabyManager.BabiesInScene.Count - 1; i++)
+        for (int i = 0; i < GameManager.Instance.BabyManager.BabiesInScene.Count - 1; i++)
         {
-            _chara.BabyManager.BabiesInScene[i].GetComponentInChildren<StateBabyController>().isGrab = false;
+            GameManager.Instance.BabyManager.BabiesInScene[i].GetComponentInChildren<StateBabyController>().isGrab = false;
         }
     }
 
     private void Update()
     {
-        if (_chara.CollectedBabies)
+        if (GameManager.Instance.Character.CollectedBabies)
         {
             GrabCheck(0);
-            _chara.CollectedBabies = false;
+            GameManager.Instance.Character.CollectedBabies = false;
         }
     }
 
@@ -50,20 +49,20 @@ public class ObjectCollectController : MonoBehaviour
 
     void GrabCheck(int i)
     {
-        if (!_chara.BabyManager.BabiesInScene[i].GetComponentInChildren<StateBabyController>().isGrab)
+        if (!GameManager.Instance.BabyManager.BabiesInScene[i].GetComponentInChildren<StateBabyController>().isGrab)
             GrabOrder(i);
     }
 
     void GrabOrder(int i)
     {
         var target = _objectToGrab;
-        var baby = _chara.BabyManager;
+        var baby = GameManager.Instance.BabyManager;
 
         if (target != null)
         {
             baby.BabiesInScene[i].GetComponentInChildren<StateBabyController>().TargetObject = target;
             baby.BabyCollect();
-            _chara.BabyManager.BabiesInScene[baby.BabiesInScene.Count - 1].GetComponentInChildren<StateBabyController>().isGrab = true;
+            GameManager.Instance.BabyManager.BabiesInScene[baby.BabiesInScene.Count - 1].GetComponentInChildren<StateBabyController>().isGrab = true;
         }
     }
 }
