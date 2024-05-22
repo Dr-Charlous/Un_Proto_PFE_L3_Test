@@ -14,27 +14,29 @@ public class UiTextDialogueSpeaker : MonoBehaviour
     [SerializeField] float _timerValueWait;
 
     float _timer;
-    ScriptableDialogue _dialogue;
+    [SerializeField] List<ScriptableDialogue> _dialogue;
 
     private void Update()
     {
         if (Coroutine == null)
             _timer += Time.deltaTime;
 
-        if (_dialogue != null && _timer >= _timerValueWait)
+        if (_timer >= _timerValueWait && _dialogue.Count > 0)
         {
-            StartDialogue(_dialogue);
+            StartDialogue(_dialogue[0]);
         }
     }
 
     public void StartDialogue(ScriptableDialogue dialogue)
     {
-        _dialogue = dialogue;
+        _dialogue.Add(dialogue);
         _timer = 0;
 
-        ActiveUi(true);
-
-        Coroutine = StartCoroutine(LaunchDialogue(_dialogue, _source, UiText, 0));
+        if (Coroutine == null)
+        {
+            ActiveUi(true);
+            Coroutine = StartCoroutine(LaunchDialogue(_dialogue[0], _source, UiText, 0));
+        }
     }
 
     void ActiveUi(bool var)
@@ -60,7 +62,13 @@ public class UiTextDialogueSpeaker : MonoBehaviour
             Coroutine = null;
             i = 0;
 
-            ActiveUi(false);
+            if (_dialogue.Count > 1)
+            {
+                _dialogue.RemoveAt(0);
+                Coroutine = StartCoroutine(LaunchDialogue(_dialogue[0], _source, UiText, 0));
+            }
+            else
+                ActiveUi(false);
         }
     }
 }

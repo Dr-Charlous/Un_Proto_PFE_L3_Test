@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
@@ -6,6 +7,12 @@ using UnityEngine;
 public class UiTextDialogueOnGround : MonoBehaviour
 {
     public ScriptableDialogue dialogue;
+    UiTextDialogueSpeaker _speaker;
+
+    private void Start()
+    {
+        _speaker = GameManager.Instance.Character.GetComponentInChildren<UiTextDialogueSpeaker>();
+    }
 
     private void OnTriggerEnter(Collider other)
     {
@@ -13,14 +20,8 @@ public class UiTextDialogueOnGround : MonoBehaviour
 
         if (chara != null)
         {
-            UiTextDialogueSpeaker speaker = chara.GetComponentInChildren<UiTextDialogueSpeaker>();
-
-            if (speaker != null && speaker.Coroutine == null)
-            {
-                speaker.StartDialogue(dialogue);
-
-                Destroy(this.gameObject);
-            }
+            _speaker.StartDialogue(dialogue);
+            Destroy(this.gameObject);
         }
     }
 }
