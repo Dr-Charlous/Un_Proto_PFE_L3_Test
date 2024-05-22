@@ -21,4 +21,6 @@ public class GameManager : MonoBehaviour
     public CharaMove Character;
     public BabyManager BabyManager;
     public NestCreation Nest;
+    public UiTextDialogueSpeaker Speaker;
+    public Transform CamPlayer;
 }

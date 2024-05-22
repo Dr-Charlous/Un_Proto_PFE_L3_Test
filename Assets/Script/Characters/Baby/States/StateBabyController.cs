@@ -24,7 +24,6 @@ public class StateBabyController : MonoBehaviour
     public List<Vector3> Point;
     public Animator Animator;
     public ScriptableDialogue Dialogue;
-    public UiTextDialogueSpeaker Speaker;
 
     [Header("Babies stuffs :")]
     public GameObject ObjectBaby;
@@ -54,7 +53,6 @@ public class StateBabyController : MonoBehaviour
         IsInNest = false;
 
         Parent = GameManager.Instance.Character.transform;
-        Speaker = Parent.GetComponentInChildren<UiTextDialogueSpeaker>();
     }
 
     private void Update()
@@ -130,8 +128,8 @@ public class StateBabyController : MonoBehaviour
             Animator.SetTrigger("GetObj");
         }
 
-        if (Speaker != null && Dialogue != null)
-            Speaker.StartDialogue(Dialogue);
+        if (Dialogue != null)
+            GameManager.Instance.Speaker.StartDialogue(Dialogue);
     }
 
     void DrawPath()

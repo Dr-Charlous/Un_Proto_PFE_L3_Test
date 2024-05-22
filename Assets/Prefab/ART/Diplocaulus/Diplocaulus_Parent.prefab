@@ -280,6 +280,7 @@ MonoBehaviour:
   UiText: {fileID: 645552440806557345}
   _source: {fileID: 593896855414022495}
   _timerValueWait: 60
+  _dialogue: []
 --- !u!1 &798545639392804350
 GameObject:
   m_ObjectHideFlags: 0
@@ -686,10 +687,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 17a41103193f29f44ba08c72c2e541d5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _character: {fileID: 6699909869382925849}
   parentCharacter: {fileID: 7907357333677736334}
   ObjectFish: {fileID: 0}
-  _dialogue: {fileID: 11400000, guid: 2bdba235433022941ad6f2f5326328f6, type: 2}
+  _dialogueFish: {fileID: 0}
 --- !u!1 &1269073249396322220
 GameObject:
   m_ObjectHideFlags: 0
@@ -875,7 +875,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _UIDeath: {fileID: 2366761951074832185}
-  _chara: {fileID: 6699909869382925849}
 --- !u!1 &1927258193276434467
 GameObject:
   m_ObjectHideFlags: 0
@@ -6361,20 +6360,44 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6f1a7cedbe3a3254999806fa8e331d19, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _babiesOnBack: []
-  _parentOrigin: []
-  _parentCharacter: {fileID: 6916835863110489194}
-  _respawnPoint: {fileID: 5737708356442622611}
-  _nest: {fileID: 0}
   _distanceFromBaby: 1.5
-  _babyOffsetOnBack: 0.15
   _distanceAssign: 10
-  BabieNumberOnBack: 1
   BabiesInScene:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
+--- !u!1 &7625420437306939993
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 964456714733022761}
+  m_Layer: 6
+  m_Name: CamPos
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &964456714733022761
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7625420437306939993}
+  m_LocalRotation: {x: -0, y: 0.9932903, z: -0.11564801, w: -0.000000029802322}
+  m_LocalPosition: {x: -0, y: 2.7, z: 5}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 2140746911345890558}
+  m_RootOrder: -1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &7707303959506229241
 GameObject:
   m_ObjectHideFlags: 0
@@ -6441,7 +6464,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 16a0ebbf7bba93a489b588f607e8d1e8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _chara: {fileID: 6699909869382925849}
   _objectToGrab: {fileID: 0}
 --- !u!1 &7735877318323042571
 GameObject:
@@ -6694,6 +6716,7 @@ Transform:
   - {fileID: 8167787379187678340}
   - {fileID: 5054115766154372434}
   - {fileID: 5737708356442622611}
+  - {fileID: 964456714733022761}
   - {fileID: 3626532298474892044}
   - {fileID: 7985042289729572265}
   - {fileID: 2729037637698193039}
@@ -6758,7 +6781,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 81e50066b0eac5044a13ec7854350938, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _chara: {fileID: 6699909869382925849}
 --- !u!136 &4669181933800367374
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -6832,7 +6854,6 @@ MonoBehaviour:
   ParticuleSystem: {fileID: 2068147541598324142}
   _rb: {fileID: 6626216848454042332}
   IsParalysed: 0
-  BabyManager: {fileID: 945246323412029050}
   TrapResonnance: {fileID: 0}
   Animator: {fileID: 8039924286163542086}
   CharacterRb: {fileID: 6626216848454042332}

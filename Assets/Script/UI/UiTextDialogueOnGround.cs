@@ -7,12 +7,6 @@ using UnityEngine;
 public class UiTextDialogueOnGround : MonoBehaviour
 {
     public ScriptableDialogue dialogue;
-    UiTextDialogueSpeaker _speaker;
-
-    private void Start()
-    {
-        _speaker = GameManager.Instance.Character.GetComponentInChildren<UiTextDialogueSpeaker>();
-    }
 
     private void OnTriggerEnter(Collider other)
     {
@@ -20,7 +14,7 @@ public class UiTextDialogueOnGround : MonoBehaviour
 
         if (chara != null)
         {
-            _speaker.StartDialogue(dialogue);
+            GameManager.Instance.Speaker.StartDialogue(dialogue);
             Destroy(this.gameObject);
         }
     }
