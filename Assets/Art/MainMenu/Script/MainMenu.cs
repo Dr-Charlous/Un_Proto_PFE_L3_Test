@@ -1,36 +1,37 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class MainMenu : MonoBehaviour
 {
+    public SceneAsset PlayScene;
+    public SceneAsset CreditScene;
+    public SceneAsset OptionScene;
+    public SceneAsset MenuScene;
 
     public void PlayGame()
     {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
-
+        SceneManager.LoadScene(PlayScene.name);
     }
 
     public void Credits()
     {
-        SceneManager.LoadScene("Scene_Test_Credits");
+        SceneManager.LoadScene(CreditScene.name);
     }
 
     public void Options()
     {
-        SceneManager.LoadScene("Scene_Test_Options");
+        SceneManager.LoadScene(OptionScene.name);
     }
     public void Back()
     {
-        SceneManager.LoadScene("Scene_Test_Art_3D_UI");
+        SceneManager.LoadScene(MenuScene.name);
     }
    
     public void QuitGame()
     {
         Application.Quit();
     }
-
-
-
 }
