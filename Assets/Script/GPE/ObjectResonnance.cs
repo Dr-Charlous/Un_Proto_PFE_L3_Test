@@ -12,10 +12,8 @@ public class ObjectResonnance : MonoBehaviour
     public float SpeedBabyTarget = 5;
     public float DistanceFromTrunk = 3;
     public bool IsResonating = false;
-    public bool IsCoroutineFinish;
     public bool IsPlayerInside;
 
-    [SerializeField] Camera _cameraMove;
     [SerializeField] AudioSource _source;
     [SerializeField] AudioClip _clip;
     [SerializeField] Transform _destinationCamera;
@@ -23,16 +21,12 @@ public class ObjectResonnance : MonoBehaviour
     [SerializeField] bool _isTraveling = false;
     [SerializeField] float _speed = 5;
 
-    Camera _mainCamera;
     Vector3 LastPosPlayer;
-    float _speedCam = 0;
 
     private void Start()
     {
-        _mainCamera = Camera.main;
-        _cameraMove.gameObject.SetActive(false);
-        IsCoroutineFinish = true;
         IsPlayerInside = false;
+        LastPosPlayer = Vector3.zero;
     }
 
     private void Update()
@@ -88,107 +82,54 @@ public class ObjectResonnance : MonoBehaviour
 
     void PlayerGetInside()
     {
-        if (IsCoroutineFinish)
+        //Debug.Log("ObjectResonnance");
+
+        GameManager.Instance.CamManager.TemporaryPos = _destinationCamera;
+
+        ChangePlayerPos();
+
+        BabyTarget.position = BabyPos.position;
+        BabyTarget.rotation = BabyPos.rotation;
+
+        for (int i = 0; i < GameManager.Instance.BabyManager.BabiesInScene.Count; i++)
         {
-            //Debug.Log("ObjectResonnance");
+            StateBabyController Baby = GameManager.Instance.BabyManager.BabiesInScene[0].GetComponentInChildren<StateBabyController>();
 
-            StartCoroutine(CameraMove());
-
-            BabyTarget.position = BabyPos.position;
-            BabyTarget.rotation = BabyPos.rotation;
-
-            for (int i = 0; i < GameManager.Instance.BabyManager.BabiesInScene.Count; i++)
+            if (!IsResonating)
             {
-                StateBabyController Baby = GameManager.Instance.BabyManager.BabiesInScene[0].GetComponentInChildren<StateBabyController>();
+                Baby.ChangeState(Baby.StateAction);
+                Baby.Target = BabyTarget;
 
-                if (!IsResonating)
-                {
-                    Baby.ChangeState(Baby.StateAction);
-                    Baby.Target = BabyTarget;
-
-                    GameManager.Instance.BabyManager.ChangeOrder();
-                }
+                GameManager.Instance.BabyManager.ChangeOrder();
             }
-
-            GameManager.Instance.Character.TrapResonnance = this;
-            IsPlayerInside = true;
         }
+
+        GameManager.Instance.Character.TrapResonnance = this;
+        IsPlayerInside = true;
     }
 
     public void PlayerGetOutside()
     {
-        if (IsCoroutineFinish)
+        //Debug.Log("ObjectResonnance");
+
+        GameManager.Instance.CamManager.TemporaryPos = null;
+
+        ChangePlayerPos();
+
+        for (int i = 0; i < GameManager.Instance.BabyManager.BabiesInScene.Count; i++)
         {
-            //Debug.Log("ObjectResonnance");
+            StateBabyController Baby = GameManager.Instance.BabyManager.BabiesInScene[0].GetComponentInChildren<StateBabyController>();
 
-            StartCoroutine(CameraMove());
-
-            for (int i = 0; i < GameManager.Instance.BabyManager.BabiesInScene.Count; i++)
+            if (!IsResonating)
             {
-                StateBabyController Baby = GameManager.Instance.BabyManager.BabiesInScene[0].GetComponentInChildren<StateBabyController>();
+                Baby.ChangeState(Baby.StateStay);
 
-                if (!IsResonating)
-                {
-                    Baby.ChangeState(Baby.StateStay);
-
-                    GameManager.Instance.BabyManager.ChangeOrder();
-                }
+                GameManager.Instance.BabyManager.ChangeOrder();
             }
-
-            GameManager.Instance.Character.TrapResonnance = null;
-            IsPlayerInside = false;
         }
-    }
 
-    public IEnumerator CameraMove()
-    {
-        if (IsCoroutineFinish == true)
-        {
-            IsCoroutineFinish = false;
-
-            if (!_cameraMove.gameObject.activeSelf)
-            {
-                ChangeCam();
-                ChangePlayerPos();
-                GameManager.Instance.Character.IsParalysed = true;
-
-                _cameraMove.transform.position = _mainCamera.transform.position;
-                _cameraMove.transform.rotation = _mainCamera.transform.rotation;
-
-                _speedCam = (_destinationCamera.position - _cameraMove.transform.position).magnitude * _speed * Time.deltaTime;
-
-                _cameraMove.transform.DOMove(_destinationCamera.position, _speedCam);
-                _cameraMove.transform.DORotate(_destinationCamera.rotation.eulerAngles, _speedCam);
-
-                yield return new WaitForSeconds(_speedCam);
-            }
-            else if (_cameraMove.gameObject.activeSelf)
-            {
-                GameManager.Instance.Character.IsParalysed = false;
-                ChangePlayerPos();
-
-                _cameraMove.transform.position = _destinationCamera.position;
-                _cameraMove.transform.rotation = _destinationCamera.rotation;
-
-
-                _cameraMove.transform.DOMove(_mainCamera.transform.position, _speedCam);
-                _cameraMove.transform.DORotate(_mainCamera.transform.rotation.eulerAngles, _speedCam);
-
-                yield return new WaitForSeconds(_speedCam);
-
-                _cameraMove.transform.DOMove(_mainCamera.transform.position, _speedCam);
-                _cameraMove.transform.DORotate(_mainCamera.transform.rotation.eulerAngles, _speedCam);
-                ChangeCam();
-            }
-
-            IsCoroutineFinish = true;
-        }
-    }
-
-    void ChangeCam()
-    {
-        _cameraMove.gameObject.SetActive(!_cameraMove.gameObject.activeSelf);
-        _mainCamera.gameObject.SetActive(!_mainCamera.gameObject.activeSelf);
+        GameManager.Instance.Character.TrapResonnance = null;
+        IsPlayerInside = false;
     }
 
     public void ChangePlayerPos()

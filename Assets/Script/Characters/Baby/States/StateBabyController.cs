@@ -76,7 +76,6 @@ public class StateBabyController : MonoBehaviour
                     if (OnTriggerEnterScript.ObjectTouch.GetComponent<ObjectCollect>() != null && GameManager.Instance.Character.TrapResonnance.IsPlayerInside)
                     {
                         TargetObject = OnTriggerEnterScript.ObjectTouch;
-                        Dialogue = OnTriggerEnterScript.ObjectTouch.GetComponent<ObjectCollect>().DialogueBabyReccup;
                         GetObj(OnTriggerEnterScript.ObjectTouch.GetComponent<ObjectCollect>().IsPortable);
                     }
                 }
@@ -127,6 +126,8 @@ public class StateBabyController : MonoBehaviour
 
             Animator.SetTrigger("GetObj");
         }
+
+        Dialogue = OnTriggerEnterScript.ObjectTouch.GetComponent<ObjectCollect>().DialogueBabyReccup;
 
         if (Dialogue != null)
             GameManager.Instance.Speaker.StartDialogue(Dialogue);

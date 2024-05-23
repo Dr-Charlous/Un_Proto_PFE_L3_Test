@@ -1,14 +1,56 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class CameraManager : MonoBehaviour
 {
+    public Transform TemporaryPos;
+    public float Speed;
+    float _valueTime;
 
+    private void Start()
+    {
+        UpdateCam(GameManager.Instance.CamPlayer);
+    }
 
     private void Update()
     {
-        transform.position = GameManager.Instance.CamPlayer.position;
-        transform.rotation = GameManager.Instance.CamPlayer.rotation;
+        if (TemporaryPos != null)
+        {
+            if (_valueTime < 1 && Vector3.Lerp(transform.position, TemporaryPos.position, _valueTime) != TemporaryPos.position)
+            {
+                _valueTime += Time.deltaTime * Speed;
+                CamGoTo(TemporaryPos, _valueTime);
+
+            }
+            else
+            {
+                UpdateCam(TemporaryPos);
+                GameManager.Instance.Character.IsParalysed = true;
+            }
+        }
+        else
+        {
+            if (_valueTime > 0 && Vector3.Lerp(transform.position, GameManager.Instance.CamPlayer.position, _valueTime) != GameManager.Instance.CamPlayer.position)
+            {
+                _valueTime -= Time.deltaTime * Speed;
+                CamGoTo(GameManager.Instance.CamPlayer, _valueTime);
+            }
+            else
+            {
+                UpdateCam(GameManager.Instance.CamPlayer);
+                GameManager.Instance.Character.IsParalysed = false;
+            }
+        }
+    }
+
+    void UpdateCam(Transform transformCam)
+    {
+        transform.position = transformCam.position;
+        transform.rotation = transformCam.rotation;
+    }
+
+    void CamGoTo(Transform transformCam, float value)
+    {
+        transform.position = Vector3.Lerp(transform.position, transformCam.position, value);
+        transform.rotation = Quaternion.Lerp(transform.rotation, transformCam.rotation, value);
     }
 }

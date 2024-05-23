@@ -25,7 +25,7 @@ public class CharaMove : MonoBehaviour
     public Rigidbody _rb;
 
     public bool IsParalysed = false;
-    [HideInInspector] public ObjectResonnance TrapResonnance;
+    public ObjectResonnance TrapResonnance;
 
     public Animator Animator;
     [SerializeField] Rigidbody CharacterRb;

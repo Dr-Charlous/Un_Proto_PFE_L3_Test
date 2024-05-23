@@ -1,3 +1,4 @@
+using DG.Tweening;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -8,6 +9,7 @@ public class NestCreation : MonoBehaviour
     [SerializeField] Color _colorInitial;
     [SerializeField] Color _colorValid;
 
+    [SerializeField] Vector3 _scalePunch;
 
     [SerializeField] GameObject[] _itemsToConstruct;
     [SerializeField] bool[] _itemsVerification;
@@ -74,6 +76,7 @@ public class NestCreation : MonoBehaviour
                 other.gameObject.SetActive(false);
 
                 VerificationArray();
+                transform.DOPunchScale(_scalePunch, 1);
                 return;
             }
         }
