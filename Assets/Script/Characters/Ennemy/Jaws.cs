@@ -4,7 +4,6 @@ public class Jaws : MonoBehaviour
 {
     [SerializeField] EnnemyStateController _ennemyStateController;
     [SerializeField] float _time;
-    [SerializeField] Death _death;
     public bool IsBitting = false;
 
     private void OnTriggerStay(Collider other)
@@ -12,7 +11,7 @@ public class Jaws : MonoBehaviour
         if (other.transform.gameObject.GetComponent<StateBabyController>() != null || other.GetComponent<CharaMove>() != null)
         {
             IsBitting = true;
-            _death.ActiveUI();
+            GameManager.Instance.Death.ActiveUI();
 
             CharaMove move = other.transform.gameObject.GetComponent<CharaMove>();
             if (move != null)
