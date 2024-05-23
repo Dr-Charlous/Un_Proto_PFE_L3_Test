@@ -1059,7 +1059,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5290853560612991703}
   m_LocalRotation: {x: -0, y: -0.41304225, z: -0, w: 0.9107119}
-  m_LocalPosition: {x: 53.1, y: 1, z: 77.58}
+  m_LocalPosition: {x: 52.78, y: 1, z: 77.86}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1649,10 +1649,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   BeginCollider: {fileID: 7167607760070589794}
   EndCollider: {fileID: 2916529593893342885}
-  Anim: {fileID: 8050936301953134566}
   DeathPrefab: {fileID: 222655458194695824}
   Death: {fileID: 222655458194695824}
-  Cam: {fileID: 5830457974070689232}
+  CamTransform: {fileID: 3944559699531794778}
+  TimeWait: -8
 --- !u!95 &8050936301953134566
 Animator:
   serializedVersion: 5
@@ -4178,6 +4178,10 @@ PrefabInstance:
       propertyPath: _isTraveling
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 8717560654392913133, guid: 29f2fa777703951488a1cfb0e313d2aa, type: 3}
+      propertyPath: DistanceFromTrunk
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -5264,6 +5268,10 @@ PrefabInstance:
       propertyPath: _isTraveling
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 8717560654392913133, guid: 29f2fa777703951488a1cfb0e313d2aa, type: 3}
+      propertyPath: DistanceFromTrunk
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -5749,6 +5757,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8717560654392913133, guid: 29f2fa777703951488a1cfb0e313d2aa, type: 3}
       propertyPath: _isTraveling
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8717560654392913133, guid: 29f2fa777703951488a1cfb0e313d2aa, type: 3}
+      propertyPath: DistanceFromTrunk
       value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
