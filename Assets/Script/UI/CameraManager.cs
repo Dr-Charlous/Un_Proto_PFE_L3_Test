@@ -18,21 +18,21 @@ public class CameraManager : MonoBehaviour
             if (_valueTime < 1 && Vector3.Lerp(transform.position, TemporaryPos.position, _valueTime) != TemporaryPos.position)
             {
                 _valueTime += Time.deltaTime * Speed;
-                CamGoTo(TemporaryPos, _valueTime);
+                CamGoTo(TemporaryPos, _valueTime / Vector3.Distance(transform.position, TemporaryPos.position));
 
             }
             else
             {
                 UpdateCam(TemporaryPos);
-                GameManager.Instance.Character.IsParalysed = true;
             }
+            GameManager.Instance.Character.IsParalysed = true;
         }
         else
         {
             if (_valueTime > 0 && Vector3.Lerp(transform.position, GameManager.Instance.CamPlayer.position, _valueTime) != GameManager.Instance.CamPlayer.position)
             {
                 _valueTime -= Time.deltaTime * Speed;
-                CamGoTo(GameManager.Instance.CamPlayer, _valueTime);
+                CamGoTo(GameManager.Instance.CamPlayer, _valueTime / Vector3.Distance(transform.position, GameManager.Instance.CamPlayer.position));
             }
             else
             {
