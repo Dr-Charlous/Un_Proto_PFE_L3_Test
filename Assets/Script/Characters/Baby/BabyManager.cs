@@ -115,24 +115,24 @@ public class BabyManager : MonoBehaviour
 
         //if (Vector3.Distance(new Vector3(Baby.Parent.position.x, 0, Baby.Parent.position.z), new Vector3(Baby.Target.position.x, 0, Baby.Target.position.z)) < Baby.Distance)
         //{
-            if (Baby.currentState != Baby.StateStay)
-            {
-                isFollowing = false;
-            }
-            else
-            {
-                isFollowing = true;
-            }
+        if (Baby.currentState != Baby.StateStay)
+        {
+            isFollowing = false;
+        }
+        else
+        {
+            isFollowing = true;
+        }
 
-            for (int i = 0; i < BabiesInScene.Count; i++)
-            {
-                Baby = BabiesInScene[i].GetComponentInChildren<StateBabyController>();
+        for (int i = 0; i < BabiesInScene.Count; i++)
+        {
+            Baby = BabiesInScene[i].GetComponentInChildren<StateBabyController>();
 
-                if (Baby.currentState != Baby.StateStay && !isFollowing)
-                    Baby.ChangeState(Baby.StateStay);
-                else if (Baby.currentState != Baby.StateFollow)
-                    Baby.ChangeState(Baby.StateFollow);
-            }
+            if (Baby.currentState != Baby.StateStay && !isFollowing)
+                Baby.ChangeState(Baby.StateStay);
+            else if (Baby.currentState != Baby.StateFollow)
+                Baby.ChangeState(Baby.StateFollow);
+        }
         //}
     }
 
@@ -151,13 +151,10 @@ public class BabyManager : MonoBehaviour
             {
                 StateBabyController Baby = BabiesInScene[0].GetComponentInChildren<StateBabyController>();
 
-                if (Baby.currentState != Baby.StateRide)
-                {
-                    Baby.ChangeState(Baby.StateAction);
-                    Baby.Target = obj.CheckBabies[i].transform;
+                Baby.ChangeState(Baby.StateAction);
+                Baby.Target = obj.CheckBabies[i].transform;
 
-                    ChangeOrder();
-                }
+                ChangeOrder();
             }
         }
     }
@@ -182,13 +179,10 @@ public class BabyManager : MonoBehaviour
             {
                 StateBabyController Baby = BabiesInScene[i].GetComponentInChildren<StateBabyController>();
 
-                if (Baby.currentState != Baby.StateRide)
-                {
-                    Baby.ChangeState(Baby.StateCollect);
+                Baby.ChangeState(Baby.StateCollect);
 
-                    ChangeOrder();
-                    break;
-                }
+                ChangeOrder();
+                break;
             }
         }
     }

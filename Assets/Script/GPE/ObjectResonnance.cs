@@ -122,7 +122,7 @@ public class ObjectResonnance : MonoBehaviour
 
             if (!IsResonating)
             {
-                Baby.ChangeState(Baby.StateStay);
+                Baby.ChangeState(Baby.StateFollow);
 
                 GameManager.Instance.BabyManager.ChangeOrder();
             }

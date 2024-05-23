@@ -52,7 +52,7 @@ public class ObjectToPush : MonoBehaviour
 
         _parent = transform.parent;
 
-        if (ValuePush == 1)
+        if (ValuePush >= 1)
         {
             for (int i = 0; i < GameManager.Instance.BabyManager.BabiesInScene.Count; i++)
             {
@@ -74,19 +74,19 @@ public class ObjectToPush : MonoBehaviour
                 isEveryOneHere = false;
         }
 
-        if (CheckParent != null && !CheckParent.isTrigger)
+        if (CheckParent != null && !CheckParent.isTrigger && GameManager.Instance.Character.Position < 0)
             isEveryOneHere = false;
 
         if (CheckBlockers.Length > 0)
         {
             for (int i = 0; i < CheckBlockers.Length; i++)
             {
-                if (CheckBlockers[i].ValuePush != 1)
+                if (CheckBlockers[i].ValuePush < 1)
                     isEveryOneHere = false;
             }
         }
 
-        if (isEveryOneHere && !_isActivated && GameManager.Instance.Character.Position < 0)
+        if (isEveryOneHere/* && !_isActivated*/)
         {
             Action();
         }
@@ -98,8 +98,6 @@ public class ObjectToPush : MonoBehaviour
         {
             if (ValuePush < 1)
                 ValuePush += _speedPush * Time.deltaTime;
-            else
-                ValuePush = 1;
 
             transform.position = Vector3.Lerp(_initPos, _endPos, ValuePush);
             transform.rotation = Quaternion.Lerp(_initRot, _endRot, ValuePush);

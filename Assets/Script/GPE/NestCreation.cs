@@ -20,7 +20,7 @@ public class NestCreation : MonoBehaviour
     [SerializeField] Cinematic _cine;
 
     [SerializeField] ScriptableDialogue _dialogueMiamiam;
-    
+
     UiTextDialogueSpeaker _speaker;
 
     public Transform[] Entries;
@@ -60,6 +60,8 @@ public class NestCreation : MonoBehaviour
         for (int i = 0; i < baby.Count; i++)
         {
             baby[i].GetComponentInChildren<StateBabyController>().Charges += 10;
+
+            baby[i].GetComponentInChildren<StateBabyController>().ChangeState(baby[i].GetComponentInChildren<StateBabyController>().StateFollow);
         }
 
         if (_speaker != null && _dialogueMiamiam != null)
