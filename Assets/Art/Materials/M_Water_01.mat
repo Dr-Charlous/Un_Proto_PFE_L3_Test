@@ -20,7 +20,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: M_Water
+  m_Name: M_Water_01
   m_Shader: {fileID: -6465566751694194690, guid: 904aa0285cb206449b49b3742d5fd15a, type: 3}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
@@ -32,7 +32,7 @@ Material:
   m_CustomRenderQueue: -1
   stringTagMap: {}
   disabledShaderPasses: []
-  m_LockedProperties: 
+  m_LockedProperties: _RefractionStrenght
   m_SavedProperties:
     serializedVersion: 3
     m_TexEnvs:
@@ -65,21 +65,21 @@ Material:
     - _Alpha_Ripple: 1
     - _Depth: 0.15
     - _Float: 0.57
-    - _FoamAmout: 5.7
+    - _FoamAmout: 2.96
     - _FoamCutoff: 15.1
     - _FoamGradentNoise: 0.69
     - _FoamScale: 813.8
     - _FoamSpeed: 0.23
-    - _Hardness_Alpha: 0.44
+    - _Hardness_Alpha: 0
     - _HightFrequency: 2.04
     - _Metallic: 0.44
     - _NormalStrenght: 0.09
     - _QueueControl: 0
     - _QueueOffset: 0
-    - _Range: 0.62
+    - _Range: 7.35
     - _Range_Alpha: -0.48
     - _RefractionSpeed: -0.05
-    - _RefractionStrenght: 0.09
+    - _RefractionStrenght: 0.06
     - _RippleFoam_Intensity: 10.5
     - _RippleFoam_Range: 0.026
     - _RippleStrenght: 0.404
@@ -87,9 +87,9 @@ Material:
     - _WaveAplitude: 0.0008
     - _WaveSpeed: 0.61
     m_Colors:
-    - _Deep_Water_Color: {r: 0.5783197, g: 0.7169812, b: 0.65920556, a: 1}
+    - _Deep_Water_Color: {r: 0.6196856, g: 0.7176471, b: 0.5764706, a: 1}
     - _FoamColor: {r: 0.70848167, g: 0.8207547, b: 0.7084841, a: 1}
     - _FoamColor_1: {r: 0, g: 0, b: 0, a: 0}
     - _RefractionScale: {r: 50, g: 50, b: 0, a: 0}
-    - _Surface_Water_Color: {r: 0.41963333, g: 0.7735849, b: 0.43019903, a: 0.5686275}
+    - _Surface_Water_Color: {r: 0.76857346, g: 0.77254903, b: 0.41960785, a: 0.78039217}
   m_BuildTextureStacks: []
