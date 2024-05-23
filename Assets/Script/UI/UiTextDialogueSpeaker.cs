@@ -12,18 +12,20 @@ public class UiTextDialogueSpeaker : MonoBehaviour
 
     [SerializeField] AudioSource _source;
     [SerializeField] float _timerValueWait;
+    [SerializeField] float _timerValueBetweenText;
 
     float _timer;
     [SerializeField] List<ScriptableDialogue> _dialogue;
+    [SerializeField] ScriptableDialogue _lastDialogue;
 
     private void Update()
     {
         if (Coroutine == null)
             _timer += Time.deltaTime;
 
-        if (_timer >= _timerValueWait && _dialogue.Count > 0)
+        if (_timer >= _timerValueWait && _lastDialogue != null)
         {
-            StartDialogue(_dialogue[0]);
+            StartDialogue(_lastDialogue);
         }
     }
 
@@ -49,7 +51,7 @@ public class UiTextDialogueSpeaker : MonoBehaviour
     {
         dialogue.PlayDialogue(source, text, i);
 
-        yield return new WaitForSeconds(dialogue.Voice[i].length + 0.1f);
+        yield return new WaitForSeconds(dialogue.Voice[i].length + _timerValueBetweenText);
 
         i++;
 
@@ -57,18 +59,22 @@ public class UiTextDialogueSpeaker : MonoBehaviour
         {
             StartCoroutine(LaunchDialogue(dialogue, source, text, i));
         }
-        else
+        else if (_dialogue.Count == 1)
         {
+            _lastDialogue = _dialogue[0];
+            _dialogue.RemoveAt(0);
+
+            ActiveUi(false);
             Coroutine = null;
             i = 0;
+        }
+        else if (_dialogue.Count > 1)
+        {
+            _lastDialogue = _dialogue[0];
+            _dialogue.RemoveAt(0);
+            i = 0;
 
-            if (_dialogue.Count > 1)
-            {
-                _dialogue.RemoveAt(0);
-                Coroutine = StartCoroutine(LaunchDialogue(_dialogue[0], _source, UiText, 0));
-            }
-            else
-                ActiveUi(false);
+            Coroutine = StartCoroutine(LaunchDialogue(_dialogue[0], source, text, i)); ;
         }
     }
 }
