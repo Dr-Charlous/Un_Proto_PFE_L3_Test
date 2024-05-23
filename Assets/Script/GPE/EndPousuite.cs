@@ -8,6 +8,10 @@ public class EndPousuite : MonoBehaviour
     public OnTriggerEnterScript EndCollider;
     public GameObject DeathPrefab;
     public GameObject Death;
+
+    public GameObject BeginStone;
+    public GameObject EndStone;
+
     public Transform CamTransform;
     public float TimeWait;
 
@@ -29,8 +33,8 @@ public class EndPousuite : MonoBehaviour
             if (chara != null)
             {
                 BeginCollider.gameObject.SetActive(false);
-                isBeginActif = false;
                 StartCoroutine(WaitBegin());
+                isBeginActif = false;
             }
         }
 
@@ -41,8 +45,9 @@ public class EndPousuite : MonoBehaviour
             if (chara1 != null)
             {
                 EndCollider.gameObject.SetActive(false);
-                isEndActif = false;
+                EndStone.SetActive(true);
                 Destroy(Death);
+                isEndActif = false;
             }
         }
 
@@ -53,7 +58,9 @@ public class EndPousuite : MonoBehaviour
             yield return new WaitForSeconds(GameManager.Instance.CamManager.Speed * Vector3.Distance(Camera.main.transform.position, CamTransform.position) + TimeWait);
 
             GameManager.Instance.CamManager.TemporaryPos = null;
+
             Death = Instantiate(DeathPrefab);
+            BeginStone.SetActive(true);
         }
     }
 }
