@@ -5,34 +5,20 @@ using UnityEngine.TextCore.Text;
 
 public class Cinematic : MonoBehaviour
 {
-    [SerializeField] Camera _camPrincipal;
-    [SerializeField] Camera _camCine;
-
+    [SerializeField] Transform _camPos;
     [SerializeField] ScriptableDialogue _dialogueNidBuild;
-    UiTextDialogueSpeaker _speaker;
-
-    private void Start()
-    {
-        _camPrincipal = Camera.main;
-        _camCine.enabled = false;
-        _speaker = GameManager.Instance.Character.GetComponentInChildren<UiTextDialogueSpeaker>();
-    }
 
     public IEnumerator Cinematic1()
     {
         GameManager.Instance.Character.IsParalysed = true;
+        GameManager.Instance.CamManager.TemporaryPos = _camPos;
 
-        _camPrincipal.enabled = false;
-        _camCine.enabled = true;
+        if (_dialogueNidBuild != null)
+            GameManager.Instance.Speaker.StartDialogue(_dialogueNidBuild);
 
-        yield return new WaitForSeconds(5);
+        yield return new WaitForSeconds(GameManager.Instance.CamManager.Speed * Vector3.Distance(Camera.main.transform.position, _camPos.position));
 
-        _camPrincipal.enabled = true;
-        _camCine.enabled = false;
-
+        GameManager.Instance.CamManager.TemporaryPos = null;
         GameManager.Instance.Character.IsParalysed = false;
-
-        if (_speaker != null && _dialogueNidBuild != null)
-            _speaker.StartDialogue(_dialogueNidBuild);
     }
 }

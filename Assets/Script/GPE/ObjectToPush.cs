@@ -74,7 +74,7 @@ public class ObjectToPush : MonoBehaviour
                 isEveryOneHere = false;
         }
 
-        if (CheckParent != null && !CheckParent.isTrigger && GameManager.Instance.Character.Position < 0)
+        if (CheckParent != null && !CheckParent.isTrigger && GameManager.Instance.Character.Position >= 0)
             isEveryOneHere = false;
 
         if (CheckBlockers.Length > 0)

@@ -4674,6 +4674,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 5368027722566661633}
     m_Modifications:
     - target: {fileID: 4456194504865546486, guid: ed38011127ceb8645a18d047f0726eef, type: 3}
+      propertyPath: _camPos
+      value: 
+      objectReference: {fileID: 6050129119393359952}
+    - target: {fileID: 4456194504865546486, guid: ed38011127ceb8645a18d047f0726eef, type: 3}
       propertyPath: _dialogueNidBuild
       value: 
       objectReference: {fileID: 11400000, guid: b68498b2d49088f4f896b8358d42a4c1, type: 2}
@@ -4741,6 +4745,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2c535ad9083496a42998b4fc5b002295, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!4 &6050129119393359952 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 8708309173986845966, guid: ed38011127ceb8645a18d047f0726eef, type: 3}
+  m_PrefabInstance: {fileID: 3110933387929636190}
+  m_PrefabAsset: {fileID: 0}
 --- !u!114 &6157284695449329682 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 9106085627715530060, guid: ed38011127ceb8645a18d047f0726eef, type: 3}
@@ -6274,7 +6283,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1987116622278729961, guid: 1a4c63a022a00214395eea231e1616d9, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 19.56
+      value: 18.62
       objectReference: {fileID: 0}
     - target: {fileID: 1987116622278729961, guid: 1a4c63a022a00214395eea231e1616d9, type: 3}
       propertyPath: m_LocalRotation.w
