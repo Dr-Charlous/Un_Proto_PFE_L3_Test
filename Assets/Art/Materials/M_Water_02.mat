@@ -11,14 +11,18 @@ Material:
   m_Shader: {fileID: -6465566751694194690, guid: c19ae3a6d4969da478deb01077492d91, type: 3}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
-  m_ValidKeywords: []
+  m_ValidKeywords:
+  - _ALPHAPREMULTIPLY_ON
+  - _SURFACE_TYPE_TRANSPARENT
   m_InvalidKeywords: []
   m_LightmapFlags: 2
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
   m_CustomRenderQueue: 2999
-  stringTagMap: {}
-  disabledShaderPasses: []
+  stringTagMap:
+    RenderType: Transparent
+  disabledShaderPasses:
+  - DepthOnly
   m_LockedProperties: 
   m_SavedProperties:
     serializedVersion: 3
@@ -45,13 +49,21 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
+    - _AlphaClip: 0
     - _AlphaRipple: 1
+    - _AlphaToMask: 0
+    - _Blend: 0
+    - _BlendModePreserveSpecular: 1
+    - _CastShadows: 1
+    - _Cull: 0
     - _Depth: 0.58
+    - _DstBlend: 10
     - _Float: 0.545
     - _Foam_Amout: 4.18
     - _Foam_Cutout: 7.2
     - _Foam_Scale: 50
     - _Foam_Speed: 0.01
+    - _HardnessAlpha: 0
     - _HightFrequency: 1
     - _IsMetalic: 1
     - _Metalic: 1
@@ -59,6 +71,8 @@ Material:
     - _Noise_Scale: 8
     - _QueueControl: 0
     - _QueueOffset: -1
+    - _RangeAlpha: 0
+    - _ReceiveShadows: 1
     - _Refraction_Scale: 16.17
     - _Refraction_Speed: 0.43
     - _Refraction_Strength: 0.02
@@ -67,9 +81,15 @@ Material:
     - _RippleFoam_Intensity: 2
     - _RippleStrenght: 0.1
     - _Smoothness: 0.05
+    - _SrcBlend: 1
+    - _Surface: 1
     - _Water_Noise_Scale: 50
     - _Wave_Amplitude: 0.5
     - _Wave_Speed: 0.5
+    - _WorkflowMode: 1
+    - _ZTest: 4
+    - _ZWrite: 0
+    - _ZWriteControl: 0
     m_Colors:
     - _DeepWaterColor: {r: 0.21822715, g: 0.23584908, b: 0.125712, a: 0.8509804}
     - _Foam_Color: {r: 0.24705882, g: 0.22232533, b: 0.070588246, a: 0.4117647}
