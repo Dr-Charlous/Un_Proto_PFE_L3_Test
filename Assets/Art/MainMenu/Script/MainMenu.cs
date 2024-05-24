@@ -6,28 +6,28 @@ using UnityEngine.SceneManagement;
 
 public class MainMenu : MonoBehaviour
 {
-    public SceneAsset PlayScene;
-    public SceneAsset CreditScene;
-    public SceneAsset OptionScene;
-    public SceneAsset MenuScene;
+    //[SerializeField] SceneAsset PlayScene;
+    //[SerializeField] SceneAsset CreditScene;
+    //[SerializeField] SceneAsset OptionScene;
+    //[SerializeField] SceneAsset MenuScene;
 
     public void PlayGame()
     {
-        SceneManager.LoadScene(PlayScene.name);
+        SceneManager.LoadScene("PROG_Scene_04");
     }
 
     public void Credits()
     {
-        SceneManager.LoadScene(CreditScene.name);
+        SceneManager.LoadScene("Scene_Test_Credits");
     }
 
     public void Options()
     {
-        SceneManager.LoadScene(OptionScene.name);
+        SceneManager.LoadScene("Scene_Test_Options");
     }
     public void Back()
     {
-        SceneManager.LoadScene(MenuScene.name);
+        SceneManager.LoadScene("Scene_Test_Art_3D_UI");
     }
    
     public void QuitGame()

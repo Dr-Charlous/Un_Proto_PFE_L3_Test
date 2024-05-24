@@ -76,8 +76,8 @@ public class NestCreation : MonoBehaviour
             {
                 var obj = other.GetComponent<ObjectCollect>();
 
-                if (obj.IsPortable)
-                other.GetComponentInParent<RefBaby>().controller.isGrab = false;
+                if (obj != null && obj.IsPortable)
+                    other.GetComponentInParent<RefBaby>().controller.isGrab = false;
                 else
                 {
                     List<GameObject> baby = GameManager.Instance.BabyManager.BabiesInScene;

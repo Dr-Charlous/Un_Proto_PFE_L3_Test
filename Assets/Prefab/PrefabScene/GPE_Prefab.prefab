@@ -4445,6 +4445,7 @@ MonoBehaviour:
   MaterialOutline: {fileID: 0}
   DialogueBabyReccup: {fileID: 11400000, guid: 17c251c17dc612d4fa59cac1648ce9c2, type: 2}
   IsPortable: 0
+  isListened: 0
 --- !u!4 &7063124106006509054 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8682291846813988253, guid: 1810af70bfe22154b84de0c4c90f9599, type: 3}
@@ -5126,6 +5127,10 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[5]
       value: 
       objectReference: {fileID: 2100000, guid: 31321ba15b8f8eb4c954353edc038b1d, type: 2}
+    - target: {fileID: 1393713091312397664, guid: fde39e86ef528e04e86c78cabda15bfd, type: 3}
+      propertyPath: DialogueBabyReccup
+      value: 
+      objectReference: {fileID: 11400000, guid: 2bdba235433022941ad6f2f5326328f6, type: 2}
     - target: {fileID: 1589234214128685718, guid: fde39e86ef528e04e86c78cabda15bfd, type: 3}
       propertyPath: m_IsActive
       value: 1
@@ -5541,6 +5546,10 @@ PrefabInstance:
       propertyPath: _taskBoard
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: 4120704927260063811, guid: 1cd0605085741f541a8f656e92ee1294, type: 3}
+      propertyPath: _dialogueMiamiam
+      value: 
+      objectReference: {fileID: 11400000, guid: 2bdba235433022941ad6f2f5326328f6, type: 2}
     - target: {fileID: 4120704927260063811, guid: 1cd0605085741f541a8f656e92ee1294, type: 3}
       propertyPath: _itemsToConstruct.Array.size
       value: 4
@@ -8260,7 +8269,7 @@ PrefabInstance:
     - target: {fileID: 5737287193325660685, guid: 1a230d640f9035b4fba7872b304f7ecc, type: 3}
       propertyPath: dialogue
       value: 
-      objectReference: {fileID: 11400000, guid: 32b1c4f645d007a4a934c3ed9e3ace4b, type: 2}
+      objectReference: {fileID: 11400000, guid: 2bdba235433022941ad6f2f5326328f6, type: 2}
     - target: {fileID: 6970543164468394921, guid: 1a230d640f9035b4fba7872b304f7ecc, type: 3}
       propertyPath: m_RootOrder
       value: -1

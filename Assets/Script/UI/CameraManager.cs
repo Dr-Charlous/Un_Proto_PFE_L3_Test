@@ -4,6 +4,7 @@ public class CameraManager : MonoBehaviour
 {
     public Transform TemporaryPos;
     public float Speed;
+
     float _valueTime;
 
     private void Start()
@@ -15,11 +16,13 @@ public class CameraManager : MonoBehaviour
     {
         if (TemporaryPos != null)
         {
-            if (_valueTime < 1 && Vector3.Lerp(transform.position, TemporaryPos.position, _valueTime) != TemporaryPos.position)
+            if (_valueTime <= 1 && Vector3.Lerp(transform.position, TemporaryPos.position, _valueTime) != TemporaryPos.position)
             {
                 _valueTime += Time.deltaTime * Speed;
                 CamGoTo(TemporaryPos, _valueTime / Vector3.Distance(transform.position, TemporaryPos.position));
 
+                if (_valueTime > 1)
+                    _valueTime = 1;
             }
             else
             {
@@ -29,10 +32,13 @@ public class CameraManager : MonoBehaviour
         }
         else
         {
-            if (_valueTime > 0 && Vector3.Lerp(transform.position, GameManager.Instance.CamPlayer.position, _valueTime) != GameManager.Instance.CamPlayer.position)
+            if (_valueTime >= 0 && Vector3.Lerp(transform.position, GameManager.Instance.CamPlayer.position, (1 - _valueTime)) != GameManager.Instance.CamPlayer.position)
             {
                 _valueTime -= Time.deltaTime * Speed;
-                CamGoTo(GameManager.Instance.CamPlayer, _valueTime / Vector3.Distance(transform.position, GameManager.Instance.CamPlayer.position));
+                CamGoTo(GameManager.Instance.CamPlayer, (1 - _valueTime) / Vector3.Distance(transform.position, GameManager.Instance.CamPlayer.position));
+
+                if (_valueTime < 0)
+                    _valueTime = 0;
             }
             else
             {
