@@ -81,6 +81,9 @@ public class StateBabyController : MonoBehaviour
                     }
                 }
 
+                if (TargetObject != null && !TargetObject.activeInHierarchy)
+                    TargetObject = null;
+
                 if (Target == null)
                     Target = transform.parent;
             }
@@ -130,8 +133,11 @@ public class StateBabyController : MonoBehaviour
 
         Dialogue = OnTriggerEnterScript.ObjectTouch.GetComponent<ObjectCollect>().DialogueBabyReccup;
 
-        if (Dialogue != null)
+        if (Dialogue != null && !TargetObject.GetComponent<ObjectCollect>().isListened)
+        {
             GameManager.Instance.Speaker.StartDialogue(Dialogue);
+            TargetObject.GetComponent<ObjectCollect>().isListened = true;
+        }
     }
 
     public void ScaleMesh(Vector3 scale)

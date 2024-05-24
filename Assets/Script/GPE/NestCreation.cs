@@ -74,6 +74,20 @@ public class NestCreation : MonoBehaviour
         {
             if (_itemsToConstruct[i] == other.gameObject)
             {
+                var obj = other.GetComponent<ObjectCollect>();
+
+                if (obj.IsPortable)
+                other.GetComponentInParent<RefBaby>().controller.isGrab = false;
+                else
+                {
+                    List<GameObject> baby = GameManager.Instance.BabyManager.BabiesInScene;
+
+                    for (int j = 0; j < baby.Count; j++)
+                    {
+                        baby[j].GetComponentInChildren<StateBabyController>().isGrab = false;
+                    }
+                }
+
                 _itemsVerification[i] = true;
                 other.gameObject.SetActive(false);
 

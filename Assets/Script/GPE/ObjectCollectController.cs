@@ -6,7 +6,7 @@ using UnityEngine.InputSystem.XR;
 
 public class ObjectCollectController : MonoBehaviour
 {
-    [SerializeField] GameObject _objectToGrab;
+    public GameObject ObjectToGrab;
 
     private void Start()
     {
@@ -32,7 +32,7 @@ public class ObjectCollectController : MonoBehaviour
         if (obj != null)
         {
             //obj.ChangeOutlineObject(obj.MaterialOutline, 1.1f);
-            _objectToGrab = collider.gameObject;
+            ObjectToGrab = collider.gameObject;
         }
     }
 
@@ -43,7 +43,7 @@ public class ObjectCollectController : MonoBehaviour
         if (obj != null)
         {
             //obj.ChangeOutlineObject(obj.MaterialOutline, 0f);
-            _objectToGrab = null;
+            ObjectToGrab = null;
         }
     }
 
@@ -55,7 +55,7 @@ public class ObjectCollectController : MonoBehaviour
 
     void GrabOrder(int i)
     {
-        var target = _objectToGrab;
+        var target = ObjectToGrab;
         var baby = GameManager.Instance.BabyManager;
 
         if (target != null)

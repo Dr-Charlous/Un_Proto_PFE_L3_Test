@@ -7,16 +7,10 @@ public class ObjectCollectManager : MonoBehaviour
     [SerializeField] GameObject ObjectFish;
     [SerializeField] ScriptableDialogue _dialogueFish;
     
-    UiTextDialogueSpeaker _speaker;
     Transform parentOrigin;
     GameObject objectGet;
     Collider objectCollectCollider;
     bool grab;
-
-    private void Start()
-    {
-        _speaker = GameManager.Instance.Character.GetComponentInChildren<UiTextDialogueSpeaker>();
-    }
 
     private void OnTriggerStay(Collider collider)
     {
@@ -43,8 +37,8 @@ public class ObjectCollectManager : MonoBehaviour
             if (animator != null)
                 animator.SetTrigger("GetObj");
 
-            if (_speaker != null && _dialogueFish != null)
-                _speaker.StartDialogue(_dialogueFish);
+            if (_dialogueFish != null)
+                GameManager.Instance.Speaker.StartDialogue(_dialogueFish);
         }
     }
 }
