@@ -60,7 +60,7 @@ public class NestCreation : MonoBehaviour
         for (int i = 0; i < baby.Count; i++)
         {
             baby[i].GetComponentInChildren<StateBabyController>().Charges += 10;
-
+            baby[i].GetComponentInChildren<StateBabyController>().ScaleMesh(Vector3.one);
             baby[i].GetComponentInChildren<StateBabyController>().ChangeState(baby[i].GetComponentInChildren<StateBabyController>().StateFollow);
         }
 

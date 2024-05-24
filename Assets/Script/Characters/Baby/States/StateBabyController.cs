@@ -10,6 +10,7 @@ using UnityEngine.TextCore.Text;
 
 public class StateBabyController : MonoBehaviour
 {
+    #region IState
     public IState currentState;
     public StateBabyStay StateStay = new StateBabyStay();
     public StateBabyFollow StateFollow = new StateBabyFollow();
@@ -17,6 +18,7 @@ public class StateBabyController : MonoBehaviour
     public StateBabyAction StateAction = new StateBabyAction();
     public StateBabyCollect StateCollect = new StateBabyCollect();
     //public StateBabyAnim StateAnim = new StateBabyAnim();
+    #endregion
 
     [Header("Components :")]
     public NavMeshAgent Agent;
@@ -27,7 +29,6 @@ public class StateBabyController : MonoBehaviour
 
     [Header("Babies stuffs :")]
     public GameObject ObjectBaby;
-    public GameObject BabyMesh;
     public bool IsParalysed = false;
     public int Charges = 1;
 
@@ -131,6 +132,11 @@ public class StateBabyController : MonoBehaviour
 
         if (Dialogue != null)
             GameManager.Instance.Speaker.StartDialogue(Dialogue);
+    }
+
+    public void ScaleMesh(Vector3 scale)
+    {
+        ObjectBaby.transform.localScale = scale;
     }
 
     void DrawPath()
