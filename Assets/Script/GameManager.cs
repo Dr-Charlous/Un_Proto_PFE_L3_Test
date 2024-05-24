@@ -26,4 +26,6 @@ public class GameManager : MonoBehaviour
     public Transform CamPlayer;
     public Death Death;
     public Death Win;
+    public Respawn Respawn;
+    public Animator Begin;
 }

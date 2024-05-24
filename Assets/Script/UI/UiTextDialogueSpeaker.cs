@@ -14,9 +14,9 @@ public class UiTextDialogueSpeaker : MonoBehaviour
     [SerializeField] float _timerValueWait;
     [SerializeField] float _timerValueBetweenText;
 
-    float _timer;
     [SerializeField] List<ScriptableDialogue> _dialogue;
     [SerializeField] ScriptableDialogue _lastDialogue;
+    float _timer;
 
     private void Update()
     {
@@ -41,7 +41,18 @@ public class UiTextDialogueSpeaker : MonoBehaviour
         }
     }
 
-    void ActiveUi(bool var)
+    public void StartLastDialogue()
+    {
+        _timer = 0;
+
+        if (Coroutine != null)
+            StopCoroutine(Coroutine);
+
+        ActiveUi(true);
+        Coroutine = StartCoroutine(LaunchDialogue(_lastDialogue, _source, UiText, 0));
+    }
+
+    public void ActiveUi(bool var)
     {
         UiText.gameObject.SetActive(var);
         UiBack.gameObject.SetActive(var);
@@ -50,6 +61,7 @@ public class UiTextDialogueSpeaker : MonoBehaviour
     IEnumerator LaunchDialogue(ScriptableDialogue dialogue, AudioSource source, TextMeshProUGUI text, int i)
     {
         dialogue.PlayDialogue(source, text, i);
+        _lastDialogue = _dialogue[0];
 
         yield return new WaitForSeconds(dialogue.Voice[i].length + _timerValueBetweenText);
 
@@ -61,7 +73,6 @@ public class UiTextDialogueSpeaker : MonoBehaviour
         }
         else if (_dialogue.Count == 1)
         {
-            _lastDialogue = _dialogue[0];
             _dialogue.RemoveAt(0);
 
             ActiveUi(false);
@@ -70,7 +81,6 @@ public class UiTextDialogueSpeaker : MonoBehaviour
         }
         else if (_dialogue.Count > 1)
         {
-            _lastDialogue = _dialogue[0];
             _dialogue.RemoveAt(0);
             i = 0;
 
