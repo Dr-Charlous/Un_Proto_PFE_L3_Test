@@ -11,6 +11,13 @@ public class ObjectCollectManager : MonoBehaviour
     GameObject objectGet;
     Collider objectCollectCollider;
     bool grab;
+    bool soundPlayed;
+
+    private void Start()
+    {
+        grab = false;
+        soundPlayed = false;
+    }
 
     private void OnTriggerStay(Collider collider)
     {
@@ -37,8 +44,11 @@ public class ObjectCollectManager : MonoBehaviour
             if (animator != null)
                 animator.SetTrigger("GetObj");
 
-            if (_dialogueFish != null)
+            if (_dialogueFish != null && !soundPlayed)
+            {
                 GameManager.Instance.Speaker.StartDialogue(_dialogueFish);
+                soundPlayed = true;
+            }
         }
     }
 }

@@ -64,8 +64,8 @@ public class NestCreation : MonoBehaviour
             baby[i].GetComponentInChildren<StateBabyController>().ChangeState(baby[i].GetComponentInChildren<StateBabyController>().StateFollow);
         }
 
-        if (_speaker != null && _dialogueMiamiam != null)
-            _speaker.StartDialogue(_dialogueMiamiam);
+        if (_dialogueMiamiam != null)
+            GameManager.Instance.Speaker.StartDialogue(_dialogueMiamiam);
     }
 
     void VerificationItem(Collider other)

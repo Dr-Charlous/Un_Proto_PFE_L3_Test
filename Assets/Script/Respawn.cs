@@ -30,5 +30,7 @@ public class Respawn : MonoBehaviour
             else
             Entities[i].position = new Vector3(RespawnPoint.position.x, Entities[i].position.y, RespawnPoint.position.z);
         }
+
+        GameManager.Instance.EndPoursuite.Initialize();
     }
 }

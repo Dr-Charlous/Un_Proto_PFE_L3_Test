@@ -63,4 +63,19 @@ public class EndPousuite : MonoBehaviour
             BeginStone.SetActive(true);
         }
     }
+
+    public void Initialize()
+    {
+        isBeginActif = true;
+        isEndActif = true;
+        BeginCollider.gameObject.SetActive(true);
+        EndCollider.gameObject.SetActive(true);
+        BeginStone.SetActive(false);
+        EndStone.SetActive(false);
+
+        if (Death != null)
+            Destroy(Death);
+        if (GameManager.Instance.CamManager.TemporaryPos != null)
+            GameManager.Instance.CamManager.TemporaryPos = null;
+    }
 }

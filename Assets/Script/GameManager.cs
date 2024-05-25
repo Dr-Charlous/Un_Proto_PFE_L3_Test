@@ -24,6 +24,7 @@ public class GameManager : MonoBehaviour
     public UiTextDialogueSpeaker Speaker;
     public CameraManager CamManager;
     public Transform CamPlayer;
+    public EndPousuite EndPoursuite;
     public Death Death;
     public Death Win;
     public Respawn Respawn;

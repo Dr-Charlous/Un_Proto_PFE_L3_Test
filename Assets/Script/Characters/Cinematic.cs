@@ -14,7 +14,7 @@ public class Cinematic : MonoBehaviour
         GameManager.Instance.Character.IsParalysed = true;
         GameManager.Instance.CamManager.TemporaryPos = _camPos;
 
-        yield return new WaitForSeconds(GameManager.Instance.CamManager.Speed * Vector3.Distance(Camera.main.transform.position, _camPos.position) - _timeDelay);
+        yield return new WaitForSeconds((GameManager.Instance.CamManager.Speed * Vector3.Distance(Camera.main.transform.position, _camPos.position) - _timeDelay) * (100 * Time.deltaTime));
 
         if (_dialogueNidBuild != null)
             GameManager.Instance.Speaker.StartDialogue(_dialogueNidBuild);
