@@ -32,6 +32,7 @@ public class ObjectCollectController : MonoBehaviour
         if (obj != null)
         {
             //obj.ChangeOutlineObject(obj.MaterialOutline, 1.1f);
+            //obj.Outline._IsActive = true;
             ObjectToGrab = collider.gameObject;
         }
     }
@@ -60,6 +61,8 @@ public class ObjectCollectController : MonoBehaviour
 
         if (target != null)
         {
+            target.GetComponentInChildren<ObjectCollect>().UiFollow.gameObject.SetActive(false);
+
             baby.BabiesInScene[i].GetComponentInChildren<StateBabyController>().TargetObject = target;
             baby.BabyCollect();
             GameManager.Instance.BabyManager.BabiesInScene[baby.BabiesInScene.Count - 1].GetComponentInChildren<StateBabyController>().isGrab = true;

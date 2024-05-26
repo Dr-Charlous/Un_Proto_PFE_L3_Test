@@ -20,7 +20,8 @@ public class StateBabyCollect : IState
     public void UpdateState(StateBabyController controller)
     {
         if (controller.OnTriggerEnterScript != null 
-            && controller.OnTriggerEnterScript.isTrigger 
+            && controller.OnTriggerEnterScript.isTrigger
+            && controller.OnTriggerEnterScript.ObjectTouch != null
             && controller.OnTriggerEnterScript.ObjectTouch.GetComponent<ObjectCollect>() != null
             && controller.OnTriggerEnterScript.ObjectTouch == controller.TargetObject
             && controller.isTransporting == false)

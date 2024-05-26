@@ -21,6 +21,8 @@ public class ObjectToPush : MonoBehaviour
     [SerializeField] float _speedPush;
     [SerializeField] int _decreasePushValue = 1;
 
+    public UiFollowing _uiFollow;
+
     Transform _parent;
     bool _isActivated = false;
     Vector3 _initPos;
@@ -90,6 +92,8 @@ public class ObjectToPush : MonoBehaviour
         {
             Action();
         }
+        else
+            _uiFollow.gameObject.SetActive(true);
     }
 
     void Action()
@@ -113,6 +117,8 @@ public class ObjectToPush : MonoBehaviour
             //transform.DORotate(_destination[_destination.Length - 1].rotation.eulerAngles, 2);
 
             //_isActivated = true;
+
+            _uiFollow.gameObject.SetActive(false);
         }
     }
 }

@@ -20,8 +20,10 @@ public class NestCreation : MonoBehaviour
     [SerializeField] Cinematic _cine;
 
     [SerializeField] ScriptableDialogue _dialogueMiamiam;
+    [SerializeField] UiFollowing _uiFollow;
 
     UiTextDialogueSpeaker _speaker;
+    int _value = 0;
 
     public Transform[] Entries;
     public bool IsCreated = false;
@@ -37,6 +39,8 @@ public class NestCreation : MonoBehaviour
         _speaker = GameManager.Instance.Character.GetComponentInChildren<UiTextDialogueSpeaker>();
 
         _itemsVerification = new bool[_itemsToConstruct.Length];
+
+        _uiFollow.UpdateText($"{_value} / {_itemsToConstruct.Length}");
     }
 
     private void OnTriggerEnter(Collider other)
@@ -93,6 +97,8 @@ public class NestCreation : MonoBehaviour
 
                 VerificationArray();
                 transform.DOPunchScale(_scalePunch, 1);
+                _value++;
+                _uiFollow.UpdateText($"{_value} / {_itemsToConstruct.Length}");
                 return;
             }
         }
