@@ -60,7 +60,7 @@ public class CharaMove : MonoBehaviour
                 if (Position < 0)
                     _rb.AddRelativeForce(Vector3.forward * Position * _acceleration * Time.fixedDeltaTime);
                 else
-                    _rb.AddRelativeForce(Vector3.forward * Position * _acceleration / 10 * Time.fixedDeltaTime);
+                    _rb.AddRelativeForce(Vector3.forward * Position * _acceleration / 5 * Time.fixedDeltaTime);
             }
         }
         _rb.velocity = _rb.velocity / _decreaseSpeed;

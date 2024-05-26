@@ -46,24 +46,6 @@ public partial class @Controls: IInputActionCollection2, IDisposable
                     ""initialStateCheck"": false
                 },
                 {
-                    ""name"": ""Dash"",
-                    ""type"": ""Button"",
-                    ""id"": ""e7b899ed-e7e5-4c49-aefd-100c97b5ff9a"",
-                    ""expectedControlType"": ""Button"",
-                    ""processors"": """",
-                    ""interactions"": """",
-                    ""initialStateCheck"": false
-                },
-                {
-                    ""name"": ""BabyStay"",
-                    ""type"": ""Button"",
-                    ""id"": ""81b4447d-b388-4d6b-bb41-7a63c461505f"",
-                    ""expectedControlType"": ""Button"",
-                    ""processors"": """",
-                    ""interactions"": """",
-                    ""initialStateCheck"": false
-                },
-                {
                     ""name"": ""BabyFollow"",
                     ""type"": ""Button"",
                     ""id"": ""9dffdc90-7497-4137-9971-85d40ad148f6"",
@@ -77,42 +59,6 @@ public partial class @Controls: IInputActionCollection2, IDisposable
                     ""type"": ""Button"",
                     ""id"": ""d991b565-7440-4f94-ae92-031e173a67c6"",
                     ""expectedControlType"": ""Button"",
-                    ""processors"": """",
-                    ""interactions"": """",
-                    ""initialStateCheck"": false
-                },
-                {
-                    ""name"": ""BabyGet"",
-                    ""type"": ""Button"",
-                    ""id"": ""9ebad2a4-aac2-4113-9273-abdba6228523"",
-                    ""expectedControlType"": ""Button"",
-                    ""processors"": """",
-                    ""interactions"": """",
-                    ""initialStateCheck"": false
-                },
-                {
-                    ""name"": ""Quest"",
-                    ""type"": ""Button"",
-                    ""id"": ""43f9132d-1846-4417-91fd-59a3dfde1e09"",
-                    ""expectedControlType"": ""Button"",
-                    ""processors"": """",
-                    ""interactions"": """",
-                    ""initialStateCheck"": false
-                },
-                {
-                    ""name"": ""KidsKeyBoard"",
-                    ""type"": ""Value"",
-                    ""id"": ""4c599620-6b4c-4071-b737-ee6493834088"",
-                    ""expectedControlType"": ""Axis"",
-                    ""processors"": """",
-                    ""interactions"": """",
-                    ""initialStateCheck"": true
-                },
-                {
-                    ""name"": ""KidsGamePad"",
-                    ""type"": ""PassThrough"",
-                    ""id"": ""f47340b6-d398-4759-836a-70669442b49f"",
-                    ""expectedControlType"": ""Vector2"",
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
@@ -253,50 +199,6 @@ public partial class @Controls: IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": """",
-                    ""id"": ""b3fa4e34-047b-4458-80cc-274f07e6c453"",
-                    ""path"": ""<Keyboard>/shift"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Dash"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""5ce24382-9f10-4d5a-8453-a500f6b0a9d0"",
-                    ""path"": ""<Gamepad>/buttonSouth"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Dash"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""a103ad76-6189-4367-8561-0d56810ced7a"",
-                    ""path"": ""<Keyboard>/numpad0"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""BabyStay"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""02fdc38d-178b-4f62-b1b4-2bd1b3bc6869"",
-                    ""path"": """",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""BabyStay"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
                     ""id"": ""576d7317-89f6-4106-b176-963f05a84c41"",
                     ""path"": ""<Keyboard>/space"",
                     ""interactions"": """",
@@ -338,138 +240,6 @@ public partial class @Controls: IInputActionCollection2, IDisposable
                     ""action"": ""BabyAction"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""ad3b2bc2-8c7e-47d5-aaf5-5627a9a85612"",
-                    ""path"": ""<Mouse>/leftButton"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""BabyGet"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""f12583a7-4728-4a82-8cdb-47ef32ad0562"",
-                    ""path"": ""<Gamepad>/buttonNorth"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""BabyGet"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""6e9d5bc7-e85d-4860-b445-561df7672c22"",
-                    ""path"": ""<Keyboard>/tab"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Quest"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""0f5779a1-db05-4db4-b19b-5dd9cf244611"",
-                    ""path"": ""<Gamepad>/rightTrigger"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Quest"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": ""1D"",
-                    ""id"": ""933e5297-d919-480b-b3a6-f2a55864e741"",
-                    ""path"": ""1DAxis"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""KidsKeyBoard"",
-                    ""isComposite"": true,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": ""positive"",
-                    ""id"": ""a6b2fb96-d919-4f30-a3f0-de1990d27257"",
-                    ""path"": ""<Mouse>/scroll/down"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""KidsKeyBoard"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": true
-                },
-                {
-                    ""name"": ""negative"",
-                    ""id"": ""d5473c3a-06ba-4ed2-a681-a8cacb4d4bd9"",
-                    ""path"": ""<Mouse>/scroll/up"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""KidsKeyBoard"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": true
-                },
-                {
-                    ""name"": ""2D Vector"",
-                    ""id"": ""15dca548-7f28-4d91-893a-80f48b2961b0"",
-                    ""path"": ""2DVector"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""KidsGamePad"",
-                    ""isComposite"": true,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": ""Up"",
-                    ""id"": ""62934ccd-c9d1-402a-98b4-0d064f0b2614"",
-                    ""path"": ""<Gamepad>/dpad/down"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""KidsGamePad"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": true
-                },
-                {
-                    ""name"": ""Down"",
-                    ""id"": ""4f9a8370-26b9-4a2d-b961-b687347da50e"",
-                    ""path"": ""<Gamepad>/dpad/up"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""KidsGamePad"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": true
-                },
-                {
-                    ""name"": ""Left"",
-                    ""id"": ""77e61859-e83b-4be7-a785-c64d1ddd5db2"",
-                    ""path"": ""<Gamepad>/dpad/left"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""KidsGamePad"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": true
-                },
-                {
-                    ""name"": ""Right"",
-                    ""id"": ""5d4ab1a6-7384-4762-8087-9c7f3eccdea4"",
-                    ""path"": ""<Gamepad>/dpad/right"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""KidsGamePad"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": true
                 }
             ]
         }
@@ -480,14 +250,8 @@ public partial class @Controls: IInputActionCollection2, IDisposable
         m_Diplocaulus = asset.FindActionMap("Diplocaulus", throwIfNotFound: true);
         m_Diplocaulus_Move = m_Diplocaulus.FindAction("Move", throwIfNotFound: true);
         m_Diplocaulus_Collect = m_Diplocaulus.FindAction("Collect", throwIfNotFound: true);
-        m_Diplocaulus_Dash = m_Diplocaulus.FindAction("Dash", throwIfNotFound: true);
-        m_Diplocaulus_BabyStay = m_Diplocaulus.FindAction("BabyStay", throwIfNotFound: true);
         m_Diplocaulus_BabyFollow = m_Diplocaulus.FindAction("BabyFollow", throwIfNotFound: true);
         m_Diplocaulus_BabyAction = m_Diplocaulus.FindAction("BabyAction", throwIfNotFound: true);
-        m_Diplocaulus_BabyGet = m_Diplocaulus.FindAction("BabyGet", throwIfNotFound: true);
-        m_Diplocaulus_Quest = m_Diplocaulus.FindAction("Quest", throwIfNotFound: true);
-        m_Diplocaulus_KidsKeyBoard = m_Diplocaulus.FindAction("KidsKeyBoard", throwIfNotFound: true);
-        m_Diplocaulus_KidsGamePad = m_Diplocaulus.FindAction("KidsGamePad", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -551,28 +315,16 @@ public partial class @Controls: IInputActionCollection2, IDisposable
     private List<IDiplocaulusActions> m_DiplocaulusActionsCallbackInterfaces = new List<IDiplocaulusActions>();
     private readonly InputAction m_Diplocaulus_Move;
     private readonly InputAction m_Diplocaulus_Collect;
-    private readonly InputAction m_Diplocaulus_Dash;
-    private readonly InputAction m_Diplocaulus_BabyStay;
     private readonly InputAction m_Diplocaulus_BabyFollow;
     private readonly InputAction m_Diplocaulus_BabyAction;
-    private readonly InputAction m_Diplocaulus_BabyGet;
-    private readonly InputAction m_Diplocaulus_Quest;
-    private readonly InputAction m_Diplocaulus_KidsKeyBoard;
-    private readonly InputAction m_Diplocaulus_KidsGamePad;
     public struct DiplocaulusActions
     {
         private @Controls m_Wrapper;
         public DiplocaulusActions(@Controls wrapper) { m_Wrapper = wrapper; }
         public InputAction @Move => m_Wrapper.m_Diplocaulus_Move;
         public InputAction @Collect => m_Wrapper.m_Diplocaulus_Collect;
-        public InputAction @Dash => m_Wrapper.m_Diplocaulus_Dash;
-        public InputAction @BabyStay => m_Wrapper.m_Diplocaulus_BabyStay;
         public InputAction @BabyFollow => m_Wrapper.m_Diplocaulus_BabyFollow;
         public InputAction @BabyAction => m_Wrapper.m_Diplocaulus_BabyAction;
-        public InputAction @BabyGet => m_Wrapper.m_Diplocaulus_BabyGet;
-        public InputAction @Quest => m_Wrapper.m_Diplocaulus_Quest;
-        public InputAction @KidsKeyBoard => m_Wrapper.m_Diplocaulus_KidsKeyBoard;
-        public InputAction @KidsGamePad => m_Wrapper.m_Diplocaulus_KidsGamePad;
         public InputActionMap Get() { return m_Wrapper.m_Diplocaulus; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -588,30 +340,12 @@ public partial class @Controls: IInputActionCollection2, IDisposable
             @Collect.started += instance.OnCollect;
             @Collect.performed += instance.OnCollect;
             @Collect.canceled += instance.OnCollect;
-            @Dash.started += instance.OnDash;
-            @Dash.performed += instance.OnDash;
-            @Dash.canceled += instance.OnDash;
-            @BabyStay.started += instance.OnBabyStay;
-            @BabyStay.performed += instance.OnBabyStay;
-            @BabyStay.canceled += instance.OnBabyStay;
             @BabyFollow.started += instance.OnBabyFollow;
             @BabyFollow.performed += instance.OnBabyFollow;
             @BabyFollow.canceled += instance.OnBabyFollow;
             @BabyAction.started += instance.OnBabyAction;
             @BabyAction.performed += instance.OnBabyAction;
             @BabyAction.canceled += instance.OnBabyAction;
-            @BabyGet.started += instance.OnBabyGet;
-            @BabyGet.performed += instance.OnBabyGet;
-            @BabyGet.canceled += instance.OnBabyGet;
-            @Quest.started += instance.OnQuest;
-            @Quest.performed += instance.OnQuest;
-            @Quest.canceled += instance.OnQuest;
-            @KidsKeyBoard.started += instance.OnKidsKeyBoard;
-            @KidsKeyBoard.performed += instance.OnKidsKeyBoard;
-            @KidsKeyBoard.canceled += instance.OnKidsKeyBoard;
-            @KidsGamePad.started += instance.OnKidsGamePad;
-            @KidsGamePad.performed += instance.OnKidsGamePad;
-            @KidsGamePad.canceled += instance.OnKidsGamePad;
         }
 
         private void UnregisterCallbacks(IDiplocaulusActions instance)
@@ -622,30 +356,12 @@ public partial class @Controls: IInputActionCollection2, IDisposable
             @Collect.started -= instance.OnCollect;
             @Collect.performed -= instance.OnCollect;
             @Collect.canceled -= instance.OnCollect;
-            @Dash.started -= instance.OnDash;
-            @Dash.performed -= instance.OnDash;
-            @Dash.canceled -= instance.OnDash;
-            @BabyStay.started -= instance.OnBabyStay;
-            @BabyStay.performed -= instance.OnBabyStay;
-            @BabyStay.canceled -= instance.OnBabyStay;
             @BabyFollow.started -= instance.OnBabyFollow;
             @BabyFollow.performed -= instance.OnBabyFollow;
             @BabyFollow.canceled -= instance.OnBabyFollow;
             @BabyAction.started -= instance.OnBabyAction;
             @BabyAction.performed -= instance.OnBabyAction;
             @BabyAction.canceled -= instance.OnBabyAction;
-            @BabyGet.started -= instance.OnBabyGet;
-            @BabyGet.performed -= instance.OnBabyGet;
-            @BabyGet.canceled -= instance.OnBabyGet;
-            @Quest.started -= instance.OnQuest;
-            @Quest.performed -= instance.OnQuest;
-            @Quest.canceled -= instance.OnQuest;
-            @KidsKeyBoard.started -= instance.OnKidsKeyBoard;
-            @KidsKeyBoard.performed -= instance.OnKidsKeyBoard;
-            @KidsKeyBoard.canceled -= instance.OnKidsKeyBoard;
-            @KidsGamePad.started -= instance.OnKidsGamePad;
-            @KidsGamePad.performed -= instance.OnKidsGamePad;
-            @KidsGamePad.canceled -= instance.OnKidsGamePad;
         }
 
         public void RemoveCallbacks(IDiplocaulusActions instance)
@@ -667,13 +383,7 @@ public partial class @Controls: IInputActionCollection2, IDisposable
     {
         void OnMove(InputAction.CallbackContext context);
         void OnCollect(InputAction.CallbackContext context);
-        void OnDash(InputAction.CallbackContext context);
-        void OnBabyStay(InputAction.CallbackContext context);
         void OnBabyFollow(InputAction.CallbackContext context);
         void OnBabyAction(InputAction.CallbackContext context);
-        void OnBabyGet(InputAction.CallbackContext context);
-        void OnQuest(InputAction.CallbackContext context);
-        void OnKidsKeyBoard(InputAction.CallbackContext context);
-        void OnKidsGamePad(InputAction.CallbackContext context);
     }
 }

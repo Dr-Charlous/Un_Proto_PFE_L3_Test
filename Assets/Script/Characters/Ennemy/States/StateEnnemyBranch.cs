@@ -24,6 +24,7 @@ public class StateEnnemyBranch : IStateEnnemy
 
         controller.JawsController.gameObject.SetActive(false);
         controller.Animations.AnimAttack();
+        controller.JawsController.CanBite = false;
     }
 
     public void UpdateState(EnnemyStateController controller)
@@ -37,5 +38,6 @@ public class StateEnnemyBranch : IStateEnnemy
     public void OnExit(EnnemyStateController controller)
     {
         controller.JawsController.gameObject.SetActive(true);
+        controller.JawsController.CanBite = true;
     }
 }

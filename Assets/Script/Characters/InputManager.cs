@@ -14,8 +14,6 @@ public class InputManager : MonoBehaviour
         _controls.Diplocaulus.Move.performed += GetMoveInputs;
         _controls.Diplocaulus.BabyFollow.started += GetBabyFollowInput;
         _controls.Diplocaulus.BabyAction.started += GetBabyActionInput;
-        _controls.Diplocaulus.BabyGet.started += GetBabyGetInput;
-        _controls.Diplocaulus.Quest.started += GetUIInput;
     }
 
     private void OnDisable()
@@ -23,9 +21,7 @@ public class InputManager : MonoBehaviour
         _controls.Diplocaulus.Disable();
         _controls.Diplocaulus.Move.performed -= GetMoveInputs;
         _controls.Diplocaulus.BabyFollow.started -= GetBabyFollowInput;
-        _controls.Diplocaulus.BabyAction.started -= GetBabyActionInput;
-        _controls.Diplocaulus.BabyGet.started -= GetBabyGetInput;
-        _controls.Diplocaulus.Quest.started -= GetUIInput;
+        _controls.Diplocaulus.BabyAction.started -= GetBabyActionInput;;
     }
 
     void GetMoveInputs(InputAction.CallbackContext move)

@@ -1,19 +1,22 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class EndWin : MonoBehaviour
 {
-    [SerializeField] string _nameScene;
-
     private void OnTriggerEnter(Collider other)
     {
         if (other.GetComponent<CharaMove>() != null)
         {
             GameManager.Instance.Win.ActiveUI();
 
-            GameManager.Instance.Character.Animator.SetTrigger(_nameScene);
             GameManager.Instance.Character.IsParalysed = true;
         }
+    }
+
+    public void ChangeScene(string scene)
+    {
+        SceneManager.LoadScene(scene);
     }
 }

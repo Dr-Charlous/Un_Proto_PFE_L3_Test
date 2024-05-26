@@ -1,6 +1,7 @@
 using DG.Tweening;
 using UnityEngine;
 using UnityEngine.AI;
+using UnityEngine.InputSystem.XR;
 
 public class EnnemyStateController : MonoBehaviour
 {
@@ -38,6 +39,7 @@ public class EnnemyStateController : MonoBehaviour
         transform.position = RoundPositions[_i].position;
         EnnemyMesh.transform.position = new Vector3(transform.position.x, EnnemyMesh.transform.position.y, transform.position.z);
 
+        JawsController.CanBite = true;
         ChangeState(StateFollowRound);
     }
 

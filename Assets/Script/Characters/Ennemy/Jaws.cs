@@ -2,13 +2,14 @@ using UnityEngine;
 
 public class Jaws : MonoBehaviour
 {
+    public bool CanBite;
     [SerializeField] EnnemyStateController _ennemyStateController;
     [SerializeField] float _time;
     public bool IsBitting = false;
 
     private void OnTriggerStay(Collider other)
     {
-        if (other.transform.gameObject.GetComponent<StateBabyController>() != null || other.GetComponent<CharaMove>() != null)
+        if (other.transform.gameObject.GetComponent<StateBabyController>() != null || other.GetComponent<CharaMove>() != null && CanBite)
         {
             IsBitting = true;
             GameManager.Instance.Death.ActiveUI();

@@ -21,6 +21,7 @@ public class ObjectResonnance : MonoBehaviour
     [SerializeField] bool _isTraveling = false;
     [SerializeField] float _speed = 5;
     [SerializeField] UiFollowing _uiFlollowing;
+    [SerializeField] OnTriggerEnterScript _babyZone;
 
     Vector3 LastPosPlayer;
 
@@ -36,6 +37,7 @@ public class ObjectResonnance : MonoBehaviour
         {
             PlaySound(_source, _clip);
             IsResonating = true;
+            BabyOut();
         }
         else
         {
@@ -159,6 +161,14 @@ public class ObjectResonnance : MonoBehaviour
             GameManager.Instance.Character._rb.velocity = Vector3.zero;
 
             LastPosPlayer = Vector3.zero;
+        }
+    }
+
+    void BabyOut()
+    {
+        if (_babyZone.ObjectLastExit != null && _babyZone.ObjectLastExit.GetComponent<RefBaby>() != null)
+        {
+            PlayerGetOutside();
         }
     }
 }
