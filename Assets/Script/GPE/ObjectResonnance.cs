@@ -20,6 +20,7 @@ public class ObjectResonnance : MonoBehaviour
     [SerializeField] Transform[] _entries;
     [SerializeField] bool _isTraveling = false;
     [SerializeField] float _speed = 5;
+    [SerializeField] UiFollowing _uiFlollowing;
 
     Vector3 LastPosPlayer;
 
@@ -106,6 +107,8 @@ public class ObjectResonnance : MonoBehaviour
 
         GameManager.Instance.Character.TrapResonnance = this;
         IsPlayerInside = true;
+
+        _uiFlollowing.gameObject.SetActive(false);
     }
 
     public void PlayerGetOutside()
@@ -130,6 +133,8 @@ public class ObjectResonnance : MonoBehaviour
 
         GameManager.Instance.Character.TrapResonnance = null;
         IsPlayerInside = false;
+
+        _uiFlollowing.gameObject.SetActive(true);
     }
 
     public void ChangePlayerPos()

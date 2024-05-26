@@ -1,8 +1,11 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
+using UnityEditor.ShaderGraph.Internal;
 using UnityEngine;
 using UnityEngine.InputSystem.XR;
+using UnityEngine.UI;
 
 public class ObjectCollectController : MonoBehaviour
 {
@@ -32,8 +35,13 @@ public class ObjectCollectController : MonoBehaviour
         if (obj != null)
         {
             //obj.ChangeOutlineObject(obj.MaterialOutline, 1.1f);
-            //obj.Outline._IsActive = true;
+            obj.UiFollow.ShowUi(true);
             ObjectToGrab = collider.gameObject;
+        }
+
+        if (collider.GetComponentInChildren<UiFollowing>() != null)
+        {
+            collider.GetComponentInChildren<UiFollowing>().ShowUi(true);
         }
     }
 
@@ -44,7 +52,13 @@ public class ObjectCollectController : MonoBehaviour
         if (obj != null)
         {
             //obj.ChangeOutlineObject(obj.MaterialOutline, 0f);
+            obj.UiFollow.ShowUi(false);
             ObjectToGrab = null;
+        }
+
+        if (collider.GetComponentInChildren<UiFollowing>() != null)
+        {
+            collider.GetComponentInChildren<UiFollowing>().ShowUi(false);
         }
     }
 

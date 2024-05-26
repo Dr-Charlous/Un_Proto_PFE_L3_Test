@@ -19,24 +19,32 @@ public class UiFollowing : MonoBehaviour
         _render = GetComponentInChildren<Image>();
         _canva = GetComponentInChildren<Canvas>();
         _canva.worldCamera = _cam;
+
+        ShowUi(false);
     }
 
     private void Update()
     {
-        if (Vector3.Distance(GameManager.Instance.Character.transform.position, transform.position) < _distance)
-        {
-            _render.enabled = true;
-            transform.LookAt(_cam.transform.position);
-        }
-        else
-        {
-            _render.enabled = false;
-        }
+        //if (Vector3.Distance(GameManager.Instance.Character.transform.position, transform.position) < _distance)
+        //{
+        //    ShowUi(true);
+        //}
+        //else
+        //{
+        //    ShowUi(false);
+        //}
+
+        transform.LookAt(_cam.transform.position);
     }
 
     public void UpdateText(string text)
     {
         if (_textMeshPro != null)
             _textMeshPro.text = text;
+    }
+
+    public void ShowUi(bool value)
+    {
+        _render.enabled = value;
     }
 }

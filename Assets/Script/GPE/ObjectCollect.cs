@@ -8,5 +8,5 @@ public class ObjectCollect : MonoBehaviour
     public bool IsPortable;
     public bool isListened;
     public UiFollowing UiFollow;
-    //public Material Outline;
+    public Material Outline;
 }
