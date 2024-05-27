@@ -8,7 +8,7 @@ public class DeathIsOnTheWay : MonoBehaviour
     {
         if (other.GetComponent<CharaMove>() != null)
         {
-            GameManager.Instance.Death.ActiveUI();
+            StartCoroutine(GameManager.Instance.Death.ActiveUI(true));
 
             GameManager.Instance.Character.Animator.SetTrigger("Death");
             GameManager.Instance.Character.IsParalysed = true;

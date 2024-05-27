@@ -3,6 +3,7 @@ using UnityEngine;
 public class ObjectCollectController : MonoBehaviour
 {
     public GameObject ObjectToGrab;
+    public Material MaterialOutline;
 
     private void Start()
     {
@@ -37,6 +38,9 @@ public class ObjectCollectController : MonoBehaviour
             ObjectToGrab = collider.gameObject;
         }
 
+        if (obj != null || collider.GetComponent<ObjectToPush>() || collider.GetComponent<ObjectResonnance>())
+            MaterialOutline.SetInt("_IsActive", 1);
+
         if (collider.GetComponentInChildren<UiFollowing>() != null)
         {
             collider.GetComponentInChildren<UiFollowing>().ShowUi(true);
@@ -55,6 +59,9 @@ public class ObjectCollectController : MonoBehaviour
 
             ObjectToGrab = null;
         }
+
+        if (obj != null || collider.GetComponent<ObjectToPush>() || collider.GetComponent<ObjectResonnance>())
+            MaterialOutline.SetInt("_IsActive", 0);
 
         if (collider.GetComponentInChildren<UiFollowing>() != null)
         {
