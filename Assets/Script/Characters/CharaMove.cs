@@ -1,8 +1,4 @@
-using DG.Tweening;
-using System;
-using System.Collections;
 using UnityEngine;
-using UnityEngine.InputSystem;
 
 [RequireComponent(typeof(InputManager))]
 
@@ -29,6 +25,8 @@ public class CharaMove : MonoBehaviour
 
     public Animator Animator;
     [SerializeField] Rigidbody CharacterRb;
+
+    int _valueRotateBack;
 
     private void Awake()
     {
@@ -59,10 +57,21 @@ public class CharaMove : MonoBehaviour
             {
                 if (Position < 0)
                     _rb.AddRelativeForce(Vector3.forward * Position * _acceleration * Time.fixedDeltaTime);
-                else
-                    _rb.AddRelativeForce(Vector3.forward * Position * _acceleration / 5 * Time.fixedDeltaTime);
+                
+                if (_valueRotateBack == -1 && Position > 0)
+                {
+                    _valueRotateBack = Random.Range(0, 2);
+
+                    if (_valueRotateBack == 0)
+                        Rotation = -1;
+                    else
+                        Rotation = 1;
+                }
             }
         }
+        else
+            _valueRotateBack = -1;
+
         _rb.velocity = _rb.velocity / _decreaseSpeed;
 
         Animator.SetFloat("Move", CharacterRb.velocity.magnitude, 0.1f, Time.deltaTime);
