@@ -10,7 +10,6 @@ public class FishNavigator : MonoBehaviour
 {
     [SerializeField] FishPointNavigation[] _positions;
     [SerializeField] FishPointNavigation _position;
-    [SerializeField] Rigidbody _rb;
     [SerializeField] GameObject _fish;
     [SerializeField] float _speed;
     [SerializeField] bool _isMoving;

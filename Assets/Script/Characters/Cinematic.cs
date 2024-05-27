@@ -16,7 +16,7 @@ public class Cinematic : MonoBehaviour
         GameManager.Instance.CamManager.TemporaryPos = _camPos;
 
         float speed = (GameManager.Instance.CamManager.Speed * 100 + _value) / Vector3.Distance(Camera.main.transform.position, _camPos.position);
-        Debug.Log(speed);
+
         yield return new WaitForSeconds(speed);
 
         if (_dialogueNidBuild != null)

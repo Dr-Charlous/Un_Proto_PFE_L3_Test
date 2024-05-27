@@ -88,7 +88,7 @@ public class ObjectToPush : MonoBehaviour
             }
         }
 
-        if (isEveryOneHere/* && !_isActivated*/)
+        if (isEveryOneHere)
         {
             Action();
         }
@@ -105,18 +105,6 @@ public class ObjectToPush : MonoBehaviour
 
             transform.position = Vector3.Lerp(_initPos, _endPos, ValuePush);
             transform.rotation = Quaternion.Lerp(_initRot, _endRot, ValuePush);
-            //Vector3[] destinationPos = new Vector3[_destination.Length];
-            //for (int i = 0; i < _destination.Length; i++)
-            //{
-            //    destinationPos[i] = _destination[i].position;
-            //}
-
-            //List<GameObject> baby = _character.BabyManager.BabiesInScene;
-
-            //isFinish = transform.DOPath(destinationPos, 2);
-            //transform.DORotate(_destination[_destination.Length - 1].rotation.eulerAngles, 2);
-
-            //_isActivated = true;
 
             _uiFollow.gameObject.SetActive(false);
         }

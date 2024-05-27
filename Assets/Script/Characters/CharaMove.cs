@@ -8,13 +8,13 @@ public class CharaMove : MonoBehaviour
     public float Position;
     public float Rotation;
 
+    [Header("")]
     [SerializeField] float _acceleration = 10;
     [SerializeField] float _limitMaxSpeed = 5;
     [SerializeField] float _decreaseSpeed = 1.01f;
     [SerializeField] float _steering = 500f;
 
     [Header("Components/Values :")]
-    [Range(0, 5)]
     public bool Collected;
     public bool CollectedBabies;
     public GameObject ParticuleSystem;
