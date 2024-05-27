@@ -2425,7 +2425,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6335800958550337161}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -1.1999993, y: 0, z: -0.72000146}
+  m_LocalPosition: {x: -1.2, y: 0, z: -1.47}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -2452,7 +2452,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1.5, y: 1.5, z: 1.5}
+  m_Size: {x: 2, y: 2, z: 2}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!54 &5514786272750654997
 Rigidbody:
@@ -4211,8 +4211,12 @@ PrefabInstance:
     m_TransformParent: {fileID: 5368027722566661633}
     m_Modifications:
     - target: {fileID: 471481692803995648, guid: 1810af70bfe22154b84de0c4c90f9599, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -1.27
+      objectReference: {fileID: 0}
+    - target: {fileID: 471481692803995648, guid: 1810af70bfe22154b84de0c4c90f9599, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 2.4900005
+      value: 1.74
       objectReference: {fileID: 0}
     - target: {fileID: 471481692803995648, guid: 1810af70bfe22154b84de0c4c90f9599, type: 3}
       propertyPath: m_LocalRotation.x
@@ -4260,11 +4264,11 @@ PrefabInstance:
       objectReference: {fileID: 8418204508859773708, guid: 0000000000000000d000000000000000, type: 0}
     - target: {fileID: 4200561564624009477, guid: 1810af70bfe22154b84de0c4c90f9599, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -1.1159995
+      value: -1.11
       objectReference: {fileID: 0}
     - target: {fileID: 4200561564624009477, guid: 1810af70bfe22154b84de0c4c90f9599, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0.86499923
+      value: 0.11
       objectReference: {fileID: 0}
     - target: {fileID: 4200561564624009477, guid: 1810af70bfe22154b84de0c4c90f9599, type: 3}
       propertyPath: m_LocalRotation.x
@@ -4281,22 +4285,6 @@ PrefabInstance:
     - target: {fileID: 5302451079238615736, guid: 1810af70bfe22154b84de0c4c90f9599, type: 3}
       propertyPath: m_Name
       value: TrunkPushNest
-      objectReference: {fileID: 0}
-    - target: {fileID: 6136675729180442920, guid: 1810af70bfe22154b84de0c4c90f9599, type: 3}
-      propertyPath: m_Size.x
-      value: 1.2426653
-      objectReference: {fileID: 0}
-    - target: {fileID: 6136675729180442920, guid: 1810af70bfe22154b84de0c4c90f9599, type: 3}
-      propertyPath: m_Size.z
-      value: 4.184901
-      objectReference: {fileID: 0}
-    - target: {fileID: 6136675729180442920, guid: 1810af70bfe22154b84de0c4c90f9599, type: 3}
-      propertyPath: m_Center.x
-      value: 0.34866786
-      objectReference: {fileID: 0}
-    - target: {fileID: 6136675729180442920, guid: 1810af70bfe22154b84de0c4c90f9599, type: 3}
-      propertyPath: m_Center.z
-      value: 0.40754965
       objectReference: {fileID: 0}
     - target: {fileID: 6392850096088389207, guid: 1810af70bfe22154b84de0c4c90f9599, type: 3}
       propertyPath: _decreasePushValue
@@ -4442,7 +4430,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 85de443a2c5bfda4993723352e180c18, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MaterialOutline: {fileID: 0}
   DialogueBabyReccup: {fileID: 11400000, guid: 17c251c17dc612d4fa59cac1648ce9c2, type: 2}
   IsPortable: 0
   isListened: 0
@@ -5203,14 +5190,6 @@ PrefabInstance:
     - target: {fileID: 5848276487979003571, guid: fde39e86ef528e04e86c78cabda15bfd, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5915636300491238625, guid: fde39e86ef528e04e86c78cabda15bfd, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 0.7071079
-      objectReference: {fileID: 0}
-    - target: {fileID: 5915636300491238625, guid: fde39e86ef528e04e86c78cabda15bfd, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0.70710576
       objectReference: {fileID: 0}
     - target: {fileID: 5915636300491238625, guid: fde39e86ef528e04e86c78cabda15bfd, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -7134,14 +7113,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 8100392267183774507, guid: e3fdeeec2272a2147942e974bf60bf48, type: 3}
-      propertyPath: m_Center.x
-      value: 0.16313833
-      objectReference: {fileID: 0}
-    - target: {fileID: 8100392267183774507, guid: e3fdeeec2272a2147942e974bf60bf48, type: 3}
-      propertyPath: m_Center.z
-      value: -0.0000000049278235
-      objectReference: {fileID: 0}
     - target: {fileID: 8187872622749969722, guid: e3fdeeec2272a2147942e974bf60bf48, type: 3}
       propertyPath: m_Name
       value: StonePush
@@ -7913,6 +7884,22 @@ PrefabInstance:
     - target: {fileID: 5302451079238615736, guid: 1810af70bfe22154b84de0c4c90f9599, type: 3}
       propertyPath: m_Name
       value: TrunkPush (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 6136675729180442920, guid: 1810af70bfe22154b84de0c4c90f9599, type: 3}
+      propertyPath: m_Size.x
+      value: 0.3921523
+      objectReference: {fileID: 0}
+    - target: {fileID: 6136675729180442920, guid: 1810af70bfe22154b84de0c4c90f9599, type: 3}
+      propertyPath: m_Size.z
+      value: 4.233325
+      objectReference: {fileID: 0}
+    - target: {fileID: 6136675729180442920, guid: 1810af70bfe22154b84de0c4c90f9599, type: 3}
+      propertyPath: m_Center.x
+      value: 0.77392155
+      objectReference: {fileID: 0}
+    - target: {fileID: 6136675729180442920, guid: 1810af70bfe22154b84de0c4c90f9599, type: 3}
+      propertyPath: m_Center.z
+      value: 0.1333394
       objectReference: {fileID: 0}
     - target: {fileID: 6392850096088389207, guid: 1810af70bfe22154b84de0c4c90f9599, type: 3}
       propertyPath: CheckBabies.Array.size
