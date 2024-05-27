@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 public class GameManager : MonoBehaviour
 {
@@ -29,4 +30,5 @@ public class GameManager : MonoBehaviour
     public Death Win;
     public Respawn Respawn;
     public Animator Begin;
+    public EventSystem EventSystem;
 }

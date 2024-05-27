@@ -19,6 +19,9 @@ public class ObjectCollectController : MonoBehaviour
             GrabCheck(0);
             GameManager.Instance.Character.CollectedBabies = false;
         }
+
+        if (ObjectToGrab != null && !ObjectToGrab.gameObject.activeInHierarchy)
+            ObjectToGrab = null;
     }
 
     private void OnTriggerStay(Collider collider)
@@ -28,7 +31,9 @@ public class ObjectCollectController : MonoBehaviour
         if (obj != null)
         {
             //obj.ChangeOutlineObject(obj.MaterialOutline, 1.1f);
-            obj.UiFollow.ShowUi(true);
+            if (obj.UiFollow != null)
+                obj.UiFollow.ShowUi(true);
+
             ObjectToGrab = collider.gameObject;
         }
 
@@ -45,7 +50,9 @@ public class ObjectCollectController : MonoBehaviour
         if (obj != null)
         {
             //obj.ChangeOutlineObject(obj.MaterialOutline, 0f);
-            obj.UiFollow.ShowUi(false);
+            if (obj.UiFollow != null)
+                obj.UiFollow.ShowUi(false);
+
             ObjectToGrab = null;
         }
 

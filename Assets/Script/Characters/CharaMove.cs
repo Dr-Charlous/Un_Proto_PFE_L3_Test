@@ -57,8 +57,8 @@ public class CharaMove : MonoBehaviour
             {
                 if (Position < 0)
                     _rb.AddRelativeForce(Vector3.forward * Position * _acceleration * Time.fixedDeltaTime);
-                
-                if (_valueRotateBack == -1 && Position > 0)
+
+                if (_valueRotateBack == -1 && Position > 0 && Rotation == 0)
                 {
                     _valueRotateBack = Random.Range(0, 2);
 
@@ -67,6 +67,8 @@ public class CharaMove : MonoBehaviour
                     else
                         Rotation = 1;
                 }
+                else if (_valueRotateBack != Rotation && Position > 0)
+                    _valueRotateBack = (int)Rotation;
             }
         }
         else

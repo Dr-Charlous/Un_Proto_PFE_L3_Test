@@ -9,7 +9,6 @@ public class ObjectCollectManager : MonoBehaviour
     
     Transform parentOrigin;
     GameObject objectGet;
-    Collider objectCollectCollider;
     bool grab;
     bool soundPlayed;
 
