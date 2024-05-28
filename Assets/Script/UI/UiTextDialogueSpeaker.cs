@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -60,31 +61,34 @@ public class UiTextDialogueSpeaker : MonoBehaviour
 
     IEnumerator LaunchDialogue(ScriptableDialogue dialogue, AudioSource source, TextMeshProUGUI text, int i)
     {
-        dialogue.PlayDialogue(source, text, i);
-        _lastDialogue = _dialogue[0];
-
-        yield return new WaitForSeconds(dialogue.Voice[i].length + _timerValueBetweenText);
-
-        i++;
-
-        if (i < dialogue.Voice.Length || i < dialogue.Text.Length)
+        if (_dialogue.Count > 0)
         {
-            StartCoroutine(LaunchDialogue(dialogue, source, text, i));
-        }
-        else if (_dialogue.Count == 1)
-        {
-            _dialogue.RemoveAt(0);
+            dialogue.PlayDialogue(source, text, i);
+            _lastDialogue = _dialogue[0];
 
-            ActiveUi(false);
-            Coroutine = null;
-            i = 0;
-        }
-        else if (_dialogue.Count > 1)
-        {
-            _dialogue.RemoveAt(0);
-            i = 0;
+            yield return new WaitForSeconds(dialogue.Voice[i].length + _timerValueBetweenText);
 
-            Coroutine = StartCoroutine(LaunchDialogue(_dialogue[0], source, text, i)); ;
+            i++;
+
+            if (i < dialogue.Voice.Length || i < dialogue.Text.Length)
+            {
+                StartCoroutine(LaunchDialogue(dialogue, source, text, i));
+            }
+            else if (_dialogue.Count == 1)
+            {
+                _dialogue.RemoveAt(0);
+
+                ActiveUi(false);
+                Coroutine = null;
+                i = 0;
+            }
+            else if (_dialogue.Count > 1)
+            {
+                _dialogue.RemoveAt(0);
+                i = 0;
+
+                Coroutine = StartCoroutine(LaunchDialogue(_dialogue[0], source, text, i)); ;
+            }
         }
     }
 }

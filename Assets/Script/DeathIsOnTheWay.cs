@@ -5,8 +5,10 @@ using UnityEngine;
 public class DeathIsOnTheWay : MonoBehaviour
 {
     private void OnTriggerEnter(Collider other)
-    {
-        if (other.GetComponent<CharaMove>() != null)
+     {
+        var prout = other;
+
+        if (other.GetComponent<CharaMove>() != null || other.GetComponent<RefBaby>() != null)
         {
             StartCoroutine(GameManager.Instance.Death.ActiveUI(true));
 
