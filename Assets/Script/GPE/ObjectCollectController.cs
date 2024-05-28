@@ -11,6 +11,8 @@ public class ObjectCollectController : MonoBehaviour
         {
             GameManager.Instance.BabyManager.BabiesInScene[i].GetComponentInChildren<StateBabyController>().isGrab = false;
         }
+
+        MaterialOutline.SetInt("_IsActive", 0);
     }
 
     private void Update()

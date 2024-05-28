@@ -33,6 +33,12 @@ public class ObjectCollectManager : MonoBehaviour
 
         if (objectInMouth != null && objectInMouth.gameObject == ObjectFish)
         {
+            if (_dialogueFish != null && !soundPlayed)
+            {
+                GameManager.Instance.Speaker.StartDialogue(_dialogueFish);
+                soundPlayed = true;
+            }
+
             objectGet = objectInMouth.gameObject;
             parentOrigin = objectTransform.parent;
             objectTransform.SetParent(parentCharacter);
@@ -42,12 +48,6 @@ public class ObjectCollectManager : MonoBehaviour
 
             if (animator != null)
                 animator.SetTrigger("GetObj");
-
-            if (_dialogueFish != null && !soundPlayed)
-            {
-                GameManager.Instance.Speaker.StartDialogue(_dialogueFish);
-                soundPlayed = true;
-            }
         }
     }
 }
