@@ -24,11 +24,13 @@ public class ObjectResonnance : MonoBehaviour
     [SerializeField] OnTriggerEnterScript _babyZone;
 
     Vector3 LastPosPlayer;
+    Quaternion LastRotPlayer;
 
     private void Start()
     {
         IsPlayerInside = false;
         LastPosPlayer = Vector3.zero;
+        LastRotPlayer = Quaternion.Euler(Vector3.zero);
     }
 
     private void Update()
@@ -144,6 +146,7 @@ public class ObjectResonnance : MonoBehaviour
         if (LastPosPlayer == Vector3.zero)
         {
             LastPosPlayer = GameManager.Instance.Character.transform.position;
+            LastRotPlayer = GameManager.Instance.Character.transform.rotation;
 
             float speed = (transform.position - GameManager.Instance.Character.transform.position).magnitude * _speed * Time.deltaTime;
 
@@ -159,9 +162,13 @@ public class ObjectResonnance : MonoBehaviour
                 GameManager.Instance.Character.transform.DOMove(LastPosPlayer, speed);
 
             GameManager.Instance.Character._rb.velocity = Vector3.zero;
+            GameManager.Instance.Character.transform.rotation = LastRotPlayer;
 
             LastPosPlayer = Vector3.zero;
+            LastRotPlayer = Quaternion.Euler(Vector3.zero);
         }
+
+        GameManager.Instance.Character._rb.velocity = Vector3.zero;
     }
 
     void BabyOut()
