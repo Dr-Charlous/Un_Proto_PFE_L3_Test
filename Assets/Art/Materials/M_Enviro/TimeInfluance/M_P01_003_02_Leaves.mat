@@ -20,11 +20,12 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: M_P01_001_Branch_VertexDisplace
+  m_Name: M_P01_003_02_Leaves
   m_Shader: {fileID: -6465566751694194690, guid: 3ab53d563b46e1549bf1d1ef0c8e8162, type: 3}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
-  m_ValidKeywords: []
+  m_ValidKeywords:
+  - _TIME
   m_InvalidKeywords:
   - _SURFACE_TYPE_TRANSPARENT
   m_LightmapFlags: 2
@@ -38,11 +39,11 @@ Material:
     serializedVersion: 3
     m_TexEnvs:
     - _AO:
-        m_Texture: {fileID: 2800000, guid: 3ff6acee89459c145a10845472bacde9, type: 3}
+        m_Texture: {fileID: 2800000, guid: 3cc47d8b7732fec489c981d923b84aa7, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _Alpha_Texture:
-        m_Texture: {fileID: 2800000, guid: 728557b91f7b5ea40ad396019dcdef7c, type: 3}
+        m_Texture: {fileID: 2800000, guid: d657a677d4cdd5a4c96b31f371419e6e, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _EmissiveTexture2D:
@@ -62,7 +63,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _Texture2D:
-        m_Texture: {fileID: 2800000, guid: 87c00507e2f1c504aba43617e546ec4d, type: 3}
+        m_Texture: {fileID: 2800000, guid: 072e8d1c9f230394cb0ae425b72ccad8, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - unity_Lightmaps:
@@ -81,7 +82,7 @@ Material:
     m_Floats:
     - _AlphaClip: 0
     - _AlphaToMask: 0
-    - _Amplitude: 0.27
+    - _Amplitude: 5.6
     - _Blend: 0
     - _BlendModePreserveSpecular: 0
     - _CastShadows: 1
@@ -91,25 +92,25 @@ Material:
     - _Dithering: 2
     - _DstBlend: 10
     - _Fallout_Size: 0.6
-    - _MaxMask: 0.26
-    - _MinMask: 0.19
+    - _MaxMask: 1
+    - _MinMask: 1
     - _NormalStrenght: 0.5
     - _QueueControl: 0
     - _QueueOffset: 0
     - _ReceiveShadows: 1
     - _Roughness: 0
-    - _Speed: 4.47
+    - _Speed: 3.54
     - _SrcBlend: 5
     - _Surface: 1
-    - _TIME: 0
+    - _TIME: 1
     - _Transparency: 0
-    - _TransparencyBool: 1
+    - _TransparencyBool: 0
     - _WorkflowMode: 1
     - _ZTest: 4
     - _ZWrite: 0
     - _ZWriteControl: 0
     m_Colors:
-    - _Color: {r: 0.7169812, g: 0.59449446, b: 0.31452474, a: 1}
+    - _Color: {r: 0.6509434, g: 0.47374034, b: 0.05833925, a: 1}
     - _Cutout_Position: {r: 0.5, g: 0.25, b: 0, a: 0}
     - _EmissiveColor: {r: 1367.1202, g: 1367.1202, b: 1367.1202, a: 1}
   m_BuildTextureStacks: []
