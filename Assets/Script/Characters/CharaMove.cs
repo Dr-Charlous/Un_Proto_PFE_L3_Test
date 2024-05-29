@@ -57,6 +57,8 @@ public class CharaMove : MonoBehaviour
             {
                 if (Position < 0)
                     _rb.AddRelativeForce(Vector3.forward * Position * _acceleration * Time.fixedDeltaTime);
+                else
+                    _rb.AddRelativeForce(Vector3.forward * Position * _acceleration / 2 * Time.fixedDeltaTime);
 
                 if (_valueRotateBack == -1 && Position > 0 && Rotation == 0)
                 {
