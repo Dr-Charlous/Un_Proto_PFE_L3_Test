@@ -150,6 +150,7 @@ public class ObjectResonnance : MonoBehaviour
 
             float speed = (transform.position - GameManager.Instance.Character.transform.position).magnitude * _speed * Time.deltaTime;
 
+            GameManager.Instance.Character.transform.DOComplete();
             GameManager.Instance.Character.transform.DOMove(transform.position, speed);
         }
         else
@@ -157,9 +158,15 @@ public class ObjectResonnance : MonoBehaviour
             float speed = (transform.position - GameManager.Instance.Character.transform.position).magnitude * _speed * Time.deltaTime;
 
             if (_isTraveling)
+            {
+                GameManager.Instance.Character.transform.DOComplete();
                 GameManager.Instance.Character.transform.DOMove(NearestEntry(LastPosPlayer), speed);
+            }
             else
+            {
+                GameManager.Instance.Character.transform.DOComplete();
                 GameManager.Instance.Character.transform.DOMove(LastPosPlayer, speed);
+            }
 
             GameManager.Instance.Character._rb.velocity = Vector3.zero;
             GameManager.Instance.Character.transform.rotation = LastRotPlayer;
