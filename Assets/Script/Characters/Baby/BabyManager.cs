@@ -177,7 +177,7 @@ public class BabyManager : MonoBehaviour
         {
             for (int i = 0; i < BabiesInScene.Count; i++)
             {
-                StateBabyController Baby = BabiesInScene[i].GetComponentInChildren<StateBabyController>();
+                StateBabyController Baby = BabiesInScene[0].GetComponentInChildren<StateBabyController>();
 
                 Baby.ChangeState(Baby.StateCollect);
 

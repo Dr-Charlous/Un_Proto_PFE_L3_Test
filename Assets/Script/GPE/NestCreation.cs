@@ -81,7 +81,10 @@ public class NestCreation : MonoBehaviour
                 var obj = other.GetComponent<ObjectCollect>();
 
                 if (obj != null && obj.IsPortable)
+                {
                     other.GetComponentInParent<RefBaby>().controller.isGrab = false;
+                    other.GetComponentInParent<RefBaby>().controller.isTransporting = false;
+                }
                 else
                 {
                     List<GameObject> baby = GameManager.Instance.BabyManager.BabiesInScene;
@@ -89,6 +92,7 @@ public class NestCreation : MonoBehaviour
                     for (int j = 0; j < baby.Count; j++)
                     {
                         baby[j].GetComponentInChildren<StateBabyController>().isGrab = false;
+                        baby[j].GetComponentInChildren<StateBabyController>().isTransporting = false;
                     }
                 }
 
