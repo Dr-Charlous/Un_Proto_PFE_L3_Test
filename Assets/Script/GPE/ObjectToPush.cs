@@ -1,10 +1,3 @@
-using DG.Tweening;
-using DG.Tweening.Core;
-using DG.Tweening.Plugins.Core.PathCore;
-using DG.Tweening.Plugins.Options;
-using System.Collections;
-using System.Collections.Generic;
-using System.Runtime.InteropServices;
 using UnityEngine;
 
 public class ObjectToPush : MonoBehaviour
@@ -76,7 +69,7 @@ public class ObjectToPush : MonoBehaviour
                 isEveryOneHere = false;
         }
 
-        if (CheckParent != null && !CheckParent.isTrigger && GameManager.Instance.Character.Position >= 0)
+        if (CheckParent != null && (!CheckParent.isTrigger || GameManager.Instance.Character.Position >= 0))
             isEveryOneHere = false;
 
         if (CheckBlockers.Length > 0)
