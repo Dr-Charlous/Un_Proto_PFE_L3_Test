@@ -21,22 +21,22 @@ public class Death : MonoBehaviour
 
         GameManager.Instance.Begin.SetBool("End", true);
 
-        yield return new WaitForSeconds(3);
+        yield return new WaitForSeconds(1.5f);
 
-        GameManager.Instance.Begin.SetBool("End", false);
+        if (value)
+            GameManager.Instance.Respawn.RespawnEntities();
+        else
+            SceneManager.LoadScene(_scene);
+
+        yield return new WaitForSeconds(1.5f);
 
         if (value)
         {
-            GameManager.Instance.Respawn.RespawnEntities();
-
-            //_UIDeath.SetActive(false);
             GameManager.Instance.Speaker.gameObject.SetActive(true);
-            GameManager.Instance.Speaker.StartLastDialogue();
             GameManager.Instance.Character.IsParalysed = false;
+            GameManager.Instance.Speaker.StartLastDialogue();
         }
-        else
-        {
-            SceneManager.LoadScene(_scene);
-        }
+
+        GameManager.Instance.Begin.SetBool("End", false);
     }
 }

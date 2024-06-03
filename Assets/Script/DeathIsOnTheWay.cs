@@ -6,8 +6,6 @@ public class DeathIsOnTheWay : MonoBehaviour
 {
     private void OnTriggerEnter(Collider other)
      {
-        var prout = other;
-
         if (other.GetComponent<CharaMove>() != null || other.GetComponent<RefBaby>() != null)
         {
             StartCoroutine(GameManager.Instance.Death.ActiveUI(true));
