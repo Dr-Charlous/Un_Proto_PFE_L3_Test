@@ -56,16 +56,16 @@ MonoBehaviour:
   - {fileID: 2152010888932214999}
   - {fileID: 8758145128787051521}
   Speed: 10
-  DistanceSee: 4
+  DistanceSee: 6
   TimeSinceNoSee: 3
   Resonance:
   - {fileID: 0}
   Fish: {fileID: 0}
   Target: {fileID: 0}
-  _i: 0
+  Iteration: 0
   DistanceNext: 1
-  isEating: 0
-  isChasing: 0
+  IsEating: 0
+  IsChasing: 0
 --- !u!195 &2497921143574613898
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -459,9 +459,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 96ccbae4cedcb834d879252fd471bd47, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  CanBite: 0
+  IsBitting: 0
   _ennemyStateController: {fileID: 3134857647185000123}
   _time: 1.5
-  IsBitting: 0
 --- !u!54 &5810534728842918602
 Rigidbody:
   m_ObjectHideFlags: 0

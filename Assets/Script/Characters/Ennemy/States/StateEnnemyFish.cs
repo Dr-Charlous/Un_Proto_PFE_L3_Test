@@ -4,18 +4,18 @@ using UnityEngine;
 
 public class StateEnnemyFish : IStateEnnemy
 {
-    public void OnEnter(EnnemyStateController controller)
+    public void OnEnter(StateEnnemyController controller)
     {
         controller.Move(controller.Fish.transform.position);
-        controller.isEating = true;
+        controller.IsEating = true;
     }
 
-    public void UpdateState(EnnemyStateController controller)
+    public void UpdateState(StateEnnemyController controller)
     {
         controller.Animations.AnimAttack();
     }
 
-    public void OnExit(EnnemyStateController controller)
+    public void OnExit(StateEnnemyController controller)
     {
         
     }

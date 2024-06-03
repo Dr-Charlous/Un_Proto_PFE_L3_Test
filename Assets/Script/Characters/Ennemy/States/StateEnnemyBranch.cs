@@ -7,7 +7,7 @@ public class StateEnnemyBranch : IStateEnnemy
 {
     int _i = 0;
 
-    public void OnEnter(EnnemyStateController controller)
+    public void OnEnter(StateEnnemyController controller)
     {
         for (int i = 0; i < controller.Resonance.Length; i++)
         {
@@ -22,12 +22,11 @@ public class StateEnnemyBranch : IStateEnnemy
             }
         }
 
-        controller.JawsController.gameObject.SetActive(false);
         controller.Animations.AnimAttack();
         controller.JawsController.CanBite = false;
     }
 
-    public void UpdateState(EnnemyStateController controller)
+    public void UpdateState(StateEnnemyController controller)
     {
         if ((controller.Resonance[_i].transform.position - controller.transform.position).magnitude < controller.DistanceNext)
         {
@@ -35,9 +34,7 @@ public class StateEnnemyBranch : IStateEnnemy
         }
     }
 
-    public void OnExit(EnnemyStateController controller)
+    public void OnExit(StateEnnemyController controller)
     {
-        controller.JawsController.gameObject.SetActive(true);
-        controller.JawsController.CanBite = true;
     }
 }

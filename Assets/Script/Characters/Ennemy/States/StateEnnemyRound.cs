@@ -3,21 +3,24 @@ using UnityEngine;
 
 public class StateEnnemyRound : IStateEnnemy
 {
-    public void OnEnter(EnnemyStateController controller)
+    public void OnEnter(StateEnnemyController controller)
     {
-        controller.Move(new Vector3(controller.RoundPositions[controller._i].position.x, controller.transform.position.y, controller.RoundPositions[controller._i].position.z));
+        controller.Move(new Vector3(controller.RoundPositions[controller.Iteration].position.x, controller.transform.position.y, controller.RoundPositions[controller.Iteration].position.z));
     }
 
-    public void UpdateState(EnnemyStateController controller)
+    public void UpdateState(StateEnnemyController controller)
     {
-        if (controller.Character.velocity.magnitude < 1 && (new Vector3(controller.transform.position.x, 0, controller.transform.position.z) - new Vector3(controller.RoundPositions[controller._i].position.x, 0, controller.RoundPositions[controller._i].position.z)).magnitude < controller.DistanceNext)
+        if (controller.Character.velocity.magnitude < 1 && (new Vector3(controller.transform.position.x, 0, controller.transform.position.z) - new Vector3(controller.RoundPositions[controller.Iteration].position.x, 0, controller.RoundPositions[controller.Iteration].position.z)).magnitude < controller.DistanceNext)
         {
-            if (controller._i + 1 < controller.RoundPositions.Length)
-                controller._i += 1;
+            if (controller.Iteration + 1 < controller.RoundPositions.Length)
+                controller.Iteration += 1;
             else
-                controller._i = 0;
+                controller.Iteration = 0;
 
-            controller.Move(new Vector3(controller.RoundPositions[controller._i].position.x, controller.transform.position.y, controller.RoundPositions[controller._i].position.z));
+            controller.Move(new Vector3(controller.RoundPositions[controller.Iteration].position.x, controller.transform.position.y, controller.RoundPositions[controller.Iteration].position.z));
+        
+            if (!controller.JawsController.CanBite)
+                controller.JawsController.CanBite = true;
         }
 
         RaycastHit hitMid;
@@ -33,7 +36,7 @@ public class StateEnnemyRound : IStateEnnemy
             if (hitMid.transform.gameObject.GetComponent<StateBabyController>() != null || hitMid.transform.gameObject.GetComponent<CharaMove>() != null)
             {
                 Debug.Log("Mid");
-                controller.isChasing = true;
+                controller.IsChasing = true;
             }
         }
 
@@ -42,7 +45,7 @@ public class StateEnnemyRound : IStateEnnemy
             if (hitLeft.transform.gameObject.GetComponent<StateBabyController>() != null || hitLeft.transform.gameObject.GetComponent<CharaMove>() != null)
             {
                 Debug.Log("Left");
-                controller.isChasing = true;
+                controller.IsChasing = true;
             }
         }
 
@@ -51,14 +54,14 @@ public class StateEnnemyRound : IStateEnnemy
             if (hitRight.transform.gameObject.GetComponent<StateBabyController>() != null || hitRight.transform.gameObject.GetComponent<CharaMove>() != null)
             {
                 Debug.Log("Right");
-                controller.isChasing = true;
+                controller.IsChasing = true;
             }
         }
 
         controller.Animations.AnimSwim();
     }
 
-    public void OnExit(EnnemyStateController controller)
+    public void OnExit(StateEnnemyController controller)
     {
 
     }

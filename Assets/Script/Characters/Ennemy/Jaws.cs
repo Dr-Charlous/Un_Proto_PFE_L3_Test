@@ -3,9 +3,10 @@ using UnityEngine;
 public class Jaws : MonoBehaviour
 {
     public bool CanBite;
-    [SerializeField] EnnemyStateController _ennemyStateController;
-    [SerializeField] float _time;
     public bool IsBitting = false;
+
+    [SerializeField] StateEnnemyController _ennemyStateController;
+    [SerializeField] float _time;
 
     private void OnTriggerStay(Collider other)
     {

@@ -6,12 +6,12 @@ public class StateEnnemyChase : IStateEnnemy
 {
     float _time;
 
-    public void OnEnter(EnnemyStateController controller)
+    public void OnEnter(StateEnnemyController controller)
     {
         _time = 0;
     }
 
-    public void UpdateState(EnnemyStateController controller)
+    public void UpdateState(StateEnnemyController controller)
     {
         Debug.Log(this.ToString());
 
@@ -43,7 +43,7 @@ public class StateEnnemyChase : IStateEnnemy
 
             if (_time > controller.TimeSinceNoSee)
             {
-                controller.isChasing = false;
+                controller.IsChasing = false;
                 controller.Target = null;
             }
         }
@@ -60,7 +60,7 @@ public class StateEnnemyChase : IStateEnnemy
             controller.Animations.AnimAttack();
     }
 
-    public void OnExit(EnnemyStateController controller)
+    public void OnExit(StateEnnemyController controller)
     {
 
     }

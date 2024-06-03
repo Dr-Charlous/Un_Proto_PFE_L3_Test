@@ -3,7 +3,7 @@ using UnityEngine;
 using UnityEngine.AI;
 using UnityEngine.InputSystem.XR;
 
-public class EnnemyStateController : MonoBehaviour
+public class StateEnnemyController : MonoBehaviour
 {
     #region statemachine
     public IStateEnnemy currentState;
@@ -27,16 +27,16 @@ public class EnnemyStateController : MonoBehaviour
     public GameObject Fish;
     public GameObject Target;
 
-    public int _i;
+    public int Iteration;
     public float DistanceNext;
-    public bool isEating = false;
-    public bool isChasing = false;
+    public bool IsEating = false;
+    public bool IsChasing = false;
 
 
     private void Start()
     {
-        _i = 0;
-        transform.position = RoundPositions[_i].position;
+        Iteration = 0;
+        transform.position = RoundPositions[Iteration].position;
         EnnemyMesh.transform.position = new Vector3(transform.position.x, EnnemyMesh.transform.position.y, transform.position.z);
 
         JawsController.CanBite = true;
@@ -50,7 +50,7 @@ public class EnnemyStateController : MonoBehaviour
             currentState.UpdateState(this);
         }
 
-        if (!isEating)
+        if (!IsEating)
             Check();
 
         BodyFollow();
@@ -59,7 +59,7 @@ public class EnnemyStateController : MonoBehaviour
 
     public void Check()
     {
-        if (isChasing)
+        if (IsChasing)
             ChangeState(StateChase);
         else
         {
@@ -112,7 +112,7 @@ public class EnnemyStateController : MonoBehaviour
         }
 
         Vector3 destinationPos = new Vector3(transform.position.x, EnnemyMesh.transform.position.y, transform.position.z);
-        //float distance = (new Vector3(RoundPositions[_i].position.x, 0, RoundPositions[_i].position.z) - new Vector3(transform.position.x, 0, transform.position.z)).magnitude;
+        //float distance = (new Vector3(RoundPositions[Iteration].position.x, 0, RoundPositions[Iteration].position.z) - new Vector3(transform.position.x, 0, transform.position.z)).magnitude;
 
         //EnnemyMesh.transform.DOMove(destinationPos, distance * Speed * Time.deltaTime);
         EnnemyMesh.transform.position = destinationPos;
@@ -147,7 +147,7 @@ public class EnnemyStateController : MonoBehaviour
 
 public interface IStateEnnemy
 {
-    public void OnEnter(EnnemyStateController controller);
-    public void UpdateState(EnnemyStateController controller);
-    public void OnExit(EnnemyStateController controller);
+    public void OnEnter(StateEnnemyController controller);
+    public void UpdateState(StateEnnemyController controller);
+    public void OnExit(StateEnnemyController controller);
 }

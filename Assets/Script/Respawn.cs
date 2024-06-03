@@ -26,6 +26,7 @@ public class Respawn : MonoBehaviour
             if (Entities[i].GetComponentInChildren<StateBabyController>() != null)
             {
                 Entities[i].GetComponentInChildren<StateBabyController>().Agent.transform.position = new Vector3(RespawnPoint.position.x, Entities[i].position.y, RespawnPoint.position.z);
+                Entities[i].GetComponentInChildren<StateBabyController>().Agent.destination = Entities[i].GetComponentInChildren<StateBabyController>().TargetParent.position;
             }
             else
             Entities[i].position = new Vector3(RespawnPoint.position.x, Entities[i].position.y, RespawnPoint.position.z);

@@ -17,13 +17,13 @@ public class EnnemiMove : MonoBehaviour
     //public ObjectResonnance[] Resonance;
     //public GameObject Fish;
 
-    //private int _i;
+    //private int Iteration;
     //private float _timer = 0;
 
     //private void Start()
     //{
-    //    _i = 0;
-    //    transform.position = RoundPositions[_i].position;
+    //    Iteration = 0;
+    //    transform.position = RoundPositions[Iteration].position;
     //    EnnemyMesh.transform.position = new Vector3(transform.position.x, EnnemyMesh.transform.position.y, transform.position.z);
     //}
 
@@ -59,14 +59,14 @@ public class EnnemiMove : MonoBehaviour
     //{
     //    _timer += Time.deltaTime;
 
-    //    if (Character.velocity.magnitude < 1 && Vector3.Distance(new Vector3(transform.position.x, 0, transform.position.z), new Vector3(RoundPositions[_i].position.x, 0, RoundPositions[_i].position.z)) < 1)
+    //    if (Character.velocity.magnitude < 1 && Vector3.Distance(new Vector3(transform.position.x, 0, transform.position.z), new Vector3(RoundPositions[Iteration].position.x, 0, RoundPositions[Iteration].position.z)) < 1)
     //    {
-    //        if (_i + 1 < RoundPositions.Length)
-    //            _i += 1;
+    //        if (Iteration + 1 < RoundPositions.Length)
+    //            Iteration += 1;
     //        else
-    //            _i = 0;
+    //            Iteration = 0;
 
-    //        Move(new Vector3(RoundPositions[_i].position.x, transform.position.y, RoundPositions[_i].position.z));
+    //        Move(new Vector3(RoundPositions[Iteration].position.x, transform.position.y, RoundPositions[Iteration].position.z));
     //    }
 
     //    BodyFollow();
@@ -92,7 +92,7 @@ public class EnnemiMove : MonoBehaviour
     //    EnnemyMesh.transform.DOKill();
 
     //    Vector3 destinationPos = new Vector3(transform.position.x, EnnemyMesh.transform.position.y, transform.position.z);
-    //    float distance = (new Vector3(RoundPositions[_i].position.x, 0, RoundPositions[_i].position.z) - new Vector3(transform.position.x, 0, transform.position.z)).magnitude;
+    //    float distance = (new Vector3(RoundPositions[Iteration].position.x, 0, RoundPositions[Iteration].position.z) - new Vector3(transform.position.x, 0, transform.position.z)).magnitude;
 
     //    //EnnemyMesh.transform.DOMove(destinationPos, distance * Speed * Time.deltaTime);
     //    EnnemyMesh.transform.position = destinationPos;
