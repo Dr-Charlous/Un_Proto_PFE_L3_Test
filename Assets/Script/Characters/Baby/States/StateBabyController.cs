@@ -42,7 +42,7 @@ public class StateBabyController : MonoBehaviour
 
     [Header("Collect object")]
     public bool isTransporting = false;
-    public bool isGrab = false;
+    public bool isGoingToGrab = false;
     public GameObject TargetObject;
     public Transform ParentObject;
     public Transform ParentCollect;
@@ -78,6 +78,14 @@ public class StateBabyController : MonoBehaviour
                     {
                         TargetObject = OnTriggerEnterScript.ObjectTouch;
                         GetObj(OnTriggerEnterScript.ObjectTouch.GetComponent<ObjectCollect>().IsPortable);
+
+                        for (int i = 0; i < GameManager.Instance.BabyManager.BabiesInScene.Count; i++)
+                        {
+                            if (this == GameManager.Instance.BabyManager.BabiesInScene[0].GetComponent<RefBaby>().controller)
+                                break;
+                            else
+                                GameManager.Instance.BabyManager.ChangeOrder();
+                        }
                     }
                 }
 

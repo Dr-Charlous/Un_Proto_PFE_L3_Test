@@ -9,7 +9,8 @@ public class ObjectCollectController : MonoBehaviour
     {
         for (int i = 0; i < GameManager.Instance.BabyManager.BabiesInScene.Count - 1; i++)
         {
-            GameManager.Instance.BabyManager.BabiesInScene[i].GetComponentInChildren<StateBabyController>().isGrab = false;
+            GameManager.Instance.BabyManager.BabiesInScene[i].GetComponentInChildren<StateBabyController>().isGoingToGrab = false;
+            GameManager.Instance.BabyManager.BabiesInScene[i].GetComponentInChildren<StateBabyController>().isTransporting = false;
         }
 
         MaterialOutline.SetInt("_IsActive", 0);
@@ -73,7 +74,7 @@ public class ObjectCollectController : MonoBehaviour
 
     void GrabCheck(int i)
     {
-        if (!GameManager.Instance.BabyManager.BabiesInScene[i].GetComponentInChildren<StateBabyController>().isGrab)
+        if (!GameManager.Instance.BabyManager.BabiesInScene[i].GetComponentInChildren<StateBabyController>().isGoingToGrab)
             GrabOrder(i);
     }
 
@@ -87,7 +88,7 @@ public class ObjectCollectController : MonoBehaviour
             target.GetComponentInChildren<ObjectCollect>().UiFollow.gameObject.SetActive(false);
 
             baby.BabiesInScene[i].GetComponentInChildren<StateBabyController>().TargetObject = target;
-            GameManager.Instance.BabyManager.BabiesInScene[i].GetComponentInChildren<StateBabyController>().isGrab = true;
+            GameManager.Instance.BabyManager.BabiesInScene[i].GetComponentInChildren<StateBabyController>().isGoingToGrab = true;
             baby.BabyCollect();
         }
     }

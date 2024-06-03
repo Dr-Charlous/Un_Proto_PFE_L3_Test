@@ -37,12 +37,12 @@ public class InputManager : MonoBehaviour
         GameManager.Instance.Character.Position = -move.ReadValue<Vector2>().y;
         GameManager.Instance.Character.Rotation = move.ReadValue<Vector2>().x;
     }
-    
+
     void GetCamMoveInputs(InputAction.CallbackContext move)
     {
         GameManager.Instance.CamManager.Rotation = move.ReadValue<Vector2>().x;
     }
-    
+
     void GetCamResetInput(InputAction.CallbackContext reset)
     {
         GameManager.Instance.CamManager.Reset();

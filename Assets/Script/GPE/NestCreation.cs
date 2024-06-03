@@ -82,7 +82,7 @@ public class NestCreation : MonoBehaviour
 
                 if (obj != null && obj.IsPortable)
                 {
-                    other.GetComponentInParent<RefBaby>().controller.isGrab = false;
+                    other.GetComponentInParent<RefBaby>().controller.isGoingToGrab = false;
                     other.GetComponentInParent<RefBaby>().controller.isTransporting = false;
                 }
                 else
@@ -91,7 +91,7 @@ public class NestCreation : MonoBehaviour
 
                     for (int j = 0; j < baby.Count; j++)
                     {
-                        baby[j].GetComponentInChildren<StateBabyController>().isGrab = false;
+                        baby[j].GetComponentInChildren<StateBabyController>().isGoingToGrab = false;
                         baby[j].GetComponentInChildren<StateBabyController>().isTransporting = false;
                     }
                 }
