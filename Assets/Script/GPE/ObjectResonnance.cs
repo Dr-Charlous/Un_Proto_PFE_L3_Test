@@ -176,6 +176,7 @@ public class ObjectResonnance : MonoBehaviour
         }
 
         GameManager.Instance.Character._rb.velocity = Vector3.zero;
+        GameManager.Instance.CamManager.Reset();
     }
 
     void BabyOut()

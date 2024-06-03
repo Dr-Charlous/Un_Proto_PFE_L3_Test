@@ -12,6 +12,10 @@ public class InputManager : MonoBehaviour
     {
         _controls.Diplocaulus.Enable();
         _controls.Diplocaulus.Move.performed += GetMoveInputs;
+
+        _controls.Diplocaulus.CamMove.performed += GetCamMoveInputs;
+        _controls.Diplocaulus.CamReset.started += GetCamResetInput;
+
         _controls.Diplocaulus.BabyFollow.started += GetBabyFollowInput;
         _controls.Diplocaulus.BabyAction.started += GetBabyActionInput;
     }
@@ -20,14 +24,28 @@ public class InputManager : MonoBehaviour
     {
         _controls.Diplocaulus.Disable();
         _controls.Diplocaulus.Move.performed -= GetMoveInputs;
+
+        _controls.Diplocaulus.CamMove.performed -= GetCamMoveInputs;
+        _controls.Diplocaulus.CamReset.started -= GetCamResetInput;
+
         _controls.Diplocaulus.BabyFollow.started -= GetBabyFollowInput;
-        _controls.Diplocaulus.BabyAction.started -= GetBabyActionInput;;
+        _controls.Diplocaulus.BabyAction.started -= GetBabyActionInput;
     }
 
     void GetMoveInputs(InputAction.CallbackContext move)
     {
         GameManager.Instance.Character.Position = -move.ReadValue<Vector2>().y;
         GameManager.Instance.Character.Rotation = move.ReadValue<Vector2>().x;
+    }
+    
+    void GetCamMoveInputs(InputAction.CallbackContext move)
+    {
+        GameManager.Instance.CamManager.Rotation = move.ReadValue<Vector2>().x;
+    }
+    
+    void GetCamResetInput(InputAction.CallbackContext reset)
+    {
+        GameManager.Instance.CamManager.Reset();
     }
 
     void GetCollectInputs(InputAction.CallbackContext collect)

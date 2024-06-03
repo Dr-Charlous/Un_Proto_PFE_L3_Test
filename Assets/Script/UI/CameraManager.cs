@@ -1,9 +1,14 @@
+using DG.Tweening;
 using UnityEngine;
 
 public class CameraManager : MonoBehaviour
 {
     public Transform TemporaryPos;
+    public Transform PlayerCamPivot;
+    public float Rotation;
     public float Speed;
+
+    [SerializeField] float _speedCam;
 
     float _valueTime;
 
@@ -13,6 +18,26 @@ public class CameraManager : MonoBehaviour
     }
 
     private void Update()
+    {
+        Transition();
+
+        if (Rotation != 0)
+            PlayerCamPivot.rotation *= Quaternion.Euler(Vector3.up * Rotation * _speedCam * Time.deltaTime);
+    }
+
+    void UpdateCam(Transform transformCam)
+    {
+        transform.position = transformCam.position;
+        transform.rotation = transformCam.rotation;
+    }
+
+    void CamGoTo(Transform transformCam, float value)
+    {
+        transform.position = Vector3.Lerp(transform.position, transformCam.position, value);
+        transform.rotation = Quaternion.Lerp(transform.rotation, transformCam.rotation, value);
+    }
+
+    void Transition()
     {
         if (TemporaryPos != null)
         {
@@ -48,15 +73,9 @@ public class CameraManager : MonoBehaviour
         }
     }
 
-    void UpdateCam(Transform transformCam)
+    public void Reset()
     {
-        transform.position = transformCam.position;
-        transform.rotation = transformCam.rotation;
-    }
-
-    void CamGoTo(Transform transformCam, float value)
-    {
-        transform.position = Vector3.Lerp(transform.position, transformCam.position, value);
-        transform.rotation = Quaternion.Lerp(transform.rotation, transformCam.rotation, value);
+        PlayerCamPivot.DOComplete();
+        PlayerCamPivot.DOLocalRotate(Vector3.zero, _speedCam * Time.deltaTime);
     }
 }

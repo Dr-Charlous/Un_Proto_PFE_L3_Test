@@ -62,6 +62,24 @@ public partial class @Controls: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""CamMove"",
+                    ""type"": ""PassThrough"",
+                    ""id"": ""e2f66674-8ae3-49f7-9cac-60a578dd91b9"",
+                    ""expectedControlType"": ""Vector2"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""CamReset"",
+                    ""type"": ""Button"",
+                    ""id"": ""e1f73a60-d732-4b6c-9949-c051c2ad2ea6"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -240,6 +258,94 @@ public partial class @Controls: IInputActionCollection2, IDisposable
                     ""action"": ""BabyAction"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""Gamepad"",
+                    ""id"": ""a06d36c8-83e7-4a7d-a80e-dcdbf1181a73"",
+                    ""path"": ""2DVector(mode=2)"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""CamMove"",
+                    ""isComposite"": true,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""up"",
+                    ""id"": ""b0be2f31-5fea-4589-8ae8-f6c23aacdc3c"",
+                    ""path"": ""<Gamepad>/rightStick/up"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""CamMove"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""down"",
+                    ""id"": ""f5ce4cc9-b346-49cb-85d0-cd229aeef3d9"",
+                    ""path"": ""<Gamepad>/rightStick/down"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""CamMove"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""left"",
+                    ""id"": ""fbd3a4f0-21ad-4882-9e10-875921b22ad4"",
+                    ""path"": ""<Gamepad>/rightStick/left"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""CamMove"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""right"",
+                    ""id"": ""28c4a691-d385-4fc0-af7a-ad1f9b1ca16c"",
+                    ""path"": ""<Gamepad>/rightStick/right"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""CamMove"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""7ce2599e-95a7-4a78-bbe8-b002f12210de"",
+                    ""path"": ""<Mouse>/delta"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""CamMove"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""54171a33-8ce2-48ea-b75f-23c67a83adee"",
+                    ""path"": ""<Gamepad>/rightStickPress"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""CamReset"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""955fc922-63a7-4143-bd0c-aa18cbb79817"",
+                    ""path"": ""<Mouse>/middleButton"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""CamReset"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -252,6 +358,8 @@ public partial class @Controls: IInputActionCollection2, IDisposable
         m_Diplocaulus_Collect = m_Diplocaulus.FindAction("Collect", throwIfNotFound: true);
         m_Diplocaulus_BabyFollow = m_Diplocaulus.FindAction("BabyFollow", throwIfNotFound: true);
         m_Diplocaulus_BabyAction = m_Diplocaulus.FindAction("BabyAction", throwIfNotFound: true);
+        m_Diplocaulus_CamMove = m_Diplocaulus.FindAction("CamMove", throwIfNotFound: true);
+        m_Diplocaulus_CamReset = m_Diplocaulus.FindAction("CamReset", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -317,6 +425,8 @@ public partial class @Controls: IInputActionCollection2, IDisposable
     private readonly InputAction m_Diplocaulus_Collect;
     private readonly InputAction m_Diplocaulus_BabyFollow;
     private readonly InputAction m_Diplocaulus_BabyAction;
+    private readonly InputAction m_Diplocaulus_CamMove;
+    private readonly InputAction m_Diplocaulus_CamReset;
     public struct DiplocaulusActions
     {
         private @Controls m_Wrapper;
@@ -325,6 +435,8 @@ public partial class @Controls: IInputActionCollection2, IDisposable
         public InputAction @Collect => m_Wrapper.m_Diplocaulus_Collect;
         public InputAction @BabyFollow => m_Wrapper.m_Diplocaulus_BabyFollow;
         public InputAction @BabyAction => m_Wrapper.m_Diplocaulus_BabyAction;
+        public InputAction @CamMove => m_Wrapper.m_Diplocaulus_CamMove;
+        public InputAction @CamReset => m_Wrapper.m_Diplocaulus_CamReset;
         public InputActionMap Get() { return m_Wrapper.m_Diplocaulus; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -346,6 +458,12 @@ public partial class @Controls: IInputActionCollection2, IDisposable
             @BabyAction.started += instance.OnBabyAction;
             @BabyAction.performed += instance.OnBabyAction;
             @BabyAction.canceled += instance.OnBabyAction;
+            @CamMove.started += instance.OnCamMove;
+            @CamMove.performed += instance.OnCamMove;
+            @CamMove.canceled += instance.OnCamMove;
+            @CamReset.started += instance.OnCamReset;
+            @CamReset.performed += instance.OnCamReset;
+            @CamReset.canceled += instance.OnCamReset;
         }
 
         private void UnregisterCallbacks(IDiplocaulusActions instance)
@@ -362,6 +480,12 @@ public partial class @Controls: IInputActionCollection2, IDisposable
             @BabyAction.started -= instance.OnBabyAction;
             @BabyAction.performed -= instance.OnBabyAction;
             @BabyAction.canceled -= instance.OnBabyAction;
+            @CamMove.started -= instance.OnCamMove;
+            @CamMove.performed -= instance.OnCamMove;
+            @CamMove.canceled -= instance.OnCamMove;
+            @CamReset.started -= instance.OnCamReset;
+            @CamReset.performed -= instance.OnCamReset;
+            @CamReset.canceled -= instance.OnCamReset;
         }
 
         public void RemoveCallbacks(IDiplocaulusActions instance)
@@ -385,5 +509,7 @@ public partial class @Controls: IInputActionCollection2, IDisposable
         void OnCollect(InputAction.CallbackContext context);
         void OnBabyFollow(InputAction.CallbackContext context);
         void OnBabyAction(InputAction.CallbackContext context);
+        void OnCamMove(InputAction.CallbackContext context);
+        void OnCamReset(InputAction.CallbackContext context);
     }
 }
