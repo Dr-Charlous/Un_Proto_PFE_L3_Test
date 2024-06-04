@@ -6,13 +6,14 @@ public class ObjectToPush : MonoBehaviour
     public BabyPosCheckAction[] CheckBabies;
     public TriggerIsParetnHere CheckParent;
 
-    [SerializeField] bool[] _isBabyActionned;
+    [HideInInspector] public bool[] IsBabyActionned;
+    [HideInInspector] public bool IsParentActionned;
     [SerializeField] Transform _destination;
     [SerializeField] GameObject _mesh;
 
     public float ValuePush;
     [SerializeField] float _speedPush;
-    [SerializeField] int _decreasePushValue = 1;
+    public int DecreasePushValue = 1;
 
     public UiFollowing _uiFollow;
 
@@ -29,6 +30,8 @@ public class ObjectToPush : MonoBehaviour
         _endPos = _destination.position;
         _initRot = transform.rotation;
         _endRot = _destination.rotation;
+
+        IsBabyActionned = new bool[CheckBabies.Length];
     }
 
     private void Update()
@@ -37,10 +40,10 @@ public class ObjectToPush : MonoBehaviour
         {
             if (CheckBabies[i].IsBabyActionned)
             {
-                _isBabyActionned[i] = true;
+                IsBabyActionned[i] = true;
             }
             else
-                _isBabyActionned[i] = false;
+                IsBabyActionned[i] = false;
         }
 
         CheckForAction();
@@ -63,14 +66,19 @@ public class ObjectToPush : MonoBehaviour
     {
         bool isEveryOneHere = true;
 
-        for (int i = 0; i < _isBabyActionned.Length; i++)
+        for (int i = 0; i < IsBabyActionned.Length; i++)
         {
-            if (_isBabyActionned[i] == false || (_isBabyActionned[i] && GameManager.Instance.BabyManager.BabiesInScene[i].GetComponentInChildren<StateBabyController>().Charges < _decreasePushValue))
+            if (IsBabyActionned[i] == false || (IsBabyActionned[i] && GameManager.Instance.BabyManager.BabiesInScene[i].GetComponentInChildren<StateBabyController>().Charges < DecreasePushValue))
                 isEveryOneHere = false;
         }
 
         if (CheckParent != null && (!CheckParent.isTrigger || GameManager.Instance.Character.Position >= 0))
+        {
             isEveryOneHere = false;
+            IsParentActionned = false;
+        }
+        else if (CheckParent != null)
+            IsParentActionned = true;
 
         if (CheckBlockers.Length > 0)
         {
@@ -91,7 +99,7 @@ public class ObjectToPush : MonoBehaviour
 
     void Action()
     {
-        if (GameManager.Instance.BabyManager.BabiesInScene[0].GetComponentInChildren<StateBabyController>().Charges >= _decreasePushValue || CheckParent == null)
+        if (GameManager.Instance.BabyManager.BabiesInScene[0].GetComponentInChildren<StateBabyController>().Charges >= DecreasePushValue || CheckParent == null)
         {
             if (ValuePush < 1)
                 ValuePush += _speedPush * Time.deltaTime;

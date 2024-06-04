@@ -8,6 +8,11 @@ public class InputManager : MonoBehaviour
 {
     Controls _controls;
 
+    [HideInInspector] public float Vertical;
+    [HideInInspector] public float Horizontal;
+    [HideInInspector] public bool Call;
+    [HideInInspector] public bool Assign;
+
     private void OnEnable()
     {
         _controls.Diplocaulus.Enable();
@@ -17,7 +22,10 @@ public class InputManager : MonoBehaviour
         _controls.Diplocaulus.CamReset.started += GetCamResetInput;
 
         _controls.Diplocaulus.BabyFollow.started += GetBabyFollowInput;
+        _controls.Diplocaulus.BabyFollow.canceled += BabyFollowOutput;
+
         _controls.Diplocaulus.BabyAction.started += GetBabyActionInput;
+        _controls.Diplocaulus.BabyAction.canceled += BabyActionOutput;
     }
 
     private void OnDisable()
@@ -29,13 +37,19 @@ public class InputManager : MonoBehaviour
         _controls.Diplocaulus.CamReset.started -= GetCamResetInput;
 
         _controls.Diplocaulus.BabyFollow.started -= GetBabyFollowInput;
+        _controls.Diplocaulus.BabyFollow.canceled -= BabyFollowOutput;
+
         _controls.Diplocaulus.BabyAction.started -= GetBabyActionInput;
+        _controls.Diplocaulus.BabyAction.canceled -= BabyActionOutput;
     }
 
     void GetMoveInputs(InputAction.CallbackContext move)
     {
         GameManager.Instance.Character.Position = -move.ReadValue<Vector2>().y;
         GameManager.Instance.Character.Rotation = move.ReadValue<Vector2>().x;
+        
+        Vertical = -move.ReadValue<Vector2>().y;
+        Horizontal = move.ReadValue<Vector2>().x;
     }
 
     void GetCamMoveInputs(InputAction.CallbackContext move)
@@ -48,15 +62,6 @@ public class InputManager : MonoBehaviour
         GameManager.Instance.CamManager.Reset();
     }
 
-    void GetCollectInputs(InputAction.CallbackContext collect)
-    {
-        //if (!_chara.IsParalysed)
-        //{
-        //    _chara.Collected = !_chara.Collected;
-        //    _chara.CollectedBabies = !_chara.CollectedBabies;
-        //}
-    }
-
     void GetBabyFollowInput(InputAction.CallbackContext baby)
     {
         if (GameManager.Instance.BabyManager.BabiesInScene.Count > 0 && !GameManager.Instance.Character.IsParalysed)
@@ -67,41 +72,33 @@ public class InputManager : MonoBehaviour
         }
 
         GameManager.Instance.Character.GetComponentInChildren<Animator>().SetTrigger("Call");
+
+        Call = true;
     }
 
+    void BabyFollowOutput(InputAction.CallbackContext baby)
+    {
+        Call = false;
+    }
+    
     void GetBabyActionInput(InputAction.CallbackContext baby)
     {
         if (!GameManager.Instance.Character.IsParalysed)
         {
             GameManager.Instance.BabyManager.BabyAction();
 
-            GameManager.Instance.Character.Collected = !GameManager.Instance.Character.Collected;
-            GameManager.Instance.Character.CollectedBabies = !GameManager.Instance.Character.CollectedBabies;
+            GameManager.Instance.Character.InputCollectBabies = !GameManager.Instance.Character.InputCollectBabies;
         }
 
         GameManager.Instance.Character.GetComponentInChildren<Animator>().SetTrigger("Call");
+
+        Assign = true;
     }
 
-    void GetBabyGetInput(InputAction.CallbackContext baby)
+    void BabyActionOutput(InputAction.CallbackContext baby)
     {
-        //if (_chara.BabyManager.BabiesInScene.Count > 0)
-        //_chara.BabyManager.CanWeGetBaby(_chara.BabyManager.BabieNumberOnBack);
+        Assign = false;
     }
-
-    private void GetUIInput(InputAction.CallbackContext ui)
-    {
-        //if (_chara.UI.activeInHierarchy)
-        //{
-        //    _taskBoard.HideTasks();
-        //    _chara.UI.SetActive(false);
-        //}
-        //else
-        //{
-        //    _chara.UI.SetActive(true);
-        //    _taskBoard.ShowTasks();
-        //}
-    }
-
     private void Awake()
     {
         _controls = new Controls();

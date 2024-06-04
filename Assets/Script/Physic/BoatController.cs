@@ -17,7 +17,7 @@ public class BoatController : MonoBehaviour
     {
         _chara = GetComponent<CharaMove>();
         _startRot = Motor.localRotation;
-        _rb = _chara._rb;
+        _rb = _chara.Rb;
     }
 
     private void FixedUpdate()

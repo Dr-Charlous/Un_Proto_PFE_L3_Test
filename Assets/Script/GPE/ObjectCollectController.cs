@@ -18,10 +18,10 @@ public class ObjectCollectController : MonoBehaviour
 
     private void Update()
     {
-        if (GameManager.Instance.Character.CollectedBabies)
+        if (GameManager.Instance.Character.InputCollectBabies)
         {
             GrabCheck(0);
-            GameManager.Instance.Character.CollectedBabies = false;
+            GameManager.Instance.Character.InputCollectBabies = false;
         }
 
         if (ObjectToGrab != null && !ObjectToGrab.gameObject.activeInHierarchy)
@@ -34,7 +34,6 @@ public class ObjectCollectController : MonoBehaviour
 
         if (obj != null)
         {
-            //obj.ChangeOutlineObject(obj.MaterialOutline, 1.1f);
             if (obj.UiFollow != null)
                 obj.UiFollow.ShowUi(true);
 
@@ -56,7 +55,6 @@ public class ObjectCollectController : MonoBehaviour
 
         if (obj != null)
         {
-            //obj.ChangeOutlineObject(obj.MaterialOutline, 0f);
             if (obj.UiFollow != null)
                 obj.UiFollow.ShowUi(false);
 

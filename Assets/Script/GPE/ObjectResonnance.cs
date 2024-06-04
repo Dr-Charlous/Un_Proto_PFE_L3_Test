@@ -168,14 +168,14 @@ public class ObjectResonnance : MonoBehaviour
                 GameManager.Instance.Character.transform.DOMove(LastPosPlayer, speed);
             }
 
-            GameManager.Instance.Character._rb.velocity = Vector3.zero;
+            GameManager.Instance.Character.Rb.velocity = Vector3.zero;
             GameManager.Instance.Character.transform.rotation = LastRotPlayer;
 
             LastPosPlayer = Vector3.zero;
             LastRotPlayer = Quaternion.Euler(Vector3.zero);
         }
 
-        GameManager.Instance.Character._rb.velocity = Vector3.zero;
+        GameManager.Instance.Character.Rb.velocity = Vector3.zero;
         GameManager.Instance.CamManager.Reset();
     }
 

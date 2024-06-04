@@ -3,10 +3,10 @@ using UnityEngine;
 
 public class BabyManager : MonoBehaviour
 {
-    [SerializeField] float _distanceFromBaby = 1.5f;
-    [SerializeField] float _distanceAssign = 10;
-
+    public float DistanceAssign = 10;
     public List<GameObject> BabiesInScene;
+
+    [SerializeField] float _distanceFromBaby = 1.5f;
 
     #region comm
     //private void Update()
@@ -139,7 +139,7 @@ public class BabyManager : MonoBehaviour
     public void BabyAction()
     {
         RaycastHit hit;
-        Physics.Raycast(transform.position, transform.TransformDirection(Vector3.back), out hit, _distanceAssign);
+        Physics.Raycast(transform.position, transform.TransformDirection(Vector3.back), out hit, DistanceAssign);
 
         if (hit.transform != null && hit.transform.GetComponentInParent<ObjectToPush>() != null)
         {
@@ -198,6 +198,6 @@ public class BabyManager : MonoBehaviour
     {
         Gizmos.DrawWireSphere(transform.position, _distanceFromBaby);
         Gizmos.color = Color.cyan;
-        Gizmos.DrawRay(transform.position, transform.TransformDirection(Vector3.back) * _distanceAssign);
+        Gizmos.DrawRay(transform.position, transform.TransformDirection(Vector3.back) * DistanceAssign);
     }
 }

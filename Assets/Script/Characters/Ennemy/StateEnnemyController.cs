@@ -22,6 +22,7 @@ public class StateEnnemyController : MonoBehaviour
     public float Speed = 10;
     public float DistanceSee = 4;
     public float TimeSinceNoSee = 10;
+    [HideInInspector] public float TimeChase = 0;
 
     public ObjectResonnance[] Resonance;
     public GameObject Fish;

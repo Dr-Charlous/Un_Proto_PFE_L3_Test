@@ -4,11 +4,9 @@ using UnityEngine;
 
 public class StateEnnemyChase : IStateEnnemy
 {
-    float _time;
-
     public void OnEnter(StateEnnemyController controller)
     {
-        _time = 0;
+        controller.TimeChase = 0;
     }
 
     public void UpdateState(StateEnnemyController controller)
@@ -25,23 +23,23 @@ public class StateEnnemyChase : IStateEnnemy
         if (RayMid && (hitMid.transform.gameObject.GetComponent<StateBabyController>() != null || hitMid.transform.gameObject.GetComponent<CharaMove>() != null) && controller.DistanceSee > Vector3.Distance(hitMid.transform.position, controller.transform.position))
         {
             controller.Target = hitMid.transform.gameObject;
-            _time = 0;
+            controller.TimeChase = 0;
         }
         else if (RayLeft && (hitLeft.transform.gameObject.GetComponent<StateBabyController>() != null || hitLeft.transform.gameObject.GetComponent<CharaMove>() != null) && controller.DistanceSee > Vector3.Distance(hitLeft.transform.position, controller.transform.position))
         {
             controller.Target = hitLeft.transform.gameObject;
-            _time = 0;
+            controller.TimeChase = 0;
         }
         else if (RayRight && (hitRight.transform.gameObject.GetComponent<StateBabyController>() != null || hitRight.transform.gameObject.GetComponent<CharaMove>() != null) && controller.DistanceSee > Vector3.Distance(hitRight.transform.position, controller.transform.position))
         {
             controller.Target = hitRight.transform.gameObject;
-            _time = 0;
+            controller.TimeChase = 0;
         }
         else
         {
-            _time += Time.deltaTime;
+            controller.TimeChase += Time.deltaTime;
 
-            if (_time > controller.TimeSinceNoSee)
+            if (controller.TimeChase > controller.TimeSinceNoSee)
             {
                 controller.IsChasing = false;
                 controller.Target = null;

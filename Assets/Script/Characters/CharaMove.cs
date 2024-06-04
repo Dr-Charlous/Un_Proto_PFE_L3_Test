@@ -9,28 +9,23 @@ public class CharaMove : MonoBehaviour
     public float Rotation;
 
     [Header("")]
-    [SerializeField] float _acceleration = 10;
-    [SerializeField] float _limitMaxSpeed = 5;
-    [SerializeField] float _decreaseSpeed = 1.01f;
-    [SerializeField] float _steering = 500f;
+    public float Acceleration;
+    public float LimitMaxSpeed;
+    public float DecreaseSpeed;
+    public float Steering;
 
     [Header("Components/Values :")]
-    public bool Collected;
-    public bool CollectedBabies;
-    public GameObject ParticuleSystem;
-    public Rigidbody _rb;
-
     public bool IsParalysed = false;
+    [HideInInspector] public bool InputCollectBabies;
     public ObjectResonnance TrapResonnance;
-
+    public Rigidbody Rb;
     public Animator Animator;
-    [SerializeField] Rigidbody CharacterRb;
 
     int _valueRotateBack;
 
     private void Awake()
     {
-        _rb = GetComponent<Rigidbody>();
+        Rb = GetComponent<Rigidbody>();
     }
 
     void Update()
@@ -42,7 +37,7 @@ public class CharaMove : MonoBehaviour
         }
         else
         {
-            _rb.velocity = Vector3.zero;
+            Rb.velocity = Vector3.zero;
 
             if (TrapResonnance != null)
                 TrapResonnance.BabyTarget.position += (TrapResonnance.BabyTarget.transform.right * Position + TrapResonnance.BabyTarget.transform.forward * Rotation) * TrapResonnance.SpeedBabyTarget * Time.deltaTime;
@@ -53,12 +48,12 @@ public class CharaMove : MonoBehaviour
     {
         if (Position != 0)
         {
-            if (_rb.velocity.magnitude < _limitMaxSpeed)
+            if (Rb.velocity.magnitude < LimitMaxSpeed)
             {
                 if (Position < 0)
-                    _rb.AddRelativeForce(Vector3.forward * Position * _acceleration * Time.fixedDeltaTime);
+                    Rb.AddRelativeForce(Vector3.forward * Position * Acceleration * Time.fixedDeltaTime);
                 else
-                    _rb.AddRelativeForce(Vector3.forward * Position * _acceleration / 2 * Time.fixedDeltaTime);
+                    Rb.AddRelativeForce(Vector3.forward * Position * Acceleration / 2 * Time.fixedDeltaTime);
 
                 if (_valueRotateBack == -1 && Position > 0 && Rotation == 0)
                 {
@@ -76,20 +71,20 @@ public class CharaMove : MonoBehaviour
         else
             _valueRotateBack = -1;
 
-        _rb.velocity = _rb.velocity / _decreaseSpeed;
+        Rb.velocity = Rb.velocity / DecreaseSpeed;
 
-        Animator.SetFloat("Move", CharacterRb.velocity.magnitude, 0.1f, Time.deltaTime);
+        Animator.SetFloat("Move", Rb.velocity.magnitude, 0.1f, Time.deltaTime);
     }
 
     void Rotate()
     {
         if (Rotation != 0)
         {
-            _rb.angularVelocity += Vector3.up * Rotation * _steering * Time.fixedDeltaTime;
+            Rb.angularVelocity += Vector3.up * Rotation * Steering * Time.fixedDeltaTime;
         }
         else
         {
-            _rb.angularVelocity = _rb.angularVelocity / _decreaseSpeed;
+            Rb.angularVelocity = Rb.angularVelocity / DecreaseSpeed;
         }
     }
 }

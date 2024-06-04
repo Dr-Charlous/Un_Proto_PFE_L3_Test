@@ -30,5 +30,9 @@ public class GameManager : MonoBehaviour
     public Death Win;
     public Respawn Respawn;
     public Animator Begin;
-    public EventSystem EventSystem;
+
+    public float ReduceFloatValue(float value, int valueBelow)
+    {
+        return Mathf.Round(value * (10f * valueBelow)) / (10f * valueBelow);
+    }
 }

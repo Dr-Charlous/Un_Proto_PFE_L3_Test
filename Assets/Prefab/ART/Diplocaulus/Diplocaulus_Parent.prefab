@@ -5434,18 +5434,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Position: 0
   Rotation: 0
-  _acceleration: 15
-  _limitMaxSpeed: 4
-  _decreaseSpeed: 1.02
-  _steering: 1
-  Collected: 0
-  CollectedBabies: 0
-  ParticuleSystem: {fileID: 2068147541598324142}
-  _rb: {fileID: 6626216848454042332}
+  Acceleration: 15
+  LimitMaxSpeed: 4
+  DecreaseSpeed: 1.02
+  Steering: 1
   IsParalysed: 0
+  InputCollectBabies: 0
   TrapResonnance: {fileID: 0}
+  Rb: {fileID: 0}
   Animator: {fileID: 8039924286163542086}
-  CharacterRb: {fileID: 6626216848454042332}
 --- !u!1001 &6374617602515235713
 PrefabInstance:
   m_ObjectHideFlags: 0
