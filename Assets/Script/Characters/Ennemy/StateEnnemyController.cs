@@ -30,6 +30,8 @@ public class StateEnnemyController : MonoBehaviour
 
     public int Iteration;
     public float DistanceNext;
+    public float ValueLerpRotateMesh;
+    public float ValueLerpMoveMesh;
     public bool IsEating = false;
     public bool IsChasing = false;
 
@@ -108,15 +110,14 @@ public class StateEnnemyController : MonoBehaviour
         {
             Quaternion lookRotation = Quaternion.LookRotation(Direction);
             Vector3 rotation = Quaternion.Lerp(EnnemyMesh.transform.rotation, lookRotation, Time.deltaTime * 10).eulerAngles;
-            //EnnemyMesh.transform.rotation = Quaternion.Euler(0f, rotation.y, 0f);
-            EnnemyMesh.transform.DORotate(Quaternion.Euler(0f, rotation.y, 0f).eulerAngles, 10);
+
+            //EnnemyMesh.transform.DORotate(Quaternion.Euler(0f, rotation.y, 0f).eulerAngles, 10);
+            EnnemyMesh.transform.rotation = Quaternion.Lerp(EnnemyMesh.transform.rotation, Quaternion.Euler(0f, rotation.y, 0f), ValueLerpRotateMesh);
         }
 
         Vector3 destinationPos = new Vector3(transform.position.x, EnnemyMesh.transform.position.y, transform.position.z);
-        //float distance = (new Vector3(RoundPositions[Iteration].position.x, 0, RoundPositions[Iteration].position.z) - new Vector3(transform.position.x, 0, transform.position.z)).magnitude;
 
-        //EnnemyMesh.transform.DOMove(destinationPos, distance * Speed * Time.deltaTime);
-        EnnemyMesh.transform.position = destinationPos;
+        EnnemyMesh.transform.position = Vector3.Lerp(EnnemyMesh.transform.position, destinationPos, ValueLerpMoveMesh);
     }
 
     private void OnDrawGizmos()

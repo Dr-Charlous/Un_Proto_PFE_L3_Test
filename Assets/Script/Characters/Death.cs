@@ -33,8 +33,8 @@ public class Death : MonoBehaviour
         if (value)
         {
             GameManager.Instance.Speaker.gameObject.SetActive(true);
+            GameManager.Instance.Speaker.ActiveUi(true);
             GameManager.Instance.Character.IsParalysed = false;
-            yield return new WaitForSeconds(0.1f);
             GameManager.Instance.Speaker.StartLastDialogue();
         }
 

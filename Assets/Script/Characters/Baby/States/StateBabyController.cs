@@ -123,7 +123,7 @@ public class StateBabyController : MonoBehaviour
 
         ObjectBaby.transform.DOKill();
         ObjectBaby.transform.DOMove(transform.position, 0.5f);
-        //ObjectBaby.transform.position = transform.position;
+        //ObjectBaby.transform.position = Vector3.Lerp(ObjectBaby.transform.position, transform.position, 0.5f);
 
         Animator.SetFloat("Move", Agent.velocity.magnitude, 0.1f, Time.deltaTime);
     }
