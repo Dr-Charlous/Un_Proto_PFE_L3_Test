@@ -31,28 +31,28 @@ public class DebugMod : MonoBehaviour
             _canvaDebug.SetActive(_debugModShow);
         }
 
-        if (Input.GetKeyDown(KeyCode.F2) && _ennemyNumber > 0)
-        {
-            _ennemyNumber--;
-        }
-
-        if (Input.GetKeyDown(KeyCode.F3) && _ennemyNumber < _ennemyController.Length - 1)
-        {
-            _ennemyNumber++;
-        }
-
-        if (Input.GetKeyDown(KeyCode.F4) && _babyNumber > 0)
-        {
-            _babyNumber--;
-        }
-
-        if (Input.GetKeyDown(KeyCode.F5) && _babyNumber < _babyController.Length - 1)
-        {
-            _babyNumber++;
-        }
-
         if (_debugModShow)
         {
+            if (Input.GetKeyDown(KeyCode.F2) && _ennemyNumber > 0)
+            {
+                _ennemyNumber--;
+            }
+
+            if (Input.GetKeyDown(KeyCode.F3) && _ennemyNumber < _ennemyController.Length - 1)
+            {
+                _ennemyNumber++;
+            }
+
+            if (Input.GetKeyDown(KeyCode.F4) && _babyNumber > 0)
+            {
+                _babyNumber--;
+            }
+
+            if (Input.GetKeyDown(KeyCode.F5) && _babyNumber < _babyController.Length - 1)
+            {
+                _babyNumber++;
+            }
+
             UpdateText(PlayerData(), _textMeshPro[0]);
 
             UpdateText(EnnemyData(_ennemyController, _ennemyNumber), _textMeshPro[1]);
@@ -305,7 +305,7 @@ public class DebugMod : MonoBehaviour
                 UpdateText(GpeData(obj2), _textMeshPro[3]);
 
             if (obj == null && obj1 == null && obj2 == null)
-                _textMeshPro[3].text = $"Pas de signal on dirait :( \n";
+                _textMeshPro[3].text = $"Aucun GPE en vue ^^' \n";
         }
     }
 

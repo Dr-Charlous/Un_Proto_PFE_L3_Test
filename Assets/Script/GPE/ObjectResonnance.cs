@@ -139,6 +139,7 @@ public class ObjectResonnance : MonoBehaviour
         IsPlayerInside = false;
 
         _uiFlollowing.gameObject.SetActive(true);
+        _babyZone.ObjectLastExit = null;
     }
 
     public void ChangePlayerPos()
