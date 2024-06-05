@@ -20,6 +20,7 @@ public class GameManager : MonoBehaviour
     #endregion
 
     public CharaMove Character;
+    public InputManager Inputs;
     public BabyManager BabyManager;
     public NestCreation Nest;
     public UiTextDialogueSpeaker Speaker;

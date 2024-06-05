@@ -13,6 +13,8 @@ public class InputManager : MonoBehaviour
     [HideInInspector] public bool Call;
     [HideInInspector] public bool Assign;
 
+    public bool IsGamepad;
+
     private void OnEnable()
     {
         _controls.Diplocaulus.Enable();
@@ -43,6 +45,14 @@ public class InputManager : MonoBehaviour
         _controls.Diplocaulus.BabyAction.canceled -= BabyActionOutput;
     }
 
+    void VerifyDevice(InputAction.CallbackContext input)
+    {
+        if (input.action.activeControl.device.name == "Keyboard" || input.action.activeControl.device.name == "Mouse")
+            IsGamepad = false;
+        else
+            IsGamepad = true;
+    }
+
     void GetMoveInputs(InputAction.CallbackContext move)
     {
         GameManager.Instance.Character.Position = -move.ReadValue<Vector2>().y;
@@ -50,16 +60,22 @@ public class InputManager : MonoBehaviour
         
         Vertical = -move.ReadValue<Vector2>().y;
         Horizontal = move.ReadValue<Vector2>().x;
+
+        VerifyDevice(move);
     }
 
     void GetCamMoveInputs(InputAction.CallbackContext move)
     {
         GameManager.Instance.CamManager.Rotation = move.ReadValue<Vector2>().x;
+
+        VerifyDevice(move);
     }
 
     void GetCamResetInput(InputAction.CallbackContext reset)
     {
         GameManager.Instance.CamManager.Reset();
+
+        VerifyDevice(reset);
     }
 
     void GetBabyFollowInput(InputAction.CallbackContext baby)
@@ -74,11 +90,14 @@ public class InputManager : MonoBehaviour
         GameManager.Instance.Character.GetComponentInChildren<Animator>().SetTrigger("Call");
 
         Call = true;
+        VerifyDevice(baby);
     }
 
     void BabyFollowOutput(InputAction.CallbackContext baby)
     {
         Call = false;
+
+        VerifyDevice(baby);
     }
     
     void GetBabyActionInput(InputAction.CallbackContext baby)
@@ -93,14 +112,20 @@ public class InputManager : MonoBehaviour
         GameManager.Instance.Character.GetComponentInChildren<Animator>().SetTrigger("Call");
 
         Assign = true;
+
+        VerifyDevice(baby);
     }
 
     void BabyActionOutput(InputAction.CallbackContext baby)
     {
         Assign = false;
+
+        VerifyDevice(baby);
     }
+
     private void Awake()
     {
         _controls = new Controls();
+        IsGamepad = false;
     }
 }
