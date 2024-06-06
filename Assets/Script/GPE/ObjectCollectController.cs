@@ -87,7 +87,14 @@ public class ObjectCollectController : MonoBehaviour
 
             baby.BabiesInScene[i].GetComponentInChildren<StateBabyController>().TargetObject = target;
             GameManager.Instance.BabyManager.BabiesInScene[i].GetComponentInChildren<StateBabyController>().isGoingToGrab = true;
-            baby.BabyCollect();
+
+            if (baby.BabyCollect())
+            {
+                target.GetComponentInChildren<ObjectCollect>().UiFollow.gameObject.SetActive(true);
+
+                baby.BabiesInScene[i].GetComponentInChildren<StateBabyController>().TargetObject = null;
+                GameManager.Instance.BabyManager.BabiesInScene[i].GetComponentInChildren<StateBabyController>().isGoingToGrab = false;
+            }
         }
     }
 }

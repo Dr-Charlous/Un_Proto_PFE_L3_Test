@@ -1,5 +1,4 @@
 using DG.Tweening;
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -22,7 +21,6 @@ public class NestCreation : MonoBehaviour
     [SerializeField] ScriptableDialogue _dialogueMiamiam;
     [SerializeField] UiFollowing _uiFollow;
 
-    UiTextDialogueSpeaker _speaker;
     int _value = 0;
 
     public Transform[] Entries;
@@ -31,33 +29,46 @@ public class NestCreation : MonoBehaviour
 
     public GameObject Fish;
 
+    bool _isActionned = false;
+
     private void Start()
     {
         _material.color = _colorInitial;
         _transition.SetActive(false);
 
-        _speaker = GameManager.Instance.Character.GetComponentInChildren<UiTextDialogueSpeaker>();
-
         _itemsVerification = new bool[_itemsToConstruct.Length];
 
         _uiFollow.UpdateText($"{_value} / {_itemsToConstruct.Length}");
+
+        _isActionned = false;
+    }
+
+    private void Update()
+    {
+        if (IsFeed && IsCreated && !_isActionned)
+        {
+            _isActionned = true;
+            FeedBabies();
+        }
     }
 
     private void OnTriggerEnter(Collider other)
     {
         VerificationItem(other);
 
-        if (other.gameObject == Fish && IsCreated == true)
+        if (other.gameObject == Fish)
         {
-            FeedBabies();
+            IsFeed = true;
         }
     }
 
     void FeedBabies()
     {
-        IsFeed = true;
-        Fish.SetActive(false);
-        _transition.SetActive(true);
+        if (Fish != null)
+        {
+            Fish.SetActive(false);
+            _transition.SetActive(true);
+        }
 
         List<GameObject> baby = GameManager.Instance.BabyManager.BabiesInScene;
 

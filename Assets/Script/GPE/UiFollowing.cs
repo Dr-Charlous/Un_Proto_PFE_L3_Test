@@ -7,7 +7,8 @@ using static UnityEngine.Rendering.DebugUI;
 
 public class UiFollowing : MonoBehaviour
 {
-    [SerializeField] TextMeshProUGUI _textMeshPro;
+    [SerializeField] TextMeshProUGUI _textMeshProGamePad;
+    [SerializeField] TextMeshProUGUI _textMeshProKeyboard;
     [SerializeField] GameObject _objUiGamePad;
     [SerializeField] GameObject _objUiKeyboard;
 
@@ -33,8 +34,10 @@ public class UiFollowing : MonoBehaviour
 
     public void UpdateText(string text)
     {
-        if (_textMeshPro != null)
-            _textMeshPro.text = text;
+        if (_textMeshProGamePad != null)
+            _textMeshProGamePad.text = text;
+        if (_textMeshProKeyboard != null)
+            _textMeshProKeyboard.text = text;
     }
 
     public void ShowUi(bool value)

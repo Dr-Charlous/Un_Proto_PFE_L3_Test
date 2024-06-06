@@ -6,18 +6,35 @@ using UnityEngine.UIElements;
 
 public class Cinematic : MonoBehaviour
 {
-    [SerializeField] Transform _camPos;
+    [SerializeField] Transform[] _camPos;
     [SerializeField] ScriptableDialogue _dialogueNidBuild;
+    [SerializeField] EndPousuite _endPoursuite;
     [SerializeField] float _value;
 
     public IEnumerator Cinematic1()
     {
         GameManager.Instance.Character.IsParalysed = true;
-        GameManager.Instance.CamManager.TemporaryPos = _camPos;
 
-        float speed = (GameManager.Instance.CamManager.Speed * 100 + _value) / Vector3.Distance(Camera.main.transform.position, _camPos.position);
+        GameManager.Instance.CamManager.TemporaryPos = _camPos[0];
 
-        yield return new WaitForSeconds(speed);
+        //float speed = (GameManager.Instance.CamManager.Speed * 100 + _value) / Vector3.Distance(Camera.main.transform.position, _camPos[i].position);
+
+        yield return new WaitForSeconds(_value * Time.deltaTime);
+
+        GameManager.Instance.CamManager.TemporaryPos = _camPos[1];
+
+        StartCoroutine(Cinematic2());
+    }
+
+    IEnumerator Cinematic2()
+    {
+        if (_endPoursuite != null)
+            _endPoursuite.Begin(GameManager.Instance.Character);
+
+        //float speed = (GameManager.Instance.CamManager.Speed * 100 + _value) / Vector3.Distance(Camera.main.transform.position, _camPos[i].position);
+
+        yield return new WaitForSeconds(_value * Time.deltaTime * 2);
+
 
         if (_dialogueNidBuild != null)
             GameManager.Instance.Speaker.StartDialogue(_dialogueNidBuild);

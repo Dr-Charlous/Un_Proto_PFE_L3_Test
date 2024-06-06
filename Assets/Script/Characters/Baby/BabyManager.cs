@@ -159,7 +159,7 @@ public class BabyManager : MonoBehaviour
         }
     }
 
-    public void BabyCollect()
+    public bool BabyCollect()
     {
         bool isCollecting = false;
 
@@ -185,6 +185,8 @@ public class BabyManager : MonoBehaviour
                 break;
             }
         }
+
+        return isCollecting;
     }
 
     public void ChangeOrder()

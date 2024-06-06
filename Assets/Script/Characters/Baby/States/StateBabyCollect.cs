@@ -1,8 +1,3 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-
 public class StateBabyCollect : IState
 {
     public void OnEnter(StateBabyController controller)
@@ -27,6 +22,13 @@ public class StateBabyCollect : IState
             && controller.isTransporting == false)
         {
             controller.GetObj(controller.OnTriggerEnterScript.ObjectTouch.GetComponent<ObjectCollect>().IsPortable);
+            controller.ChangeState(controller.StateFollow);
+        }
+
+        if (controller.ParentObject.name.Contains("Bone"))
+        {
+            controller.isGoingToGrab = false;
+
             controller.ChangeState(controller.StateFollow);
         }
     }

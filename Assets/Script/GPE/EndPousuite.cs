@@ -1,5 +1,4 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class EndPousuite : MonoBehaviour
@@ -28,39 +27,33 @@ public class EndPousuite : MonoBehaviour
     {
         if (BeginCollider.ObjectTouch != null && isBeginActif)
         {
-            CharaMove chara = BeginCollider.ObjectTouch.GetComponent<CharaMove>();
-
-            if (chara != null)
-            {
-                BeginCollider.gameObject.SetActive(false);
-                StartCoroutine(WaitBegin());
-                isBeginActif = false;
-            }
+            Begin(BeginCollider.ObjectTouch.GetComponent<CharaMove>());
         }
 
         if (EndCollider.ObjectTouch != null && isEndActif)
         {
-            CharaMove chara1 = EndCollider.ObjectTouch.GetComponent<CharaMove>();
-
-            if (chara1 != null)
-            {
-                EndCollider.gameObject.SetActive(false);
-                EndStone.SetActive(true);
-                Destroy(Death);
-                isEndActif = false;
-            }
+            End(EndCollider.ObjectTouch.GetComponent<CharaMove>());
         }
+    }
 
-        IEnumerator WaitBegin()
+    public void Begin(CharaMove chara)
+    {
+        if (chara != null)
         {
-            GameManager.Instance.CamManager.TemporaryPos = CamTransform;
+            BeginCollider.gameObject.SetActive(false);
+            StartCoroutine(WaitBegin());
+            isBeginActif = false;
+        }
+    }
 
-            yield return new WaitForSeconds(GameManager.Instance.CamManager.Speed * Vector3.Distance(Camera.main.transform.position, CamTransform.position) + TimeWait);
-
-            GameManager.Instance.CamManager.TemporaryPos = null;
-
-            Death = Instantiate(DeathPrefab);
-            BeginStone.SetActive(true);
+    void End(CharaMove chara)
+    {
+        if (chara != null)
+        {
+            EndCollider.gameObject.SetActive(false);
+            EndStone.SetActive(true);
+            Destroy(Death);
+            isEndActif = false;
         }
     }
 
@@ -70,12 +63,34 @@ public class EndPousuite : MonoBehaviour
         isEndActif = true;
         BeginCollider.gameObject.SetActive(true);
         EndCollider.gameObject.SetActive(true);
-        BeginStone.SetActive(false);
+        if (BeginStone != null)
+            BeginStone.SetActive(false);
         EndStone.SetActive(false);
 
         if (Death != null)
             Destroy(Death);
         if (GameManager.Instance.CamManager.TemporaryPos != null)
             GameManager.Instance.CamManager.TemporaryPos = null;
+
+        if (BeginStone == null)
+        {
+            Begin(GameManager.Instance.Character);
+            GameManager.Instance.Begin.SetBool("End", false);
+        }
+    }
+
+    IEnumerator WaitBegin()
+    {
+        if (BeginStone != null)
+            GameManager.Instance.CamManager.TemporaryPos = CamTransform;
+
+        yield return new WaitForSeconds(GameManager.Instance.CamManager.Speed * Vector3.Distance(Camera.main.transform.position, CamTransform.position) + TimeWait);
+
+        GameManager.Instance.CamManager.TemporaryPos = null;
+
+        Death = Instantiate(DeathPrefab);
+
+        if (BeginStone != null)
+            BeginStone.SetActive(true);
     }
 }
