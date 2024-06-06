@@ -84,7 +84,7 @@ public class EndPousuite : MonoBehaviour
         if (BeginStone != null)
             GameManager.Instance.CamManager.TemporaryPos = CamTransform;
 
-        yield return new WaitForSeconds(GameManager.Instance.CamManager.Speed * Vector3.Distance(Camera.main.transform.position, CamTransform.position) + TimeWait);
+        yield return new WaitForSeconds(GameManager.Instance.CamManager.ActualSpeed * Vector3.Distance(Camera.main.transform.position, CamTransform.position) + TimeWait);
 
         GameManager.Instance.CamManager.TemporaryPos = null;
 

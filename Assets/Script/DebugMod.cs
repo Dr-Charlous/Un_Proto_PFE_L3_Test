@@ -221,6 +221,7 @@ public class DebugMod : MonoBehaviour
 
         dataBaby += $"\n";
         dataBaby += $"State : {baby[iteration].currentState}\n";
+        dataBaby += $"NavMesh Destination : {baby[iteration].Agent.destination}\n";
 
         return dataBaby;
     }

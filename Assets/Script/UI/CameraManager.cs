@@ -5,10 +5,11 @@ public class CameraManager : MonoBehaviour
 {
     public Transform TemporaryPos;
     public Transform PlayerCamPivot;
+    public bool IsGamepad;
     public float Rotation;
-    public float Speed;
-
-    [SerializeField] float _speedCam;
+    public float SpeedGamepad;
+    public float SpeedKeyboard;
+    public float ActualSpeed;
 
     float _valueTime;
 
@@ -22,7 +23,12 @@ public class CameraManager : MonoBehaviour
         Transition();
 
         if (Rotation != 0)
-            PlayerCamPivot.rotation *= Quaternion.Euler(Vector3.up * Rotation * _speedCam * Time.deltaTime);
+            PlayerCamPivot.rotation *= Quaternion.Euler(Vector3.up * Rotation * ActualSpeed * Time.deltaTime);
+
+        if (IsGamepad)
+            ActualSpeed = SpeedGamepad;
+        else
+            ActualSpeed = SpeedKeyboard;
     }
 
     void UpdateCam(Transform transformCam)
@@ -43,7 +49,7 @@ public class CameraManager : MonoBehaviour
         {
             if (_valueTime <= 1 && Vector3.Lerp(transform.position, TemporaryPos.position, _valueTime) != TemporaryPos.position)
             {
-                _valueTime += Time.deltaTime * Speed;
+                _valueTime += Time.deltaTime * ActualSpeed;
                 CamGoTo(TemporaryPos, _valueTime / Vector3.Distance(transform.position, TemporaryPos.position));
 
                 if (_valueTime > 1)
@@ -59,7 +65,7 @@ public class CameraManager : MonoBehaviour
         {
             if (_valueTime >= 0 && Vector3.Lerp(transform.position, GameManager.Instance.CamPlayer.position, (1 - _valueTime)) != GameManager.Instance.CamPlayer.position)
             {
-                _valueTime -= Time.deltaTime * Speed;
+                _valueTime -= Time.deltaTime * ActualSpeed;
                 CamGoTo(GameManager.Instance.CamPlayer, (1 - _valueTime) / Vector3.Distance(transform.position, GameManager.Instance.CamPlayer.position));
 
                 if (_valueTime < 0)
@@ -76,6 +82,6 @@ public class CameraManager : MonoBehaviour
     public void Reset()
     {
         PlayerCamPivot.DOComplete();
-        PlayerCamPivot.DOLocalRotate(Vector3.zero, _speedCam * Time.deltaTime);
+        PlayerCamPivot.DOLocalRotate(Vector3.zero, ActualSpeed * Time.deltaTime);
     }
 }

@@ -45,19 +45,21 @@ public class InputManager : MonoBehaviour
         _controls.Diplocaulus.BabyAction.canceled -= BabyActionOutput;
     }
 
-    void VerifyDevice(InputAction.CallbackContext input)
+    bool VerifyDevice(InputAction.CallbackContext input)
     {
         if (input.action.activeControl.device.name == "Keyboard" || input.action.activeControl.device.name == "Mouse")
             IsGamepad = false;
         else
             IsGamepad = true;
+
+        return IsGamepad;
     }
 
     void GetMoveInputs(InputAction.CallbackContext move)
     {
         GameManager.Instance.Character.Position = -move.ReadValue<Vector2>().y;
         GameManager.Instance.Character.Rotation = move.ReadValue<Vector2>().x;
-        
+
         Vertical = -move.ReadValue<Vector2>().y;
         Horizontal = move.ReadValue<Vector2>().x;
 
@@ -68,7 +70,7 @@ public class InputManager : MonoBehaviour
     {
         GameManager.Instance.CamManager.Rotation = move.ReadValue<Vector2>().x;
 
-        VerifyDevice(move);
+        GameManager.Instance.CamManager.IsGamepad = VerifyDevice(move);
     }
 
     void GetCamResetInput(InputAction.CallbackContext reset)
@@ -81,13 +83,14 @@ public class InputManager : MonoBehaviour
     void GetBabyFollowInput(InputAction.CallbackContext baby)
     {
         if (GameManager.Instance.BabyManager.BabiesInScene.Count > 0 && !GameManager.Instance.Character.IsParalysed)
+        {
             GameManager.Instance.BabyManager.BabyFollow();
+            GameManager.Instance.Character.GetComponentInChildren<Animator>().SetTrigger("Call");
+        }
         else if (GameManager.Instance.Character.TrapResonnance != null)
         {
             GameManager.Instance.Character.TrapResonnance.PlayerGetOutside();
         }
-
-        GameManager.Instance.Character.GetComponentInChildren<Animator>().SetTrigger("Call");
 
         Call = true;
         VerifyDevice(baby);
@@ -99,7 +102,7 @@ public class InputManager : MonoBehaviour
 
         VerifyDevice(baby);
     }
-    
+
     void GetBabyActionInput(InputAction.CallbackContext baby)
     {
         if (!GameManager.Instance.Character.IsParalysed)

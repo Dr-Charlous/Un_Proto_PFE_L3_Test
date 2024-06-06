@@ -24,13 +24,6 @@ public class StateBabyCollect : IState
             controller.GetObj(controller.OnTriggerEnterScript.ObjectTouch.GetComponent<ObjectCollect>().IsPortable);
             controller.ChangeState(controller.StateFollow);
         }
-
-        if (controller.ParentObject.name.Contains("Bone"))
-        {
-            controller.isGoingToGrab = false;
-
-            controller.ChangeState(controller.StateFollow);
-        }
     }
 
     public void OnExit(StateBabyController controller)
