@@ -1,9 +1,5 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using DG.Tweening;
-using DG.Tweening.Core;
-using DG.Tweening.Plugins.Options;
 
 public class ObjectResonnance : MonoBehaviour
 {
@@ -37,7 +33,8 @@ public class ObjectResonnance : MonoBehaviour
     {
         if (IsPlayerInside)
         {
-            PlaySound(_source, _clip);
+            if (_source != null && _clip != null)
+                PlaySound(_source, _clip);
             IsResonating = true;
             BabyOut();
         }
@@ -70,15 +67,18 @@ public class ObjectResonnance : MonoBehaviour
 
     Vector3 NearestEntry(Vector3 lastPos)
     {
-        Vector3 farAway = Vector3.zero;
+        Vector3 farAway = lastPos;
         float maxValue = 0;
 
-        for (int i = 0; i < _entries.Length; i++)
+        if (_entries.Length > 0)
         {
-            if (Vector3.Distance(lastPos, _entries[i].position) > maxValue)
+            for (int i = 0; i < _entries.Length; i++)
             {
-                farAway = _entries[i].position;
-                maxValue = Vector3.Distance(lastPos, _entries[i].position);
+                if (Vector3.Distance(lastPos, _entries[i].position) > maxValue)
+                {
+                    farAway = _entries[i].position;
+                    maxValue = Vector3.Distance(lastPos, _entries[i].position);
+                }
             }
         }
 
@@ -112,7 +112,8 @@ public class ObjectResonnance : MonoBehaviour
         GameManager.Instance.Character.TrapResonnance = this;
         IsPlayerInside = true;
 
-        _uiFlollowing.gameObject.SetActive(false);
+        if (_uiFlollowing != null)
+            _uiFlollowing.gameObject.SetActive(false);
     }
 
     public void PlayerGetOutside()
@@ -138,7 +139,8 @@ public class ObjectResonnance : MonoBehaviour
         GameManager.Instance.Character.TrapResonnance = null;
         IsPlayerInside = false;
 
-        _uiFlollowing.gameObject.SetActive(true);
+        if (_uiFlollowing != null)
+            _uiFlollowing.gameObject.SetActive(true);
         _babyZone.ObjectLastExit = null;
     }
 
