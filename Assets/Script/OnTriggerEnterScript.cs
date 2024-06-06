@@ -28,7 +28,11 @@ public class OnTriggerEnterScript : MonoBehaviour
 
     private void OnTriggerExit(Collider other)
     {
-        ObjectLastExit = ObjectStay;
+        if (isStayMode && other.gameObject == ObjectStay)
+            ObjectLastExit = ObjectStay;
+        else if (isEnterMode && other.gameObject == ObjectTouch)
+            ObjectLastExit = ObjectTouch;
+
         ObjectStay = null;
         ObjectTouch = null;
         isTrigger = false;
