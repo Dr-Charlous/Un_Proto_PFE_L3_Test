@@ -21,19 +21,23 @@ public class Cinematic : MonoBehaviour
 
         yield return new WaitForSeconds(_value * Time.deltaTime);
 
-        GameManager.Instance.CamManager.TemporaryPos = _camPos[1];
+        if (_camPos.Length > 1)
+            GameManager.Instance.CamManager.TemporaryPos = _camPos[1];
 
         StartCoroutine(Cinematic2());
     }
 
     IEnumerator Cinematic2()
     {
-        if (_endPoursuite != null)
-            _endPoursuite.Begin(GameManager.Instance.Character);
+        if (_camPos.Length > 1)
+        {
+            if (_endPoursuite != null)
+                _endPoursuite.Begin(GameManager.Instance.Character);
 
-        //float speed = (GameManager.Instance.CamManager.Speed * 100 + _value) / Vector3.Distance(Camera.main.transform.position, _camPos[i].position);
+            //float speed = (GameManager.Instance.CamManager.Speed * 100 + _value) / Vector3.Distance(Camera.main.transform.position, _camPos[i].position);
 
-        yield return new WaitForSeconds(_value * Time.deltaTime * 2);
+            yield return new WaitForSeconds(_value * Time.deltaTime * 2);
+        }
 
 
         if (_dialogueNidBuild != null)

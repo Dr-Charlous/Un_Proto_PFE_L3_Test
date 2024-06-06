@@ -84,7 +84,7 @@ public class ObjectToPush : MonoBehaviour
         {
             for (int i = 0; i < CheckBlockers.Length; i++)
             {
-                if (CheckBlockers[i].ValuePush < 1)
+                if (CheckBlockers[i].ValuePush < DecreasePushValue)
                     isEveryOneHere = false;
             }
         }

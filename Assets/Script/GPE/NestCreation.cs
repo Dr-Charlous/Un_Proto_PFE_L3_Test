@@ -21,6 +21,8 @@ public class NestCreation : MonoBehaviour
     [SerializeField] ScriptableDialogue _dialogueMiamiam;
     [SerializeField] UiFollowing _uiFollow;
 
+    [SerializeField] GameObject _objBlocking;
+
     int _value = 0;
 
     public Transform[] Entries;
@@ -81,6 +83,9 @@ public class NestCreation : MonoBehaviour
 
         if (_dialogueMiamiam != null)
             GameManager.Instance.Speaker.StartDialogue(_dialogueMiamiam);
+
+        if (_objBlocking != null && _objBlocking.activeInHierarchy)
+            _objBlocking.SetActive(false);
     }
 
     void VerificationItem(Collider other)
