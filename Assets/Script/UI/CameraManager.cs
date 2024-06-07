@@ -6,6 +6,7 @@ public class CameraManager : MonoBehaviour
     public Transform TemporaryPos;
     public Transform PlayerCamPivot;
     public bool IsGamepad;
+    public bool IsCamOrbital;
     public float Rotation;
     public float SpeedGamepad;
     public float SpeedKeyboard;
@@ -25,10 +26,13 @@ public class CameraManager : MonoBehaviour
         if (Rotation != 0)
             PlayerCamPivot.rotation *= Quaternion.Euler(Vector3.up * Rotation * ActualSpeed * Time.deltaTime);
 
-        if (IsGamepad)
-            ActualSpeed = SpeedGamepad;
-        else
-            ActualSpeed = SpeedKeyboard;
+        if (IsCamOrbital)
+        {
+            if (IsGamepad)
+                ActualSpeed = SpeedGamepad;
+            else
+                ActualSpeed = SpeedKeyboard;
+        }
     }
 
     void UpdateCam(Transform transformCam)
