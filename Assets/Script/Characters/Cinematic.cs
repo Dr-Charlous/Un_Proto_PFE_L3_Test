@@ -36,7 +36,7 @@ public class Cinematic : MonoBehaviour
 
             //float speed = (GameManager.Instance.CamManager.Speed * 100 + _value) / Vector3.Distance(Camera.main.transform.position, _camPos[i].position);
 
-            yield return new WaitForSeconds(_value * Time.deltaTime * 2);
+            yield return new WaitForSeconds(_value * Time.deltaTime);
         }
 
 

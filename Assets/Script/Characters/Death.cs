@@ -12,7 +12,7 @@ public class Death : MonoBehaviour
         _UIDeath.SetActive(false);
     }
 
-    public IEnumerator ActiveUI(bool value)
+    public IEnumerator ActiveUI(bool value, bool isEnd)
     {
         //_UIDeath.SetActive(true);
         GameManager.Instance.Speaker.ActiveUi(false);
@@ -24,7 +24,7 @@ public class Death : MonoBehaviour
         yield return new WaitForSeconds(1.5f);
 
         if (value)
-            GameManager.Instance.Respawn.RespawnEntities();
+            GameManager.Instance.Respawn.RespawnEntities(isEnd);
         else
             SceneManager.LoadScene(_scene);
 

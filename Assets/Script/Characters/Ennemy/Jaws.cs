@@ -13,7 +13,7 @@ public class Jaws : MonoBehaviour
         if (other.transform.gameObject.GetComponent<StateBabyController>() != null || other.GetComponent<CharaMove>() != null && CanBite)
         {
             IsBitting = true;
-            StartCoroutine(GameManager.Instance.Death.ActiveUI(true));
+            StartCoroutine(GameManager.Instance.Death.ActiveUI(true, false));
 
             CharaMove move = other.transform.gameObject.GetComponent<CharaMove>();
             if (move != null)

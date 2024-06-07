@@ -9,7 +9,7 @@ public class EndWin : MonoBehaviour
     {
         if (other.GetComponent<CharaMove>() != null)
         {
-            StartCoroutine(GameManager.Instance.Win.ActiveUI(false));
+            StartCoroutine(GameManager.Instance.Win.ActiveUI(false, false));
 
             GameManager.Instance.Character.IsParalysed = true;
         }

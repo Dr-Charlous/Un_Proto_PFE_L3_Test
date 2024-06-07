@@ -10,6 +10,7 @@ public class CameraManager : MonoBehaviour
     public float Rotation;
     public float SpeedGamepad;
     public float SpeedKeyboard;
+    public float ActualSpeedRotate;
     public float ActualSpeed;
 
     float _valueTime;
@@ -24,14 +25,14 @@ public class CameraManager : MonoBehaviour
         Transition();
 
         if (Rotation != 0)
-            PlayerCamPivot.rotation *= Quaternion.Euler(Vector3.up * Rotation * ActualSpeed * Time.deltaTime);
+            PlayerCamPivot.rotation *= Quaternion.Euler(Vector3.up * Rotation * ActualSpeedRotate * Time.deltaTime);
 
         if (IsCamOrbital)
         {
             if (IsGamepad)
-                ActualSpeed = SpeedGamepad;
+                ActualSpeedRotate = SpeedGamepad;
             else
-                ActualSpeed = SpeedKeyboard;
+                ActualSpeedRotate = SpeedKeyboard;
         }
     }
 

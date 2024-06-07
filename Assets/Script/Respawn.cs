@@ -19,7 +19,7 @@ public class Respawn : MonoBehaviour
         }
     }
 
-    public void RespawnEntities()
+    public void RespawnEntities(bool isEnd)
     {
         for (int i = 0; i < Entities.Length; i++)
         {
@@ -29,9 +29,10 @@ public class Respawn : MonoBehaviour
                 Entities[i].GetComponentInChildren<StateBabyController>().Agent.destination = Entities[i].GetComponentInChildren<StateBabyController>().TargetParent.position;
             }
             else
-            Entities[i].position = new Vector3(RespawnPoint.position.x, Entities[i].position.y, RespawnPoint.position.z);
+                Entities[i].position = new Vector3(RespawnPoint.position.x, Entities[i].position.y, RespawnPoint.position.z);
         }
 
-        GameManager.Instance.EndPoursuite.Initialize();
+        if (isEnd)
+            GameManager.Instance.EndPoursuite.Initialize();
     }
 }
