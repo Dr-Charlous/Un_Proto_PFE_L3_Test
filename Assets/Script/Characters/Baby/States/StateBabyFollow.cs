@@ -22,6 +22,8 @@ public class StateBabyFollow : IState
             controller.Target = controller.TargetParent;
             controller.Agent.SetDestination(controller.Target.position);
         }
+
+        controller.isGoingToGrab = false;
     }
 
     public void OnExit(StateBabyController controller)

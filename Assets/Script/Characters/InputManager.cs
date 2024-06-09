@@ -109,7 +109,7 @@ public class InputManager : MonoBehaviour
         {
             GameManager.Instance.BabyManager.BabyAction();
 
-            GameManager.Instance.Character.InputCollectBabies = !GameManager.Instance.Character.InputCollectBabies;
+            GameManager.Instance.Character.InputCollectBabies = true;
         }
 
         GameManager.Instance.Character.GetComponentInChildren<Animator>().SetTrigger("Call");

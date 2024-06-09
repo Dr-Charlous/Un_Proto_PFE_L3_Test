@@ -135,6 +135,7 @@ public class StateBabyController : MonoBehaviour
         {
             TargetObject.transform.SetParent(ParentCollect);
             isTransporting = true;
+            isGoingToGrab = false;
 
             Animator.SetTrigger("GetObj");
         }

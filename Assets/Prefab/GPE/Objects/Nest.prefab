@@ -472,7 +472,7 @@ MonoBehaviour:
   _colorInitial: {r: 1, g: 0.58513975, b: 0, a: 1}
   _colorValid: {r: 0.087417364, g: 1, b: 0, a: 1}
   _scalePunch: {x: 0.1, y: 0.1, z: 0.1}
-  _itemsToConstruct: []
+  ItemsToConstruct: []
   _itemsVerification: 
   _stones: {fileID: 0}
   _transition: {fileID: 228376496978052259}
@@ -613,6 +613,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 3193025709099889649}
     m_Modifications:
+    - target: {fileID: 695364022355418234, guid: c9eede976044b9d45bba6ca56b60e185, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3335222795643181971, guid: c9eede976044b9d45bba6ca56b60e185, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5356049703117032833, guid: c9eede976044b9d45bba6ca56b60e185, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -697,10 +705,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 5461480508075501700, guid: c9eede976044b9d45bba6ca56b60e185, type: 3}
-      propertyPath: m_Sprite
-      value: 
-      objectReference: {fileID: 21300000, guid: 92d1890afbeb56847aff2ecd9b589901, type: 3}
     - target: {fileID: 6556383730829490956, guid: c9eede976044b9d45bba6ca56b60e185, type: 3}
       propertyPath: m_Name
       value: CanvaFloating

@@ -44,6 +44,9 @@ public class UiFollowing : MonoBehaviour
     {
         _objUiGamePad.SetActive(value);
         _objUiKeyboard.SetActive(value);
+
+        if (value)
+            CheckUiGamepad();
     }
 
     void CheckUiGamepad()

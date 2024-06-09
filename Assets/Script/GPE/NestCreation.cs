@@ -120,12 +120,12 @@ public class NestCreation : MonoBehaviour
                 _value++;
 
                 if (_value < ItemsToConstruct.Length && !_uiFollow.gameObject.activeInHierarchy)
-                    _uiFollow.gameObject.SetActive(true);
+                    _uiFollow.ShowUi(true);
 
                 if (_value < ItemsToConstruct.Length)
                     _uiFollow.UpdateText($"{_value} / {ItemsToConstruct.Length}");
                 else if (_value >= ItemsToConstruct.Length)
-                    _uiFollow.gameObject.SetActive(false);
+                    _uiFollow.ShowUi(false);
 
                 return;
             }
