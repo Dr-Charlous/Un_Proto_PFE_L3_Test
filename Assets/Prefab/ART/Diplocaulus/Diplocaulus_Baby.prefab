@@ -4897,7 +4897,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e6ee4eb512746b842b08d1dce0a0321c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  controller: {fileID: 6469770713219277001}
+  Controller: {fileID: 6469770713219277001}
+  Mesh: {fileID: 6228563579312758074}
 --- !u!54 &7972069654834591482
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -5175,7 +5176,7 @@ MonoBehaviour:
   ObjectBaby: {fileID: 6228563579312758074}
   _offSet: {x: 0, y: -0.04, z: 0}
   IsParalysed: 0
-  Charges: 1
+  Charges: 20
   Parent: {fileID: 0}
   TargetParent: {fileID: 0}
   Target: {fileID: 0}
@@ -10048,7 +10049,7 @@ Transform:
   - {fileID: 2192929059667930703}
   - {fileID: 9171272881965404634}
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &3090366786438576569
 MonoBehaviour:
@@ -10062,7 +10063,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e6ee4eb512746b842b08d1dce0a0321c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  controller: {fileID: 6469770713219277001}
+  Controller: {fileID: 6469770713219277001}
+  Mesh: {fileID: 6228563579312758074}
 --- !u!1001 &7780308186547911166
 PrefabInstance:
   m_ObjectHideFlags: 0

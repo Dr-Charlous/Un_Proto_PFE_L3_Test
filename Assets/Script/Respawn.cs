@@ -27,10 +27,10 @@ public class Respawn : MonoBehaviour
                 Entities[i].position = new Vector3(RespawnPoint.position.x, Entities[i].position.y, RespawnPoint.position.z);
             else
             {
-                var babyState = Entities[i].GetComponent<RefBaby>().controller;
+                var babyState = Entities[i].GetComponent<RefBaby>().Controller;
 
-                babyState.Agent.destination = babyState.TargetParent.position;
                 babyState.Agent.transform.position = new Vector3(RespawnPoint.position.x, Entities[i].position.y, RespawnPoint.position.z);
+                babyState.Agent.SetDestination(new Vector3(RespawnPoint.position.x, Entities[i].position.y, RespawnPoint.position.z));
             }
         }
 

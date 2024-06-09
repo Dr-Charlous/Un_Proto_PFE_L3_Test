@@ -4,5 +4,6 @@ using UnityEngine;
 
 public class RefBaby : MonoBehaviour
 {
-    public StateBabyController controller;
+    public StateBabyController Controller;
+    public GameObject Mesh;
 }

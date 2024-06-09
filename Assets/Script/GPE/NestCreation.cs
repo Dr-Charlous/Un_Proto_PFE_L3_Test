@@ -98,8 +98,8 @@ public class NestCreation : MonoBehaviour
 
                 if (obj != null && obj.IsPortable)
                 {
-                    other.GetComponentInParent<RefBaby>().controller.isGoingToGrab = false;
-                    other.GetComponentInParent<RefBaby>().controller.isTransporting = false;
+                    other.GetComponentInParent<RefBaby>().Controller.isGoingToGrab = false;
+                    other.GetComponentInParent<RefBaby>().Controller.isTransporting = false;
                 }
                 else
                 {

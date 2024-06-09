@@ -6,8 +6,8 @@ public class StateBabyAnim : MonoBehaviour
 {
     public void OnEnter(StateBabyController controller)
     {
-        //controller.Target = controller.AnimMultiple.transform.position;
-        //controller.Agent.SetDestination(controller.Target);
+        //Controller.Target = Controller.AnimMultiple.transform.position;
+        //Controller.Agent.SetDestination(Controller.Target);
     }
 
     public void UpdateState(StateBabyController controller)

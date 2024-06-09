@@ -82,7 +82,7 @@ public class StateBabyController : MonoBehaviour
 
                         for (int i = 0; i < GameManager.Instance.BabyManager.BabiesInScene.Count; i++)
                         {
-                            if (this == GameManager.Instance.BabyManager.BabiesInScene[0].GetComponent<RefBaby>().controller)
+                            if (this == GameManager.Instance.BabyManager.BabiesInScene[0].GetComponent<RefBaby>().Controller)
                                 break;
                             else
                                 GameManager.Instance.BabyManager.ChangeOrder();

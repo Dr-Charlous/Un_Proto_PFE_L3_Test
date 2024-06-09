@@ -8,9 +8,9 @@ public class StateBabyFollow : IState
 {
     public void OnEnter(StateBabyController controller)
     {
-        //controller.transform.position = controller.TargetParent.position;
-        //controller.Target = controller.TargetParent;
-        //controller.Agent.SetDestination(controller.Target.position);
+        //Controller.transform.position = Controller.TargetParent.position;
+        //Controller.Target = Controller.TargetParent;
+        //Controller.Agent.SetDestination(Controller.Target.position);
     }
 
     public void UpdateState(StateBabyController controller)

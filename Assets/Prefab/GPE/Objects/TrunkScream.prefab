@@ -143,7 +143,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6658130190631057988}
-  m_Layer: 0
+  - component: {fileID: 974860721225372253}
+  - component: {fileID: 7918562187179825282}
+  m_Layer: 6
   m_Name: BabyTarget
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -165,6 +167,56 @@ Transform:
   m_Father: {fileID: 2769893452218166395}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!136 &974860721225372253
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4874990433387546286}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 4086
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.5
+  m_Height: 1
+  m_Direction: 1
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!54 &7918562187179825282
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4874990433387546286}
+  serializedVersion: 4
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
+  m_UseGravity: 0
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 116
+  m_CollisionDetection: 0
 --- !u!1 &5356447516423190606
 GameObject:
   m_ObjectHideFlags: 0
@@ -270,7 +322,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   BabyTarget: {fileID: 6658130190631057988}
   BabyPos: {fileID: 2709150712340961137}
-  SpeedBabyTarget: 2
+  SpeedBabyTarget: 100
   DistanceFromTrunk: 3
   IsResonating: 0
   IsPlayerInside: 0
