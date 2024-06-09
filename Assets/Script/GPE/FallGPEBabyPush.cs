@@ -12,9 +12,14 @@ public class FallGPEBabyPush : MonoBehaviour
     {
         if (other.GetComponent<RefBaby>() != null)
         {
-            _animator.SetTrigger("Fall");
-            _resonance.PlayerGetOutside();
-            _collider.enabled = false;
+            Fall();
         }
+    }
+
+    public void Fall()
+    {
+        _animator.SetTrigger("Fall");
+        _resonance.PlayerGetOutside();
+        _collider.enabled = false;
     }
 }

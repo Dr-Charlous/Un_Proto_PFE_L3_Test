@@ -23,13 +23,15 @@ public class Respawn : MonoBehaviour
     {
         for (int i = 0; i < Entities.Length; i++)
         {
-            if (Entities[i].GetComponentInChildren<StateBabyController>() != null)
-            {
-                Entities[i].GetComponentInChildren<StateBabyController>().Agent.transform.position = new Vector3(RespawnPoint.position.x, Entities[i].position.y, RespawnPoint.position.z);
-                Entities[i].GetComponentInChildren<StateBabyController>().Agent.destination = Entities[i].GetComponentInChildren<StateBabyController>().TargetParent.position;
-            }
-            else
+            if (Entities[i].GetComponent<CharaMove>() != null)
                 Entities[i].position = new Vector3(RespawnPoint.position.x, Entities[i].position.y, RespawnPoint.position.z);
+            else
+            {
+                var babyState = Entities[i].GetComponent<RefBaby>().controller;
+
+                babyState.Agent.destination = babyState.TargetParent.position;
+                babyState.Agent.transform.position = new Vector3(RespawnPoint.position.x, Entities[i].position.y, RespawnPoint.position.z);
+            }
         }
 
         if (isEnd)

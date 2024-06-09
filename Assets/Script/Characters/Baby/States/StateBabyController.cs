@@ -29,6 +29,7 @@ public class StateBabyController : MonoBehaviour
 
     [Header("Babies stuffs :")]
     public GameObject ObjectBaby;
+    [SerializeField] Vector3 _offSet;
     public bool IsParalysed = false;
     public int Charges = 1;
 
@@ -122,7 +123,7 @@ public class StateBabyController : MonoBehaviour
         }
 
         ObjectBaby.transform.DOKill();
-        ObjectBaby.transform.DOMove(transform.position, 0.5f);
+        ObjectBaby.transform.DOMove(transform.position + _offSet, 0.5f);
         //ObjectBaby.transform.position = Vector3.Lerp(ObjectBaby.transform.position, transform.position, 0.5f);
 
         Animator.SetFloat("Move", Agent.velocity.magnitude, 0.1f, Time.deltaTime);

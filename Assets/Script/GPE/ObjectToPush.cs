@@ -57,6 +57,7 @@ public class ObjectToPush : MonoBehaviour
                 GameManager.Instance.BabyManager.BabiesInScene[i].GetComponentInChildren<StateBabyController>().Charges--;
             }
 
+            transform.position = _endPos;
             _mesh.transform.parent = _parent;
             Destroy(this.gameObject);
         }

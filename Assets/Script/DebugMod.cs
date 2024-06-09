@@ -10,9 +10,16 @@ public class DebugMod : MonoBehaviour
     [SerializeField] StateBabyController[] _babyController;
     [SerializeField] int _babyNumber;
     [SerializeField] ObjectCollectController _objCollectController;
-
+    [SerializeField] Transform[] _tp;
+    [Header("")]
     [SerializeField] TextMeshProUGUI[] _textMeshPro;
     [SerializeField] GameObject _canvaDebug;
+    [Header("")]
+    [SerializeField] ObjectToPush[] _pushTrunk;
+    [SerializeField] NestCreation[] _nest;
+    [SerializeField] StonePathFalling[] _stonePath;
+    [SerializeField] FallGPEBabyPush _gpeBaby;
+    [SerializeField] Cinematic[] _cine;
 
     bool _debugModShow;
 
@@ -51,6 +58,61 @@ public class DebugMod : MonoBehaviour
             if (Input.GetKeyDown(KeyCode.F5) && _babyNumber < _babyController.Length - 1)
             {
                 _babyNumber++;
+            }
+
+            if (Input.GetKeyDown(KeyCode.Alpha1))
+            {
+                Teleportation(_tp[0]);
+                _pushTrunk[0].ValuePush = 1;
+            }
+
+            if (Input.GetKeyDown(KeyCode.Alpha2))
+            {
+                Teleportation(_tp[1]);
+                _nest[0].IsCreated = true;
+
+                for (int i = 0; i < _nest[0].ItemsToConstruct.Length; i++)
+                {
+                    _nest[0].ItemsToConstruct[i].SetActive(false);
+                }
+
+                _stonePath[0].Fall();
+            }
+
+            if (Input.GetKeyDown(KeyCode.Alpha3))
+            {
+                Teleportation(_tp[2]);
+                _nest[0].IsCreated = true;
+                _nest[0].IsFeed = true;
+                _nest[0].FeedBabies();
+
+                for (int i = 0; i < _nest[0].ItemsToConstruct.Length; i++)
+                {
+                    _nest[0].ItemsToConstruct[i].SetActive(false);
+                }
+
+                _stonePath[0].Fall();
+            }
+
+            if (Input.GetKeyDown(KeyCode.Alpha4))
+            {
+                Teleportation(_tp[3]);
+                _pushTrunk[2].ValuePush = 1;
+                _gpeBaby.Fall();
+            }
+
+            if (Input.GetKeyDown(KeyCode.Alpha5))
+            {
+                Teleportation(_tp[4]);
+                _nest[1].IsCreated = true;
+
+                for (int i = 0; i < _nest[1].ItemsToConstruct.Length; i++)
+                {
+                    _nest[1].ItemsToConstruct[i].SetActive(false);
+                }
+
+                _stonePath[1].Fall();
+                StartCoroutine(_cine[1].Cinematic1());
             }
 
             UpdateText(PlayerData(), _textMeshPro[0]);
@@ -221,7 +283,7 @@ public class DebugMod : MonoBehaviour
 
         dataBaby += $"\n";
         dataBaby += $"State : {baby[iteration].currentState}\n";
-        dataBaby += $"NavMesh Destination : {baby[iteration].Agent.destination}\n";
+        dataBaby += $"NavMesh Destination : {baby[iteration].Agent.destination}";
 
         return dataBaby;
     }
@@ -307,6 +369,19 @@ public class DebugMod : MonoBehaviour
 
             if (obj == null && obj1 == null && obj2 == null)
                 _textMeshPro[3].text = $"Aucun GPE en vue ^^' \n";
+        }
+    }
+
+    void Teleportation(Transform tp)
+    {
+        GameManager.Instance.Character.transform.position = new Vector3(tp.position.x, GameManager.Instance.Character.transform.position.y, tp.position.z);
+        GameManager.Instance.Character.transform.rotation = tp.rotation;
+        GameManager.Instance.Character.Rb.velocity = Vector3.zero;
+
+        for (int i = 0; i < _babyController.Length; i++)
+        {
+            _babyController[i].transform.position = new Vector3(tp.position.x, _babyController[i].transform.position.y, tp.position.z);
+            _babyController[i].Agent.destination = new Vector3(tp.position.x, _babyController[i].Agent.destination.y, tp.position.z);
         }
     }
 

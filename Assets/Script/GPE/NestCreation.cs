@@ -10,7 +10,7 @@ public class NestCreation : MonoBehaviour
 
     [SerializeField] Vector3 _scalePunch;
 
-    [SerializeField] GameObject[] _itemsToConstruct;
+    public GameObject[] ItemsToConstruct;
     [SerializeField] bool[] _itemsVerification;
 
     [SerializeField] StonePathFalling _stones;
@@ -38,9 +38,9 @@ public class NestCreation : MonoBehaviour
         _material.color = _colorInitial;
         _transition.SetActive(false);
 
-        _itemsVerification = new bool[_itemsToConstruct.Length];
+        _itemsVerification = new bool[ItemsToConstruct.Length];
 
-        _uiFollow.UpdateText($"{_value} / {_itemsToConstruct.Length}");
+        _uiFollow.UpdateText($"{_value} / {ItemsToConstruct.Length}");
 
         _isActionned = false;
     }
@@ -64,7 +64,7 @@ public class NestCreation : MonoBehaviour
         }
     }
 
-    void FeedBabies()
+     public void FeedBabies()
     {
         if (Fish != null)
         {
@@ -90,9 +90,9 @@ public class NestCreation : MonoBehaviour
 
     void VerificationItem(Collider other)
     {
-        for (int i = 0; i < _itemsToConstruct.Length; i++)
+        for (int i = 0; i < ItemsToConstruct.Length; i++)
         {
-            if (_itemsToConstruct[i] == other.gameObject)
+            if (ItemsToConstruct[i] == other.gameObject)
             {
                 var obj = other.GetComponent<ObjectCollect>();
 
@@ -118,7 +118,15 @@ public class NestCreation : MonoBehaviour
                 VerificationArray();
                 transform.DOPunchScale(_scalePunch, 1);
                 _value++;
-                _uiFollow.UpdateText($"{_value} / {_itemsToConstruct.Length}");
+
+                if (_value < ItemsToConstruct.Length && !_uiFollow.gameObject.activeInHierarchy)
+                    _uiFollow.gameObject.SetActive(true);
+
+                if (_value < ItemsToConstruct.Length)
+                    _uiFollow.UpdateText($"{_value} / {ItemsToConstruct.Length}");
+                else if (_value >= ItemsToConstruct.Length)
+                    _uiFollow.gameObject.SetActive(false);
+
                 return;
             }
         }
@@ -128,7 +136,7 @@ public class NestCreation : MonoBehaviour
     {
         bool isEveryOne = true;
 
-        for (int i = 0; i < _itemsToConstruct.Length; i++)
+        for (int i = 0; i < ItemsToConstruct.Length; i++)
         {
             if (_itemsVerification[i] == false)
             {
