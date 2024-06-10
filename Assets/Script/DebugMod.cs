@@ -152,9 +152,9 @@ public class DebugMod : MonoBehaviour
         dataPalyer += $"Paralyse : {_charaMove.IsParalysed} \n";
 
         if (_charaMove.TrapResonnance != null)
-            dataPalyer += $"Scream : {_charaMove.TrapResonnance.name} \n";
+            dataPalyer += $"Scream : {_charaMove.TrapResonnance.name}";
         else
-            dataPalyer += $"Scream : Empty \n";
+            dataPalyer += $"Scream : Empty";
 
         return dataPalyer;
     }
@@ -236,7 +236,7 @@ public class DebugMod : MonoBehaviour
             dataEnnemy += $"Target : Empty \n";
 
         dataEnnemy += $"\n";
-        dataEnnemy += $"State : {ennemy[iteration].currentState}\n";
+        dataEnnemy += $"State : {ennemy[iteration].currentState}";
 
         return dataEnnemy;
     }
@@ -283,7 +283,8 @@ public class DebugMod : MonoBehaviour
 
         dataBaby += $"\n";
         dataBaby += $"State : {baby[iteration].currentState}\n";
-        dataBaby += $"NavMesh Destination : {baby[iteration].Agent.destination}";
+        dataBaby += $"NavMesh Destination : {baby[iteration].Agent.destination}\n";
+        dataBaby += $"Object Transporting : {baby[iteration].ObjecTransporting}";
 
         return dataBaby;
     }
@@ -301,7 +302,7 @@ public class DebugMod : MonoBehaviour
         dataObj += $"\n";
 
         dataObj += $"Resonating : {obj.IsResonating} \n";
-        dataObj += $"Player inside : {obj.IsPlayerInside} \n";
+        dataObj += $"Player inside : {obj.IsPlayerInside}";
 
         return dataObj;
     }
@@ -316,7 +317,7 @@ public class DebugMod : MonoBehaviour
             dataObj += $"Object To Grab : Empty \n";
 
         dataObj += $"Portable : {obj.IsPortable} \n";
-        dataObj += $"Listened : {obj.isListened} \n";
+        dataObj += $"Listened : {obj.isListened}";
 
         return dataObj;
     }
@@ -340,7 +341,7 @@ public class DebugMod : MonoBehaviour
         dataObj += $"\n";
 
         dataObj += $"Value Push : {obj.ValuePush} \n";
-        dataObj += $"Decrease Babies Charge : {obj.DecreasePushValue} \n";
+        dataObj += $"Decrease Babies Charge : {obj.DecreasePushValue}";
 
         return dataObj;
     }
@@ -368,7 +369,7 @@ public class DebugMod : MonoBehaviour
                 UpdateText(GpeData(obj2), _textMeshPro[3]);
 
             if (obj == null && obj1 == null && obj2 == null)
-                _textMeshPro[3].text = $"Aucun GPE en vue ^^' \n";
+                _textMeshPro[3].text = $"Aucun GPE en vue ^^'";
         }
     }
 

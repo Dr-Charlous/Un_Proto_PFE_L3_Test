@@ -16,7 +16,7 @@ public class StateBabyCollect : IState
 
     public void UpdateState(StateBabyController controller)
     {
-        if (controller.OnTriggerEnterScript != null 
+        if (controller.OnTriggerEnterScript != null
             && controller.OnTriggerEnterScript.isTrigger
             && controller.OnTriggerEnterScript.ObjectTouch != null
             && controller.OnTriggerEnterScript.ObjectTouch.GetComponent<ObjectCollect>() != null
@@ -31,5 +31,8 @@ public class StateBabyCollect : IState
     public void OnExit(StateBabyController controller)
     {
         controller.isGoingToGrab = false;
+
+        if (controller.ObjecTransporting = null)
+            controller.isTransporting = false;
     }
 }

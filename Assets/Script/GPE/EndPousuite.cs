@@ -32,7 +32,10 @@ public class EndPousuite : MonoBehaviour
 
         if (EndCollider.ObjectTouch != null && isEndActif)
         {
-            End(EndCollider.ObjectTouch.GetComponent<CharaMove>());
+            if (EndCollider.ObjectTouch.GetComponent<CharaMove>() != null)
+                End(EndCollider.ObjectTouch.GetComponent<CharaMove>());
+            else if (EndCollider.ObjectTouch.GetComponent<RefBaby>() != null)
+                End(GameManager.Instance.Character);
         }
     }
 

@@ -44,6 +44,7 @@ public class StateBabyController : MonoBehaviour
     [Header("Collect object")]
     public bool isTransporting = false;
     public bool isGoingToGrab = false;
+    public GameObject ObjecTransporting;
     public GameObject TargetObject;
     public Transform ParentObject;
     public Transform ParentCollect;
@@ -131,13 +132,18 @@ public class StateBabyController : MonoBehaviour
 
     public void GetObj(bool var)
     {
-        if (var)
+        if (var && ObjecTransporting == null)
         {
             TargetObject.transform.SetParent(ParentCollect);
             isTransporting = true;
             TargetObject.GetComponent<BoxCollider>().excludeLayers += LayerMask.GetMask("Player");
+            ObjecTransporting = TargetObject;
 
             Animator.SetTrigger("GetObj");
+        }
+        else
+        {
+            isTransporting = false;
         }
         isGoingToGrab = false;
 
