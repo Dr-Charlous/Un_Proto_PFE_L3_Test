@@ -10,7 +10,7 @@ public class Jaws : MonoBehaviour
 
     private void OnTriggerStay(Collider other)
     {
-        if (other.transform.gameObject.GetComponent<StateBabyController>() != null || other.GetComponent<CharaMove>() != null && CanBite)
+        if (other.transform.gameObject.GetComponent<RefBaby>() != null || other.GetComponent<CharaMove>() != null && CanBite)
         {
             IsBitting = true;
             StartCoroutine(GameManager.Instance.Death.ActiveUI(true, false));
@@ -19,7 +19,7 @@ public class Jaws : MonoBehaviour
             if (move != null)
                 move.Animator.SetTrigger("Death");
 
-            StateBabyController stateBabyController = other.transform.gameObject.GetComponent<StateBabyController>();
+            StateBabyController stateBabyController = other.transform.gameObject.GetComponent<RefBaby>().Controller;
             if (stateBabyController != null)
                 stateBabyController.Animator.SetTrigger("Death");
         }

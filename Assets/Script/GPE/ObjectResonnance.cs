@@ -126,14 +126,11 @@ public class ObjectResonnance : MonoBehaviour
 
         for (int i = 0; i < GameManager.Instance.BabyManager.BabiesInScene.Count; i++)
         {
-            StateBabyController Baby = GameManager.Instance.BabyManager.BabiesInScene[0].GetComponentInChildren<StateBabyController>();
+            StateBabyController Baby = GameManager.Instance.BabyManager.BabiesInScene[0].GetComponent<RefBaby>().Controller;
 
-            if (!IsResonating)
-            {
-                Baby.ChangeState(Baby.StateFollow);
+            Baby.ChangeState(Baby.StateStay);
 
-                GameManager.Instance.BabyManager.ChangeOrder();
-            }
+            GameManager.Instance.BabyManager.ChangeOrder();
         }
 
         GameManager.Instance.Character.TrapResonnance = null;
