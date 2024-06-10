@@ -72,6 +72,52 @@ MonoBehaviour:
   ObjectLastExit: {fileID: 0}
   isEnterMode: 1
   isStayMode: 0
+--- !u!1 &3303934832461090000
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 674527522437927240}
+  - component: {fileID: 622304638850709402}
+  m_Layer: 6
+  m_Name: CamPivot
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &674527522437927240
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3303934832461090000}
+  m_LocalRotation: {x: -0, y: 0.86602443, z: -0, w: 0.5000017}
+  m_LocalPosition: {x: 80.81, y: 0.8, z: -13.08}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 1106517793745722848}
+  m_Father: {fileID: 769282291503134866}
+  m_RootOrder: -1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &622304638850709402
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3303934832461090000}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7508a574649d2cc4294df36787cfd628, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _pivotCam: {fileID: 2769511523349909887}
 --- !u!1 &4010814263492288401
 GameObject:
   m_ObjectHideFlags: 0
@@ -420,6 +466,37 @@ MonoBehaviour:
   ObjectLastExit: {fileID: 0}
   isEnterMode: 1
   isStayMode: 0
+--- !u!1 &6080299930366542402
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1106517793745722848}
+  m_Layer: 6
+  m_Name: CamPos
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1106517793745722848
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6080299930366542402}
+  m_LocalRotation: {x: -0, y: 0.99329025, z: -0.115648, w: -0.000000029802319}
+  m_LocalPosition: {x: 0, y: 2.7, z: 5}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 674527522437927240}
+  m_RootOrder: -1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &6154022645403820738
 GameObject:
   m_ObjectHideFlags: 0
@@ -565,9 +642,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   TemporaryPos: {fileID: 0}
-  PlayerCamPivot: {fileID: 2769511523349909887}
+  PlayerCamPivot: {fileID: 674527522437927240}
+  CamPivot: {fileID: 2769511523349909887}
   IsGamepad: 0
-  IsCamOrbital: 0
+  IsCamOrbital: 1
+  IsCamStatic: 0
   Rotation: 0
   SpeedGamepad: 50
   SpeedKeyboard: 2
@@ -659,6 +738,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 6794247020548910920}
+  - {fileID: 674527522437927240}
   - {fileID: 8469746848834443086}
   - {fileID: 5422700375949453399}
   - {fileID: 659548635033207305}
