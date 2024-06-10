@@ -21,13 +21,11 @@ Material:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: M_P01_001_Leaves_VertexDisplace
-  m_Shader: {fileID: -6465566751694194690, guid: 3ab53d563b46e1549bf1d1ef0c8e8162, type: 3}
+  m_Shader: {fileID: -6465566751694194690, guid: 78d9c332edc3a5a4e87f5311d1ca5fe6, type: 3}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
-  m_ValidKeywords:
-  - _TIME
-  m_InvalidKeywords:
-  - _SURFACE_TYPE_TRANSPARENT
+  m_ValidKeywords: []
+  m_InvalidKeywords: []
   m_LightmapFlags: 2
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 1
@@ -39,7 +37,7 @@ Material:
     serializedVersion: 3
     m_TexEnvs:
     - _AO:
-        m_Texture: {fileID: 2800000, guid: 41f25c95e3ac5a24f8299224cfc7055d, type: 3}
+        m_Texture: {fileID: 2800000, guid: 802b9b0c13444884abd9057c0d59b132, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _Alpha_Texture:
@@ -58,12 +56,20 @@ Material:
         m_Texture: {fileID: 2800000, guid: 728557b91f7b5ea40ad396019dcdef7c, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
+    - _MainTexture:
+        m_Texture: {fileID: 2800000, guid: aabcfa8bf7c2f764e9c8673358275572, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
     - _NORMAL:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _Texture2D:
         m_Texture: {fileID: 2800000, guid: aabcfa8bf7c2f764e9c8673358275572, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _WindTexture:
+        m_Texture: {fileID: 2800000, guid: e533890e27b5744459cc7927b3eb004f, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - unity_Lightmaps:
@@ -82,16 +88,21 @@ Material:
     m_Floats:
     - _AlphaClip: 0
     - _AlphaToMask: 0
+    - _AlpheTreshold: 0.5
     - _Amplitude: 0.27
     - _Blend: 0
     - _BlendModePreserveSpecular: 0
     - _CastShadows: 1
     - _Cull: 0
+    - _CutoutSize: 0.53
     - _Cutout_Size: 0.4
     - _DepthFrequence: 0.24
     - _Dithering: 2.2
     - _DstBlend: 10
+    - _FalloutSize: 0.6
     - _Fallout_Size: 0.15
+    - _HeightBlend: 0
+    - _IsTransparancy: 1
     - _MaxMask: 0.26
     - _MinMask: 0.19
     - _NormalStrenght: 0.5
@@ -99,18 +110,31 @@ Material:
     - _QueueOffset: 0
     - _ReceiveShadows: 1
     - _Roughness: 0
+    - _Smoothness: 0
     - _Speed: 4.47
     - _SrcBlend: 5
     - _Surface: 1
     - _TIME: 1
     - _Transparency: 0
     - _TransparencyBool: 0
+    - _WindHeight: 0
+    - _WindIntensity: 0.05
+    - _WindNoiseSpeed: 0
+    - _WindSpeed: 0.1
     - _WorkflowMode: 1
     - _ZTest: 4
     - _ZWrite: 0
     - _ZWriteControl: 0
     m_Colors:
+    - _BottomColor: {r: 0.3584906, g: 0.3584906, b: 0.22490211, a: 0}
     - _Color: {r: 1, g: 0.5929537, b: 0, a: 0}
     - _Cutout_Position: {r: 0.5, g: 0.25, b: 0, a: 0}
     - _EmissiveColor: {r: 1, g: 0.2889198, b: 0, a: 1}
+    - _FarColor: {r: 0.05017645, g: 0.030526895, b: 0.9245283, a: 1}
+    - _NearColor: {r: 0.6698113, g: 0.16745283, b: 0.16745283, a: 0}
+    - _NearFarRange: {r: 10, g: 25, b: 0, a: 0}
+    - _ShadowColor: {r: 0.07146671, g: 0.1506573, b: 0.2075472, a: 0}
+    - _Vector2: {r: 0.5, g: 0.25, b: 0, a: 0}
+    - _WindNoiseContrast: {r: 0, g: 0.1, b: 0, a: 0}
+    - _WindNoiseScale: {r: 0.0001, g: 0.0001, b: 0, a: 0}
   m_BuildTextureStacks: []
