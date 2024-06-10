@@ -52,6 +52,9 @@ public class NestCreation : MonoBehaviour
             _isActionned = true;
             FeedBabies();
         }
+
+        if (_value >= ItemsToConstruct.Length)
+            _uiFollow.ShowUi(false);
     }
 
     private void OnTriggerEnter(Collider other)
@@ -64,7 +67,7 @@ public class NestCreation : MonoBehaviour
         }
     }
 
-     public void FeedBabies()
+    public void FeedBabies()
     {
         if (Fish != null)
         {
@@ -118,14 +121,7 @@ public class NestCreation : MonoBehaviour
                 VerificationArray();
                 transform.DOPunchScale(_scalePunch, 1);
                 _value++;
-
-                if (_value < ItemsToConstruct.Length && !_uiFollow.gameObject.activeInHierarchy)
-                    _uiFollow.ShowUi(true);
-
-                if (_value < ItemsToConstruct.Length)
-                    _uiFollow.UpdateText($"{_value} / {ItemsToConstruct.Length}");
-                else if (_value >= ItemsToConstruct.Length)
-                    _uiFollow.ShowUi(false);
+                _uiFollow.UpdateText($"{_value} / {ItemsToConstruct.Length}");
 
                 return;
             }

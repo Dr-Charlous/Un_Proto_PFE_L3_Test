@@ -1,3 +1,5 @@
+using System.Numerics;
+
 public class StateBabyCollect : IState
 {
     public void OnEnter(StateBabyController controller)
@@ -28,6 +30,6 @@ public class StateBabyCollect : IState
 
     public void OnExit(StateBabyController controller)
     {
-
+        controller.isGoingToGrab = false;
     }
 }

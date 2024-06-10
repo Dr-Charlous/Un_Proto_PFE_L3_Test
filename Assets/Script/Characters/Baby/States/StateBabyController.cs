@@ -135,10 +135,11 @@ public class StateBabyController : MonoBehaviour
         {
             TargetObject.transform.SetParent(ParentCollect);
             isTransporting = true;
-            isGoingToGrab = false;
+            TargetObject.GetComponent<BoxCollider>().excludeLayers += LayerMask.GetMask("Player");
 
             Animator.SetTrigger("GetObj");
         }
+        isGoingToGrab = false;
 
         Dialogue = OnTriggerEnterScript.ObjectTouch.GetComponent<ObjectCollect>().DialogueBabyReccup;
 

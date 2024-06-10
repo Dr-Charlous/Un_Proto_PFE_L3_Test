@@ -23,7 +23,8 @@ public class StateBabyFollow : IState
             controller.Agent.SetDestination(controller.Target.position);
         }
 
-        controller.isGoingToGrab = false;
+        if (controller.isGoingToGrab)
+            controller.isGoingToGrab = false;
     }
 
     public void OnExit(StateBabyController controller)
