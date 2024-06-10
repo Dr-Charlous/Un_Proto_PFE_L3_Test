@@ -131,4 +131,12 @@ public class InputManager : MonoBehaviour
         _controls = new Controls();
         IsGamepad = false;
     }
+
+    private void Update()
+    {
+        if (IsGamepad)
+            Cursor.visible = false;
+        else
+            Cursor.visible = true;
+    }
 }
