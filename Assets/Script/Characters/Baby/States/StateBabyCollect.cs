@@ -32,7 +32,7 @@ public class StateBabyCollect : IState
     {
         controller.isGoingToGrab = false;
 
-        if (controller.ObjecTransporting = null)
+        if (controller.ObjectTransporting == null)
             controller.isTransporting = false;
     }
 }

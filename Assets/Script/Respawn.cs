@@ -31,6 +31,7 @@ public class Respawn : MonoBehaviour
 
                 babyState.Agent.transform.position = new Vector3(RespawnPoint.position.x, Entities[i].position.y, RespawnPoint.position.z);
                 babyState.Agent.SetDestination(new Vector3(RespawnPoint.position.x, Entities[i].position.y, RespawnPoint.position.z));
+                babyState.ChangeState(babyState.StateFollow);
             }
         }
 

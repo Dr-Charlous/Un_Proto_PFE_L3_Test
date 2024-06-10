@@ -103,7 +103,7 @@ public class NestCreation : MonoBehaviour
                 {
                     other.GetComponentInParent<RefBaby>().Controller.isGoingToGrab = false;
                     other.GetComponentInParent<RefBaby>().Controller.isTransporting = false;
-                    other.GetComponentInParent<RefBaby>().Controller.ObjecTransporting = null;
+                    other.GetComponentInParent<RefBaby>().Controller.ObjectTransporting = null;
                 }
                 else
                 {
@@ -112,8 +112,9 @@ public class NestCreation : MonoBehaviour
                     for (int j = 0; j < baby.Count; j++)
                     {
                         baby[j].GetComponentInChildren<RefBaby>().Controller.isGoingToGrab = false;
-                        baby[j].GetComponentInChildren<RefBaby>().Controller.isTransporting = false;
-                        baby[j].GetComponentInParent<RefBaby>().Controller.ObjecTransporting = null;
+
+                        if (baby[j].GetComponentInParent<RefBaby>().Controller.ObjectTransporting == null)
+                            baby[j].GetComponentInChildren<RefBaby>().Controller.isTransporting = false;
                     }
                 }
 
@@ -151,6 +152,13 @@ public class NestCreation : MonoBehaviour
 
         if (isEveryOne)
         {
+            for (int j = 0; j < baby.Count; j++)
+            {
+                baby[j].GetComponentInChildren<RefBaby>().Controller.isGoingToGrab = false;
+                baby[j].GetComponentInChildren<RefBaby>().Controller.isTransporting = false;
+                baby[j].GetComponentInParent<RefBaby>().Controller.ObjectTransporting = null;
+            }
+
             _material.color = _colorValid;
 
             IsCreated = true;

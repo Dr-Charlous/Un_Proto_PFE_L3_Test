@@ -12,6 +12,7 @@ public class InputManager : MonoBehaviour
     [HideInInspector] public float Horizontal;
     [HideInInspector] public bool Call;
     [HideInInspector] public bool Assign;
+    [SerializeField] bool InGame;
 
     public bool IsGamepad;
 
@@ -134,7 +135,7 @@ public class InputManager : MonoBehaviour
 
     private void Update()
     {
-        if (IsGamepad)
+        if (IsGamepad || InGame)
             Cursor.visible = false;
         else
             Cursor.visible = true;

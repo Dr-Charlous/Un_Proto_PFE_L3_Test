@@ -200,6 +200,8 @@ public class DebugMod : MonoBehaviour
         else
             dataPalyer += $"    ooo \n";
 
+        dataPalyer += $"fps : {Mathf.Round((1.0f / Time.deltaTime) * 100) / 100f}";
+
         return dataPalyer;
     }
 
@@ -284,7 +286,11 @@ public class DebugMod : MonoBehaviour
         dataBaby += $"\n";
         dataBaby += $"State : {baby[iteration].currentState}\n";
         dataBaby += $"NavMesh Destination : {baby[iteration].Agent.destination}\n";
-        dataBaby += $"Object Transporting : {baby[iteration].ObjecTransporting}";
+
+        if (baby[iteration].ObjectTransporting != null)
+            dataBaby += $"Object Transporting : {baby[iteration].ObjectTransporting.name}";
+        else
+            dataBaby += $"Object Transporting : Empty";
 
         return dataBaby;
     }
