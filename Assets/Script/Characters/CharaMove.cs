@@ -53,10 +53,7 @@ public class CharaMove : MonoBehaviour
         {
             if (Rb.velocity.magnitude < LimitMaxSpeed)
             {
-                if (Position < 0)
-                    Rb.AddRelativeForce(Vector3.forward * Position * Acceleration * Time.fixedDeltaTime);
-                else
-                    Rb.AddRelativeForce(Vector3.forward * Position * Acceleration / 2 * Time.fixedDeltaTime);
+                Rb.AddRelativeForce(Vector3.forward * Position * Acceleration * Time.fixedDeltaTime);
             }
         }
 
