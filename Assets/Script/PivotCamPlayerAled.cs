@@ -5,9 +5,12 @@ using UnityEngine;
 public class PivotCamPlayerAled : MonoBehaviour
 {
     [SerializeField] Transform _pivotCam;
+    [SerializeField] float _lerpDistance = 0.25f;
 
     private void Update()
     {
-        transform.position = _pivotCam.position;
+        transform.position = Vector3.Lerp(transform.position, _pivotCam.position, _lerpDistance);
+
+        transform.LookAt(_pivotCam.position);
     }
 }

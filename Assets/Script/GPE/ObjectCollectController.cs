@@ -72,7 +72,7 @@ public class ObjectCollectController : MonoBehaviour
 
     void GrabCheck(int i)
     {
-        if (!GameManager.Instance.BabyManager.BabiesInScene[i].GetComponentInChildren<StateBabyController>().isGoingToGrab)
+        if (!GameManager.Instance.BabyManager.BabiesInScene[i].GetComponentInChildren<StateBabyController>().isGoingToGrab && !GameManager.Instance.BabyManager.BabiesInScene[i].GetComponentInChildren<StateBabyController>().isTransporting)
             GrabOrder(i);
     }
 

@@ -8,7 +8,6 @@ public class CameraManager : MonoBehaviour
     public Transform CamPivot;
     public bool IsGamepad;
     public bool IsCamOrbital;
-    public bool IsCamStatic;
     public float Rotation;
     public float SpeedGamepad;
     public float SpeedKeyboard;
@@ -28,13 +27,7 @@ public class CameraManager : MonoBehaviour
 
         if (Rotation != 0)
         {
-            IsCamStatic = false;
             PlayerCamPivot.rotation *= Quaternion.Euler(Vector3.up * Rotation * ActualSpeedRotate * Time.deltaTime);
-        }
-
-        if (IsCamStatic)
-        {
-            Reset();
         }
 
         if (IsCamOrbital)
@@ -97,7 +90,6 @@ public class CameraManager : MonoBehaviour
     public void Reset()
     {
         PlayerCamPivot.DOComplete();
-        PlayerCamPivot.DOLocalRotate(CamPivot.rotation.eulerAngles, ActualSpeed * Time.deltaTime);
-        IsCamStatic = true;
+        PlayerCamPivot.DOLocalRotate(CamPivot.rotation.eulerAngles - Vector3.up * 180, ActualSpeed * Time.deltaTime);
     }
 }

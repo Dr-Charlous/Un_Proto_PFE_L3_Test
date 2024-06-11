@@ -132,6 +132,7 @@ public class ObjectResonnance : MonoBehaviour
 
             GameManager.Instance.BabyManager.ChangeOrder();
         }
+        GameManager.Instance.BabyManager.ChangeOrder();
 
         GameManager.Instance.Character.TrapResonnance = null;
         IsPlayerInside = false;

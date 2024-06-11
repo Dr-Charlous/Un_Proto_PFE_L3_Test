@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using static Unity.VisualScripting.Member;
 
 [RequireComponent(typeof(PlayerInput))]
 public class InputManager : MonoBehaviour
@@ -13,6 +14,7 @@ public class InputManager : MonoBehaviour
     [HideInInspector] public bool Call;
     [HideInInspector] public bool Assign;
     [SerializeField] bool InGame;
+    [SerializeField] AudioSource _source;
 
     public bool IsGamepad;
 
@@ -77,6 +79,8 @@ public class InputManager : MonoBehaviour
     void GetCamResetInput(InputAction.CallbackContext reset)
     {
         GameManager.Instance.CamManager.Reset();
+        if (_source != null && !_source.isPlaying)
+            _source.Play();
 
         VerifyDevice(reset);
     }
