@@ -144,7 +144,7 @@ public class DebugMod : MonoBehaviour
         dataPalyer += $"\n";
 
         dataPalyer += $"Acceleration : {_charaMove.Acceleration} \n";
-        dataPalyer += $"Limit Max Speed : {_charaMove.LimitMaxSpeed} \n";
+        dataPalyer += $"Actual Speed : {Mathf.Round(_charaMove.Rb.velocity.magnitude * 10f) / 10f} / {_charaMove.LimitMaxSpeed} \n";
         dataPalyer += $"Decrease Speed : {_charaMove.DecreaseSpeed} \n";
         dataPalyer += $"Steering : {_charaMove.Steering} \n";
         dataPalyer += $"\n";

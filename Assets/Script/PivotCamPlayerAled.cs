@@ -6,6 +6,7 @@ public class PivotCamPlayerAled : MonoBehaviour
 {
     [SerializeField] Transform _pivotCam;
     [SerializeField] float _lerpDistance = 0.25f;
+    [SerializeField] float _lerpRotate = 0.25f;
 
     private void Update()
     {
