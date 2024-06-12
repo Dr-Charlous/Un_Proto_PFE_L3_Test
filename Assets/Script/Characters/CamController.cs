@@ -22,11 +22,6 @@ public class CamController : MonoBehaviour
 
     [SerializeField] AudioSource _source;
 
-    private void Awake()
-    {
-        Rb = GetComponent<Rigidbody>();
-    }
-
     void Update()
     {
         if (!IsParalysed)

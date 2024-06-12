@@ -16,9 +16,10 @@ public class StateEnnemyChase : IStateEnnemy
         RaycastHit hitMid;
         RaycastHit hitLeft;
         RaycastHit hitRight;
-        bool RayMid = Physics.Raycast(controller.Animations.transform.position, controller.transform.TransformDirection(Vector3.forward), out hitMid, controller.DistanceSee);
-        bool RayLeft = Physics.Raycast(controller.Animations.transform.position, controller.transform.TransformDirection(Vector3.forward + Vector3.left), out hitLeft, controller.DistanceSee);
-        bool RayRight = Physics.Raycast(controller.Animations.transform.position, controller.transform.TransformDirection(Vector3.forward + Vector3.right), out hitRight, controller.DistanceSee);
+
+        bool RayMid = Physics.Raycast(controller.Animations.transform.position, controller.Animations.transform.forward, out hitMid, controller.DistanceSee);
+        bool RayLeft = Physics.Raycast(controller.Animations.transform.position, controller.Animations.transform.forward - controller.Animations.transform.right, out hitLeft, controller.DistanceSee);
+        bool RayRight = Physics.Raycast(controller.Animations.transform.position, controller.Animations.transform.forward + controller.Animations.transform.right, out hitRight, controller.DistanceSee);
 
         if (RayMid && (hitMid.transform.gameObject.GetComponent<RefBaby>() != null || hitMid.transform.gameObject.GetComponent<CamController>() != null) && controller.DistanceSee > Vector3.Distance(hitMid.transform.position, controller.transform.position))
         {

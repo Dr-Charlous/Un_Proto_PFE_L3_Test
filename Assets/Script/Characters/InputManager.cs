@@ -79,6 +79,7 @@ public class InputManager : MonoBehaviour
     void GetCamResetInput(InputAction.CallbackContext reset)
     {
         GameManager.Instance.CamManager.Reset();
+
         if (_source != null && !_source.isPlaying)
             _source.Play();
 
@@ -90,7 +91,7 @@ public class InputManager : MonoBehaviour
         if (GameManager.Instance.BabyManager.BabiesInScene.Count > 0 && !GameManager.Instance.Character.IsParalysed)
         {
             GameManager.Instance.BabyManager.BabyFollow();
-            GameManager.Instance.Character.GetComponentInChildren<Animator>().SetTrigger("Call");
+            GameManager.Instance.Character.Animator.SetTrigger("Call");
         }
         else if (GameManager.Instance.Character.TrapResonnance != null)
         {

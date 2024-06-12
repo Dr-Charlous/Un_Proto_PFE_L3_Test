@@ -387,10 +387,10 @@ public class DebugMod : MonoBehaviour
 
         for (int i = 0; i < _babyController.Length; i++)
         {
-            _babyController[i].transform.position = new Vector3(tp.position.x, _babyController[i].transform.position.y, tp.position.z);
             _babyController[i].Agent.enabled = false;
-            _babyController[i].Agent.destination = new Vector3(tp.position.x, _babyController[i].Agent.destination.y, tp.position.z);
+            _babyController[i].transform.position = new Vector3(tp.position.x, _babyController[i].transform.position.y, tp.position.z);
             _babyController[i].Agent.enabled = true;
+            _babyController[i].Agent.destination = new Vector3(tp.position.x, _babyController[i].Agent.destination.y, tp.position.z);
         }
     }
 

@@ -128,9 +128,9 @@ public class StateEnnemyController : MonoBehaviour
         }
 
         Gizmos.color = Color.red;
-        Gizmos.DrawRay(Animations.transform.position, transform.TransformDirection(Vector3.forward) * DistanceSee);
-        Gizmos.DrawRay(Animations.transform.position, transform.TransformDirection((Vector3.forward - Vector3.right).normalized) * DistanceSee);
-        Gizmos.DrawRay(Animations.transform.position, transform.TransformDirection((Vector3.forward + Vector3.right).normalized) * DistanceSee);
+        Gizmos.DrawRay(Animations.transform.position, Animations.transform.forward * DistanceSee);
+        Gizmos.DrawRay(Animations.transform.position, (Animations.transform.forward - Animations.transform.right).normalized * DistanceSee);
+        Gizmos.DrawRay(Animations.transform.position, (Animations.transform.forward + Animations.transform.right).normalized * DistanceSee);
     }
 
     public void ChangeState(IStateEnnemy newState)
