@@ -41,7 +41,7 @@ public class CamController : MonoBehaviour
     {
         if (Position != 0)
         {
-            if (Rb.velocity.magnitude < LimitMaxSpeed && Position < 0)
+            if (Rb.velocity.magnitude < LimitMaxSpeed)
             {
                 Rb.AddRelativeForce(Vector3.forward * Position * Acceleration * Time.fixedDeltaTime);
             }
