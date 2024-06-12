@@ -196,9 +196,21 @@ public class DebugMod : MonoBehaviour
 
         //Call
         if (_inputManager.Call)
-            dataPalyer += $"    xxx \n";
+            dataPalyer += $"    xxx   ";
         else
-            dataPalyer += $"    ooo \n";
+            dataPalyer += $"    ooo   ";
+
+        //RightCam
+        if (GameManager.Instance.CamManager.Rotation < 0)
+            dataPalyer += $" x ";
+        else
+            dataPalyer += $" o ";
+
+        //LeftCam
+        if (GameManager.Instance.CamManager.Rotation > 0)
+            dataPalyer += $" x \n";
+        else
+            dataPalyer += $" o \n";
 
         dataPalyer += $"fps : {Mathf.Round((1.0f / Time.deltaTime) * 100) / 100f}";
 

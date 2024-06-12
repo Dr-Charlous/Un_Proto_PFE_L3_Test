@@ -139,6 +139,7 @@ public class ObjectResonnance : MonoBehaviour
 
         if (_uiFlollowing != null)
             _uiFlollowing.gameObject.SetActive(true);
+
         _babyZone.ObjectLastExit = null;
     }
 
