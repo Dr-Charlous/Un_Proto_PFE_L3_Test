@@ -117,7 +117,7 @@ public class InputManager : MonoBehaviour
             GameManager.Instance.Character.InputCollectBabies = true;
         }
 
-        GameManager.Instance.Character.GetComponentInChildren<Animator>().SetTrigger("Call");
+        GameManager.Instance.Character.Animator.SetTrigger("Call");
 
         Assign = true;
 

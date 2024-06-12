@@ -330,7 +330,7 @@ GameObject:
   - component: {fileID: 674527522437927240}
   - component: {fileID: 622304638850709402}
   m_Layer: 6
-  m_Name: CamPivot
+  m_Name: PlayerMeshFollow
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -384,11 +384,11 @@ GameObject:
   - component: {fileID: 3893220972571388226}
   - component: {fileID: 230583433805176504}
   - component: {fileID: 1732332583294105962}
-  - component: {fileID: 2235380621787022767}
+  - component: {fileID: 7938338903333786784}
   - component: {fileID: 3776219549443236483}
   - component: {fileID: 4510353957324450373}
   m_Layer: 6
-  m_Name: Diplocaulus_Parent
+  m_Name: CamController
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -498,7 +498,7 @@ CapsuleCollider:
   m_Radius: 0.2
   m_Height: 0.2
   m_Direction: 2
-  m_Center: {x: 0, y: 0.07, z: -0.34}
+  m_Center: {x: 0, y: 0.07, z: 0}
 --- !u!54 &1732332583294105962
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -526,7 +526,7 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 84
   m_CollisionDetection: 1
---- !u!114 &2235380621787022767
+--- !u!114 &7938338903333786784
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -535,7 +535,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 3766045756775287149}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 94fe25f091bbbad4bacbab2a367cacb3, type: 3}
+  m_Script: {fileID: 11500000, guid: e28cbb6caa68d3c488067abe45ad3891, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   Position: 0
