@@ -19,7 +19,7 @@ public class GameManager : MonoBehaviour
     }
     #endregion
 
-    public CharaMove Character;
+    public CamController Character;
     public InputManager Inputs;
     public BabyManager BabyManager;
     public NestCreation Nest;

@@ -4,17 +4,13 @@ using UnityEngine;
 
 public class NestCreation : MonoBehaviour
 {
-    [SerializeField] Material _material;
-    [SerializeField] Color _colorInitial;
-    [SerializeField] Color _colorValid;
-
     [SerializeField] Vector3 _scalePunch;
 
     public GameObject[] ItemsToConstruct;
     [SerializeField] bool[] _itemsVerification;
 
+    [Header("Cinematic aspect & more : ")]
     [SerializeField] StonePathFalling _stones;
-
     [SerializeField] GameObject _transition;
     [SerializeField] Cinematic _cine;
 
@@ -35,7 +31,6 @@ public class NestCreation : MonoBehaviour
 
     private void Start()
     {
-        _material.color = _colorInitial;
         _transition.SetActive(false);
 
         _itemsVerification = new bool[ItemsToConstruct.Length];
@@ -158,8 +153,6 @@ public class NestCreation : MonoBehaviour
                 baby[j].GetComponentInChildren<RefBaby>().Controller.isTransporting = false;
                 baby[j].GetComponentInParent<RefBaby>().Controller.ObjectTransporting = null;
             }
-
-            _material.color = _colorValid;
 
             IsCreated = true;
 

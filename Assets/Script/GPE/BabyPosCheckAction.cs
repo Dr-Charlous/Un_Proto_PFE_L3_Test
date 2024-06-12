@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class BabyPosCheckAction : MonoBehaviour
@@ -10,7 +8,7 @@ public class BabyPosCheckAction : MonoBehaviour
     private void OnTriggerStay(Collider other)
     {
         StateBabyController baby = other.transform.parent.GetComponentInChildren<StateBabyController>();
-        CharaMove mama = other.GetComponent<CharaMove>();
+        CamController mama = other.GetComponent<CamController>();
 
         if (mama != null)
         {

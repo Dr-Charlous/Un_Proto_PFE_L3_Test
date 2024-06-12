@@ -12,7 +12,7 @@ public class TrunkMoveCharacters : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        CharaMove chara = other.GetComponent<CharaMove>();
+        CamController chara = other.GetComponent<CamController>();
         StateBabyController baby = other.GetComponent<StateBabyController>();
 
         if (chara != null || baby != null)
@@ -43,7 +43,7 @@ public class TrunkMoveCharacters : MonoBehaviour
     {
         yield return new WaitForSeconds(time);
 
-        CharaMove chara = other.GetComponent<CharaMove>();
+        CamController chara = other.GetComponent<CamController>();
         StateBabyController baby = other.GetComponent<StateBabyController>();
 
         if (chara != null)

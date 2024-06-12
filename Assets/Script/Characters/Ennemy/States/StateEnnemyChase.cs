@@ -20,17 +20,17 @@ public class StateEnnemyChase : IStateEnnemy
         bool RayLeft = Physics.Raycast(controller.Animations.transform.position, controller.transform.TransformDirection(Vector3.forward + Vector3.left), out hitLeft, controller.DistanceSee);
         bool RayRight = Physics.Raycast(controller.Animations.transform.position, controller.transform.TransformDirection(Vector3.forward + Vector3.right), out hitRight, controller.DistanceSee);
 
-        if (RayMid && (hitMid.transform.gameObject.GetComponent<RefBaby>() != null || hitMid.transform.gameObject.GetComponent<CharaMove>() != null) && controller.DistanceSee > Vector3.Distance(hitMid.transform.position, controller.transform.position))
+        if (RayMid && (hitMid.transform.gameObject.GetComponent<RefBaby>() != null || hitMid.transform.gameObject.GetComponent<CamController>() != null) && controller.DistanceSee > Vector3.Distance(hitMid.transform.position, controller.transform.position))
         {
             controller.Target = hitMid.transform.gameObject;
             controller.TimeChase = 0;
         }
-        else if (RayLeft && (hitLeft.transform.gameObject.GetComponent<RefBaby>() != null || hitLeft.transform.gameObject.GetComponent<CharaMove>() != null) && controller.DistanceSee > Vector3.Distance(hitLeft.transform.position, controller.transform.position))
+        else if (RayLeft && (hitLeft.transform.gameObject.GetComponent<RefBaby>() != null || hitLeft.transform.gameObject.GetComponent<CamController>() != null) && controller.DistanceSee > Vector3.Distance(hitLeft.transform.position, controller.transform.position))
         {
             controller.Target = hitLeft.transform.gameObject;
             controller.TimeChase = 0;
         }
-        else if (RayRight && (hitRight.transform.gameObject.GetComponent<RefBaby>() != null || hitRight.transform.gameObject.GetComponent<CharaMove>() != null) && controller.DistanceSee > Vector3.Distance(hitRight.transform.position, controller.transform.position))
+        else if (RayRight && (hitRight.transform.gameObject.GetComponent<RefBaby>() != null || hitRight.transform.gameObject.GetComponent<CamController>() != null) && controller.DistanceSee > Vector3.Distance(hitRight.transform.position, controller.transform.position))
         {
             controller.Target = hitRight.transform.gameObject;
             controller.TimeChase = 0;

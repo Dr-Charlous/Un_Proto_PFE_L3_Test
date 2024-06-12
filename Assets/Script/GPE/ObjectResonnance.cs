@@ -46,7 +46,7 @@ public class ObjectResonnance : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.GetComponent<CharaMove>() != null && IsPlayerInside == false)
+        if (other.GetComponent<CamController>() != null && IsPlayerInside == false)
         {
             PlayerGetInside();
         }

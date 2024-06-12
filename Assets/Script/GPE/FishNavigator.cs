@@ -54,7 +54,7 @@ public class FishNavigator : MonoBehaviour
 
     private void OnTriggerEnter(Collider collision)
     {
-        if (collision.GetComponent<CharaMove>() != null && !_isMoving)
+        if (collision.GetComponent<CamController>() != null && !_isMoving)
             GetNearetPoint();
     }
 

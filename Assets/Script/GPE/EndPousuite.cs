@@ -27,19 +27,19 @@ public class EndPousuite : MonoBehaviour
     {
         if (BeginCollider.ObjectTouch != null && isBeginActif)
         {
-            Begin(BeginCollider.ObjectTouch.GetComponent<CharaMove>());
+            Begin(BeginCollider.ObjectTouch.GetComponent<CamController>());
         }
 
         if (EndCollider.ObjectTouch != null && isEndActif)
         {
-            if (EndCollider.ObjectTouch.GetComponent<CharaMove>() != null)
-                End(EndCollider.ObjectTouch.GetComponent<CharaMove>());
+            if (EndCollider.ObjectTouch.GetComponent<CamController>() != null)
+                End(EndCollider.ObjectTouch.GetComponent<CamController>());
             else if (EndCollider.ObjectTouch.GetComponent<RefBaby>() != null)
                 End(GameManager.Instance.Character);
         }
     }
 
-    public void Begin(CharaMove chara)
+    public void Begin(CamController chara)
     {
         if (chara != null)
         {
@@ -49,7 +49,7 @@ public class EndPousuite : MonoBehaviour
         }
     }
 
-    void End(CharaMove chara)
+    void End(CamController chara)
     {
         if (chara != null)
         {

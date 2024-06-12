@@ -10,7 +10,7 @@ public class UiTextDialogueOnGround : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        CharaMove chara = other.GetComponent<CharaMove>();
+        CamController chara = other.GetComponent<CamController>();
 
         if (chara != null)
         {

@@ -1,13 +1,11 @@
 using UnityEngine;
-using static Unity.VisualScripting.Member;
 
 [RequireComponent(typeof(InputManager))]
 
-public class CharaMove : MonoBehaviour
+public class CamController : MonoBehaviour
 {
-    [Header("Input System :")]
-    public float Position;
-    public float Rotation;
+    [HideInInspector] public float Position;
+    [HideInInspector] public float Rotation;
 
     [Header("")]
     public float Acceleration;
@@ -15,16 +13,14 @@ public class CharaMove : MonoBehaviour
     public float DecreaseSpeed;
     public float Steering;
 
-    [Header("Components/Values :")]
-    public bool IsParalysed = false;
+    [HideInInspector] public bool IsParalysed = false;
     [HideInInspector] public bool InputCollectBabies;
+    [Header("Components/Values :")]
     public ObjectResonnance TrapResonnance;
     public Rigidbody Rb;
     public Animator Animator;
 
     [SerializeField] AudioSource _source;
-
-    int _valueRotateBack;
 
     private void Awake()
     {
@@ -36,7 +32,6 @@ public class CharaMove : MonoBehaviour
         if (!IsParalysed)
         {
             Movement();
-            Rotate();
         }
         else
         {
@@ -51,7 +46,7 @@ public class CharaMove : MonoBehaviour
     {
         if (Position != 0)
         {
-            if (Rb.velocity.magnitude < LimitMaxSpeed)
+            if (Rb.velocity.magnitude < LimitMaxSpeed && Position < 0)
             {
                 Rb.AddRelativeForce(Vector3.forward * Position * Acceleration * Time.fixedDeltaTime);
             }
@@ -71,19 +66,5 @@ public class CharaMove : MonoBehaviour
             _source.volume = Rb.velocity.magnitude / LimitMaxSpeed;
 
         Animator.SetFloat("Move", Rb.velocity.magnitude, 0.1f, Time.deltaTime);
-    }
-
-    void Rotate()
-    {
-        //if (Rotation > 0)
-        //{
-        //    //Rb.angularVelocity += Vector3.up * Rotation * Steering * Time.fixedDeltaTime;
-        //    Rb.AddRelativeForce(Vector3.right * Position * Acceleration * Time.fixedDeltaTime);
-        //}
-        //else if(Rotation < 0)
-        //{
-        //    //Rb.angularVelocity = Rb.angularVelocity / DecreaseSpeed;
-        //    Rb.AddRelativeForce(Vector3.left * Position * Acceleration * Time.fixedDeltaTime);
-        //}
     }
 }

@@ -1,7 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
-using System.Security.AccessControl;
-using System.Security.Cryptography;
 using UnityEngine;
 
 public class CutoutObject : MonoBehaviour

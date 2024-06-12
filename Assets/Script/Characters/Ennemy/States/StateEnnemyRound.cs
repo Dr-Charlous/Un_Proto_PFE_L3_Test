@@ -35,7 +35,7 @@ public class StateEnnemyRound : IStateEnnemy
 
             if (RayMid && controller.DistanceSee > Vector3.Distance(hitMid.transform.position, controller.transform.position))
             {
-                if (hitMid.transform.gameObject.GetComponent<RefBaby>() != null || hitMid.transform.gameObject.GetComponent<CharaMove>() != null)
+                if (hitMid.transform.gameObject.GetComponent<RefBaby>() != null || hitMid.transform.gameObject.GetComponent<CamController>() != null)
                 {
                     Debug.Log("Mid");
                     controller.IsChasing = true;
@@ -44,7 +44,7 @@ public class StateEnnemyRound : IStateEnnemy
 
             if (RayLeft && controller.DistanceSee > Vector3.Distance(hitLeft.transform.position, controller.transform.position))
             {
-                if (hitLeft.transform.gameObject.GetComponent<RefBaby>() != null || hitLeft.transform.gameObject.GetComponent<CharaMove>() != null)
+                if (hitLeft.transform.gameObject.GetComponent<RefBaby>() != null || hitLeft.transform.gameObject.GetComponent<CamController>() != null)
                 {
                     Debug.Log("Left");
                     controller.IsChasing = true;
@@ -53,7 +53,7 @@ public class StateEnnemyRound : IStateEnnemy
 
             if (RayRight && controller.DistanceSee > Vector3.Distance(hitRight.transform.position, controller.transform.position))
             {
-                if (hitRight.transform.gameObject.GetComponent<RefBaby>() != null || hitRight.transform.gameObject.GetComponent<CharaMove>() != null)
+                if (hitRight.transform.gameObject.GetComponent<RefBaby>() != null || hitRight.transform.gameObject.GetComponent<CamController>() != null)
                 {
                     Debug.Log("Right");
                     controller.IsChasing = true;

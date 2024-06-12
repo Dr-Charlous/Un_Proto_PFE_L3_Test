@@ -8,13 +8,13 @@ public class TriggerIsParetnHere : MonoBehaviour
 
     private void OnTriggerStay(Collider other)
     {
-        if (other.GetComponent<CharaMove>() != null)
+        if (other.GetComponent<CamController>() != null)
             isTrigger = true;
     }
 
     private void OnTriggerExit(Collider other)
     {
-        if (other.GetComponent<CharaMove>() != null)
+        if (other.GetComponent<CamController>() != null)
             isTrigger = false;
     }
 }

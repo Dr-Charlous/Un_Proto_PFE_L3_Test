@@ -4,7 +4,7 @@ using UnityEngine;
 public class DebugMod : MonoBehaviour
 {
     [SerializeField] InputManager _inputManager;
-    [SerializeField] CharaMove _charaMove;
+    [SerializeField] CamController _charaMove;
     [SerializeField] StateEnnemyController[] _ennemyController;
     [SerializeField] int _ennemyNumber;
     [SerializeField] StateBabyController[] _babyController;

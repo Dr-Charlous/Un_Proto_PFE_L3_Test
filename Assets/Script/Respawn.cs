@@ -12,7 +12,7 @@ public class Respawn : MonoBehaviour
     {
         for (int i = 0; i < Spawns.Length; i++)
         {
-            if (Spawns[i].ObjectTouch != null && Spawns[i].ObjectTouch.GetComponent<CharaMove>() != null)
+            if (Spawns[i].ObjectTouch != null && Spawns[i].ObjectTouch.GetComponent<CamController>() != null)
             {
                 RespawnPoint = Spawns[i].transform;
             }
@@ -23,7 +23,7 @@ public class Respawn : MonoBehaviour
     {
         for (int i = 0; i < Entities.Length; i++)
         {
-            if (Entities[i].GetComponent<CharaMove>() != null)
+            if (Entities[i].GetComponent<CamController>() != null)
                 Entities[i].position = new Vector3(RespawnPoint.position.x, Entities[i].position.y, RespawnPoint.position.z);
             else
             {
