@@ -756,6 +756,37 @@ Transform:
   m_Father: {fileID: 767480202757481911}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 64.149, y: -67.071, z: 0}
+--- !u!1 &7527228646653049575
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5495328397096021746}
+  m_Layer: 0
+  m_Name: CamPosFall
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5495328397096021746
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7527228646653049575}
+  m_LocalRotation: {x: 0.28119406, y: 0.2353358, z: -0.07124434, w: 0.92761594}
+  m_LocalPosition: {x: -1.2014961, y: 6.855113, z: 1.808506}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 767480202757481911}
+  m_RootOrder: -1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &7772777897189671799
 GameObject:
   m_ObjectHideFlags: 0
@@ -998,6 +1029,7 @@ Transform:
   - {fileID: 2544623002342638342}
   - {fileID: 7364256689684492085}
   - {fileID: 6713801377587102995}
+  - {fileID: 5495328397096021746}
   - {fileID: 8607038763305699021}
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -1071,3 +1103,5 @@ MonoBehaviour:
   _animator: {fileID: 134951028796483233}
   _resonance: {fileID: 7596108475726131487}
   _collider: {fileID: 3650763813362925190}
+  _camPos: {fileID: 5495328397096021746}
+  _cineTime: 75
