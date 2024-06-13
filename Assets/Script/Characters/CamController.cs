@@ -41,19 +41,13 @@ public class CamController : MonoBehaviour
 
     void Movement()
     {
-        if (Position != 0)
+        if (Position != 0 || Rotation != 0)
         {
-            if (Rb.velocity.magnitude < LimitMaxSpeed)
-            {
-                Rb.AddRelativeForce(Vector3.forward * Position * Acceleration * Time.fixedDeltaTime);
-            }
-        }
+            Vector3 direction = new Vector3 (-Rotation, 0, Position).normalized;
 
-        if (Rotation != 0)
-        {
             if (Rb.velocity.magnitude < LimitMaxSpeed)
             {
-                Rb.AddRelativeForce(Vector3.left * Rotation * Acceleration * Time.fixedDeltaTime);
+                Rb.AddRelativeForce(direction * Acceleration * Time.fixedDeltaTime);
             }
         }
 
