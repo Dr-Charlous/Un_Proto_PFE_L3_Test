@@ -89,7 +89,7 @@ public class ObjectResonnance : MonoBehaviour
     {
         //Debug.Log("ObjectResonnance");
 
-        GameManager.Instance.CamManager.TemporaryPos = _destinationCamera;
+        GameManager.Instance.CamManager.ChangeCam(_destinationCamera);
 
         ChangePlayerPos();
 
@@ -120,7 +120,7 @@ public class ObjectResonnance : MonoBehaviour
     {
         //Debug.Log("ObjectResonnance");
 
-        GameManager.Instance.CamManager.TemporaryPos = null;
+        GameManager.Instance.CamManager.ChangeCam(null);
 
         ChangePlayerPos();
 

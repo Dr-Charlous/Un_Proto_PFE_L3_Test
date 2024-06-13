@@ -12,14 +12,14 @@ public class Cinematic : MonoBehaviour
     {
         GameManager.Instance.Character.IsParalysed = true;
 
-        GameManager.Instance.CamManager.TemporaryPos = _camPos[0];
+        GameManager.Instance.CamManager.ChangeCam(_camPos[0]);
 
         //float speed = (GameManager.Instance.CamManager.Speed * 100 + _value) / Vector3.Distance(Camera.main.transform.position, _camPos[i].position);
 
         yield return new WaitForSeconds(_value * Time.deltaTime);
 
         if (_camPos.Length > 1)
-            GameManager.Instance.CamManager.TemporaryPos = _camPos[1];
+            GameManager.Instance.CamManager.ChangeCam(_camPos[1]);
 
         StartCoroutine(Cinematic2());
     }
@@ -40,7 +40,7 @@ public class Cinematic : MonoBehaviour
         if (_dialogueNidBuild != null)
             GameManager.Instance.Speaker.StartDialogue(_dialogueNidBuild);
 
-        GameManager.Instance.CamManager.TemporaryPos = null;
+        GameManager.Instance.CamManager.ChangeCam(null);
         GameManager.Instance.Character.IsParalysed = false;
     }
 }

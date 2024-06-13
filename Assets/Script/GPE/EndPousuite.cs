@@ -73,7 +73,7 @@ public class EndPousuite : MonoBehaviour
         if (Death != null)
             Destroy(Death);
         if (GameManager.Instance.CamManager.TemporaryPos != null)
-            GameManager.Instance.CamManager.TemporaryPos = null;
+            GameManager.Instance.CamManager.ChangeCam(null);
 
         if (BeginStone == null)
         {
@@ -85,11 +85,11 @@ public class EndPousuite : MonoBehaviour
     IEnumerator WaitBegin()
     {
         if (BeginStone != null)
-            GameManager.Instance.CamManager.TemporaryPos = CamTransform;
+            GameManager.Instance.CamManager.ChangeCam(CamTransform);
 
         yield return new WaitForSeconds(TimeWait * Time.deltaTime);
 
-        GameManager.Instance.CamManager.TemporaryPos = null;
+        GameManager.Instance.CamManager.ChangeCam(null);
 
         Death = Instantiate(DeathPrefab);
 

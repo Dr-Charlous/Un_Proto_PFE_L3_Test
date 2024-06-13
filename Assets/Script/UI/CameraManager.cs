@@ -15,6 +15,7 @@ public class CameraManager : MonoBehaviour
     public float ActualSpeed;
 
     float _valueTime;
+    Transform PreviousTemporaryPos;
 
     private void Start()
     {
@@ -51,9 +52,27 @@ public class CameraManager : MonoBehaviour
         transform.rotation = Quaternion.Lerp(transform.rotation, transformCam.rotation, value);
     }
 
+    public void ChangeCam(Transform newTransform)
+    {
+        if (newTransform == null)
+        {
+            TemporaryPos = newTransform;
+            PreviousTemporaryPos = newTransform;
+        }
+        else
+        {
+            if (TemporaryPos != null)
+                PreviousTemporaryPos = TemporaryPos;
+            else
+                PreviousTemporaryPos = newTransform;
+
+            TemporaryPos = newTransform;
+        }
+    }
+
     void Transition()
     {
-        if (TemporaryPos != null)
+        if (TemporaryPos != null && TemporaryPos == PreviousTemporaryPos)
         {
             if (_valueTime <= 1 && Vector3.Lerp(transform.position, TemporaryPos.position, _valueTime) != TemporaryPos.position)
             {
@@ -69,8 +88,27 @@ public class CameraManager : MonoBehaviour
             }
             GameManager.Instance.Character.IsParalysed = true;
         }
+        else if (TemporaryPos != null && TemporaryPos != PreviousTemporaryPos)
+        {
+            PreviousTemporaryPos = TemporaryPos;
+
+            if (_valueTime <= 1 && Vector3.Lerp(transform.position, TemporaryPos.position, _valueTime) != TemporaryPos.position)
+            {
+                _valueTime += Time.deltaTime * ActualSpeed;
+                CamGoTo(TemporaryPos, _valueTime / Vector3.Distance(transform.position, TemporaryPos.position));
+
+                if (_valueTime > 1)
+                    _valueTime = 1;
+            }
+            else
+            {
+                UpdateCam(TemporaryPos);
+            }
+        }
         else
         {
+            PreviousTemporaryPos = null;
+
             if (_valueTime >= 0 && Vector3.Lerp(transform.position, GameManager.Instance.CamPlayer.position, (1 - _valueTime)) != GameManager.Instance.CamPlayer.position)
             {
                 _valueTime -= Time.deltaTime * ActualSpeed;
