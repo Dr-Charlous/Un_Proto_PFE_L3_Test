@@ -24,6 +24,8 @@ public class CamController : MonoBehaviour
 
     void Update()
     {
+        Rb.angularVelocity = Vector3.zero;
+
         if (!IsParalysed)
         {
             Movement();
