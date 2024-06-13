@@ -91,6 +91,9 @@ public class EndPousuite : MonoBehaviour
 
         GameManager.Instance.CamManager.ChangeCam(null);
 
+        if (Death != null)
+            Destroy(Death);
+
         Death = Instantiate(DeathPrefab);
 
         if (BeginStone != null)
