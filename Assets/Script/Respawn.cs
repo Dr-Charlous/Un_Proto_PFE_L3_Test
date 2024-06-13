@@ -4,38 +4,45 @@ using UnityEngine;
 
 public class Respawn : MonoBehaviour
 {
-    [SerializeField] Transform[] Entities;
-    [SerializeField] OnTriggerEnterScript[] Spawns;
+    [SerializeField] Transform[] _entities;
+    [SerializeField] OnTriggerEnterScript[] _spawns;
+    [SerializeField] DeathTrap[] _traps;
     public Transform RespawnPoint;
 
     private void Update()
     {
-        for (int i = 0; i < Spawns.Length; i++)
+        for (int i = 0; i < _spawns.Length; i++)
         {
-            if (Spawns[i].ObjectTouch != null && Spawns[i].ObjectTouch.GetComponent<CamController>() != null)
+            if (_spawns[i].ObjectTouch != null && _spawns[i].ObjectTouch.GetComponent<CamController>() != null)
             {
-                RespawnPoint = Spawns[i].transform;
+                RespawnPoint = _spawns[i].transform;
             }
         }
     }
 
     public void RespawnEntities(bool isEnd)
     {
-        for (int i = 0; i < Entities.Length; i++)
+        for (int i = 0; i < _entities.Length; i++)
         {
-            if (Entities[i].GetComponent<CamController>() != null)
-                Entities[i].position = new Vector3(RespawnPoint.position.x, Entities[i].position.y, RespawnPoint.position.z);
+            if (_entities[i].GetComponent<CamController>() != null)
+                _entities[i].position = new Vector3(RespawnPoint.position.x, _entities[i].position.y, RespawnPoint.position.z);
             else
             {
-                var babyState = Entities[i].GetComponent<RefBaby>().Controller;
+                var babyState = _entities[i].GetComponent<RefBaby>().Controller;
 
                 babyState.Agent.enabled = false;
-                babyState.transform.position = new Vector3(RespawnPoint.position.x, Entities[i].position.y, RespawnPoint.position.z);
+                babyState.transform.position = new Vector3(RespawnPoint.position.x, _entities[i].position.y, RespawnPoint.position.z);
                 babyState.Agent.enabled = true;
-                babyState.Agent.SetDestination(new Vector3(RespawnPoint.position.x, Entities[i].position.y, RespawnPoint.position.z));
+                babyState.Agent.SetDestination(new Vector3(RespawnPoint.position.x, _entities[i].position.y, RespawnPoint.position.z));
 
                 babyState.ChangeState(babyState.StateFollow);
             }
+        }
+
+
+        for (int i = 0; i < _entities.Length; i++)
+        {
+            _traps[i].Init();
         }
 
         if (isEnd)
