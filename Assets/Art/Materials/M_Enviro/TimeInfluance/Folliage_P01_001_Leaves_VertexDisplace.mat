@@ -40,6 +40,10 @@ Material:
         m_Texture: {fileID: 2800000, guid: 802b9b0c13444884abd9057c0d59b132, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
+    - _AlphaTex:
+        m_Texture: {fileID: 2800000, guid: a60ddcf2da62e9b449ca91e0533cf11d, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
     - _Alpha_Texture:
         m_Texture: {fileID: 2800000, guid: a60ddcf2da62e9b449ca91e0533cf11d, type: 3}
         m_Scale: {x: 1, y: 1}
@@ -101,7 +105,8 @@ Material:
     - _DstBlend: 10
     - _FalloutSize: 0.6
     - _Fallout_Size: 0.15
-    - _HeightBlend: 0
+    - _HeightBlend: 1.28
+    - _IsAlphaInvert: 1
     - _IsTransparancy: 1
     - _MaxMask: 0.26
     - _MinMask: 0.19
@@ -133,7 +138,7 @@ Material:
     - _FarColor: {r: 0.24528301, g: 0.17049538, b: 0.119170524, a: 1}
     - _NearColor: {r: 0.6698113, g: 0.16745283, b: 0.16745283, a: 0}
     - _NearFarRange: {r: 10, g: 25, b: 0, a: 0}
-    - _ShadowColor: {r: 0.070588246, g: 0.20784314, b: 0.114964336, a: 0}
+    - _ShadowColor: {r: 0.050980385, g: 0.22745098, b: 0.1531285, a: 1}
     - _Vector2: {r: 0.5, g: 0.25, b: 0, a: 0}
     - _WindNoiseContrast: {r: 0, g: 0.1, b: 0, a: 0}
     - _WindNoiseScale: {r: 0.0001, g: 0.0001, b: 0, a: 0}
