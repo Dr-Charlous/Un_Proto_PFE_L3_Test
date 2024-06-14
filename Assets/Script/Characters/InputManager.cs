@@ -26,9 +26,6 @@ public class InputManager : MonoBehaviour
         _controls.Diplocaulus.CamMove.performed += GetCamMoveInputs;
         _controls.Diplocaulus.CamReset.started += GetCamResetInput;
 
-        _controls.Diplocaulus.BabyFollow.started += GetBabyFollowInput;
-        _controls.Diplocaulus.BabyFollow.canceled += BabyFollowOutput;
-
         _controls.Diplocaulus.BabyAction.started += GetBabyActionInput;
         _controls.Diplocaulus.BabyAction.canceled += BabyActionOutput;
     }
@@ -40,9 +37,6 @@ public class InputManager : MonoBehaviour
 
         _controls.Diplocaulus.CamMove.performed -= GetCamMoveInputs;
         _controls.Diplocaulus.CamReset.started -= GetCamResetInput;
-
-        _controls.Diplocaulus.BabyFollow.started -= GetBabyFollowInput;
-        _controls.Diplocaulus.BabyFollow.canceled -= BabyFollowOutput;
 
         _controls.Diplocaulus.BabyAction.started -= GetBabyActionInput;
         _controls.Diplocaulus.BabyAction.canceled -= BabyActionOutput;
@@ -84,29 +78,6 @@ public class InputManager : MonoBehaviour
             _source.Play();
 
         VerifyDevice(reset);
-    }
-
-    void GetBabyFollowInput(InputAction.CallbackContext baby)
-    {
-        if (GameManager.Instance.BabyManager.BabiesInScene.Count > 0 && !GameManager.Instance.Character.IsParalysed)
-        {
-            GameManager.Instance.BabyManager.BabyFollow();
-            GameManager.Instance.Character.Animator.SetTrigger("Call");
-        }
-        else if (GameManager.Instance.Character.TrapResonnance != null)
-        {
-            GameManager.Instance.Character.TrapResonnance.PlayerGetOutside();
-        }
-
-        Call = true;
-        VerifyDevice(baby);
-    }
-
-    void BabyFollowOutput(InputAction.CallbackContext baby)
-    {
-        Call = false;
-
-        VerifyDevice(baby);
     }
 
     void GetBabyActionInput(InputAction.CallbackContext baby)

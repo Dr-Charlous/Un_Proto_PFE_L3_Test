@@ -12,9 +12,7 @@ public class StateBabyController : MonoBehaviour
 {
     #region IState
     public IState currentState;
-    public StateBabyStay StateStay = new StateBabyStay();
     public StateBabyFollow StateFollow = new StateBabyFollow();
-    public StateBabyRide StateRide = new StateBabyRide();
     public StateBabyAction StateAction = new StateBabyAction();
     public StateBabyCollect StateCollect = new StateBabyCollect();
     //public StateBabyAnim StateAnim = new StateBabyAnim();

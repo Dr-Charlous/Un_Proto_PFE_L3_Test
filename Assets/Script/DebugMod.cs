@@ -195,10 +195,7 @@ public class DebugMod : MonoBehaviour
             dataPalyer += $" o ";
 
         //Call
-        if (_inputManager.Call)
-            dataPalyer += $"    xxx   ";
-        else
-            dataPalyer += $"    ooo   ";
+        dataPalyer += $"          ";
 
         //RightCam
         if (GameManager.Instance.CamManager.Rotation < 0)

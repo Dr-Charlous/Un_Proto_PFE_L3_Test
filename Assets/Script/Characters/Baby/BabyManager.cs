@@ -108,34 +108,6 @@ public class BabyManager : MonoBehaviour
     //}
     #endregion
 
-    public void BabyFollow()
-    {
-        StateBabyController Baby = BabiesInScene[0].GetComponentInChildren<StateBabyController>();
-        bool isFollowing = false;
-
-        //if (Vector3.Distance(new Vector3(Baby.Parent.position.x, 0, Baby.Parent.position.z), new Vector3(Baby.Target.position.x, 0, Baby.Target.position.z)) < Baby.Distance)
-        //{
-        if (Baby.currentState != Baby.StateStay)
-        {
-            isFollowing = false;
-        }
-        else
-        {
-            isFollowing = true;
-        }
-
-        for (int i = 0; i < BabiesInScene.Count; i++)
-        {
-            Baby = BabiesInScene[i].GetComponentInChildren<StateBabyController>();
-
-            if (Baby.currentState != Baby.StateStay && !isFollowing)
-                Baby.ChangeState(Baby.StateStay);
-            else if (Baby.currentState != Baby.StateFollow)
-                Baby.ChangeState(Baby.StateFollow);
-        }
-        //}
-    }
-
     public void BabyAction()
     {
         RaycastHit hit;

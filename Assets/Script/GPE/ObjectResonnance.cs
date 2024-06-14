@@ -128,7 +128,7 @@ public class ObjectResonnance : MonoBehaviour
         {
             StateBabyController Baby = GameManager.Instance.BabyManager.BabiesInScene[0].GetComponent<RefBaby>().Controller;
 
-            Baby.ChangeState(Baby.StateStay);
+            Baby.ChangeState(Baby.StateFollow);
 
             GameManager.Instance.BabyManager.ChangeOrder();
         }
