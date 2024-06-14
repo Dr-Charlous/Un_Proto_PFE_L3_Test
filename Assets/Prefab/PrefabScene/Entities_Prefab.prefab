@@ -382,7 +382,7 @@ GameObject:
   - component: {fileID: 6794247020548910920}
   - component: {fileID: 904639897629474377}
   - component: {fileID: 3893220972571388226}
-  - component: {fileID: 31950400283679716}
+  - component: {fileID: 8057344248264833819}
   - component: {fileID: 1732332583294105962}
   - component: {fileID: 7938338903333786784}
   - component: {fileID: 3776219549443236483}
@@ -476,8 +476,8 @@ MonoBehaviour:
   InGame: 1
   _source: {fileID: 4510353957324450373}
   IsGamepad: 0
---- !u!65 &31950400283679716
-BoxCollider:
+--- !u!135 &8057344248264833819
+SphereCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -495,7 +495,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 0.35, y: 0.5, z: 0.35}
+  m_Radius: 0.35
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!54 &1732332583294105962
 Rigidbody:

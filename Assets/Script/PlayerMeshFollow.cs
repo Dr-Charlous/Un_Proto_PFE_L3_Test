@@ -20,6 +20,9 @@ public class PlayerMeshFollow : MonoBehaviour
         //direction.y = 0f;
 
         Vector3 direction = GameManager.Instance.Character.Rb.velocity.normalized;
+        //Vector3 direction2 = (new Vector3((transform.right * GameManager.Instance.Character.Rotation).z, 0, (transform.right * -GameManager.Instance.Character.Rotation).x) + -transform.forward * GameManager.Instance.Character.Position).normalized;
+
+        //Debug.Log($"{direction}\n{direction2}");
 
         if (direction != Vector3.zero || GameManager.Instance.Character.Rb.velocity.magnitude < 0.15f)
             transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(direction), 0.1f);
