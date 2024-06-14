@@ -139,7 +139,7 @@ public class BabyManager : MonoBehaviour
     public void BabyAction()
     {
         RaycastHit hit;
-        Physics.Raycast(transform.position, transform.TransformDirection(Vector3.back), out hit, DistanceAssign);
+        Physics.Raycast(GameManager.Instance.Character.transform.position, GameManager.Instance.Character.transform.TransformDirection(Vector3.back), out hit, DistanceAssign, LayerMask.GetMask("Ground"));
 
         if (hit.transform != null && hit.transform.GetComponentInParent<ObjectToPush>() != null)
         {
@@ -200,6 +200,6 @@ public class BabyManager : MonoBehaviour
     {
         Gizmos.DrawWireSphere(transform.position, _distanceFromBaby);
         Gizmos.color = Color.cyan;
-        Gizmos.DrawRay(transform.position, transform.TransformDirection(Vector3.back) * DistanceAssign);
+        Gizmos.DrawRay(GameManager.Instance.Character.transform.position, GameManager.Instance.Character.transform.TransformDirection(Vector3.back) * DistanceAssign);
     }
 }
