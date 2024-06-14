@@ -72,6 +72,7 @@ public class EndPousuite : MonoBehaviour
 
         if (Death != null)
             Destroy(Death);
+
         if (GameManager.Instance.CamManager.TemporaryPos != null)
             GameManager.Instance.CamManager.ChangeCam(null);
 
