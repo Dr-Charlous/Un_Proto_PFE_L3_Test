@@ -40,7 +40,7 @@ public class Respawn : MonoBehaviour
         }
 
 
-        for (int i = 0; i < _entities.Length; i++)
+        for (int i = 0; i < _traps.Length; i++)
         {
             _traps[i].Init();
         }

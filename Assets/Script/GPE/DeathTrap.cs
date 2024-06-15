@@ -18,5 +18,6 @@ public class DeathTrap : MonoBehaviour
     public void Init()
     {
         gameObject.GetComponent<BoxCollider>().enabled = true;
+        _animator.SetTrigger("Return");
     }
 }
