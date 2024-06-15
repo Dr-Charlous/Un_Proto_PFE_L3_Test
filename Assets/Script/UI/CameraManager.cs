@@ -14,17 +14,25 @@ public class CameraManager : MonoBehaviour
     public float ActualSpeedRotate;
     public float ActualSpeed;
 
-    float _valueTime;
     Transform PreviousTemporaryPos;
+    Transform ActualPos;
+    bool _ismoved;
+    float _valueTime;
 
     private void Start()
     {
+        _ismoved = true;
+        ActualPos = GameManager.Instance.CamPlayer;
         UpdateCam(GameManager.Instance.CamPlayer);
     }
 
     private void Update()
     {
-        Transition();
+        if (!_ismoved)
+            Transition();
+
+        if (ActualPos != null)
+            UpdateCam(ActualPos);
 
         if (Rotation != 0)
         {
@@ -52,8 +60,31 @@ public class CameraManager : MonoBehaviour
         transform.rotation = Quaternion.Lerp(transform.rotation, transformCam.rotation, value);
     }
 
+    public void MoveCam(Transform pos)
+    {
+        ActualPos = null;
+
+        if (_valueTime <= 1 && Vector3.Lerp(transform.position, pos.position, _valueTime) != pos.position)
+        {
+            _valueTime += Time.deltaTime * ActualSpeed;
+            CamGoTo(transform, _valueTime / Vector3.Distance(transform.position, pos.position));
+
+            if (_valueTime > 1)
+                _valueTime = 1;
+        }
+        else
+        {
+            ActualPos = pos;
+            _valueTime = 0;
+
+            _ismoved = true;
+        }
+    }
+
     public void ChangeCam(Transform newTransform)
     {
+        _ismoved = false;
+
         if (newTransform == null)
         {
             TemporaryPos = newTransform;
@@ -72,56 +103,22 @@ public class CameraManager : MonoBehaviour
 
     void Transition()
     {
-        if (TemporaryPos != null && TemporaryPos == PreviousTemporaryPos)
+        if (TemporaryPos != null)
         {
-            if (_valueTime <= 1 && Vector3.Lerp(transform.position, TemporaryPos.position, _valueTime) != TemporaryPos.position)
-            {
-                _valueTime += Time.deltaTime * ActualSpeed;
-                CamGoTo(TemporaryPos, _valueTime / Vector3.Distance(transform.position, TemporaryPos.position));
+            if (TemporaryPos == PreviousTemporaryPos)
+                GameManager.Instance.Character.IsParalysed = true;
+            else if (TemporaryPos != PreviousTemporaryPos)
+                PreviousTemporaryPos = TemporaryPos;
 
-                if (_valueTime > 1)
-                    _valueTime = 1;
-            }
-            else
-            {
-                UpdateCam(TemporaryPos);
-            }
-            GameManager.Instance.Character.IsParalysed = true;
-        }
-        else if (TemporaryPos != null && TemporaryPos != PreviousTemporaryPos)
-        {
-            PreviousTemporaryPos = TemporaryPos;
-
-            if (_valueTime <= 1 && Vector3.Lerp(transform.position, TemporaryPos.position, _valueTime) != TemporaryPos.position)
-            {
-                _valueTime += Time.deltaTime * ActualSpeed;
-                CamGoTo(TemporaryPos, _valueTime / Vector3.Distance(transform.position, TemporaryPos.position));
-
-                if (_valueTime > 1)
-                    _valueTime = 1;
-            }
-            else
-            {
-                UpdateCam(TemporaryPos);
-            }
+            MoveCam(TemporaryPos);
         }
         else
         {
             PreviousTemporaryPos = null;
 
-            if (_valueTime >= 0 && Vector3.Lerp(transform.position, GameManager.Instance.CamPlayer.position, (1 - _valueTime)) != GameManager.Instance.CamPlayer.position)
-            {
-                _valueTime -= Time.deltaTime * ActualSpeed;
-                CamGoTo(GameManager.Instance.CamPlayer, (1 - _valueTime) / Vector3.Distance(transform.position, GameManager.Instance.CamPlayer.position));
+            MoveCam(GameManager.Instance.CamPlayer);
 
-                if (_valueTime < 0)
-                    _valueTime = 0;
-            }
-            else
-            {
-                UpdateCam(GameManager.Instance.CamPlayer);
-                GameManager.Instance.Character.IsParalysed = false;
-            }
+            GameManager.Instance.Character.IsParalysed = false;
         }
     }
 

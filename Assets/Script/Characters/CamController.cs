@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 
 [RequireComponent(typeof(InputManager))]
@@ -21,6 +22,11 @@ public class CamController : MonoBehaviour
     public Animator Animator;
 
     [SerializeField] AudioSource _source;
+
+    private void Start()
+    {
+        StartCoroutine(WaitCam(2));
+    }
 
     void Update()
     {
@@ -57,5 +63,12 @@ public class CamController : MonoBehaviour
             _source.volume = Rb.velocity.magnitude / LimitMaxSpeed;
 
         Animator.SetFloat("Move", Rb.velocity.magnitude, 0.1f, Time.deltaTime);
+    }
+
+    public IEnumerator WaitCam(float time)
+    {
+        IsParalysed = true; 
+        yield return new WaitForSeconds(time);
+        IsParalysed = false;
     }
 }

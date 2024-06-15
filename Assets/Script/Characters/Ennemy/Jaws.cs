@@ -19,7 +19,7 @@ public class Jaws : MonoBehaviour
             if (move != null)
                 move.Animator.SetTrigger("Death");
 
-            StateBabyController stateBabyController = other.transform.gameObject.GetComponent<RefBaby>().Controller;
+            StateBabyController stateBabyController = other.GetComponent<RefBaby>().Controller;
             if (stateBabyController != null)
                 stateBabyController.Animator.SetTrigger("Death");
         }

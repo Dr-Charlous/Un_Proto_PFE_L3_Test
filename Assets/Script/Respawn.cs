@@ -39,10 +39,12 @@ public class Respawn : MonoBehaviour
             }
         }
 
-
-        for (int i = 0; i < _traps.Length; i++)
+        if (_traps.Length > 0)
         {
-            _traps[i].Init();
+            for (int i = 0; i < _traps.Length; i++)
+            {
+                _traps[i].Init();
+            }
         }
 
         if (isEnd)

@@ -30,8 +30,8 @@ public class StateEnnemyRound : IStateEnnemy
             RaycastHit hitRight;
 
             bool RayMid = Physics.Raycast(controller.Animations.transform.position, controller.Animations.transform.forward, out hitMid, controller.DistanceSee);
-            bool RayLeft = Physics.Raycast(controller.Animations.transform.position, controller.Animations.transform.forward - controller.Animations.transform.right, out hitLeft, controller.DistanceSee);
-            bool RayRight = Physics.Raycast(controller.Animations.transform.position, controller.Animations.transform.forward + controller.Animations.transform.right, out hitRight, controller.DistanceSee);
+            bool RayLeft = Physics.Raycast(controller.Animations.transform.position, (controller.Animations.transform.forward - controller.Animations.transform.right).normalized, out hitLeft, controller.DistanceSee);
+            bool RayRight = Physics.Raycast(controller.Animations.transform.position, (controller.Animations.transform.forward + controller.Animations.transform.right).normalized, out hitRight, controller.DistanceSee);
 
             if (RayMid && controller.DistanceSee > Vector3.Distance(hitMid.transform.position, controller.transform.position))
             {
