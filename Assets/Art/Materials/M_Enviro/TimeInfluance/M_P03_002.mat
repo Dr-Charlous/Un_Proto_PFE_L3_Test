@@ -20,16 +20,17 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: M_A02_Leaves_Alpha 1
-  m_Shader: {fileID: -6465566751694194690, guid: 78d9c332edc3a5a4e87f5311d1ca5fe6, type: 3}
+  m_Name: M_P03_002
+  m_Shader: {fileID: -6465566751694194690, guid: 3ab53d563b46e1549bf1d1ef0c8e8162, type: 3}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
   m_ValidKeywords: []
-  m_InvalidKeywords: []
+  m_InvalidKeywords:
+  - _SURFACE_TYPE_TRANSPARENT
   m_LightmapFlags: 2
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 1
-  m_CustomRenderQueue: -1
+  m_CustomRenderQueue: 2450
   stringTagMap: {}
   disabledShaderPasses: []
   m_LockedProperties: 
@@ -40,12 +41,8 @@ Material:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
-    - _AlphaTex:
-        m_Texture: {fileID: 2800000, guid: 447ed524b6f559f48ac78e98fb90fa23, type: 3}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
     - _Alpha_Texture:
-        m_Texture: {fileID: 2800000, guid: 447ed524b6f559f48ac78e98fb90fa23, type: 3}
+        m_Texture: {fileID: 2800000, guid: 6f7d42c5bbf74784a9104a441d1e711d, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _EmissiveTexture2D:
@@ -60,20 +57,12 @@ Material:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
-    - _MainTexture:
-        m_Texture: {fileID: 2800000, guid: 8eb417a23f1a0ea4eb5c6d83181e8b12, type: 3}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
     - _NORMAL:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _Texture2D:
-        m_Texture: {fileID: 2800000, guid: 8eb417a23f1a0ea4eb5c6d83181e8b12, type: 3}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
-    - _WindTexture:
-        m_Texture: {fileID: 2800000, guid: e533890e27b5744459cc7927b3eb004f, type: 3}
+        m_Texture: {fileID: 2800000, guid: a37e5c42a8c089041ac4d6ec1fbaca94, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - unity_Lightmaps:
@@ -92,55 +81,35 @@ Material:
     m_Floats:
     - _AlphaClip: 0
     - _AlphaToMask: 0
-    - _AlpheTreshold: 0.5
-    - _Amplitude: 2.5
+    - _Amplitude: 36.8
     - _Blend: 0
     - _BlendModePreserveSpecular: 0
     - _CastShadows: 1
     - _Cull: 0
-    - _CutoutSize: 0.53
-    - _Cutout_Size: 0.4
-    - _DepthFrequence: 0.82
-    - _Dithering: 2.2
+    - _Cutout_Size: 0.53
+    - _DepthFrequence: 22.64
+    - _Dithering: 2
     - _DstBlend: 10
-    - _FalloutSize: 0.6
-    - _Fallout_Size: 0.15
-    - _HeightBlend: 0.79
-    - _IsAlphaInvert: 1
-    - _IsShadowOff: 0
-    - _IsTransparancy: 1
-    - _MaxMask: 0.38
-    - _MinMask: 0
-    - _NormalStrenght: 0
-    - _QueueControl: 0
+    - _Fallout_Size: 0.6
+    - _MaxMask: 0.26
+    - _MinMask: 0.19
+    - _NormalStrenght: 0.5
+    - _QueueControl: 1
     - _QueueOffset: 0
     - _ReceiveShadows: 1
     - _Roughness: 0
-    - _Smoothness: 0
-    - _Speed: 1.3
+    - _Speed: 1.88
     - _SrcBlend: 5
     - _Surface: 1
-    - _TIME: 1
-    - _Transparency: 0.55
+    - _TIME: 0
+    - _Transparency: 0
     - _TransparencyBool: 0
-    - _WindHeight: 0.02
-    - _WindIntensity: 0.0004
-    - _WindNoiseSpeed: 0.31
-    - _WindSpeed: 0.5
     - _WorkflowMode: 1
     - _ZTest: 4
     - _ZWrite: 0
     - _ZWriteControl: 0
     m_Colors:
-    - _BottomColor: {r: 0.5849056, g: 0.30869386, b: 0.26210395, a: 1}
-    - _Color: {r: 1, g: 1, b: 1, a: 1}
+    - _Color: {r: 0.6534799, g: 0.8396226, b: 0.66769546, a: 1}
     - _Cutout_Position: {r: 0.5, g: 0.25, b: 0, a: 0}
-    - _EmissiveColor: {r: 15.615967, g: 1024, b: 0, a: 1}
-    - _FarColor: {r: 0.3584906, g: 0.13527948, b: 0.079476684, a: 0}
-    - _NearColor: {r: 0, g: 0, b: 0, a: 0}
-    - _NearFarRange: {r: 80, g: 80, b: 0, a: 0}
-    - _ShadowColor: {r: 0.70573384, g: 0.745283, b: 0.46052867, a: 0.21176471}
-    - _Vector2: {r: 0.5, g: 0.25, b: 0, a: 0}
-    - _WindNoiseContrast: {r: 0, g: 2.5, b: 0, a: 0}
-    - _WindNoiseScale: {r: 1, g: 1, b: 0, a: 0}
+    - _EmissiveColor: {r: 1367.1202, g: 1367.1202, b: 1367.1202, a: 1}
   m_BuildTextureStacks: []
