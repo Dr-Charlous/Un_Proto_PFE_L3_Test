@@ -16,6 +16,7 @@ public class InputManager : MonoBehaviour
     [SerializeField] bool InGame;
     [SerializeField] AudioSource _source;
 
+    public bool IsPause;
     public bool IsGamepad;
 
     private void OnEnable()
@@ -28,6 +29,8 @@ public class InputManager : MonoBehaviour
 
         _controls.Diplocaulus.BabyAction.started += GetBabyActionInput;
         _controls.Diplocaulus.BabyAction.canceled += BabyActionOutput;
+
+        _controls.Diplocaulus.Pause.started += PauseMenuInput;
     }
 
     private void OnDisable()
@@ -40,6 +43,8 @@ public class InputManager : MonoBehaviour
 
         _controls.Diplocaulus.BabyAction.started -= GetBabyActionInput;
         _controls.Diplocaulus.BabyAction.canceled -= BabyActionOutput;
+
+        _controls.Diplocaulus.Pause.started -= PauseMenuInput;
     }
 
     bool VerifyDevice(InputAction.CallbackContext input)
@@ -50,6 +55,18 @@ public class InputManager : MonoBehaviour
             IsGamepad = true;
 
         return IsGamepad;
+    }
+
+    void PauseMenuInput(InputAction.CallbackContext pause)
+    {
+        if (IsPause)
+        {
+            GameManager.Instance.PauseMenu.DesactivePause();
+        }
+        else
+        {
+            GameManager.Instance.PauseMenu.ActivePause();
+        }
     }
 
     void GetMoveInputs(InputAction.CallbackContext move)

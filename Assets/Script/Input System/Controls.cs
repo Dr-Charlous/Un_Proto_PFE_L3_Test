@@ -80,6 +80,15 @@ public partial class @Controls: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Pause"",
+                    ""type"": ""Button"",
+                    ""id"": ""81e513b4-ecec-481f-bcb7-99aa8d1c9cc0"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -346,6 +355,28 @@ public partial class @Controls: IInputActionCollection2, IDisposable
                     ""action"": ""CamReset"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""cc216996-517e-4654-aba4-576bfbb9f1e5"",
+                    ""path"": ""<Keyboard>/escape"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Pause"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""5d4bfb0b-48a4-4506-9aae-57a9447d5cf8"",
+                    ""path"": ""<Gamepad>/start"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Pause"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -360,6 +391,7 @@ public partial class @Controls: IInputActionCollection2, IDisposable
         m_Diplocaulus_BabyAction = m_Diplocaulus.FindAction("BabyAction", throwIfNotFound: true);
         m_Diplocaulus_CamMove = m_Diplocaulus.FindAction("CamMove", throwIfNotFound: true);
         m_Diplocaulus_CamReset = m_Diplocaulus.FindAction("CamReset", throwIfNotFound: true);
+        m_Diplocaulus_Pause = m_Diplocaulus.FindAction("Pause", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -427,6 +459,7 @@ public partial class @Controls: IInputActionCollection2, IDisposable
     private readonly InputAction m_Diplocaulus_BabyAction;
     private readonly InputAction m_Diplocaulus_CamMove;
     private readonly InputAction m_Diplocaulus_CamReset;
+    private readonly InputAction m_Diplocaulus_Pause;
     public struct DiplocaulusActions
     {
         private @Controls m_Wrapper;
@@ -437,6 +470,7 @@ public partial class @Controls: IInputActionCollection2, IDisposable
         public InputAction @BabyAction => m_Wrapper.m_Diplocaulus_BabyAction;
         public InputAction @CamMove => m_Wrapper.m_Diplocaulus_CamMove;
         public InputAction @CamReset => m_Wrapper.m_Diplocaulus_CamReset;
+        public InputAction @Pause => m_Wrapper.m_Diplocaulus_Pause;
         public InputActionMap Get() { return m_Wrapper.m_Diplocaulus; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -464,6 +498,9 @@ public partial class @Controls: IInputActionCollection2, IDisposable
             @CamReset.started += instance.OnCamReset;
             @CamReset.performed += instance.OnCamReset;
             @CamReset.canceled += instance.OnCamReset;
+            @Pause.started += instance.OnPause;
+            @Pause.performed += instance.OnPause;
+            @Pause.canceled += instance.OnPause;
         }
 
         private void UnregisterCallbacks(IDiplocaulusActions instance)
@@ -486,6 +523,9 @@ public partial class @Controls: IInputActionCollection2, IDisposable
             @CamReset.started -= instance.OnCamReset;
             @CamReset.performed -= instance.OnCamReset;
             @CamReset.canceled -= instance.OnCamReset;
+            @Pause.started -= instance.OnPause;
+            @Pause.performed -= instance.OnPause;
+            @Pause.canceled -= instance.OnPause;
         }
 
         public void RemoveCallbacks(IDiplocaulusActions instance)
@@ -511,5 +551,6 @@ public partial class @Controls: IInputActionCollection2, IDisposable
         void OnBabyAction(InputAction.CallbackContext context);
         void OnCamMove(InputAction.CallbackContext context);
         void OnCamReset(InputAction.CallbackContext context);
+        void OnPause(InputAction.CallbackContext context);
     }
 }
