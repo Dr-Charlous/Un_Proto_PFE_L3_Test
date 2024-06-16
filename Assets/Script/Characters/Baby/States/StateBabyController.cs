@@ -127,6 +127,9 @@ public class StateBabyController : MonoBehaviour
         //ObjectBaby.transform.position = Vector3.Lerp(ObjectBaby.transform.position, transform.position, 0.5f);
 
         Animator.SetFloat("Move", Agent.velocity.magnitude, 0.1f, Time.deltaTime);
+
+        if (Agent.velocity.magnitude < 1 * Time.deltaTime && Random.Range(0, 500) == 0)
+            Animator.SetTrigger("Roulade");
     }
 
     public void GetObj(bool var)

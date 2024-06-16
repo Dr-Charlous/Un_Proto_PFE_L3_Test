@@ -33,6 +33,9 @@ public class StateBabyCollect : IState
         controller.isGoingToGrab = false;
 
         if (controller.ObjectTransporting == null)
+        {
             controller.isTransporting = false;
+            controller.TargetObject.GetComponent<ObjectCollect>().UiFollow.ShowUi(true);
+        }
     }
 }
