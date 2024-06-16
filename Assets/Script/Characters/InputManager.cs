@@ -99,6 +99,11 @@ public class InputManager : MonoBehaviour
 
     void GetBabyActionInput(InputAction.CallbackContext baby)
     {
+        if (GameManager.Instance.Character.TrapResonnance != null)
+        {
+            GameManager.Instance.Character.TrapResonnance.PlayerGetOutside();
+        }
+
         if (!GameManager.Instance.Character.IsParalysed)
         {
             GameManager.Instance.BabyManager.BabyAction();
