@@ -750,7 +750,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ac162c46ffa0a491299b8cd2f86d548c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sun: {fileID: 0}
+  sun: {fileID: 6245003753632719166}
   moon: {fileID: 0}
   fogLayer: 1
   flipDepthTexture: 0
@@ -1321,8 +1321,17 @@ PrefabInstance:
       propertyPath: m_Name
       value: '%$ Header (1)'
       objectReference: {fileID: 0}
+    - target: {fileID: 6727737300806467222, guid: bb05ad745a94fe744ae351ea7276b17c, type: 3}
+      propertyPath: sharedProfile
+      value: 
+      objectReference: {fileID: 11400000, guid: ceb1e5cb93be1384f8e064bf480fe3fe, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: bb05ad745a94fe744ae351ea7276b17c, type: 3}
+--- !u!108 &6245003753632719166 stripped
+Light:
+  m_CorrespondingSourceObject: {fileID: 755026747878613276, guid: bb05ad745a94fe744ae351ea7276b17c, type: 3}
+  m_PrefabInstance: {fileID: 6245003753632719165}
+  m_PrefabAsset: {fileID: 0}
