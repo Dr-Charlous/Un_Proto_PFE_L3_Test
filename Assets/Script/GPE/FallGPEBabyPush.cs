@@ -8,7 +8,7 @@ public class FallGPEBabyPush : MonoBehaviour
     [SerializeField] ObjectResonnance _resonance;
     [SerializeField] BoxCollider _collider;
     [SerializeField] Transform _camPos;
-    [SerializeField] float _cineTime;
+    [SerializeField] float _value;
 
     private void OnTriggerEnter(Collider other)
     {
@@ -28,8 +28,8 @@ public class FallGPEBabyPush : MonoBehaviour
 
     IEnumerator CineFall()
     {
-        GameManager.Instance.CamManager.ChangeCam(_camPos);
-        yield return new WaitForSeconds(_cineTime * Time.deltaTime);
-        GameManager.Instance.CamManager.ChangeCam(null);
+        GameManager.Instance.CamManager.ChangeCam(_camPos, _value);
+        yield return new WaitForSeconds(_value);
+        GameManager.Instance.CamManager.ChangeCam(GameManager.Instance.CamPlayer, _value);
     }
 }

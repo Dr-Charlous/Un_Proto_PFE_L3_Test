@@ -16,6 +16,7 @@ public class ObjectResonnance : MonoBehaviour
     [SerializeField] Transform[] _entries;
     [SerializeField] bool _isTraveling = false;
     [SerializeField] float _speed = 5;
+    [SerializeField] float _speedCam;
     [SerializeField] UiFollowing _uiFlollowing;
     [SerializeField] OnTriggerEnterScript _babyZone;
 
@@ -33,6 +34,8 @@ public class ObjectResonnance : MonoBehaviour
     {
         if (IsPlayerInside)
         {
+            GameManager.Instance.Character.IsParalysed = true;
+
             if (_source != null && _clip != null)
                 PlaySound(_source, _clip);
             IsResonating = true;
@@ -89,7 +92,7 @@ public class ObjectResonnance : MonoBehaviour
     {
         //Debug.Log("ObjectResonnance");
 
-        GameManager.Instance.CamManager.ChangeCam(_destinationCamera);
+        GameManager.Instance.CamManager.ChangeCam(_destinationCamera, _speedCam);
 
         ChangePlayerPos();
 
@@ -120,9 +123,10 @@ public class ObjectResonnance : MonoBehaviour
     {
         //Debug.Log("ObjectResonnance");
 
-        GameManager.Instance.CamManager.ChangeCam(null);
-
         ChangePlayerPos();
+
+        if (GameManager.Instance.CamManager.ActualPos != GameManager.Instance.CamPlayer)
+            GameManager.Instance.CamManager.ChangeCam(GameManager.Instance.CamPlayer, _speedCam);
 
         for (int i = 0; i < GameManager.Instance.BabyManager.BabiesInScene.Count; i++)
         {

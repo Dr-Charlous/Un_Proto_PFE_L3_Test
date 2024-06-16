@@ -1,4 +1,6 @@
 using DG.Tweening;
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
 public class CameraManager : MonoBehaviour
@@ -6,46 +8,51 @@ public class CameraManager : MonoBehaviour
     public Transform TemporaryPos;
     public Transform PlayerCamPivot;
     public Transform CamPivot;
+    public Transform ActualPos;
     public bool IsGamepad;
-    public bool IsCamOrbital;
     public float Rotation;
     public float SpeedGamepad;
     public float SpeedKeyboard;
     public float ActualSpeedRotate;
     public float ActualSpeed;
 
-    Transform PreviousTemporaryPos;
-    Transform ActualPos;
-    bool _ismoved;
-    float _valueTime;
+    Coroutine _corroutine;
+    List<Transform> _waitingPos = new();
+    List<float> _timesWaiting = new();
+    bool _moving;
 
     private void Start()
     {
-        _ismoved = true;
+        _moving = false;
         ActualPos = GameManager.Instance.CamPlayer;
-        UpdateCam(GameManager.Instance.CamPlayer);
+
+        transform.position = ActualPos.position;
+        transform.rotation = ActualPos.rotation;
     }
 
     private void Update()
     {
-        if (!_ismoved)
-            Transition();
-
-        if (ActualPos != null)
-            UpdateCam(ActualPos);
+        if (IsGamepad)
+            ActualSpeedRotate = SpeedGamepad;
+        else
+            ActualSpeedRotate = SpeedKeyboard;
 
         if (Rotation != 0)
         {
             PlayerCamPivot.rotation *= Quaternion.Euler(Vector3.up * Rotation * ActualSpeedRotate * Time.deltaTime);
         }
 
-        if (IsCamOrbital)
-        {
-            if (IsGamepad)
-                ActualSpeedRotate = SpeedGamepad;
-            else
-                ActualSpeedRotate = SpeedKeyboard;
-        }
+        if (!_moving)
+            UpdateCam(ActualPos);
+    }
+
+    public void ChangeCam(Transform transformPos, float time)
+    {
+        _waitingPos.Add(transformPos);
+        _timesWaiting.Add(time);
+
+        if (_corroutine == null)
+            _corroutine = StartCoroutine(Transition());
     }
 
     void UpdateCam(Transform transformCam)
@@ -54,73 +61,98 @@ public class CameraManager : MonoBehaviour
         transform.rotation = transformCam.rotation;
     }
 
-    void CamGoTo(Transform transformCam, float value)
+    IEnumerator Transition()
     {
-        transform.position = Vector3.Lerp(transform.position, transformCam.position, value);
-        transform.rotation = Quaternion.Lerp(transform.rotation, transformCam.rotation, value);
-    }
+        _moving = true;
+        ActualPos = _waitingPos[0];
+        GameManager.Instance.Character.IsParalysed = _moving;
 
-    public void MoveCam(Transform pos)
-    {
-        ActualPos = null;
+        transform.DOKill();
+        transform.DOMove(_waitingPos[0].position, _timesWaiting[0]);
+        transform.DORotate(_waitingPos[0].rotation.eulerAngles, _timesWaiting[0]);
 
-        if (_valueTime <= 1 && Vector3.Lerp(transform.position, pos.position, _valueTime) != pos.position)
-        {
-            _valueTime += Time.deltaTime * ActualSpeed;
-            CamGoTo(transform, _valueTime / Vector3.Distance(transform.position, pos.position));
+        yield return new WaitForSeconds(_timesWaiting[0]);
 
-            if (_valueTime > 1)
-                _valueTime = 1;
-        }
+        _waitingPos.RemoveAt(0);
+        _timesWaiting.RemoveAt(0);
+
+        if (_waitingPos.Count > 0 && _timesWaiting.Count > 0)
+            _corroutine = StartCoroutine(Transition());
         else
         {
-            ActualPos = pos;
-            _valueTime = 0;
-
-            _ismoved = true;
+            _moving = false;
+            GameManager.Instance.Character.IsParalysed = _moving;
+            _corroutine = null;
         }
     }
 
-    public void ChangeCam(Transform newTransform)
-    {
-        _ismoved = false;
+    #region comm
+    //void CamGoTo(Transform transformCam, float value)
+    //{
+    //    transform.position = Vector3.Lerp(transform.position, transformCam.position, value);
+    //    transform.rotation = Quaternion.Lerp(transform.rotation, transformCam.rotation, value);
+    //}
 
-        if (newTransform == null)
-        {
-            TemporaryPos = newTransform;
-            PreviousTemporaryPos = newTransform;
-        }
-        else
-        {
-            if (TemporaryPos != null)
-                PreviousTemporaryPos = TemporaryPos;
-            else
-                PreviousTemporaryPos = newTransform;
+    //public void MoveCam(Transform pos)
+    //{
+    //    ActualPos = null;
 
-            TemporaryPos = newTransform;
-        }
-    }
+    //    if (_valueTime <= 1 && Vector3.Lerp(transform.position, pos.position, _valueTime) != pos.position)
+    //    {
+    //        _valueTime += Time.deltaTime * ActualSpeed;
+    //        CamGoTo(transform, _valueTime / Vector3.Distance(transform.position, pos.position));
 
-    void Transition()
-    {
-        if (TemporaryPos != null)
-        {
-            if (TemporaryPos == PreviousTemporaryPos)
-                GameManager.Instance.Character.IsParalysed = true;
-            else if (TemporaryPos != PreviousTemporaryPos)
-                PreviousTemporaryPos = TemporaryPos;
+    //        if (_valueTime > 1)
+    //            _valueTime = 1;
+    //    }
+    //    else
+    //    {
+    //        ActualPos = pos;
+    //        _valueTime = 0;
 
-            MoveCam(TemporaryPos);
-        }
-        else
-        {
-            PreviousTemporaryPos = null;
+    //        _ismoved = true;
+    //    }
+    //}
 
-            MoveCam(GameManager.Instance.CamPlayer);
+    //public void ChangeCam(Transform newTransform)
+    //{
+    //    if (newTransform == null)
+    //    {
+    //        TemporaryPos = newTransform;
+    //        PreviousTemporaryPos = newTransform;
+    //    }
+    //    else
+    //    {
+    //        if (TemporaryPos != null)
+    //            PreviousTemporaryPos = TemporaryPos;
+    //        else
+    //            PreviousTemporaryPos = newTransform;
 
-            GameManager.Instance.Character.IsParalysed = false;
-        }
-    }
+    //        TemporaryPos = newTransform;
+    //    }
+    //}
+
+    //void Transition()
+    //{
+    //    if (TemporaryPos != null)
+    //    {
+    //        if (TemporaryPos == PreviousTemporaryPos)
+    //            GameManager.Instance.Character.IsParalysed = true;
+    //        else if (TemporaryPos != PreviousTemporaryPos)
+    //            PreviousTemporaryPos = TemporaryPos;
+
+    //        MoveCam(TemporaryPos);
+    //    }
+    //    else
+    //    {
+    //        PreviousTemporaryPos = null;
+
+    //        MoveCam(GameManager.Instance.CamPlayer);
+
+    //        GameManager.Instance.Character.IsParalysed = false;
+    //    }
+    //}
+    #endregion
 
     public void Reset()
     {
