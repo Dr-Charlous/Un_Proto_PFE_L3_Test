@@ -38,6 +38,7 @@ public class ObjectResonnance : MonoBehaviour
 
             if (_source != null && _clip != null)
                 PlaySound(_source, _clip);
+
             IsResonating = true;
             BabyOut();
         }
