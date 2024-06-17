@@ -7,6 +7,7 @@ public class PlayerMeshFollow : MonoBehaviour
     [SerializeField] float _lerpRotate = 0.25f;
 
     Vector3 _velocity;
+    Quaternion _lastRotation;
 
     private void LateUpdate()
     {
@@ -24,7 +25,13 @@ public class PlayerMeshFollow : MonoBehaviour
 
         //Debug.Log($"{direction}\n{direction2}");
 
-        if ((direction != Vector3.zero || GameManager.Instance.Character.Rb.velocity.magnitude < 0.15f) && !GameManager.Instance.Character.IsParalysed)
-            transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(direction.normalized), 0.1f);
+        if ((GameManager.Instance.Character.Rotation != 0 || GameManager.Instance.Character.Position != 0) && !GameManager.Instance.Character.IsParalysed)
+        {
+            _lastRotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(direction.normalized), 0.1f);
+        }
+        else
+            _lastRotation = transform.rotation;
+
+        transform.rotation = _lastRotation;
     }
 }
