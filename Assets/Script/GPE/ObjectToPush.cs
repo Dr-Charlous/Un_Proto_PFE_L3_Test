@@ -2,23 +2,26 @@ using UnityEngine;
 
 public class ObjectToPush : MonoBehaviour
 {
+    [Header("Check :")]
     public ObjectToPush[] CheckBlockers;
     public BabyPosCheckAction[] CheckBabies;
     public TriggerIsParetnHere CheckParent;
 
-    [HideInInspector] public bool[] IsBabyActionned;
-    [HideInInspector] public bool IsParentActionned;
+    [Header("Verif :")]
     [SerializeField] Transform _destination;
     [SerializeField] GameObject _mesh;
+    [HideInInspector] public bool[] IsBabyActionned;
+    [HideInInspector] public bool IsParentActionned;
 
+    [Header("Push :")]
     public float ValuePush;
-    [SerializeField] float _speedPush;
     public int DecreasePushValue = 1;
+    [SerializeField] float _speedPush;
 
+    [Header("Ui :")]
     public UiFollowing _uiFollow;
 
     Transform _parent;
-    bool _isActivated = false;
     Vector3 _initPos;
     Vector3 _endPos;
     Quaternion _initRot;
@@ -67,19 +70,30 @@ public class ObjectToPush : MonoBehaviour
     {
         bool isEveryOneHere = true;
 
-        for (int i = 0; i < IsBabyActionned.Length; i++)
-        {
-            if (IsBabyActionned[i] == false || (IsBabyActionned[i] && GameManager.Instance.BabyManager.BabiesInScene[i].GetComponentInChildren<StateBabyController>().Charges < DecreasePushValue))
-                isEveryOneHere = false;
-        }
-
         if (CheckParent != null && (!CheckParent.isTrigger || GameManager.Instance.Character.Position >= 0))
         {
             isEveryOneHere = false;
             IsParentActionned = false;
+
+            _uiFollow._objUiGamePad1.SetActive(false);
+            _uiFollow._objUiKeyboard1.SetActive(false);
+            _uiFollow._objUiGamePad2.SetActive(true);
+            _uiFollow._objUiKeyboard2.SetActive(true);
         }
         else if (CheckParent != null)
             IsParentActionned = true;
+
+        for (int i = 0; i < IsBabyActionned.Length; i++)
+        {
+            if (IsBabyActionned[i] == false || (IsBabyActionned[i] && GameManager.Instance.BabyManager.BabiesInScene[i].GetComponentInChildren<StateBabyController>().Charges < DecreasePushValue))
+            {
+                isEveryOneHere = false;
+                _uiFollow._objUiGamePad1.SetActive(true);
+                _uiFollow._objUiKeyboard1.SetActive(true);
+                _uiFollow._objUiGamePad2.SetActive(false);
+                _uiFollow._objUiKeyboard2.SetActive(false);
+            }
+        }
 
         if (CheckBlockers.Length > 0)
         {
@@ -93,9 +107,16 @@ public class ObjectToPush : MonoBehaviour
         if (isEveryOneHere)
         {
             Action();
+
+            _uiFollow._objUiGamePad1.SetActive(false);
+            _uiFollow._objUiKeyboard1.SetActive(false);
+            _uiFollow._objUiGamePad2.SetActive(false);
+            _uiFollow._objUiKeyboard2.SetActive(false);
         }
         else
+        {
             _uiFollow.gameObject.SetActive(true);
+        }
     }
 
     void Action()

@@ -12,6 +12,12 @@ public class UiFollowing : MonoBehaviour
     [SerializeField] GameObject _objUiGamePad;
     [SerializeField] GameObject _objUiKeyboard;
 
+    public GameObject _objUiGamePad1;
+    public GameObject _objUiKeyboard1;
+
+    public GameObject _objUiGamePad2;
+    public GameObject _objUiKeyboard2;
+
     Camera _cam;
     Canvas _canva;
 
