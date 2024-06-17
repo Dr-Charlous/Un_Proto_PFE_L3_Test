@@ -19,6 +19,7 @@ public class ObjectResonnance : MonoBehaviour
     [SerializeField] float _speedCam;
     [SerializeField] UiFollowing _uiFlollowing;
     [SerializeField] OnTriggerEnterScript _babyZone;
+    [SerializeField] GameObject _renderer;
 
     Vector3 LastPosPlayer;
     Quaternion LastRotPlayer;
@@ -28,6 +29,8 @@ public class ObjectResonnance : MonoBehaviour
         IsPlayerInside = false;
         LastPosPlayer = Vector3.zero;
         LastRotPlayer = Quaternion.Euler(Vector3.zero);
+
+        _renderer.SetActive(false);
     }
 
     private void Update()
@@ -118,6 +121,8 @@ public class ObjectResonnance : MonoBehaviour
 
         if (_uiFlollowing != null)
             _uiFlollowing.gameObject.SetActive(false);
+
+        _renderer.SetActive(true);
     }
 
     public void PlayerGetOutside()
@@ -146,6 +151,7 @@ public class ObjectResonnance : MonoBehaviour
             _uiFlollowing.gameObject.SetActive(true);
 
         _babyZone.ObjectLastExit = null;
+        _renderer.SetActive(false);
     }
 
     public void ChangePlayerPos()
