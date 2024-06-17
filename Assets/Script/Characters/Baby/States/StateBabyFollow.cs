@@ -11,6 +11,8 @@ public class StateBabyFollow : IState
         //Controller.transform.position = Controller.TargetParent.position;
         //Controller.Target = Controller.TargetParent;
         //Controller.Agent.SetDestination(Controller.Target.position);
+        controller.Target = controller.TargetParent;
+        controller.Agent.SetDestination(controller.Target.position);
     }
 
     public void UpdateState(StateBabyController controller)
@@ -19,7 +21,6 @@ public class StateBabyFollow : IState
 
         if (GameManager.Instance.Nest == null || !GameManager.Instance.Nest.IsCreated || (GameManager.Instance.Nest.IsCreated && GameManager.Instance.Nest.IsFeed))
         {
-            controller.Target = controller.TargetParent;
             controller.Agent.SetDestination(controller.Target.position);
         }
 

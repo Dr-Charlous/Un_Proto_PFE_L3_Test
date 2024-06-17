@@ -5,6 +5,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UIElements;
+using UnityEngine.VFX;
 
 public class FishNavigator : MonoBehaviour
 {
@@ -14,7 +15,11 @@ public class FishNavigator : MonoBehaviour
     [SerializeField] float _speed;
     [SerializeField] bool _isMoving;
 
-    [SerializeField] TweenerCore<Vector3, Vector3, VectorOptions> _doMoving;
+    [Header("Visul Effect : ")]
+    [SerializeField] VisualEffect _effect;
+    [SerializeField] float _offSetFishEffect;
+
+    TweenerCore<Vector3, Vector3, VectorOptions> _doMoving;
 
     float _time = 0;
     float _velocity = 0;
@@ -50,6 +55,9 @@ public class FishNavigator : MonoBehaviour
             if (_position.Neighbours.Length == 0)
                 GetFish();
         }
+
+        Vector3 direction = _position.transform.position - transform.position;
+        _effect.SetVector3("PosEffect", direction.normalized * _offSetFishEffect);
     }
 
     private void OnTriggerEnter(Collider collision)

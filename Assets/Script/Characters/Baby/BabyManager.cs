@@ -172,6 +172,7 @@ public class BabyManager : MonoBehaviour
     {
         Gizmos.DrawWireSphere(transform.position, _distanceFromBaby);
         Gizmos.color = Color.cyan;
-        Gizmos.DrawRay(GameManager.Instance.Character.transform.position, GameManager.Instance.Character.transform.TransformDirection(Vector3.back) * DistanceAssign);
+        if (Application.isPlaying)
+            Gizmos.DrawRay(GameManager.Instance.Character.transform.position, GameManager.Instance.Character.transform.TransformDirection(Vector3.back) * DistanceAssign);
     }
 }
