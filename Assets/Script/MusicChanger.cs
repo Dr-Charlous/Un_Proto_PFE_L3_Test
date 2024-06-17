@@ -4,11 +4,19 @@ using UnityEngine;
 
 public class MusicChanger : MonoBehaviour
 {
-    [SerializeField] float _value;
-    [SerializeField] float _value1;
     [SerializeField] float _speed;
-    [SerializeField] bool _isInside;
-    [SerializeField] bool _isValueReset;
+    [SerializeField] float _volumeMax;
+
+    float _value;
+    float _value1;
+    bool _isInside;
+    bool _isValueReset;
+
+    private void Start()
+    {
+        _value1 = _volumeMax;
+        _value = 0;
+    }
 
     private void LateUpdate()
     {
@@ -19,9 +27,9 @@ public class MusicChanger : MonoBehaviour
                 _value += _speed * Time.deltaTime;
                 _value1 -= _speed * Time.deltaTime;
 
-                if (_value >= 1)
+                if (_value >= _volumeMax)
                 {
-                    _value = 1;
+                    _value = _volumeMax;
                 }
 
                 if (_value1 <= 0)
@@ -43,9 +51,9 @@ public class MusicChanger : MonoBehaviour
                     _isValueReset = true;
                 }
 
-                if (_value >= 1)
+                if (_value >= _volumeMax)
                 {
-                    _value1 = 1;
+                    _value1 = _volumeMax;
                 }
 
                 GameManager.Instance.MusicMain.volume = _value1;
