@@ -18,7 +18,7 @@ public class StateBabyAction : IState
     {
         //Debug.Log("CheckForAction");
 
-        if (controller.Target == null || (Vector3.Distance(GameManager.Instance.Character.transform.position, controller.transform.position) > controller.Distance))
+        if (controller.Target == null || (Vector3.Distance(GameManager.Instance.Character.transform.position, controller.transform.position) > controller.Distance && !GameManager.Instance.Character.IsParalysed))
         {
             controller.Target = controller.transform.parent.transform;
             controller.ChangeState(controller.StateFollow);

@@ -37,7 +37,7 @@ public class CameraManager : MonoBehaviour
         else
             ActualSpeedRotate = SpeedKeyboard;
 
-        if (Rotation != 0)
+        if (Rotation != 0 && !GameManager.Instance.Character.IsParalysed)
         {
             PlayerCamPivot.rotation *= Quaternion.Euler(Vector3.up * Rotation * ActualSpeedRotate * Time.deltaTime);
         }

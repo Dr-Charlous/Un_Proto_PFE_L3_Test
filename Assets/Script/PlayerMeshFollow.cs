@@ -24,7 +24,7 @@ public class PlayerMeshFollow : MonoBehaviour
 
         //Debug.Log($"{direction}\n{direction2}");
 
-        if (direction != Vector3.zero || GameManager.Instance.Character.Rb.velocity.magnitude < 0.15f)
+        if ((direction != Vector3.zero || GameManager.Instance.Character.Rb.velocity.magnitude < 0.15f) && !GameManager.Instance.Character.IsParalysed)
             transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(direction.normalized), 0.1f);
     }
 }
