@@ -20,6 +20,7 @@ public class ObjectResonnance : MonoBehaviour
     [SerializeField] UiFollowing _uiFlollowing;
     [SerializeField] OnTriggerEnterScript _babyZone;
     [SerializeField] GameObject _renderer;
+    [SerializeField] BoxCollider _trunkCollider;
 
     Vector3 LastPosPlayer;
     Quaternion LastRotPlayer;
@@ -163,7 +164,10 @@ public class ObjectResonnance : MonoBehaviour
 
             float speed = (transform.position - GameManager.Instance.Character.transform.position).magnitude * _speed * Time.deltaTime;
 
-            GameManager.Instance.Character.transform.DOComplete();
+            _trunkCollider.excludeLayers += LayerMask.GetMask("Player");
+
+            GameManager.Instance.Character.Rb.velocity = Vector3.zero;
+            GameManager.Instance.Character.transform.DOKill();
             GameManager.Instance.Character.transform.DOMove(transform.position, speed);
         }
         else
@@ -172,14 +176,16 @@ public class ObjectResonnance : MonoBehaviour
 
             if (_isTraveling)
             {
-                GameManager.Instance.Character.transform.DOComplete();
+                GameManager.Instance.Character.transform.DOKill();
                 GameManager.Instance.Character.transform.DOMove(NearestEntry(LastPosPlayer), speed);
             }
             else
             {
-                GameManager.Instance.Character.transform.DOComplete();
+                GameManager.Instance.Character.transform.DOKill();
                 GameManager.Instance.Character.transform.DOMove(LastPosPlayer, speed);
             }
+
+            _trunkCollider.excludeLayers -= LayerMask.GetMask("Player");
 
             GameManager.Instance.Character.Rb.velocity = Vector3.zero;
             GameManager.Instance.Character.transform.rotation = LastRotPlayer;
@@ -189,7 +195,7 @@ public class ObjectResonnance : MonoBehaviour
         }
 
         GameManager.Instance.Character.Rb.velocity = Vector3.zero;
-        GameManager.Instance.CamManager.Reset();
+        //GameManager.Instance.CamManager.Reset();
     }
 
     void BabyOut()

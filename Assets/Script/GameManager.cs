@@ -31,7 +31,9 @@ public class GameManager : MonoBehaviour
     public Death Win;
     public Respawn Respawn;
     public Animator Begin;
-    public PauseMenu PauseMenu; 
+    public PauseMenu PauseMenu;
+    public AudioSource MusicMain;
+    public AudioSource MusicDanger;
 
     public float ReduceFloatValue(float value, int valueBelow)
     {
