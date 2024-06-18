@@ -27,6 +27,9 @@ public class StateBabyFollow : IState
 
         if (controller.isGoingToGrab)
             controller.isGoingToGrab = false;
+
+        if (Random.Range(0, 500) == 0)
+            controller.Scream();
     }
 
     public void OnExit(StateBabyController controller)

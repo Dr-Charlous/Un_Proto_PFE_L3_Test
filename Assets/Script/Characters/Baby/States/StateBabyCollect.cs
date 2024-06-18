@@ -24,6 +24,7 @@ public class StateBabyCollect : IState
             && controller.isTransporting == false)
         {
             controller.GetObj(controller.OnTriggerEnterScript.ObjectTouch.GetComponent<ObjectCollect>().IsPortable);
+            controller.Scream();
             controller.ChangeState(controller.StateFollow);
         }
     }

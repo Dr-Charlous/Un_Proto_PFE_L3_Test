@@ -49,6 +49,10 @@ public class StateBabyController : MonoBehaviour
     public Transform ParentCollect;
     public OnTriggerEnterScript OnTriggerEnterScript;
 
+    [Header("Sounds :")]
+    public AudioSource Source;
+    public AudioClip[] Clips;
+
     private void Start()
     {
         ChangeState(StateFollow);
@@ -185,6 +189,15 @@ public class StateBabyController : MonoBehaviour
     private void OnDrawGizmosSelected()
     {
         Gizmos.DrawWireSphere(transform.position, Distance);
+    }
+
+    public void Scream()
+    {
+        if (!Source.isPlaying)
+        {
+            Source.clip = Clips[Random.Range(0, Clips.Length)];
+            Source.Play();
+        }
     }
 }
 

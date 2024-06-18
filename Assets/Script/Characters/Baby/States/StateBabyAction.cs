@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using static Unity.VisualScripting.Member;
 
 public class StateBabyAction : IState
 {
@@ -12,6 +13,8 @@ public class StateBabyAction : IState
         controller.Agent.SetDestination(controller.Target.position);
 
         _target = controller.Target.position;
+
+        controller.Scream();
     }
 
     public void UpdateState(StateBabyController controller)
@@ -40,5 +43,7 @@ public class StateBabyAction : IState
     {
         controller.Target = controller.TargetParent;
         controller.Agent.SetDestination(controller.Target.position);
+
+        controller.Scream();
     }
 }
