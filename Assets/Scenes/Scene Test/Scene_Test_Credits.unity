@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.5472298, g: 0.3033739, b: 0.1804784, a: 1}
+  m_IndirectSpecularColor: {r: 0.54722905, g: 0.30337363, b: 0.18047836, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -2668,14 +2668,14 @@ Light:
   serializedVersion: 10
   m_Type: 1
   m_Shape: 0
-  m_Color: {r: 0.509434, g: 0.5058295, b: 0.50222504, a: 1}
+  m_Color: {r: 0.5176471, g: 0.45490196, b: 0.39215687, a: 1}
   m_Intensity: 1.2
   m_Range: 10
   m_SpotAngle: 30
   m_InnerSpotAngle: 21.80208
   m_CookieSize: 10
   m_Shadows:
-    m_Type: 2
+    m_Type: 0
     m_Resolution: -1
     m_CustomResolution: -1
     m_Strength: 1
@@ -4308,7 +4308,7 @@ MonoBehaviour:
   m_IsGlobal: 1
   priority: 0
   blendDistance: 0
-  weight: 0.5
+  weight: 0.8
   sharedProfile: {fileID: 11400000, guid: 63d39c15ebfc6554dad154d6e1d9de8d, type: 2}
 --- !u!1001 &724747086
 PrefabInstance:
@@ -8041,7 +8041,7 @@ Light:
   serializedVersion: 10
   m_Type: 1
   m_Shape: 0
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 0.9607843, b: 0.8156863, a: 1}
   m_Intensity: 2.2
   m_Range: 10
   m_SpotAngle: 30
@@ -8426,8 +8426,8 @@ Camera:
   m_GameObject: {fileID: 1597156392}
   m_Enabled: 1
   serializedVersion: 2
-  m_ClearFlags: 1
-  m_BackGroundColor: {r: 0.19215687, g: 0.3019608, b: 0.4745098, a: 0}
+  m_ClearFlags: 2
+  m_BackGroundColor: {r: 0.4745098, g: 0.23223116, b: 0.19215688, a: 0}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
   m_FOVAxisMode: 0
@@ -10312,7 +10312,7 @@ Light:
     serializedVersion: 2
     m_Bits: 8189
   m_RenderingLayerMask: 1
-  m_Lightmapping: 1
+  m_Lightmapping: 4
   m_LightShadowCasterMode: 0
   m_AreaSize: {x: 1, y: 1}
   m_BounceIntensity: 1
