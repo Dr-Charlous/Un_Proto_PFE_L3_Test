@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 9180080051011007558}
   - component: {fileID: 5282799815242647283}
+  - component: {fileID: 7766010992865937853}
   m_Layer: 0
   m_Name: Frog
   m_TagString: Untagged
@@ -129,6 +130,25 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &7766010992865937853
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5070294667717777152}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f69ca10de52e23b428e896f79b841cd5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _audioSource: {fileID: 5282799815242647283}
+  _clip: {fileID: 8300000, guid: f80ffba8032a42a44bcfbb7f377939e5, type: 3}
+  _animator: {fileID: 5571601916287861643}
+  _isRoll: 0
+  _isSpeaking: 0
+  _isStill: 0
+  _isRandom: 0
 --- !u!1001 &2498810140013064649
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -221,7 +241,7 @@ Animator:
   m_GameObject: {fileID: 3345302905167170712}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 35f9e94cc13a1824b97035b9aa01b81b, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
