@@ -34,6 +34,7 @@ public class GameManager : MonoBehaviour
     public PauseMenu PauseMenu;
     public AudioSource MusicMain;
     public AudioSource MusicDanger;
+    public MusicChanger Music;
     public PlayerMeshFollow PlayerMeshFollow;
 
     public float ReduceFloatValue(float value, int valueBelow)

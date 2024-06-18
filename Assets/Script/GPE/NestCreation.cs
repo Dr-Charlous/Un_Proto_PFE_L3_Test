@@ -31,6 +31,7 @@ public class NestCreation : MonoBehaviour
     public GameObject Fish;
 
     bool _isActionned = false;
+    bool _changeScene = false;
 
     private void Start()
     {
@@ -41,6 +42,7 @@ public class NestCreation : MonoBehaviour
         _uiFollow.UpdateText($"{_value} / {ItemsToConstruct.Length}");
 
         _isActionned = false;
+        _changeScene = false;
     }
 
     private void Update()
@@ -53,6 +55,9 @@ public class NestCreation : MonoBehaviour
 
         if (_value >= ItemsToConstruct.Length)
             _uiFollow.ShowUi(false);
+
+        if (_changeScene)
+            GameManager.Instance.Music.KillMusic();
     }
 
     private void OnTriggerEnter(Collider other)
@@ -186,6 +191,7 @@ public class NestCreation : MonoBehaviour
 
     public IEnumerator ChangeScene()
     {
+        _changeScene = true;
         yield return new WaitForSeconds(1.5f);
         SceneManager.LoadScene(_scene);
     }

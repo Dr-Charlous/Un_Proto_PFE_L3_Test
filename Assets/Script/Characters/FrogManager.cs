@@ -19,7 +19,12 @@ public class FrogManager : MonoBehaviour
         if (_isRoll)
             _animator.SetBool("Roll", true);
         if (_isSpeaking)
+        {
             _animator.SetBool("Speak", true);
+
+            _audioSource.Play();
+            _audioSource.loop = true;
+        }
         if (_isRandom)
             StartCoroutine(LaunchAnim());
     }
@@ -32,16 +37,24 @@ public class FrogManager : MonoBehaviour
         {
             _animator.SetBool("Roll", true);
             _animator.SetBool("Speak", false);
+            _audioSource.loop = false;
         }
+
         if (rnd == 1)
         {
-            _animator.SetBool("Speak", true);
             _animator.SetBool("Roll", false);
+            _animator.SetBool("Speak", true);
+
+            if (!_audioSource.isPlaying)
+                _audioSource.Play();
+            _audioSource.loop = true;
         }
+
         if (rnd == 2)
         {
             _animator.SetBool("Roll", false);
             _animator.SetBool("Speak", false);
+            _audioSource.loop = false;
         }
 
         yield return new WaitForSeconds(Random.Range(2, 8));

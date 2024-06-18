@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class MusicChanger : MonoBehaviour
@@ -36,9 +34,6 @@ public class MusicChanger : MonoBehaviour
                 {
                     _value1 = 0;
                 }
-
-                GameManager.Instance.MusicMain.volume = _value1;
-                GameManager.Instance.MusicDanger.volume = _value;
             }
             else
             {
@@ -55,11 +50,11 @@ public class MusicChanger : MonoBehaviour
                 {
                     _value1 = _volumeMax;
                 }
-
-                GameManager.Instance.MusicMain.volume = _value1;
-                GameManager.Instance.MusicDanger.volume = _value;
             }
         }
+
+        GameManager.Instance.MusicMain.volume = _value1;
+        GameManager.Instance.MusicDanger.volume = _value;
     }
 
     private void OnTriggerEnter(Collider other)
@@ -80,6 +75,21 @@ public class MusicChanger : MonoBehaviour
         if (chara != null)
         {
             _isInside = false;
+        }
+    }
+
+    public void KillMusic()
+    {
+        _value -= _speed * Time.deltaTime;
+        _value1 -= _speed * Time.deltaTime;
+
+        if (_value <= 0)
+        {
+            _value = 0;
+        }
+        if (_value1 <= 0)
+        {
+            _value1 = 0;
         }
     }
 }
