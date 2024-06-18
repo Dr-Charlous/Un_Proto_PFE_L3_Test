@@ -21,7 +21,8 @@ public class StateBabyFollow : IState
 
         if (GameManager.Instance.Nest == null || !GameManager.Instance.Nest.IsCreated || (GameManager.Instance.Nest.IsCreated && GameManager.Instance.Nest.IsFeed))
         {
-            controller.Agent.SetDestination(controller.Target.position);
+            if (Vector3.Distance(controller.Target.position, controller.transform.position) > controller.DistanceUpdateMove)
+                controller.Agent.SetDestination(controller.Target.position);
         }
 
         if (controller.isGoingToGrab)

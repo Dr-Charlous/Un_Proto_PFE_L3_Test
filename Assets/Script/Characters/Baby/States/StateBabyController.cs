@@ -36,6 +36,7 @@ public class StateBabyController : MonoBehaviour
     public Transform TargetParent;
     public Transform Target;
     public float Distance = 5;
+    public float DistanceUpdateMove = 0.25f;
     public bool ShowPath = true;
     public bool IsInNest = false;
 
@@ -96,7 +97,10 @@ public class StateBabyController : MonoBehaviour
                     Target = transform.parent;
             }
         }
+    }
 
+    private void LateUpdate()
+    {
         BodyFollow();
     }
 
@@ -123,7 +127,7 @@ public class StateBabyController : MonoBehaviour
         }
 
         ObjectBaby.transform.DOKill();
-        ObjectBaby.transform.DOMove(transform.position + _offSet, 0.5f);
+        ObjectBaby.transform.DOMove(transform.position + _offSet, 0.1f);
         //ObjectBaby.transform.position = Vector3.Lerp(ObjectBaby.transform.position, transform.position, 0.5f);
 
         Animator.SetFloat("Move", Agent.velocity.magnitude, 0.1f, Time.deltaTime);

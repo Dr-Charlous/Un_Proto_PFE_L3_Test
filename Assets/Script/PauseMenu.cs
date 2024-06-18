@@ -8,16 +8,19 @@ public class PauseMenu : MonoBehaviour
     [SerializeField] GameObject _pauseMenu;
     [SerializeField] string _sceneMenu;
 
-    private void Update()
+    public bool IsPaused;
+
+    private void Start()
     {
-        if (Time.timeScale == 0 && !GameManager.Instance.Inputs.IsGamepad)
-            Cursor.visible = true;
+        IsPaused = false;
     }
 
     public void ActivePause()
     {
         Time.timeScale = 0;
         GameManager.Instance.Inputs.IsPause = true;
+
+        IsPaused = true;
 
         _pauseMenu.SetActive(true);
     }
@@ -27,7 +30,7 @@ public class PauseMenu : MonoBehaviour
         Time.timeScale = 1;
         GameManager.Instance.Inputs.IsPause = false;
 
-        Cursor.visible = false;
+        IsPaused = false;
 
         _pauseMenu.SetActive(false);
     }

@@ -137,5 +137,8 @@ public class InputManager : MonoBehaviour
             Cursor.visible = false;
         else
             Cursor.visible = true;
+
+        if (IsPause && !IsGamepad)
+            Cursor.visible = true;
     }
 }

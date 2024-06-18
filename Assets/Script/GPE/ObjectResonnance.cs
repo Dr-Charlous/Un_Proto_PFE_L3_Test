@@ -164,7 +164,8 @@ public class ObjectResonnance : MonoBehaviour
 
             float speed = (transform.position - GameManager.Instance.Character.transform.position).magnitude * _speed * Time.deltaTime;
 
-            _trunkCollider.excludeLayers += LayerMask.GetMask("Player");
+            if (_trunkCollider != null)
+                _trunkCollider.excludeLayers += LayerMask.GetMask("Player");
 
             GameManager.Instance.Character.Rb.velocity = Vector3.zero;
             GameManager.Instance.Character.transform.DOKill();
@@ -185,7 +186,8 @@ public class ObjectResonnance : MonoBehaviour
                 GameManager.Instance.Character.transform.DOMove(LastPosPlayer, speed);
             }
 
-            _trunkCollider.excludeLayers -= LayerMask.GetMask("Player");
+            if (_trunkCollider != null)
+                _trunkCollider.excludeLayers -= LayerMask.GetMask("Player");
 
             GameManager.Instance.Character.Rb.velocity = Vector3.zero;
             GameManager.Instance.Character.transform.rotation = LastRotPlayer;

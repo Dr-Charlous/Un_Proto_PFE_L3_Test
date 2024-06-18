@@ -1,6 +1,8 @@
 using DG.Tweening;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class NestCreation : MonoBehaviour
 {
@@ -18,6 +20,7 @@ public class NestCreation : MonoBehaviour
     [SerializeField] UiFollowing _uiFollow;
 
     [SerializeField] GameObject _objBlocking;
+    [SerializeField] string _scene;
 
     int _value = 0;
 
@@ -83,7 +86,10 @@ public class NestCreation : MonoBehaviour
             GameManager.Instance.Speaker.StartDialogue(_dialogueMiamiam);
 
         if (_objBlocking != null && _objBlocking.activeInHierarchy)
-            _objBlocking.SetActive(false);
+        {
+            //_objBlocking.SetActive(false);
+            StartCoroutine(ChangeScene());
+        }
     }
 
     void VerificationItem(Collider other)
@@ -172,5 +178,11 @@ public class NestCreation : MonoBehaviour
             GameManager.Instance.BabyManager.BabiesInScene[i].GetComponentInChildren<StateBabyController>().Target = Entries[i];
             GameManager.Instance.BabyManager.BabiesInScene[i].GetComponentInChildren<StateBabyController>().Agent.SetDestination(GameManager.Instance.BabyManager.BabiesInScene[i].GetComponentInChildren<StateBabyController>().Target.position);
         }
+    }
+
+    public IEnumerator ChangeScene()
+    {
+        yield return new WaitForSeconds(1.5f);
+        SceneManager.LoadScene(_scene);
     }
 }
