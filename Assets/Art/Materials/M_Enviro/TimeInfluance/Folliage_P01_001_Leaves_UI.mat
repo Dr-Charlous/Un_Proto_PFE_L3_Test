@@ -20,7 +20,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Folliage_03
+  m_Name: Folliage_P01_001_Leaves_UI
   m_Shader: {fileID: -6465566751694194690, guid: 78d9c332edc3a5a4e87f5311d1ca5fe6, type: 3}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
@@ -37,11 +37,11 @@ Material:
     serializedVersion: 3
     m_TexEnvs:
     - _AO:
-        m_Texture: {fileID: 0}
+        m_Texture: {fileID: 2800000, guid: 802b9b0c13444884abd9057c0d59b132, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _AlphaTex:
-        m_Texture: {fileID: 2800000, guid: 416a916edb7587d4693830ee1ad209e1, type: 3}
+        m_Texture: {fileID: 2800000, guid: a60ddcf2da62e9b449ca91e0533cf11d, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _Alpha_Texture:
@@ -61,7 +61,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MainTexture:
-        m_Texture: {fileID: 2800000, guid: 83ec37cb63faeaa4884222acce95e072, type: 3}
+        m_Texture: {fileID: 2800000, guid: aabcfa8bf7c2f764e9c8673358275572, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _NORMAL:
@@ -102,15 +102,15 @@ Material:
     - _BlendModePreserveSpecular: 0
     - _CastShadows: 1
     - _Cull: 0
-    - _CutoutSize: 0.53
+    - _CutoutSize: 0.61
     - _Cutout_Size: 0.4
     - _DepthFrequence: 0.24
     - _Dithering: 2.2
     - _DstBlend: 10
-    - _FalloutSize: 0.6
+    - _FalloutSize: 0.04
     - _Fallout_Size: 0.15
-    - _HeightBlend: 0
-    - _IsAlphaInvert: 0
+    - _HeightBlend: 1.28
+    - _IsAlphaInvert: 1
     - _IsColorMultiply: 0
     - _IsShadowOff: 0
     - _IsTime: 0
@@ -123,7 +123,7 @@ Material:
     - _QueueOffset: 0
     - _ReceiveShadows: 1
     - _Roughness: 0
-    - _Smoothness: 0.2
+    - _Smoothness: 0
     - _Speed: 4.47
     - _SrcBlend: 5
     - _Surface: 1
@@ -147,8 +147,8 @@ Material:
     - _EmissiveColor: {r: 1, g: 0.2889198, b: 0, a: 1}
     - _FarColor: {r: 0.24528301, g: 0.17049538, b: 0.119170524, a: 1}
     - _NearColor: {r: 0.6698113, g: 0.16745283, b: 0.16745283, a: 0}
-    - _NearFarRange: {r: 100, g: 100, b: 0, a: 0}
-    - _ShadowColor: {r: 0.070588246, g: 0.20784314, b: 0.114964336, a: 0}
+    - _NearFarRange: {r: 1000, g: 1000, b: 0, a: 0}
+    - _ShadowColor: {r: 0.050980385, g: 0.22745098, b: 0.1531285, a: 1}
     - _Vector2: {r: 0.5, g: 0.25, b: 0, a: 0}
     - _WindNoiseContrast: {r: 0, g: 0.1, b: 0, a: 0}
     - _WindNoiseScale: {r: 0.0001, g: 0.0001, b: 0, a: 0}
