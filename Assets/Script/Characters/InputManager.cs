@@ -112,6 +112,7 @@ public class InputManager : MonoBehaviour
         }
 
         GameManager.Instance.Character.Animator.SetTrigger("Call");
+        GameManager.Instance.PlayerMeshFollow.Scream();
 
         Assign = true;
 

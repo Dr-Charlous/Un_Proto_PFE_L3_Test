@@ -67,6 +67,8 @@ public class NestCreation : MonoBehaviour
 
     public void FeedBabies()
     {
+        GameManager.Instance.PlayerMeshFollow.Scream();
+
         if (Fish != null)
         {
             Fish.SetActive(false);
@@ -178,6 +180,8 @@ public class NestCreation : MonoBehaviour
             GameManager.Instance.BabyManager.BabiesInScene[i].GetComponentInChildren<StateBabyController>().Target = Entries[i];
             GameManager.Instance.BabyManager.BabiesInScene[i].GetComponentInChildren<StateBabyController>().Agent.SetDestination(GameManager.Instance.BabyManager.BabiesInScene[i].GetComponentInChildren<StateBabyController>().Target.position);
         }
+
+        GameManager.Instance.PlayerMeshFollow.Scream();
     }
 
     public IEnumerator ChangeScene()

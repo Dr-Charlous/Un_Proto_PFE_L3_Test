@@ -97,6 +97,8 @@ public class ObjectResonnance : MonoBehaviour
     {
         //Debug.Log("ObjectResonnance");
 
+        GameManager.Instance.PlayerMeshFollow.Scream();
+
         if (_babyZone.ObjectLastExit != null)
             _babyZone.ObjectLastExit = null;
 
@@ -135,6 +137,8 @@ public class ObjectResonnance : MonoBehaviour
     public void PlayerGetOutside()
     {
         //Debug.Log("ObjectResonnance");
+
+        GameManager.Instance.PlayerMeshFollow.Scream();
 
         if (_babyZone.ObjectLastExit != null)
             _babyZone.ObjectLastExit = null;

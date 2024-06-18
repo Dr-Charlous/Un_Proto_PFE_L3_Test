@@ -6,6 +6,10 @@ public class PlayerMeshFollow : MonoBehaviour
     [SerializeField] float _lerpDistance = 0.25f;
     [SerializeField] float _lerpRotate = 0.25f;
 
+    [Header("Sounds :")]
+    [SerializeField] AudioSource _source;
+    [SerializeField] AudioClip[] _clips;
+
     Vector3 _velocity;
     Quaternion _lastRotation;
 
@@ -33,5 +37,14 @@ public class PlayerMeshFollow : MonoBehaviour
             _lastRotation = transform.rotation;
 
         transform.rotation = _lastRotation;
+    }
+
+    public void Scream()
+    {
+        if (!_source.isPlaying)
+        {
+            _source.clip = _clips[Random.Range(0, _clips.Length)];
+            _source.Play();
+        }
     }
 }

@@ -15,6 +15,8 @@ public class FallGPEBabyPush : MonoBehaviour
         if (other.GetComponent<RefBaby>() != null)
         {
             Fall();
+
+            GameManager.Instance.PlayerMeshFollow.Scream();
         }
     }
 
