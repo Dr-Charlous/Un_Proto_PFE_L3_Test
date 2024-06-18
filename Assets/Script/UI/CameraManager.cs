@@ -157,6 +157,6 @@ public class CameraManager : MonoBehaviour
     public void Reset()
     {
         PlayerCamPivot.DOComplete();
-        PlayerCamPivot.DOLocalRotate(CamPivot.rotation.eulerAngles - Vector3.up * 180, 10 * Time.deltaTime);
+        PlayerCamPivot.DOLocalRotate(CamPivot.rotation.eulerAngles - Vector3.up, 10 * Time.deltaTime);
     }
 }

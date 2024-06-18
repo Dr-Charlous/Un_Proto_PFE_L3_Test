@@ -54,7 +54,7 @@ public class ObjectResonnance : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.GetComponent<CamController>() != null && IsPlayerInside == false)
+        if (other.GetComponent<CamController>() != null/* && IsPlayerInside == false*/)
         {
             PlayerGetInside();
         }
@@ -97,6 +97,9 @@ public class ObjectResonnance : MonoBehaviour
     {
         //Debug.Log("ObjectResonnance");
 
+        if (_babyZone.ObjectLastExit != null)
+            _babyZone.ObjectLastExit = null;
+
         GameManager.Instance.CamManager.ChangeCam(_destinationCamera, _speedCam);
 
         ChangePlayerPos();
@@ -124,11 +127,17 @@ public class ObjectResonnance : MonoBehaviour
             _uiFlollowing.gameObject.SetActive(false);
 
         _renderer.SetActive(true);
+
+        if (_trunkCollider != null)
+            _trunkCollider.excludeLayers += LayerMask.GetMask("Player");
     }
 
     public void PlayerGetOutside()
     {
         //Debug.Log("ObjectResonnance");
+
+        if (_babyZone.ObjectLastExit != null)
+            _babyZone.ObjectLastExit = null;
 
         ChangePlayerPos();
 
@@ -153,6 +162,9 @@ public class ObjectResonnance : MonoBehaviour
 
         _babyZone.ObjectLastExit = null;
         _renderer.SetActive(false);
+
+        if (_trunkCollider != null)
+            _trunkCollider.excludeLayers -= LayerMask.GetMask("Player");
     }
 
     public void ChangePlayerPos()
@@ -163,9 +175,6 @@ public class ObjectResonnance : MonoBehaviour
             LastRotPlayer = GameManager.Instance.Character.transform.rotation;
 
             float speed = (transform.position - GameManager.Instance.Character.transform.position).magnitude * _speed * Time.deltaTime;
-
-            if (_trunkCollider != null)
-                _trunkCollider.excludeLayers += LayerMask.GetMask("Player");
 
             GameManager.Instance.Character.Rb.velocity = Vector3.zero;
             GameManager.Instance.Character.transform.DOKill();
@@ -186,9 +195,6 @@ public class ObjectResonnance : MonoBehaviour
                 GameManager.Instance.Character.transform.DOMove(LastPosPlayer, speed);
             }
 
-            if (_trunkCollider != null)
-                _trunkCollider.excludeLayers -= LayerMask.GetMask("Player");
-
             GameManager.Instance.Character.Rb.velocity = Vector3.zero;
             GameManager.Instance.Character.transform.rotation = LastRotPlayer;
 
@@ -205,6 +211,7 @@ public class ObjectResonnance : MonoBehaviour
         if (_babyZone.ObjectLastExit != null && _babyZone.ObjectLastExit.GetComponent<RefBaby>() != null)
         {
             PlayerGetOutside();
+            _babyZone.ObjectLastExit = null;
         }
     }
 }
