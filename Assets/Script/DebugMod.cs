@@ -117,7 +117,8 @@ public class DebugMod : MonoBehaviour
 
             UpdateText(PlayerData(), _textMeshPro[0]);
 
-            UpdateText(EnnemyData(_ennemyController, _ennemyNumber), _textMeshPro[1]);
+            if (_ennemyController.Length > 0)
+                UpdateText(EnnemyData(_ennemyController, _ennemyNumber), _textMeshPro[1]);
 
             UpdateText(BabyData(_babyController, _babyNumber), _textMeshPro[2]);
 
