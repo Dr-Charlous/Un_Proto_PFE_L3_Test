@@ -81,7 +81,7 @@ public class ObjectCollectController : MonoBehaviour
         var target = ObjectToGrab;
         var baby = GameManager.Instance.BabyManager;
 
-        if (target != null)
+        if (target != null && !target.GetComponent<ObjectCollect>().isCollected)
         {
             target.GetComponentInChildren<ObjectCollect>().UiFollow.gameObject.SetActive(false);
 
