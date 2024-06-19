@@ -10,6 +10,7 @@ public class EndPousuite : MonoBehaviour
 
     public GameObject BeginStone;
     public GameObject EndStone;
+    public Animator EndStoneAnimator;
 
     public Transform CamTransform;
     public float TimeWait;
@@ -54,7 +55,8 @@ public class EndPousuite : MonoBehaviour
         if (chara != null)
         {
             EndCollider.gameObject.SetActive(false);
-            EndStone.SetActive(true);
+            //EndStone.SetActive(true);
+            EndStoneAnimator.SetTrigger("Fall");
             Destroy(Death);
             isEndActif = false;
         }
@@ -68,7 +70,7 @@ public class EndPousuite : MonoBehaviour
         EndCollider.gameObject.SetActive(true);
         if (BeginStone != null)
             BeginStone.SetActive(false);
-        EndStone.SetActive(false);
+        //EndStone.SetActive(false);
 
         if (Death != null)
             Destroy(Death);
