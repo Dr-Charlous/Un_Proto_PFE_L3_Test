@@ -3,6 +3,7 @@ using UnityEngine;
 
 public class EndPousuite : MonoBehaviour
 {
+    public AudioSource SourceAudio;
     public OnTriggerEnterScript BeginCollider;
     public OnTriggerEnterScript EndCollider;
     public GameObject DeathPrefab;
@@ -59,6 +60,9 @@ public class EndPousuite : MonoBehaviour
             EndStoneAnimator.SetTrigger("Fall");
             Destroy(Death);
             isEndActif = false;
+
+            if (SourceAudio)
+                SourceAudio.Play();
         }
     }
 
