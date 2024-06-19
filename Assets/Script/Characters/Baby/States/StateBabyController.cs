@@ -146,9 +146,11 @@ public class StateBabyController : MonoBehaviour
         {
             isTransporting = true;
             ObjectTransporting = TargetObject;
+            ObjectTransporting.GetComponent<ObjectCollect>().isCollected = true;
             TargetObject.transform.SetParent(ParentCollect);
             TargetObject.GetComponent<BoxCollider>().excludeLayers += LayerMask.GetMask("Player");
             TargetObject.GetComponent<BoxCollider>().excludeLayers += LayerMask.GetMask("Babies");
+            TargetObject.GetComponent<BoxCollider>().excludeLayers += LayerMask.GetMask("Obstacle");
 
             Animator.SetTrigger("GetObj");
         }
