@@ -9,10 +9,11 @@ public class FallGPEBabyPush : MonoBehaviour
     [SerializeField] BoxCollider _collider;
     [SerializeField] Transform _camPos;
     [SerializeField] float _value;
+    [SerializeField] bool _isActivated;
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.GetComponent<RefBaby>() != null)
+        if (other.GetComponent<RefBaby>() != null && !_isActivated)
         {
             Fall();
 
@@ -22,6 +23,7 @@ public class FallGPEBabyPush : MonoBehaviour
 
     public void Fall()
     {
+        _isActivated = true;
         _animator.SetTrigger("Fall");
         _resonance.PlayerGetOutside();
         _collider.enabled = false;
