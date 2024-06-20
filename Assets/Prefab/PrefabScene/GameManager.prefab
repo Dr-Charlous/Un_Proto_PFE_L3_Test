@@ -137,6 +137,8 @@ MonoBehaviour:
   PauseMenu: {fileID: 4878788979415708936}
   MusicMain: {fileID: 0}
   MusicDanger: {fileID: 0}
+  Music: {fileID: 0}
+  PlayerMeshFollow: {fileID: 0}
 --- !u!114 &4878788979415708936
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -150,7 +152,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _pauseMenu: {fileID: 7973952711099860406}
-  _sceneMenu: Scene_Test_Art_3D_UI
+  _sceneMenu: Scene_Menu
+  IsPaused: 0
 --- !u!1 &7973952711099860406
 GameObject:
   m_ObjectHideFlags: 0
