@@ -102,10 +102,10 @@ Material:
     - _BlendModePreserveSpecular: 0
     - _CastShadows: 1
     - _Cull: 0
-    - _CutoutSize: 0.53
+    - _CutoutSize: 1.75
     - _Cutout_Size: 0.4
     - _DepthFrequence: 0.24
-    - _Dithering: 2.2
+    - _Dithering: 0.18
     - _DstBlend: 10
     - _FalloutSize: 0.6
     - _Fallout_Size: 0.15
@@ -113,7 +113,7 @@ Material:
     - _IsAlphaInvert: 0
     - _IsColorMultiply: 0
     - _IsShadowOff: 0
-    - _IsTime: 0
+    - _IsTime: 1
     - _IsTransparancy: 0
     - _MaxMask: 0.26
     - _MinMask: 0.19
@@ -124,6 +124,8 @@ Material:
     - _ReceiveShadows: 1
     - _Roughness: 0
     - _Smoothness: 0.2
+    - _SmoothstepFalloutSize: 0.33
+    - _SmoothstepSize: 0.66
     - _Speed: 4.47
     - _SrcBlend: 5
     - _Surface: 1
@@ -131,9 +133,9 @@ Material:
     - _Transparency: 0
     - _TransparencyBool: 0
     - _WindHeight: 0
-    - _WindIntensity: 0.05
+    - _WindIntensity: 0.02
     - _WindNoiseSpeed: 0
-    - _WindSpeed: 0.1
+    - _WindSpeed: 0.04
     - _WorkflowMode: 1
     - _ZTest: 4
     - _ZWrite: 0
@@ -151,5 +153,5 @@ Material:
     - _ShadowColor: {r: 0.070588246, g: 0.20784314, b: 0.114964336, a: 0}
     - _Vector2: {r: 0.5, g: 0.25, b: 0, a: 0}
     - _WindNoiseContrast: {r: 0, g: 0.1, b: 0, a: 0}
-    - _WindNoiseScale: {r: 0.0001, g: 0.0001, b: 0, a: 0}
+    - _WindNoiseScale: {r: 10, g: 10, b: 0, a: 0}
   m_BuildTextureStacks: []
