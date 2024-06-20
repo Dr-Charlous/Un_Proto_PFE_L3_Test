@@ -7,6 +7,7 @@ public class Respawn : MonoBehaviour
     [SerializeField] Transform[] _entities;
     [SerializeField] OnTriggerEnterScript[] _spawns;
     [SerializeField] DeathTrap[] _traps;
+    [SerializeField] Material _materialOutline;
     public Transform RespawnPoint;
 
     private void Update()
@@ -22,6 +23,8 @@ public class Respawn : MonoBehaviour
 
     public void RespawnEntities(bool isEnd)
     {
+        _materialOutline.SetInt("_IsActive", 0);
+
         for (int i = 0; i < _entities.Length; i++)
         {
             if (_entities[i].GetComponent<CamController>() != null)

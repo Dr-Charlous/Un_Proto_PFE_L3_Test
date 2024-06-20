@@ -1,8 +1,10 @@
 using System.Collections;
 using UnityEngine;
+using static Unity.VisualScripting.Member;
 
 public class Cinematic : MonoBehaviour
 {
+    [SerializeField] AudioSource _source;
     [SerializeField] Transform[] _camPos;
     [SerializeField] ScriptableDialogue _dialogueNidBuild;
     [SerializeField] EndPousuite _endPoursuite;
@@ -14,6 +16,7 @@ public class Cinematic : MonoBehaviour
         GameManager.Instance.Character.IsParalysed = true;
 
         GameManager.Instance.CamManager.ChangeCam(_camPos[0], _value, true);
+        _source.Play();
 
         //float speed = (GameManager.Instance.CamManager.Speed * 100 + _value) / Vector3.Distance(Camera.main.transform.position, _camPos[i].position);
 

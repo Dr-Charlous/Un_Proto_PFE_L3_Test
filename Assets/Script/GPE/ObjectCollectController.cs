@@ -61,8 +61,7 @@ public class ObjectCollectController : MonoBehaviour
             ObjectToGrab = null;
         }
 
-        if (obj != null || collider.GetComponent<ObjectToPush>() || collider.GetComponent<ObjectResonnance>())
-            MaterialOutline.SetInt("_IsActive", 0);
+        MaterialOutline.SetInt("_IsActive", 0);
 
         if (collider.GetComponentInChildren<UiFollowing>() != null)
         {
