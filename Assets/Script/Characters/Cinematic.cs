@@ -5,6 +5,7 @@ using static Unity.VisualScripting.Member;
 public class Cinematic : MonoBehaviour
 {
     [SerializeField] AudioSource _source;
+    [SerializeField] AudioSource _sourceAnnexe;
     [SerializeField] Transform[] _camPos;
     [SerializeField] ScriptableDialogue _dialogueNidBuild;
     [SerializeField] EndPousuite _endPoursuite;
@@ -31,6 +32,7 @@ public class Cinematic : MonoBehaviour
 
             yield return new WaitForSeconds(_value1);
 
+            _sourceAnnexe.Play();
 
             if (_dialogueNidBuild != null)
                 GameManager.Instance.Speaker.StartDialogue(_dialogueNidBuild);
