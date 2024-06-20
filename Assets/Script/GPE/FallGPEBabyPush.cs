@@ -1,10 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using static Unity.VisualScripting.Member;
 
 public class FallGPEBabyPush : MonoBehaviour
 {
     [SerializeField] Animator _animator;
+    [SerializeField] AudioSource _source;
     [SerializeField] ObjectResonnance _resonance;
     [SerializeField] BoxCollider _collider;
     [SerializeField] Transform _camPos;
@@ -23,6 +25,7 @@ public class FallGPEBabyPush : MonoBehaviour
 
     public void Fall()
     {
+        _source.Play();
         _isActivated = true;
         _animator.SetTrigger("Fall");
         _resonance.PlayerGetOutside();
