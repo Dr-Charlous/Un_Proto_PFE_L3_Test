@@ -14,6 +14,10 @@ public class FrogManager : MonoBehaviour
     [SerializeField] bool _isSpeaking;
     [SerializeField] bool _isRandom;
 
+    [Header("Values :")]
+    [SerializeField][Range(2, 10)] int _randomRatio = 4;
+    [SerializeField][Tooltip("X = TimeMin / Y = TimeMax")] Vector2Int _timeBetween = new Vector2Int(2, 8);
+
     private void Start()
     {
         if (_isRoll)
@@ -31,7 +35,7 @@ public class FrogManager : MonoBehaviour
 
     IEnumerator LaunchAnim()
     {
-        int rnd = Random.Range(0, 3);
+        int rnd = Random.Range(0, _randomRatio);
 
         if (rnd == 0)
         {
@@ -39,8 +43,7 @@ public class FrogManager : MonoBehaviour
             _animator.SetBool("Speak", false);
             _audioSource.loop = false;
         }
-
-        if (rnd == 1)
+        else if (rnd == 1)
         {
             _animator.SetBool("Roll", false);
             _animator.SetBool("Speak", true);
@@ -49,15 +52,14 @@ public class FrogManager : MonoBehaviour
                 _audioSource.Play();
             _audioSource.loop = true;
         }
-
-        if (rnd == 2)
+        else
         {
             _animator.SetBool("Roll", false);
             _animator.SetBool("Speak", false);
             _audioSource.loop = false;
         }
 
-        yield return new WaitForSeconds(Random.Range(2, 8));
+        yield return new WaitForSeconds(Random.Range(_timeBetween.x, _timeBetween.y));
         StartCoroutine(LaunchAnim());
     }
 }

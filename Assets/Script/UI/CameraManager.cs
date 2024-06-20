@@ -5,9 +5,11 @@ using UnityEngine;
 
 public class CameraManager : MonoBehaviour
 {
+    public Animator Animator;
     public Transform TemporaryPos;
     public Transform PlayerCamPivot;
     public Transform CamPivot;
+    public Transform CamPivot2;
     public Transform ActualPos;
     public bool IsGamepad;
     public float Rotation;
@@ -26,8 +28,8 @@ public class CameraManager : MonoBehaviour
         _moving = false;
         ActualPos = GameManager.Instance.CamPlayer;
 
-        transform.position = ActualPos.position;
-        transform.rotation = ActualPos.rotation;
+        CamPivot2.position = ActualPos.position;
+        CamPivot2.rotation = ActualPos.rotation;
     }
 
     private void Update()
@@ -46,38 +48,44 @@ public class CameraManager : MonoBehaviour
             UpdateCam(ActualPos);
     }
 
-    public void ChangeCam(Transform transformPos, float time)
+    public void ChangeCam(Transform transformPos, float time, bool isShake)
     {
         _waitingPos.Add(transformPos);
         _timesWaiting.Add(time);
 
         if (_corroutine == null)
-            _corroutine = StartCoroutine(Transition());
+            _corroutine = StartCoroutine(Transition(isShake));
     }
 
     void UpdateCam(Transform transformCam)
     {
-        transform.position = transformCam.position;
-        transform.rotation = transformCam.rotation;
+        CamPivot2.position = transformCam.position;
+        CamPivot2.rotation = transformCam.rotation;
     }
 
-    IEnumerator Transition()
+    IEnumerator Transition(bool isShake)
     {
+        if (isShake)
+            Animator.SetBool("Shake", true);
+
         _moving = true;
         ActualPos = _waitingPos[0];
         GameManager.Instance.Character.IsParalysed = _moving;
 
-        transform.DOKill();
-        transform.DOMove(_waitingPos[0].position, _timesWaiting[0]);
-        transform.DORotate(_waitingPos[0].rotation.eulerAngles, _timesWaiting[0]);
+        CamPivot2.DOKill();
+        CamPivot2.DOMove(_waitingPos[0].position, _timesWaiting[0]);
+        CamPivot2.DORotate(_waitingPos[0].rotation.eulerAngles, _timesWaiting[0]);
 
         yield return new WaitForSeconds(_timesWaiting[0]);
 
         _waitingPos.RemoveAt(0);
         _timesWaiting.RemoveAt(0);
 
+        if (isShake)
+            Animator.SetBool("Shake", false);
+
         if (_waitingPos.Count > 0 && _timesWaiting.Count > 0)
-            _corroutine = StartCoroutine(Transition());
+            _corroutine = StartCoroutine(Transition(isShake));
         else
         {
             _moving = false;

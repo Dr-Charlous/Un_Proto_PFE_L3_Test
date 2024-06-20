@@ -13,7 +13,7 @@ public class Cinematic : MonoBehaviour
     {
         GameManager.Instance.Character.IsParalysed = true;
 
-        GameManager.Instance.CamManager.ChangeCam(_camPos[0], _value);
+        GameManager.Instance.CamManager.ChangeCam(_camPos[0], _value, true);
 
         //float speed = (GameManager.Instance.CamManager.Speed * 100 + _value) / Vector3.Distance(Camera.main.transform.position, _camPos[i].position);
 
@@ -21,7 +21,7 @@ public class Cinematic : MonoBehaviour
 
         if (_camPos.Length > 1)
         {
-            GameManager.Instance.CamManager.ChangeCam(_camPos[1], _value);
+            GameManager.Instance.CamManager.ChangeCam(_camPos[1], _value, true);
 
             if (_endPoursuite != null)
                 _endPoursuite.Begin(GameManager.Instance.Character);
@@ -32,12 +32,12 @@ public class Cinematic : MonoBehaviour
             if (_dialogueNidBuild != null)
                 GameManager.Instance.Speaker.StartDialogue(_dialogueNidBuild);
 
-            GameManager.Instance.CamManager.ChangeCam(GameManager.Instance.CamPlayer, _value1);
+            GameManager.Instance.CamManager.ChangeCam(GameManager.Instance.CamPlayer, _value1, false);
             GameManager.Instance.Character.IsParalysed = false;
         }
         else
         {
-            GameManager.Instance.CamManager.ChangeCam(GameManager.Instance.CamPlayer, _value);
+            GameManager.Instance.CamManager.ChangeCam(GameManager.Instance.CamPlayer, _value, false);
         }
     }
 }

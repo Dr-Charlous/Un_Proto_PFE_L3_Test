@@ -32,8 +32,8 @@ public class FallGPEBabyPush : MonoBehaviour
 
     IEnumerator CineFall()
     {
-        GameManager.Instance.CamManager.ChangeCam(_camPos, _value);
+        GameManager.Instance.CamManager.ChangeCam(_camPos, _value, true);
         yield return new WaitForSeconds(_value);
-        GameManager.Instance.CamManager.ChangeCam(GameManager.Instance.CamPlayer, _value);
+        GameManager.Instance.CamManager.ChangeCam(GameManager.Instance.CamPlayer, _value, false);
     }
 }

@@ -102,7 +102,7 @@ public class ObjectResonnance : MonoBehaviour
         if (_babyZone.ObjectLastExit != null)
             _babyZone.ObjectLastExit = null;
 
-        GameManager.Instance.CamManager.ChangeCam(_destinationCamera, _speedCam);
+        GameManager.Instance.CamManager.ChangeCam(_destinationCamera, _speedCam, false);
 
         ChangePlayerPos();
 
@@ -146,7 +146,7 @@ public class ObjectResonnance : MonoBehaviour
         ChangePlayerPos();
 
         if (GameManager.Instance.CamManager.ActualPos != GameManager.Instance.CamPlayer)
-            GameManager.Instance.CamManager.ChangeCam(GameManager.Instance.CamPlayer, _speedCam);
+            GameManager.Instance.CamManager.ChangeCam(GameManager.Instance.CamPlayer, _speedCam, false);
 
         for (int i = 0; i < GameManager.Instance.BabyManager.BabiesInScene.Count; i++)
         {
