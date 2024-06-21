@@ -43,6 +43,9 @@ public class Cinematic : MonoBehaviour
         else
         {
             GameManager.Instance.CamManager.ChangeCam(GameManager.Instance.CamPlayer, _value, false);
+
+            if (_dialogueNidBuild != null)
+                GameManager.Instance.Speaker.StartDialogue(_dialogueNidBuild);
         }
     }
 }
