@@ -18,8 +18,9 @@ public class ObjectToPush : MonoBehaviour
     public int DecreasePushValue = 1;
     [SerializeField] float _speedPush;
 
-    [Header("Ui :")]
+    [Header("Ui & Sound:")]
     public UiFollowing _uiFollow;
+    public AudioSource _source;
 
     Transform _parent;
     Vector3 _initPos;
@@ -107,6 +108,7 @@ public class ObjectToPush : MonoBehaviour
         if (isEveryOneHere)
         {
             Action();
+            SoundCall(true);
 
             _uiFollow._objUiGamePad1.SetActive(false);
             _uiFollow._objUiKeyboard1.SetActive(false);
@@ -116,6 +118,7 @@ public class ObjectToPush : MonoBehaviour
         else
         {
             _uiFollow.gameObject.SetActive(true);
+            SoundCall(false);
         }
     }
 
@@ -131,5 +134,27 @@ public class ObjectToPush : MonoBehaviour
 
             _uiFollow.gameObject.SetActive(false);
         }
+    }
+
+    void SoundCall(bool isActive)
+    {
+        if (isActive)
+        {
+            if (!_source.isPlaying)
+            {
+                _source.Play();
+            }
+
+            if (_source.time >= _source.clip.length - 0.1f)
+            {
+                _source.pitch = Random.Range(1, 1.6f);
+                _source.time = 0;
+            }
+
+            if (_source.pitch == 0)
+                Random.Range(1, 2.1f);
+        }
+        else
+            _source.Pause();
     }
 }
