@@ -28,7 +28,10 @@ public class Respawn : MonoBehaviour
         for (int i = 0; i < _entities.Length; i++)
         {
             if (_entities[i].GetComponent<CamController>() != null)
+            {
                 _entities[i].position = new Vector3(RespawnPoint.position.x, _entities[i].position.y, RespawnPoint.position.z);
+                GameManager.Instance.CamManager.ChangeCam(GameManager.Instance.CamPlayer, 0.1f, false);
+            }
             else
             {
                 var babyState = _entities[i].GetComponent<RefBaby>().Controller;

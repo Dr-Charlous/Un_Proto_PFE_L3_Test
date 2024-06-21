@@ -18,7 +18,7 @@ public class CameraManager : MonoBehaviour
     public float ActualSpeedRotate;
     public float ActualSpeed;
 
-    Coroutine _corroutine;
+    Coroutine _corroutine = null;
     List<Transform> _waitingPos = new();
     List<float> _timesWaiting = new();
     bool _moving;
@@ -26,7 +26,12 @@ public class CameraManager : MonoBehaviour
     private void Start()
     {
         _moving = false;
-        ActualPos = GameManager.Instance.CamPlayer;
+
+        if (TemporaryPos != null)
+            ActualPos = TemporaryPos;
+        else
+            ActualPos = GameManager.Instance.CamPlayer;
+        TemporaryPos = null;
 
         CamPivot2.position = ActualPos.position;
         CamPivot2.rotation = ActualPos.rotation;
@@ -69,7 +74,6 @@ public class CameraManager : MonoBehaviour
             Animator.SetBool("Shake", true);
 
         _moving = true;
-        ActualPos = _waitingPos[0];
         GameManager.Instance.Character.IsParalysed = _moving;
 
         CamPivot2.DOKill();
@@ -78,6 +82,7 @@ public class CameraManager : MonoBehaviour
 
         yield return new WaitForSeconds(_timesWaiting[0]);
 
+        ActualPos = _waitingPos[0];
         _waitingPos.RemoveAt(0);
         _timesWaiting.RemoveAt(0);
 
