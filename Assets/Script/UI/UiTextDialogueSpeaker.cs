@@ -22,7 +22,13 @@ public class UiTextDialogueSpeaker : MonoBehaviour
     private void Update()
     {
         if (Coroutine == null)
+        {
             _timer += Time.deltaTime;
+
+            if (_dialogue.Count <= 0)
+                ActiveUi(false);
+        }
+
 
         if (_timer >= _timerValueWait && _lastDialogue != null)
         {
@@ -44,13 +50,20 @@ public class UiTextDialogueSpeaker : MonoBehaviour
 
     public void StartLastDialogue()
     {
-        _timer = 0;
+        if (_dialogue.Count < 1)
+        {
+            _dialogue.Add(_lastDialogue);
+            _timer = 0;
 
-        if (Coroutine != null)
-            StopCoroutine(Coroutine);
+            if (Coroutine != null)
+                StopCoroutine(Coroutine);
 
-        ActiveUi(true);
-        Coroutine = StartCoroutine(LaunchDialogue(_lastDialogue, _source, UiText, 0));
+            if (Coroutine == null)
+            {
+                ActiveUi(true);
+                Coroutine = StartCoroutine(LaunchDialogue(_dialogue[0], _source, UiText, 0));
+            }
+        }
     }
 
     public void ActiveUi(bool var)
@@ -72,22 +85,20 @@ public class UiTextDialogueSpeaker : MonoBehaviour
 
             if (i < dialogue.Voice.Length || i < dialogue.Text.Length)
             {
-                StartCoroutine(LaunchDialogue(dialogue, source, text, i));
+                Coroutine = StartCoroutine(LaunchDialogue(dialogue, source, text, i));
             }
-            else if (_dialogue.Count == 1)
-            {
-                _dialogue.RemoveAt(0);
-
-                ActiveUi(false);
-                Coroutine = null;
-                i = 0;
-            }
-            else if (_dialogue.Count > 1)
+            else
             {
                 _dialogue.RemoveAt(0);
                 i = 0;
 
-                Coroutine = StartCoroutine(LaunchDialogue(_dialogue[0], source, text, i)); ;
+                if (_dialogue.Count == 0)
+                {
+                    Coroutine = null;
+                    ActiveUi(false);
+                }
+                else
+                    Coroutine = StartCoroutine(LaunchDialogue(_dialogue[0], source, text, i));
             }
         }
     }

@@ -70,8 +70,10 @@ public class EndPousuite : MonoBehaviour
     {
         isBeginActif = true;
         isEndActif = true;
+
         BeginCollider.gameObject.SetActive(true);
         EndCollider.gameObject.SetActive(true);
+
         if (BeginStone != null)
             BeginStone.SetActive(false);
         //EndStone.SetActive(false);
