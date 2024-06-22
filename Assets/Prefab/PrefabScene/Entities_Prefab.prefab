@@ -1754,6 +1754,7 @@ GameObject:
   - component: {fileID: 7235491771362761972}
   - component: {fileID: 9132746415924022365}
   - component: {fileID: 8434224280943312435}
+  - component: {fileID: 6228880732198455636}
   m_Layer: 6
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -1919,6 +1920,14 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!81 &6228880732198455636
+AudioListener:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6154022645403820738}
+  m_Enabled: 1
 --- !u!1 &6431572711304610709
 GameObject:
   m_ObjectHideFlags: 0
@@ -2048,7 +2057,7 @@ Transform:
   - {fileID: 2963114906499182149}
   - {fileID: 2405712864696569348}
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1807645120200891601
 MonoBehaviour:
@@ -7276,9 +7285,6 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: f2a2f1395d6c805419ba7e7da6fbb4cc, type: 3}
       insertIndex: -1
       addedObject: {fileID: 3201209248508533744}
-    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: f2a2f1395d6c805419ba7e7da6fbb4cc, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 7924922138993512666}
   m_SourcePrefab: {fileID: 100100000, guid: f2a2f1395d6c805419ba7e7da6fbb4cc, type: 3}
 --- !u!4 &4933076766725430365 stripped
 Transform:
@@ -7311,14 +7317,6 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!81 &7924922138993512666
-AudioListener:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5710036022114813671}
-  m_Enabled: 1
 --- !u!4 &8517667151731345849 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3876371635396047375, guid: f2a2f1395d6c805419ba7e7da6fbb4cc, type: 3}
