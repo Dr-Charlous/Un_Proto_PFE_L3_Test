@@ -50,7 +50,7 @@ public class UiTextDialogueSpeaker : MonoBehaviour
 
     public void StartLastDialogue()
     {
-        if (_dialogue.Count < 0)
+        if (_dialogue.Count <= 0)
             _dialogue.Add(_lastDialogue);
 
         _timer = 0;

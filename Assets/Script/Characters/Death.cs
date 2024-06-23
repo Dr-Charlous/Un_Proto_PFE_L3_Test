@@ -26,7 +26,10 @@ public class Death : MonoBehaviour
         if (value)
             GameManager.Instance.Respawn.RespawnEntities(isEnd);
         else
+        {
             SceneManager.LoadScene(_scene);
+            Cursor.visible = true;
+        }
 
         yield return new WaitForSeconds(1.5f);
 

@@ -276,6 +276,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7508a574649d2cc4294df36787cfd628, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &381103525 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6866134136395485874, guid: bb98b6b4597121a4dac160ea575b0bfb, type: 3}
+  m_PrefabInstance: {fileID: 1320193427}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2149ff810b7d83a4fb87f9082688b688, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!82 &410011426 stripped
 AudioSource:
   m_CorrespondingSourceObject: {fileID: 8956677099759359427, guid: bb98b6b4597121a4dac160ea575b0bfb, type: 3}
@@ -1129,6 +1140,14 @@ PrefabInstance:
       propertyPath: _volumeMax
       value: 0.4
       objectReference: {fileID: 0}
+    - target: {fileID: 7234664385604856910, guid: bb98b6b4597121a4dac160ea575b0bfb, type: 3}
+      propertyPath: _spawns.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7234664385604856910, guid: bb98b6b4597121a4dac160ea575b0bfb, type: 3}
+      propertyPath: _spawns.Array.data[1]
+      value: 
+      objectReference: {fileID: 381103525}
     - target: {fileID: 7906488619749596038, guid: bb98b6b4597121a4dac160ea575b0bfb, type: 3}
       propertyPath: m_Name
       value: Entities_Prefab

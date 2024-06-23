@@ -22,12 +22,15 @@ public class DebugMod : MonoBehaviour
     [SerializeField] Cinematic[] _cine;
 
     bool _debugModShow;
+    float _countTimer;
+    float _tempValue;
 
     private void Start()
     {
         _debugModShow = false;
         _ennemyNumber = 0;
         _babyNumber = 0;
+        _countTimer = 0;
     }
 
     private void Update()
@@ -119,6 +122,8 @@ public class DebugMod : MonoBehaviour
 
             if (_ennemyController.Length > 0)
                 UpdateText(EnnemyData(_ennemyController, _ennemyNumber), _textMeshPro[1]);
+            else
+                UpdateText("No ennemies here... ^^'", _textMeshPro[1]);
 
             UpdateText(BabyData(_babyController, _babyNumber), _textMeshPro[2]);
 
@@ -210,9 +215,30 @@ public class DebugMod : MonoBehaviour
         else
             dataPalyer += $" o \n";
 
-        dataPalyer += $"fps : {Mathf.Round((1.0f / Time.deltaTime) * 100) / 100f}";
+        float value = FpsCount();
+
+        if (value != 0)
+        {
+            dataPalyer += $"fps : {value}";
+            _tempValue = value;
+        }
+        else
+            dataPalyer += $"fps : {_tempValue}";
 
         return dataPalyer;
+    }
+
+    float FpsCount()
+    {
+        _countTimer += Time.deltaTime;
+
+        if (_countTimer >= 0.5f)
+        {
+            _countTimer = 0;
+            return Mathf.Round((1.0f / Time.deltaTime) * 100) / 100f;
+        }
+        else
+            return 0;
     }
 
     string EnnemyData(StateEnnemyController[] ennemy, int iteration)
@@ -385,7 +411,7 @@ public class DebugMod : MonoBehaviour
                 UpdateText(GpeData(obj2), _textMeshPro[3]);
 
             if (obj == null && obj1 == null && obj2 == null)
-                _textMeshPro[3].text = $"Aucun GPE en vue ^^'";
+                _textMeshPro[3].text = $"No GPE here... ^^'";
         }
     }
 
