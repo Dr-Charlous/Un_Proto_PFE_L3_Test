@@ -50,20 +50,15 @@ public class UiTextDialogueSpeaker : MonoBehaviour
 
     public void StartLastDialogue()
     {
-        if (_dialogue.Count < 1)
-        {
+        if (_dialogue.Count < 0)
             _dialogue.Add(_lastDialogue);
-            _timer = 0;
 
-            if (Coroutine != null)
-                StopCoroutine(Coroutine);
+        _timer = 0;
+        if (Coroutine != null)
+            StopCoroutine(Coroutine);
 
-            if (Coroutine == null)
-            {
-                ActiveUi(true);
-                Coroutine = StartCoroutine(LaunchDialogue(_dialogue[0], _source, UiText, 0));
-            }
-        }
+        ActiveUi(true);
+        Coroutine = StartCoroutine(LaunchDialogue(_dialogue[0], _source, UiText, 0));
     }
 
     public void ActiveUi(bool var)
